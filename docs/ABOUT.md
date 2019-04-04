@@ -1,0 +1,18 @@
+Tcl, pronounced "tickle" and short for Toolkit Command Language, is a
+dynamic, open source programming language.
+
+It was designed with the goal of being very simple but powerful.
+
+Tcl casts everything into the mold of a *command*, even constructs like
+variable assignment, procedure definition and control flow. As such, it
+resembles both shell scripting and Lisp.
+
+Tcl supports multiple programming paradigms, including object-oriented,
+imperative and functional styles. The most common use-cases of Tcl are as
+embedded scripting run-times in C applications, and for prototyping GUIs
+using the Tk GUI toolkit.
+
+You can read more about Tcl on the following websites:
+ - https://www.tcl-lang.org/
+ - https://wiki.tcl-lang.org/
+ - https://en.wikipedia.org/wiki/Tcl
