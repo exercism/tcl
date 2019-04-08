@@ -2,9 +2,9 @@
   "track_id": "tcl",
   "language": "Tcl",
   "active": false,
-  "blurb": "",
-  "ignore_pattern": "[Ee]xample",
-  "solution_pattern": "[Ee]xample",
-  "test_pattern": "[Tt]est",
-  "exercises": null
+  "blurb": "Tcl is a dynamic, open source programming language. It was designed with the goal of being very simple but powerful.",
+  "ignore_pattern": "example",
+  "solution_pattern": "example[.]tcl",
+  "test_pattern": "test",
+  "exercises": []
 }
