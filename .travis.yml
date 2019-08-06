@@ -1,5 +1,12 @@
-language: bash
+language: c
+
+services:
+  - docker
 
 script:
+  - docker build -t ci -f .travis/Dockerfile .
+  - docker run -w /repo -v $(pwd):/repo -it ci .travis/run.sh
+
+after_script:
   - bin/fetch-configlet
   - bin/configlet lint --track-id tcl .
