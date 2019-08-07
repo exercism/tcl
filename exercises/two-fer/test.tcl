@@ -5,14 +5,24 @@ namespace import ::tcltest::*
 source "two-fer.tcl"
 
 if {$::argv0 eq [info script]} {
-    test two-fer {
-        No name given
 
-        Test [two-fer] == "One for you, one for me."
+    test two-fer-1 {
+        no name given
+    } -body {
+        two-fer
+    } -result "One for you, one for me."
 
-        It should be possible to call [two-fer] without arguments.
-    } -body {two-fer} -result "One for you, one for me."
-    test two-fer "A name given" -body {two-fer "Alice"} -result "One for Alice, one for me."
-    test two-fer "Another name given" -body {two-fer "Bob"} -result "One for Bob, one for me."
+    test two-fer-2 {
+        a name given
+    } -body {
+        two-fer "Alice"
+    } -result "One for Alice, one for me."
+
+    test two-fer-3 {
+        another name given
+    } -body {
+        two-fer "Bob"
+    } -result "One for Bob, one for me."
+
     cleanupTests
 }
