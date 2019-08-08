@@ -5,8 +5,9 @@ namespace import ::tcltest::*
 source "hello-world.tcl"
 
 if {$::argv0 eq [info script]} {
-    test hello_Hello {
-        Test: [hello] == "Hello, World!"
+
+    test hello-1 {
+        Say Hi!
     } -body {
         hello
     } -result "Hello, World!"
