@@ -1,5 +1,5 @@
 #!/usr/bin/env tclsh
-set version 1.1.0.0
+set version 1.1.0
 package require tcltest
 namespace import ::tcltest::*
 source "hello-world.tcl"

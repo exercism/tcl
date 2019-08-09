@@ -1,0 +1,54 @@
+#!/bin/sh
+set -e
+
+echo
+echo "*** Check exercise version numbers:"
+echo
+
+FAILED=0
+
+err() {
+    printf "\033[31m%s\n\033[0m" "$1"
+}
+
+cd exercises
+for exercise in *; do
+    cd "$exercise"
+
+    # Make sure each exercise has a .meta/version file.
+
+    if [ ! -e .meta/version ]; then
+        FAILED=1
+        err " - $exercise has no .meta/version file!"
+        cd ..
+        continue
+    fi
+
+    META_VERSION=$(cat .meta/version)
+    TEST_VERSION=$(echo 'source test.tcl; if {[info exists version]} {puts $version}' | tclsh)
+
+    # Make sure each exercise has a 'set version ...' statement.
+
+    if [ -z "$TEST_VERSION" ]; then
+        FAILED=1
+        err " - $exercise has no 'set version ...' statement!"
+        cd ..
+        continue
+    fi
+
+    # Make sure .meta/version is the same as 'set version ...'
+
+    if [ "$TEST_VERSION" != "$META_VERSION" ]; then
+        FAILED=1
+        err " - $exercise version mismatch: .meta/version = $META_VERSION, test.tcl = $TEST_VERSION!"
+        cd ..
+        continue
+    fi
+
+    echo " - $exercise has version $TEST_VERSION"
+    cd ..
+done
+
+if [ "$FAILED" -eq 1 ]; then
+    exit 1
+fi

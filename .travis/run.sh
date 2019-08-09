@@ -1,4 +1,4 @@
 #!/bin/sh
-set -e
 
+bin/check_exercise_versions
 bin/test_all_exercises
