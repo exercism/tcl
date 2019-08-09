@@ -12,11 +12,13 @@ proc fail_fast {} {
     }]
 }
 
+proc failed {} {
+    return [expr {$::tcltest::numTests(Failed) > 0}]
+}
+
 if {[fail_fast]} {
     proc test args {
-        if {$::tcltest::numTests(Failed) > 0} {
-            ::tcltest::configure -skip *
-        }
+        if {[failed]} {::tcltest::configure -skip *}
         uplevel [list ::tcltest::test {*}$args]
     }
 }
@@ -41,5 +43,7 @@ if {$::argv0 eq [info script]} {
         two-fer "Bob"
     } -result "One for Bob, one for me."
 
+    set failed [failed]
     cleanupTests
+    if {$failed} {exit 1}
 }
