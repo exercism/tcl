@@ -4,12 +4,21 @@ package require tcltest
 namespace import ::tcltest::*
 source "hello-world.tcl"
 
-proc test args {
-    if {$::tcltest::numTests(Failed) > 0} {
-        puts "**** Exit on first failure"
-        exit 1
+proc fail_fast {} {
+    return [expr {
+        ![info exists ::env(RUN_ALL)]
+        || [string is boolean -strict $::env(RUN_ALL)]
+        && !$::env(RUN_ALL)
+    }]
+}
+
+if {[fail_fast]} {
+    proc test args {
+        if {$::tcltest::numTests(Failed) > 0} {
+            ::tcltest::configure -skip *
+        }
+        uplevel [list ::tcltest::test {*}$args]
     }
-    uplevel [list ::tcltest::test {*}$args]
 }
 
 if {$::argv0 eq [info script]} {
