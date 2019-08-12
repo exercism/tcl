@@ -23,6 +23,12 @@ if {[fail_fast]} {
     }
 }
 
+proc cleanupTests {} {
+    set failed [failed]
+    uplevel 1 ::tcltest::cleanupTests
+    if {$failed} {exit 1}
+}
+
 if {$::argv0 eq [info script]} {
 
     test two-fer-1 {
@@ -43,7 +49,5 @@ if {$::argv0 eq [info script]} {
         two-fer "Bob"
     } -result "One for Bob, one for me."
 
-    set failed [failed]
     cleanupTests
-    if {$failed} {exit 1}
 }

@@ -23,6 +23,12 @@ if {[fail_fast]} {
     }
 }
 
+proc cleanupTests {} {
+    set failed [failed]
+    uplevel 1 ::tcltest::cleanupTests
+    if {$failed} {exit 1}
+}
+
 if {$::argv0 eq [info script]} {
     test hello_Hello {
         Test: [hello] == "Hello, World!"
@@ -30,7 +36,5 @@ if {$::argv0 eq [info script]} {
         hello
     } -result "Hello, World!"
 
-    set failed [failed]
     cleanupTests
-    if {$failed} {exit 1}
 }
