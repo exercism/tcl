@@ -2,3 +2,4 @@
  - The [Tcler's Wiki](https://wiki.tcl-lang.org/), a vast collection of resources gathered by Tcl programmers.
  - [Stack Overflow](http://stackoverflow.com/questions/tagged/tcl) can be used to search for your problem and see if it has been answered already. You can also ask and answer questions.
  - [/r/tcl](https://www.reddit.com/r/tcl) is the Tcl subreddit.
+ - online [documentation for Tcl commands](https://tcl.tk/man/tcl8.6/TclCmd/contents.htm).

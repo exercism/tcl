@@ -1,7 +1,10 @@
-Tcl, pronounced "tickle" and short for Toolkit Command Language, is a
+Tcl, pronounced "tickle" and short for Tool Command Language, is a
 dynamic, open source programming language.
 
 It was designed with the goal of being very simple but powerful.
+It is so simple that the entire syntax is fully described in [just 12
+rules](https://tcl.tk/man/tcl8.6/TclCmd/Tcl.htm). Yet it is a 
+fully-featured programming language.
 
 Tcl casts everything into the mold of a *command*, even constructs like
 variable assignment, procedure definition and control flow. As such, it
