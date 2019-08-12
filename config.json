@@ -22,7 +22,6 @@
       "slug": "two-fer",
       "uuid": "ac95030a-77db-499f-8402-496e80c8be81",
       "core": true,
-      "auto_approve": false,
       "unlocked_by": null,
       "difficulty": 1,
       "topics": [
@@ -34,11 +33,22 @@
       "slug": "leap",
       "uuid": "906c7c23-a206-4cc8-88d9-6abca1759ac3",
       "core": true,
-      "auto_approve": false,
       "unlocked_by": null,
       "difficulty": 1,
       "topics": [
         "booleans"
+      ]
+    },
+    {
+      "slug": "raindrops",
+      "uuid": "cc188b91-94d2-44bc-9ede-aaa0a4a8cd1c",
+      "core": true,
+      "unlocked_by": null,
+      "difficulty": 2,
+      "topics": [
+        "conditionals",
+        "math",
+        "strings"
       ]
     },
     {
