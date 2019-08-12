@@ -25,6 +25,16 @@ for exercise in *; do
     fi
 
     META_VERSION=$(cat .meta/version)
+
+    # Make sure each exercise has a test.tcl file.
+
+    if [ ! -e "$exercise.test" ]; then
+        FAILED=1
+        err " - $exercise has no .test file!"
+        cd ..
+        continue
+    fi
+
     TEST_VERSION=$(echo "source $exercise.test; if {[info exists version]} {puts [set version]}" | tclsh)
 
     # Make sure each exercise has a 'set version ...' statement.

@@ -4,13 +4,38 @@ echo
 echo "*** Test all exercises:"
 echo
 
+FAILED=0
+
+err() {
+    printf "\033[31m%s\n\033[0m" "$1"
+}
+
 cd exercises
 for exercise in *; do
-    echo " - $exercise:"
     cd "$exercise"
+
+    if [ ! -e example.tcl ]; then
+        FAILED=1
+        err " - $exercise: Missing example.tcl!"
+        cd ..
+        continue
+    fi
+
+    if [ ! -e "$exercise.test" ]; then
+        FAILED=1
+        err " - $exercise: Missing $exercise.test!"
+        cd ..
+        continue
+    fi
+
+    echo " - $exercise:"
     cp example.tcl "$exercise.tcl"
     tclsh "$exercise.test"
     echo
     git checkout "$exercise.tcl"
     cd ..
 done
+
+if [ "$FAILED" -eq 1 ]; then
+    exit 1
+fi
