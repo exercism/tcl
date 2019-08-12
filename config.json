@@ -26,8 +26,8 @@
       "unlocked_by": null,
       "difficulty": 1,
       "topics": [
-        "strings",
-        "arguments"
+        "arguments",
+        "strings"
       ]
     },
     {
@@ -40,7 +40,17 @@
       "topics": [
         "booleans"
       ]
+    },
+    {
+      "slug": "error-handling",
+      "uuid": "bead03bc-099a-4d3e-877e-460ff102eed2",
+      "core": true,
+      "auto_approve": false,
+      "unlocked_by": null,
+      "difficulty": 3,
+      "topics": [
+        "exception_handling"
+      ]
     }
-
   ]
 }
