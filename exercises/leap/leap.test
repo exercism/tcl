@@ -41,7 +41,7 @@ if {$::argv0 eq [info script]} {
     }
 
     foreach case $cases {
-        foreach {name year result description} $case {}
+        lassign $case name year result description
         test $name $description -body "
             isLeapYear $year
         " -result $result
