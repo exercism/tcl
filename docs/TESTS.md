@@ -1,7 +1,8 @@
-## Running tests
+## Running the tests
 
-To run the tests, run the `test.tcl` script in the exercise directory:
+To run the tests for an exercise, run the `<exercise>.test` script in the
+exercise directory:
 
 ```bash
-./test.tcl
+tclsh <exercise>.test
 ```

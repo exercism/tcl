@@ -9,7 +9,7 @@ for exercise in *; do
     echo " - $exercise:"
     cd "$exercise"
     cp example.tcl "$exercise.tcl"
-    tclsh "test.tcl"
+    tclsh "$exercise.test"
     echo
     git checkout "$exercise.tcl"
     cd ..
