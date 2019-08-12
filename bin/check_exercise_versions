@@ -25,7 +25,7 @@ for exercise in *; do
     fi
 
     META_VERSION=$(cat .meta/version)
-    TEST_VERSION=$(echo 'source test.tcl; if {[info exists version]} {puts $version}' | tclsh)
+    TEST_VERSION=$(echo "source $exercise.test; if {[info exists version]} {puts [set version]}" | tclsh)
 
     # Make sure each exercise has a 'set version ...' statement.
 
@@ -40,7 +40,7 @@ for exercise in *; do
 
     if [ "$TEST_VERSION" != "$META_VERSION" ]; then
         FAILED=1
-        err " - $exercise version mismatch: .meta/version = $META_VERSION, test.tcl = $TEST_VERSION!"
+        err " - $exercise version mismatch: .meta/version = $META_VERSION, $exercise.test = $TEST_VERSION!"
         cd ..
         continue
     fi
