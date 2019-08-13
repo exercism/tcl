@@ -42,6 +42,8 @@ if {$::argv0 eq [info script]} {
     dict set testCases "division by zero"    {expr {1 / 0}}
     dict set testCases "file does not exist" {open [file join . "no dir" "no file"] r}
     dict set testCases "proc does not exist" {no::such::procedure}
+    # handle a non-error script
+    dict set testCases "success"             {append var no error here}
 
     set n 2
     dict for {result script} $testCases {
