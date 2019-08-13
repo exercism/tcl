@@ -30,13 +30,15 @@
       ]
     },
     {
-      "slug": "leap",
-      "uuid": "906c7c23-a206-4cc8-88d9-6abca1759ac3",
+      "slug": "resistor-color",
+      "uuid": "d76c4a2a-d63a-450b-8e0a-0c4eeb656fd8",
       "core": true,
       "unlocked_by": null,
       "difficulty": 1,
       "topics": [
-        "booleans"
+        "lists",
+        "namespaces",
+        "searching"
       ]
     },
     {
@@ -82,6 +84,7 @@
         "strings"
       ]
     }
+
 
   ]
 }
