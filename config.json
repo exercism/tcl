@@ -63,6 +63,18 @@
       ]
     },
     {
+      "slug": "high-scores",
+      "uuid": "9e1a946f-51c5-4201-8d61-79eb07437998",
+      "core": true,
+      "auto_approve": false,
+      "unlocked_by": null,
+      "difficulty": 3,
+      "topics": [
+        "classes",
+        "lists"
+      ]
+    },
+    {
       "slug": "raindrops",
       "uuid": "cc188b91-94d2-44bc-9ede-aaa0a4a8cd1c",
       "core": true,
