@@ -31,32 +31,33 @@ proc cleanupTests {} {
 
 if {$::argv0 eq [info script]} {
 
+    # test cases: test name, input value, expected output
     set cases {
-           1 1
-           3 Pling
-           5 Plang
-           7 Plong
-           6 Pling
-           8 8
-           9 Pling
-          10 Plang
-          14 Plong
-          15 PlingPlang
-          21 PlingPlong
-          25 Plang
-          27 Pling
-          35 PlangPlong
-          49 Plong
-          52 52
-         105 PlingPlangPlong
-        3125 Plang
+        raindrops-1      1  1
+        raindrops-2      3  Pling
+        raindrops-3      5  Plang
+        raindrops-4      7  Plong
+        raindrops-5      6  Pling
+        raindrops-6      8  8
+        raindrops-7      9  Pling
+        raindrops-8     10  Plang
+        raindrops-9     14  Plong
+        raindrops-10    15  PlingPlang
+        raindrops-11    21  PlingPlong
+        raindrops-12    25  Plang
+        raindrops-13    27  Pling
+        raindrops-14    35  PlangPlong
+        raindrops-15    49  Plong
+        raindrops-16    52  52
+        raindrops-17   105  PlingPlangPlong
+        raindrops-18  3125  Plang
     }
 
-    foreach {number result} $cases {
-        test raindrops-[incr n] "
-            sound for $number is $result
+    foreach {testName input result} $cases {
+        test $testName "
+            sound for $input is $result
         " -body {
-            raindrops $number
+            raindrops $input
         } -returnCodes ok -result $result
     }
 
