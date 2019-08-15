@@ -106,6 +106,17 @@
       ]
     },
     {
+      "slug": "hamming",
+      "uuid": "cee5bfb1-41d9-4de9-ab64-b6cca69761a1",
+      "core": true,
+      "unlocked_by": null,
+      "difficulty": 2,
+      "topics": [
+        "input_validation",
+        "strings"
+      ]
+    },
+    {
       "slug": "raindrops",
       "uuid": "cc188b91-94d2-44bc-9ede-aaa0a4a8cd1c",
       "core": true,
