@@ -55,11 +55,21 @@
       "slug": "error-handling",
       "uuid": "bead03bc-099a-4d3e-877e-460ff102eed2",
       "core": true,
-      "auto_approve": false,
       "unlocked_by": null,
       "difficulty": 3,
       "topics": [
         "exception_handling"
+      ]
+    },
+    {
+      "slug": "acronym",
+      "uuid": "2d00fae1-f610-468e-acd9-0554f94b7813",
+      "core": true,
+      "unlocked_by": null,
+      "difficulty": 3,
+      "topics": [
+        "strings",
+        "transforming"
       ]
     }
   ]
