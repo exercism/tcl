@@ -202,6 +202,18 @@
       ]
     },
     {
+      "slug": "bank-account",
+      "uuid": "4f2f9d32-eb2a-4011-aec5-f119ede5f475",
+      "core": true,
+      "unlocked_by": null,
+      "difficulty": 3,
+      "topics": [
+        "classes",
+        "exception_handling",
+        "threading"
+      ]
+    },
+    {
       "slug": "rna-transcription",
       "uuid": "1479aec4-6f8f-403e-ad0b-33d0b7b7891a",
       "core": false,
