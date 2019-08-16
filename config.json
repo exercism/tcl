@@ -129,6 +129,17 @@
       ]
     },
     {
+      "slug": "isogram",
+      "uuid": "e11d9894-90be-4835-8ad1-39503c1c6824",
+      "core": true,
+      "unlocked_by": null,
+      "difficulty": 2,
+      "topics": [
+        "equality",
+        "strings"
+      ]
+    },
+    {
       "slug": "rna-transcription",
       "uuid": "1479aec4-6f8f-403e-ad0b-33d0b7b7891a",
       "core": false,
