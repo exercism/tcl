@@ -71,6 +71,17 @@
         "strings",
         "transforming"
       ]
+    },
+    {
+      "slug": "pangram",
+      "uuid": "b3ca1538-29a7-41e2-8791-e5918ec2d709",
+      "core": false,
+      "unlocked_by": "acronym",
+      "difficulty": 3,
+      "topics": [
+        "strings"
+      ]
     }
+
   ]
 }
