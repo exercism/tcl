@@ -140,6 +140,17 @@
       ]
     },
     {
+      "slug": "scrabble-score",
+      "uuid": "407e3c61-e797-4920-a83e-a8ac722f44cc",
+      "core": true,
+      "unlocked_by": null,
+      "difficulty": 2,
+      "topics": [
+        "conditionals",
+        "loops"
+      ]
+    },
+    {
       "slug": "rna-transcription",
       "uuid": "1479aec4-6f8f-403e-ad0b-33d0b7b7891a",
       "core": false,
