@@ -42,18 +42,6 @@
       ]
     },
     {
-      "slug": "raindrops",
-      "uuid": "cc188b91-94d2-44bc-9ede-aaa0a4a8cd1c",
-      "core": true,
-      "unlocked_by": null,
-      "difficulty": 2,
-      "topics": [
-        "conditionals",
-        "math",
-        "strings"
-      ]
-    },
-    {
       "slug": "error-handling",
       "uuid": "bead03bc-099a-4d3e-877e-460ff102eed2",
       "core": true,
@@ -75,6 +63,28 @@
       ]
     },
     {
+      "slug": "raindrops",
+      "uuid": "cc188b91-94d2-44bc-9ede-aaa0a4a8cd1c",
+      "core": true,
+      "unlocked_by": null,
+      "difficulty": 2,
+      "topics": [
+        "conditionals",
+        "math",
+        "strings"
+      ]
+    },
+    {
+      "slug": "leap",
+      "uuid": "906c7c23-a206-4cc8-88d9-6abca1759ac3",
+      "core": false,
+      "unlocked_by": "resistor-color",
+      "difficulty": 1,
+      "topics": [
+        "booleans"
+      ]
+    },
+    {
       "slug": "pangram",
       "uuid": "b3ca1538-29a7-41e2-8791-e5918ec2d709",
       "core": false,
@@ -84,7 +94,5 @@
         "strings"
       ]
     }
-
-
   ]
 }
