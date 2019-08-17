@@ -151,6 +151,18 @@
       ]
     },
     {
+      "slug": "luhn",
+      "uuid": "f5a11e85-12ff-4a6f-be6b-1a20338fbfa4",
+      "core": true,
+      "unlocked_by": null,
+      "difficulty": 3,
+      "topics": [
+        "conditionals",
+        "integers",
+        "loops"
+      ]
+    },
+    {
       "slug": "rna-transcription",
       "uuid": "1479aec4-6f8f-403e-ad0b-33d0b7b7891a",
       "core": false,
