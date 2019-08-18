@@ -287,6 +287,18 @@
       "topics": [
         "strings"
       ]
+    },
+    {
+      "slug": "space-age",
+      "uuid": "fee0d649-8d61-4c78-9f0d-225f66b982ae",
+      "core": false,
+      "unlocked_by": "acronym",
+      "difficulty": 2,
+      "topics": [
+        "math",
+        "procedures",
+        "text_formatting"
+      ]
     }
   ]
 }
