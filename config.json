@@ -178,7 +178,6 @@
       "slug": "tournament",
       "uuid": "9f6f38d0-19da-409c-898a-3b0a58195ca9",
       "core": true,
-      "auto_approve": false,
       "unlocked_by": null,
       "difficulty": 5,
       "topics": [
@@ -211,6 +210,16 @@
         "classes",
         "exception_handling",
         "threading"
+      ]
+    },
+    {
+      "slug": "gigasecond",
+      "uuid": "5e9ff45a-55ad-460b-9fcb-48492a67d7e3",
+      "core": false,
+      "unlocked_by": "hello-world",
+      "difficulty": 2,
+      "topics": [
+        "datetime"
       ]
     },
     {
