@@ -243,6 +243,18 @@
       ]
     },
     {
+      "slug": "resistor-color-duo",
+      "uuid": "f3a4103e-758c-413e-9276-6a8347df5be3",
+      "core": false,
+      "unlocked_by": "resistor-color",
+      "difficulty": 2,
+      "topics": [
+        "lists",
+        "namespaces",
+        "searching"
+      ]
+    },
+    {
       "slug": "pangram",
       "uuid": "b3ca1538-29a7-41e2-8791-e5918ec2d709",
       "core": false,
