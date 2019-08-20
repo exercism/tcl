@@ -440,6 +440,18 @@
         "algorithms",
         "math"
       ]
+    },
+    {
+      "slug": "collatz-conjecture",
+      "uuid": "d87cfd8d-8a23-4e7a-8edf-942078f1b9b4",
+      "core": false,
+      "unlocked_by": "hamming",
+      "difficulty": 2,
+      "topics": [
+        "conditionals",
+        "loops",
+        "math"
+      ]
     }
   ]
 }
