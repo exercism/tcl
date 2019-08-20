@@ -404,6 +404,18 @@
         "loops",
         "searching"
       ]
+    },
+    {
+      "slug": "etl",
+      "uuid": "ddaa2182-2d73-4599-a300-2f0e887dc4d5",
+      "core": false,
+      "unlocked_by": "word-count",
+      "difficulty": 3,
+      "topics": [
+        "loops",
+        "maps",
+        "transforming"
+      ]
     }
   ]
 }
