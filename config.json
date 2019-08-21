@@ -485,6 +485,20 @@
         "loops",
         "strings"
       ]
+    },
+    {
+      "slug": "sieve",
+      "uuid": "3ab0e3e8-17b9-416d-b1a6-e71aa362e89a",
+      "core": false,
+      "unlocked_by": "hamming",
+      "difficulty": 3,
+      "topics": [
+        "algorithms",
+        "conditionals",
+        "lists",
+        "loops",
+        "math"
+      ]
     }
   ]
 }
