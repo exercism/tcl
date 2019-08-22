@@ -75,6 +75,16 @@
       ]
     },
     {
+      "slug": "rna-transcription",
+      "uuid": "1479aec4-6f8f-403e-ad0b-33d0b7b7891a",
+      "core": false,
+      "unlocked_by": "two-fer",
+      "difficulty": 1,
+      "topics": [
+        "strings"
+      ]
+    },
+    {
       "slug": "leap",
       "uuid": "906c7c23-a206-4cc8-88d9-6abca1759ac3",
       "core": false,
