@@ -309,6 +309,18 @@
       "topics": [
         "math"
       ]
+    },
+    {
+      "slug": "anagram",
+      "uuid": "222a1255-0df9-42b1-9f10-81c29d0201e8",
+      "core": false,
+      "unlocked_by": "matrix",
+      "difficulty": 2,
+      "topics": [
+        "filtering",
+        "sorting",
+        "strings"
+      ]
     }
   ]
 }
