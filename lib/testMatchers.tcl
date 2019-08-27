@@ -1,16 +1,11 @@
 # Some procs that are handy for Tcl test custom matching.
 #
 # You would use this in a test file like this:
-#    source ./testMatchers.tcl
+#
 #    customMatch dictionary dictionaryMatch
 #    test name "description" -body {
 #        code that returns a dictionary
 #    } -match dictionary -result {expected dictionary value here}
-#
-# For exercises that need one of these, copy this file
-# into the exercise directory, so the student's download is
-# self-contained.
-
 
 # compare two dictionaries for the same keys and same values
 proc dictionaryMatch {expected actual} {
