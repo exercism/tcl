@@ -77,7 +77,6 @@
       "slug": "series",
       "uuid": "6893e956-8e80-4a3e-a622-6b76a65495c4",
       "core": true,
-      "auto_approve": false,
       "unlocked_by": null,
       "difficulty": 2,
       "topics": [
