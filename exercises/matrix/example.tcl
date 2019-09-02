@@ -1,26 +1,39 @@
 oo::class create Matrix {
     constructor {inputString} {
-        variable rows    [lmap line [split $inputString \n] {split $line}]
-        variable columns [my Transpose $rows]
+        variable input  $inputString
+        variable parsed false
+        variable rows
+        variable columns
     }
 
-    method Transpose {rows} {
+    method ParseInput {} {
+        my variable rows columns input parsed
+
+        set rows [lmap line [split $input \n] {split [string trim $line]}]
+
         set columns [lrepeat [llength [lindex $rows 0]] {}]
         for {set r 0} {$r < [llength $rows]} {incr r} {
             for {set c 0} {$c < [llength $columns]} {incr c} {
                 lset columns $c $r [lindex $rows $r $c]
             }
         }
-        return $columns
+
+        set parsed true
     }
 
     method row {n} {
-        my variable rows
+        my variable parsed rows
+        if {!$parsed} {
+            my ParseInput
+        }
         return [lindex $rows $n-1]
     }
 
     method column {n} {
-        my variable columns
+        my variable parsed columns
+        if {!$parsed} {
+            my ParseInput
+        }
         return [lindex $columns $n-1]
     }
 }
