@@ -9,7 +9,7 @@ oo::class create Matrix {
     method ParseInput {} {
         my variable rows columns input parsed
 
-        set rows [lmap line [split $input \n] {split [string trim $line]}]
+        set rows [lmap line [split $input \n] {split $line}]
 
         set columns [lrepeat [llength [lindex $rows 0]] {}]
         for {set r 0} {$r < [llength $rows]} {incr r} {
