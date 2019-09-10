@@ -452,6 +452,17 @@
         "loops",
         "math"
       ]
+    },
+    {
+      "slug": "darts",
+      "uuid": "0510b1bf-28f0-48a1-9223-72789a1173a2",
+      "core": false,
+      "unlocked_by": "hamming",
+      "difficulty": 2,
+      "topics": [
+        "conditionals",
+        "math"
+      ]
     }
   ]
 }
