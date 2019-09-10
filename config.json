@@ -333,6 +333,18 @@
       ]
     },
     {
+      "slug": "sum-of-multiples",
+      "uuid": "5c0669b7-244c-4924-ba43-77e835f1ceed",
+      "core": false,
+      "unlocked_by": "matrix",
+      "difficulty": 2,
+      "topics": [
+        "integers",
+        "loops",
+        "math"
+      ]
+    },
+    {
       "slug": "transpose",
       "uuid": "20c0585d-5374-4c2e-997e-f522c1036e35",
       "core": false,
