@@ -391,6 +391,19 @@
         "strings",
         "text_formatting"
       ]
+    },
+    {
+      "slug": "saddle-points",
+      "uuid": "180d248a-319b-4146-9389-c2e45bf181d3",
+      "core": false,
+      "unlocked_by": "series",
+      "difficulty": 5,
+      "topics": [
+        "integers",
+        "lists",
+        "loops",
+        "searching"
+      ]
     }
   ]
 }
