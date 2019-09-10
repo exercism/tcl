@@ -321,6 +321,18 @@
         "sorting",
         "strings"
       ]
+    },
+    {
+      "slug": "transpose",
+      "uuid": "20c0585d-5374-4c2e-997e-f522c1036e35",
+      "core": false,
+      "unlocked_by": "matrix",
+      "difficulty": 4,
+      "topics": [
+        "loops",
+        "strings",
+        "transforming"
+      ]
     }
   ]
 }
