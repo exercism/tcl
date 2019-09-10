@@ -323,6 +323,16 @@
       ]
     },
     {
+      "slug": "difference-of-squares",
+      "uuid": "294e0af9-436a-4d0e-be87-d1da7df16a08",
+      "core": false,
+      "unlocked_by": "matrix",
+      "difficulty": 2,
+      "topics": [
+        "math"
+      ]
+    },
+    {
       "slug": "transpose",
       "uuid": "20c0585d-5374-4c2e-997e-f522c1036e35",
       "core": false,
