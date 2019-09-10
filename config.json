@@ -463,6 +463,17 @@
         "conditionals",
         "math"
       ]
+    },
+    {
+      "slug": "palindrome-products",
+      "uuid": "a7a91017-bbbc-432c-a3f0-5900f1adda75",
+      "core": false,
+      "unlocked_by": "hamming",
+      "difficulty": 6,
+      "topics": [
+        "algorithms",
+        "math"
+      ]
     }
   ]
 }
