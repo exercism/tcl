@@ -103,11 +103,6 @@ if {$::argv0 eq [info script]} {
         {"one" 1 "two" 1 "three" 1}
     }
 
-    # Implementation notes:
-    # I'm expecting the output to be a dictionary.
-    # A list with an even number of elements acts like a dictionary.
-    # `array get arrayVar` does as well.
-
     foreach {name description sentence result} $cases {
         test $name $description -body {
             countWords $sentence
