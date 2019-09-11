@@ -474,6 +474,17 @@
         "algorithms",
         "math"
       ]
+    },
+    {
+      "slug": "proverb",
+      "uuid": "0bf5e59e-9d7d-47d2-8f62-865325a33a4c",
+      "core": false,
+      "unlocked_by": "hamming",
+      "difficulty": 3,
+      "topics": [
+        "loops",
+        "strings"
+      ]
     }
   ]
 }
