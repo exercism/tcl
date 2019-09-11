@@ -429,6 +429,17 @@
         "parsing",
         "strings"
       ]
+    },
+    {
+      "slug": "pythagorean-triplet",
+      "uuid": "",
+      "core": false,
+      "unlocked_by": "word-count",
+      "difficulty": 5,
+      "topics": [
+        "algorithms",
+        "math"
+      ]
     }
   ]
 }
