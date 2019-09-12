@@ -1,10 +1,4 @@
 proc hammingDistance {left right} {
-    if {$left eq "" && $right ne ""} {
-        error "left strand must not be empty"
-    }
-    if {$left ne "" && $right eq ""} {
-        error "right strand must not be empty"
-    }
     if {[string length $left] != [string length $right]} {
         error "left and right strands must be of equal length"
     }

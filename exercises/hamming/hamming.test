@@ -32,22 +32,28 @@ proc cleanupTests {} {
 if {$::argv0 eq [info script]} {
 
     set cases {
-      hamming-1 "empty strands" "" "" ok 0
-      hamming-2 "single letter identical strands" "A" "A" ok 0
-      hamming-3 "single letter different strands" "G" "T" ok 1
-      hamming-4 "long identical strands" "GGACTGAAATCTG" "GGACTGAAATCTG" ok 0
-      hamming-5 "long different strands" "GGACGGATTCTG" "AGGACGGATTCT" ok 9
-
-      hamming-6 "disallow first strand longer" "AATG" "AAA" error "left and right strands must be of equal length"
-      hamming-7 "disallow second strand longer" "ATA" "AGTG" error "left and right strands must be of equal length"
-      hamming-8 "disallow left empty strand" "" "G" error "left strand must not be empty"
-      hamming-9 "disallow right empty strand" "G" "" error "right strand must not be empty"
+        hamming-1.1 "empty strands" "" "" 0
+        hamming-1.2 "single letter identical strands" "A" "A" 0
+        hamming-1.3 "single letter different strands" "G" "T" 1
+        hamming-1.4 "long identical strands" "GGACTGAAATCTG" "GGACTGAAATCTG" 0
+        hamming-1.5 "long different strands" "GGACGGATTCTG" "AGGACGGATTCT" 9
     }
-
-    foreach {name desc first second status result} $cases {
+    foreach {name desc first second result} $cases {
         test $name $desc -body {
             hammingDistance $first $second
-        } -returnCodes $status -result $result
+        } -returnCodes ok -result $result
+    }
+
+    set errors {
+        hamming-2.1 "disallow first strand longer" "AATG" "AAA"
+        hamming-2.2 "disallow second strand longer" "ATA" "AGTG"
+        hamming-2.3 "disallow left empty strand" "" "G"
+        hamming-2.4 "disallow right empty strand" "G" ""
+    }
+    foreach {name desc first second} $errors {
+        test $name $desc -body {
+            hammingDistance $first $second
+        } -returnCodes error -result "left and right strands must be of equal length"
     }
 
     cleanupTests
