@@ -95,6 +95,17 @@
       ]
     },
     {
+      "slug": "word-count",
+      "uuid": "67e6488d-8bf0-401d-b70d-689a37661781",
+      "core": true,
+      "unlocked_by": null,
+      "difficulty": 3,
+      "topics": [
+        "regular_expressions",
+        "strings"
+      ]
+    },
+    {
       "slug": "raindrops",
       "uuid": "cc188b91-94d2-44bc-9ede-aaa0a4a8cd1c",
       "core": true,
