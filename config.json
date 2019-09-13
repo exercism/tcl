@@ -367,6 +367,16 @@
         "loops",
         "math"
       ]
+    },
+    {
+      "slug": "grains",
+      "uuid": "5c5d47e9-aa71-477a-9c27-be94207cc9b1",
+      "core": false,
+      "unlocked_by": "series",
+      "difficulty": 3,
+      "topics": [
+        "math"
+      ]
     }
   ]
 }
