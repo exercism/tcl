@@ -367,6 +367,43 @@
         "loops",
         "math"
       ]
+    },
+    {
+      "slug": "grains",
+      "uuid": "5c5d47e9-aa71-477a-9c27-be94207cc9b1",
+      "core": false,
+      "unlocked_by": "series",
+      "difficulty": 3,
+      "topics": [
+        "math"
+      ]
+    },
+    {
+      "slug": "phone-number",
+      "uuid": "cc6788f0-41e8-4992-8ff0-e082e40a3d9e",
+      "core": false,
+      "unlocked_by": "series",
+      "difficulty": 3,
+      "topics": [
+        "conditionals",
+        "input_validation",
+        "regular_expressions",
+        "strings",
+        "text_formatting"
+      ]
+    },
+    {
+      "slug": "saddle-points",
+      "uuid": "180d248a-319b-4146-9389-c2e45bf181d3",
+      "core": false,
+      "unlocked_by": "series",
+      "difficulty": 5,
+      "topics": [
+        "integers",
+        "lists",
+        "loops",
+        "searching"
+      ]
     }
   ]
 }
