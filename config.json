@@ -355,6 +355,18 @@
         "strings",
         "transforming"
       ]
+    },
+    {
+      "slug": "armstrong-numbers",
+      "uuid": "f8cd9cc2-6e2b-41b2-9422-cb6c831419a8",
+      "core": false,
+      "unlocked_by": "series",
+      "difficulty": 3,
+      "topics": [
+        "integers",
+        "loops",
+        "math"
+      ]
     }
   ]
 }
