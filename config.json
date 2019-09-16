@@ -416,6 +416,19 @@
         "maps",
         "transforming"
       ]
+    },
+    {
+      "slug": "nucleotide-count",
+      "uuid": "fc650773-a831-4e34-96cb-c880a911e582",
+      "core": false,
+      "unlocked_by": "word-count",
+      "difficulty": 2,
+      "topics": [
+        "loops",
+        "maps",
+        "parsing",
+        "strings"
+      ]
     }
   ]
 }
