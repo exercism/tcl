@@ -163,6 +163,18 @@
       ]
     },
     {
+      "slug": "clock",
+      "uuid": "560f29e0-6007-438a-9963-a27f81b48866",
+      "core": true,
+      "unlocked_by": null,
+      "difficulty": 3,
+      "topics": [
+        "classes",
+        "math",
+        "text_formatting"
+      ]
+    },
+    {
       "slug": "rna-transcription",
       "uuid": "1479aec4-6f8f-403e-ad0b-33d0b7b7891a",
       "core": false,
