@@ -1,7 +1,6 @@
 oo::class create Clock {
-
     constructor {hour minute} {
-        my variable time
+        variable time
         set time [expr {60 * $hour + $minute}]
         my _normalize
     }
@@ -11,6 +10,11 @@ oo::class create Clock {
         my variable time
         set time [expr {$time % (24 * 60)}]
         return
+    }
+
+    method time {} {
+        my variable time
+        return $time
     }
 
     method toString {} {
@@ -30,7 +34,7 @@ oo::class create Clock {
     }
 
     method equals {other} {
-        return [expr {[my toString] eq [$other toString]}]
+        return [expr {[my time] eq [$other time]}]
     }
 
     # "alias" a method.
