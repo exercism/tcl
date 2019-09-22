@@ -175,6 +175,22 @@
       ]
     },
     {
+      "slug": "tournament",
+      "uuid": "9f6f38d0-19da-409c-898a-3b0a58195ca9",
+      "core": true,
+      "auto_approve": false,
+      "unlocked_by": null,
+      "difficulty": 5,
+      "topics": [
+        "classes",
+        "conditionals",
+        "loops",
+        "maps",
+        "text_formatting",
+        "transforming"
+      ]
+    },
+    {
       "slug": "twelve-days",
       "uuid": "98fbfacc-534f-4896-b7e1-a4a9bd80a35b",
       "core": true,
