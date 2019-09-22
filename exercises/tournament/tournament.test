@@ -44,7 +44,7 @@ if {$::argv0 eq [info script]} {
             "Team                           | MP |  W |  D |  L |  P"
             "Allegoric Alaskans             |  1 |  1 |  0 |  0 |  3"
             "Blithering Badgers             |  1 |  0 |  0 |  1 |  0"
-		}
+        }
 
         tournament-3 "a win can also be expressed as a loss"
         {
@@ -54,7 +54,7 @@ if {$::argv0 eq [info script]} {
             "Team                           | MP |  W |  D |  L |  P"
             "Allegoric Alaskans             |  1 |  1 |  0 |  0 |  3"
             "Blithering Badgers             |  1 |  0 |  0 |  1 |  0"
-		}
+        }
 
         tournament-4 "a different team can win"
         {
@@ -64,7 +64,7 @@ if {$::argv0 eq [info script]} {
             "Team                           | MP |  W |  D |  L |  P"
             "Blithering Badgers             |  1 |  1 |  0 |  0 |  3"
             "Allegoric Alaskans             |  1 |  0 |  0 |  1 |  0"
-		}
+        }
 
         tournament-5 "a draw is one point each"
         {
@@ -74,7 +74,7 @@ if {$::argv0 eq [info script]} {
             "Team                           | MP |  W |  D |  L |  P"
             "Allegoric Alaskans             |  1 |  0 |  1 |  0 |  1"
             "Blithering Badgers             |  1 |  0 |  1 |  0 |  1"
-		}
+        }
 
         tournament-6 "There can be more than one match"
         {
@@ -85,7 +85,7 @@ if {$::argv0 eq [info script]} {
             "Team                           | MP |  W |  D |  L |  P"
             "Allegoric Alaskans             |  2 |  2 |  0 |  0 |  6"
             "Blithering Badgers             |  2 |  0 |  0 |  2 |  0"
-		}
+        }
 
         tournament-7 "There can be more than one winner"
         {
@@ -96,7 +96,7 @@ if {$::argv0 eq [info script]} {
             "Team                           | MP |  W |  D |  L |  P"
             "Allegoric Alaskans             |  2 |  1 |  0 |  1 |  3"
             "Blithering Badgers             |  2 |  1 |  0 |  1 |  3"
-		}
+        }
 
         tournament-8 "There can be more than two teams"
         {
@@ -109,7 +109,7 @@ if {$::argv0 eq [info script]} {
             "Allegoric Alaskans             |  2 |  2 |  0 |  0 |  6"
             "Blithering Badgers             |  2 |  1 |  0 |  1 |  3"
             "Courageous Californians        |  2 |  0 |  0 |  2 |  0"
-		}
+        }
 
         tournament-9 "typical input"
         {
