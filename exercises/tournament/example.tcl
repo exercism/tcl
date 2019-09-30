@@ -1,6 +1,5 @@
 oo::class create Tournament {
-    variable inputFile
-    variable results
+    variable inputFile results
 
     constructor {filename} {
         if {![file readable $filename]} {
@@ -13,7 +12,6 @@ oo::class create Tournament {
     # (only methods named [a-z]* are exported by default)
 
     method standings {} {
-        my variable results
         my Readfile
 
         set standings {}
@@ -37,7 +35,6 @@ oo::class create Tournament {
     # private
 
     method Readfile {} {
-        my variable inputFile results
         set results {}
         set fh [open $inputFile r]
 
@@ -69,7 +66,6 @@ oo::class create Tournament {
     }
 
     method Incr {team key} {
-        my variable results
         if {![dict exists $results $team]} {
             dict set results $team {w 0 l 0 d 0}
         }
