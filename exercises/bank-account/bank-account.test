@@ -2,7 +2,7 @@
 set version 0.1.0
 package require tcltest
 namespace import ::tcltest::*
-source "bank-account-obj.tcl"
+source "bank-account.tcl"
 
 proc fail_fast {} {
     return [expr {
