@@ -1,0 +1,163 @@
+#!/usr/bin/env tclsh
+set version 0.1.0
+package require tcltest
+namespace import ::tcltest::*
+source "bank-account-tsv.tcl"
+
+proc fail_fast {} {
+    return [expr {
+        ![info exists ::env(RUN_ALL)]
+        || [string is boolean -strict $::env(RUN_ALL)]
+        && !$::env(RUN_ALL)
+    }]
+}
+
+proc failed {} {
+    return [expr {$::tcltest::numTests(Failed) > 0}]
+}
+
+if {[fail_fast]} {
+    proc test args {
+        if {[failed]} {::tcltest::configure -skip *}
+        uplevel [list ::tcltest::test {*}$args]
+    }
+}
+
+proc cleanupTests {} {
+    set failed [failed]
+    uplevel 1 ::tcltest::cleanupTests
+    if {$failed} {exit 1}
+}
+
+if {$::argv0 eq [info script]} {
+    test bank-account-1 "newly opened account has zero balance" -body {
+        set acct [account create]
+        account open $acct
+        account balance $acct
+    } -returnCodes ok -result 0
+
+    test bank-account-2 "can deposit money" -body {
+        set acct [account create]
+        account open $acct
+        account deposit $acct 100
+        account balance $acct
+    } -returnCodes ok -result 100
+
+    test bank-account-3 "can deposit money sequentially" -body {
+        set acct [account create]
+        account open $acct
+        account deposit $acct 100
+        account deposit $acct 50
+        account balance $acct
+    } -returnCodes ok -result 150
+
+    test bank-account-4 "can withdraw money" -body {
+        set acct [account create]
+        account open $acct
+        account deposit $acct 100
+        account withdraw $acct 50
+        account balance $acct
+    } -returnCodes ok -result 50
+
+    test bank-account-5 "can withdraw money sequentially" -body {
+        set acct [account create]
+        account open $acct
+        account deposit $acct 100
+        account withdraw $acct 20
+        account withdraw $acct 80
+        account balance $acct
+    } -returnCodes ok -result 0
+
+    test bank-account-6 "checking balance of closed account throws error" -body {
+        set acct [account create]
+        account open $acct
+        account close $acct 
+        account balance $acct 
+    } -returnCodes error -match glob -result "*account is not open*"
+
+    test bank-account-7 "deposit into closed account" -body {
+        set acct [account create]
+        account open $acct
+        account close $acct 
+        account deposit $acct 50
+    } -returnCodes error -match glob -result "*account is not open*"
+
+    test bank-account-8 "withdraw from closed account" -body {
+        set acct [account create]
+        account open $acct
+        account close $acct 
+        account withdraw $acct 50
+    } -returnCodes error -match glob -result "*account is not open*"
+
+    test bank-account-9 "close already closed account" -body {
+        set acct [account create]
+        account close $acct 
+    } -returnCodes error -match glob -result "*account is not open*"
+
+    test bank-account-10 "open already opened account" -body {
+        set acct [account create]
+        account open $acct
+        account open $acct 
+    } -returnCodes error -match glob -result "*account is already open*"
+
+    test bank-account-11 "reopened account does not retain balance" -body {
+        set acct [account create]
+        account open $acct
+        account deposit $acct 50
+        account close $acct 
+        account open $acct 
+        account balance $acct
+    } -returnCodes ok -result 0
+
+    test bank-account-12 "cannot withdraw more than deposited" -body {
+        set acct [account create]
+        account open $acct
+        account deposit $acct 25
+        account withdraw $acct 50
+    } -returnCodes error -match glob -result "*insufficient funds*"
+
+    test bank-account-13 "cannot withdraw negative" -body {
+        set acct [account create]
+        account open $acct
+        account deposit $acct 100
+        account withdraw $acct -50
+    } -returnCodes error -match glob -result "*invalid amount*"
+
+    test bank-account-14 "cannot deposit negative" -body {
+        set acct [account create]
+        account open $acct
+        account deposit $acct -50
+    } -returnCodes error -match glob -result "*invalid amount*"
+
+    test bank-account-15 "adjust balance concurrently" -body {
+        set acct [account create]
+        account open $acct
+        account deposit $acct 123
+
+        # creating 1000 worker threads
+        for {set i 0} {$i < 1000} {incr i} {
+            lappend threads [thread::create -joinable {
+                source bank-account-tsv.tcl
+                proc doWork {acctId} {
+                    account deposit $acctId 5
+                    # wait a few milliseconds
+                    after [expr {int(10*rand())}]
+                    account withdraw $acctId 5
+                }
+                thread::wait
+            }]
+        }
+        # start them
+        foreach thread $threads {
+            thread::send -async $thread [list doWork $acct]
+        }
+        # reap them
+        foreach thread $threads {
+            thread::release -wait $thread
+        }
+
+        account balance $acct
+    } -returnCodes ok -result 123
+
+    cleanupTests
+}
