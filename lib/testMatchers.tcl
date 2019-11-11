@@ -1,13 +1,14 @@
 # Some procs that are handy for Tcl test custom matching.
-#
-# You would use this in a test file like this:
+
+# Copy the needed procs into your test file.  Use it like this:
 #
 #    customMatch dictionary dictionaryMatch
 #    test name "description" -body {
 #        code that returns a dictionary
 #    } -match dictionary -result {expected dictionary value here}
 
-# compare two dictionaries for the same keys and same values
+#############################################################
+# Compare two dictionaries for the same keys and same values
 proc dictionaryMatch {expected actual} {
     if {[dict size $expected] != [dict size $actual]} {
         return false
@@ -24,7 +25,8 @@ proc dictionaryMatch {expected actual} {
 }
 
 
-# since Tcl boolean values can be more than just 0/1...
+#############################################################
+# Since Tcl boolean values can be more than just 0/1...
 #   set a yes; set b 1
 #   expr  {$a == $b} ;# => 0
 #   expr  {$a && $b} ;# => 1
@@ -41,3 +43,35 @@ proc booleanMatch {expected actual} {
 #     !(!!$expected ^ !!$actual)
 # This is less readable, but does compile into more
 # efficient bytecode.
+
+
+#############################################################
+# Compare two ordered lists without comparing the lists themselves 
+# as strings.
+# e.g.
+#     set first {
+#         a  b  c
+#     }
+#     set second [list a b c]
+#     expr {$first eq $second}           ;# 0
+#     expr {$first == $second}           ;# 0
+#     orderedListsMatch $first $second   ;# true
+#
+proc orderedListsMatch {expected actual} {
+    if {[llength $expected] != [llength $actual]} {
+        return false
+    }
+    foreach e $expected a $actual {
+        if {$e != $a} {
+            return false
+        }
+    }
+    return true
+}
+
+
+#############################################################
+# The expected value is one of a list of values.
+proc inListMatch {expectedList actual} {
+    return [expr {$actual in $expectedList}]
+}
