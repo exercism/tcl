@@ -280,6 +280,7 @@
     {
       "slug": "reverse-string",
       "uuid": "1b3c48ba-0a49-4723-b191-a35376483bdb",
+      "deprecated": true,
       "core": false,
       "unlocked_by": "acronym",
       "difficulty": 2,
