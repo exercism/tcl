@@ -29,6 +29,10 @@ proc cleanupTests {} {
     if {$failed} {exit 1}
 }
 
+proc roundTo {precision number} {
+    return [format {%.*f} $precision $number]
+}
+
 if {$::argv0 eq [info script]} {
 
     set cases {
@@ -44,7 +48,9 @@ if {$::argv0 eq [info script]} {
 
     foreach {name description procname seconds result} $cases {
         test $name $description -body {
-            $procname $seconds
+            set age [$procname $seconds]
+            # Don't worry about rounding your result, we'll do it:
+            roundTo 2 $age
         } -returnCodes ok -result $result
     }
 

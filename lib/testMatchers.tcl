@@ -75,3 +75,11 @@ proc orderedListsMatch {expected actual} {
 proc inListMatch {expectedList actual} {
     return [expr {$actual in $expectedList}]
 }
+
+
+#############################################################
+# Convenience function to set the precision of a real number.
+proc roundTo {precision number} {
+    return [format {%.*f} $precision $number]
+}
+
