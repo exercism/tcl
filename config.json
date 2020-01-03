@@ -280,13 +280,13 @@
     {
       "slug": "reverse-string",
       "uuid": "1b3c48ba-0a49-4723-b191-a35376483bdb",
-      "deprecated": true,
       "core": false,
       "unlocked_by": "acronym",
       "difficulty": 2,
       "topics": [
         "strings"
-      ]
+      ],
+      "deprecated": true
     },
     {
       "slug": "space-age",
@@ -298,6 +298,16 @@
         "math",
         "procedures",
         "text_formatting"
+      ]
+    },
+    {
+      "slug": "triangle",
+      "uuid": "53ae5d6b-85c0-4b2b-b8ed-6370e565ce52",
+      "core": false,
+      "unlocked_by": "high-scores",
+      "difficulty": 2,
+      "topics": [
+        "math"
       ]
     }
   ]
