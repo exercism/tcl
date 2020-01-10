@@ -6,6 +6,6 @@ proc sumOfSquares {n} {
     throw {NOT_IMPLEMENTED} "Implement this procedure."
 }
 
-proc  differenceOfSquares {n} {
+proc differenceOfSquares {n} {
     throw {NOT_IMPLEMENTED} "Implement this procedure."
 }
