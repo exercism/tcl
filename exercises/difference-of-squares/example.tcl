@@ -14,6 +14,6 @@ proc sumOfSquares {n} {
     return $sum
 }
 
-proc  differenceOfSquares {n} {
+proc differenceOfSquares {n} {
     return [expr {[squareOfSum $n] - [sumOfSquares $n]}]
 }
