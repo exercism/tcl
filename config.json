@@ -404,6 +404,42 @@
         "loops",
         "searching"
       ]
+    },
+    {
+      "slug": "etl",
+      "uuid": "ddaa2182-2d73-4599-a300-2f0e887dc4d5",
+      "core": false,
+      "unlocked_by": "word-count",
+      "difficulty": 3,
+      "topics": [
+        "loops",
+        "maps",
+        "transforming"
+      ]
+    },
+    {
+      "slug": "nucleotide-count",
+      "uuid": "fc650773-a831-4e34-96cb-c880a911e582",
+      "core": false,
+      "unlocked_by": "word-count",
+      "difficulty": 2,
+      "topics": [
+        "loops",
+        "maps",
+        "parsing",
+        "strings"
+      ]
+    },
+    {
+      "slug": "pythagorean-triplet",
+      "uuid": "",
+      "core": false,
+      "unlocked_by": "word-count",
+      "difficulty": 5,
+      "topics": [
+        "algorithms",
+        "math"
+      ]
     }
   ]
 }
