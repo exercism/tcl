@@ -1,9 +1,3 @@
-# next number functions
-set functions {
-    {n {expr {$n / 2}}}
-    {n {expr {3 * $n + 1}}}
-}
-
 proc steps {n {step 0}} {
     if {$n <= 0} {
         error "Only positive numbers are allowed"
@@ -11,6 +5,13 @@ proc steps {n {step 0}} {
     if {$n == 1} {
         return $step
     }
-    set func [lindex $::functions [expr {$n % 2}]]
-    tailcall steps [apply $func $n] [expr {$step + 1}]
+    tailcall steps [nextValue $n] [expr {$step + 1}]
+}
+
+proc nextValue {n} {
+    expr {even($n) ? ($n / 2) : (3 * $n + 1)}
+}
+
+proc ::tcl::mathfunc::even {n} {
+    expr {$n % 2 == 0} 
 }
