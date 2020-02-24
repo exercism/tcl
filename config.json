@@ -440,6 +440,65 @@
         "algorithms",
         "math"
       ]
+    },
+    {
+      "slug": "collatz-conjecture",
+      "uuid": "d87cfd8d-8a23-4e7a-8edf-942078f1b9b4",
+      "core": false,
+      "unlocked_by": "hamming",
+      "difficulty": 2,
+      "topics": [
+        "conditionals",
+        "loops",
+        "math"
+      ]
+    },
+    {
+      "slug": "darts",
+      "uuid": "0510b1bf-28f0-48a1-9223-72789a1173a2",
+      "core": false,
+      "unlocked_by": "hamming",
+      "difficulty": 2,
+      "topics": [
+        "conditionals",
+        "math"
+      ]
+    },
+    {
+      "slug": "palindrome-products",
+      "uuid": "a7a91017-bbbc-432c-a3f0-5900f1adda75",
+      "core": false,
+      "unlocked_by": "hamming",
+      "difficulty": 6,
+      "topics": [
+        "algorithms",
+        "math"
+      ]
+    },
+    {
+      "slug": "proverb",
+      "uuid": "0bf5e59e-9d7d-47d2-8f62-865325a33a4c",
+      "core": false,
+      "unlocked_by": "hamming",
+      "difficulty": 3,
+      "topics": [
+        "loops",
+        "strings"
+      ]
+    },
+    {
+      "slug": "sieve",
+      "uuid": "3ab0e3e8-17b9-416d-b1a6-e71aa362e89a",
+      "core": false,
+      "unlocked_by": "hamming",
+      "difficulty": 3,
+      "topics": [
+        "algorithms",
+        "conditionals",
+        "lists",
+        "loops",
+        "math"
+      ]
     }
   ]
 }
