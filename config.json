@@ -522,6 +522,17 @@
         "algorithms",
         "transforming"
       ]
+    },
+    {
+      "slug": "binary-search",
+      "uuid": "4153efa2-1c40-4dff-b1be-e03398a57ffb",
+      "core": false,
+      "unlocked_by": "raindrops",
+      "difficulty": 4,
+      "topics": [
+        "algorithms",
+        "searching"
+      ]
     }
   ]
 }
