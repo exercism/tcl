@@ -278,7 +278,6 @@
       ]
     },
     {
-<<<<<<< HEAD
       "slug": "reverse-string",
       "uuid": "1b3c48ba-0a49-4723-b191-a35376483bdb",
       "core": false,
@@ -503,7 +502,7 @@
     },
     {
       "slug": "accumulate",
-      "uuid": "",
+      "uuid": "2c2c7a4f-2e79-4f83-aabd-04ecf935c817",
       "core": false,
       "unlocked_by": "raindrops",
       "difficulty": 5,
@@ -511,6 +510,17 @@
         "callbacks",
         "lists",
         "loops"
+      ]
+    },
+    {
+      "slug": "alphametics",
+      "uuid": "972f9cb1-7b99-49b9-b5e8-f91ecc8064f4",
+      "core": false,
+      "unlocked_by": "raindrops",
+      "difficulty": 6,
+      "topics": [
+        "algorithms",
+        "transforming"
       ]
     }
   ]
