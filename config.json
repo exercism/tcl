@@ -544,6 +544,18 @@
         "conditionals",
         "strings"
       ]
+    },
+    {
+      "slug": "matching-brackets",
+      "uuid": "d0a98b95-19cd-4960-af4c-baa82044ffc2",
+      "core": false,
+      "unlocked_by": "raindrops",
+      "difficulty": 2,
+      "topics": [
+        "parsing",
+        "stacks",
+        "strings"
+      ]
     }
   ]
 }
