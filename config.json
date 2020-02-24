@@ -533,6 +533,17 @@
         "algorithms",
         "searching"
       ]
+    },
+    {
+      "slug": "bob",
+      "uuid": "d98f937f-6f27-43d9-b262-ef77a1df28a9",
+      "core": false,
+      "unlocked_by": "raindrops",
+      "difficulty": 3,
+      "topics": [
+        "conditionals",
+        "strings"
+      ]
     }
   ]
 }
