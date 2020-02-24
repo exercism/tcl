@@ -278,6 +278,7 @@
       ]
     },
     {
+<<<<<<< HEAD
       "slug": "reverse-string",
       "uuid": "1b3c48ba-0a49-4723-b191-a35376483bdb",
       "core": false,
@@ -498,6 +499,18 @@
         "lists",
         "loops",
         "math"
+      ]
+    },
+    {
+      "slug": "accumulate",
+      "uuid": "",
+      "core": false,
+      "unlocked_by": "raindrops",
+      "difficulty": 5,
+      "topics": [
+        "callbacks",
+        "lists",
+        "loops"
       ]
     }
   ]
