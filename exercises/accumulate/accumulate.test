@@ -48,18 +48,16 @@ if {$::argv0 eq [info script]} {
     }
 
     set numbers {10 17 23}
+
     test accumulate-4 "divmod" -body {
         accumulate n $numbers {divmod $n 7}
     } -returnCodes ok -result {{1 3} {2 3} {3 2}}
 
     test accumulate-5 "composition" -body {
-        accumulate \
-            pair \
-            [accumulate n $numbers {divmod $n 7}] \
-            {
-                lassign $pair quotient remainder
-                expr {7 * $quotient + $remainder}
-            }
+        accumulate pair [accumulate n $numbers {divmod $n 7}] {
+            lassign $pair quotient remainder
+            expr {7 * $quotient + $remainder}
+        }
     } -returnCodes ok -result $numbers
 
     test accumulate-6 "recursive" -body {

@@ -19,14 +19,14 @@ brace character, it must be quoted with a backslash. So don't do this:
 ```tcl
 proc isOpenBrace {char} {
     return [expr {$char eq "{"}]
-    # ......................^
+    # ......................^ will not work
 }
 ```
 You must do this
 ```tcl
 proc isOpenBrace {char} {
     return [expr {$char eq "\{"}]
-    # ......................^^
+    # ......................^^ will work
 }
 ```
 

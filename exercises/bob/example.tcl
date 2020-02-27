@@ -15,8 +15,8 @@ proc heyBob {input} {
 
     # Tcl's default boolean result is 1/0 for true/false.
     # Using that to combine them as a string:
-    switch -exact -- "${silent}${asking}${yelling}" {
-        "100" {return "Fine. Be that way!"}
+    switch -glob -- "${silent}${asking}${yelling}" {
+        "1??" {return "Fine. Be that way!"}
         "011" {return "Calm down, I know what I'm doing!"}
         "010" {return "Sure."}
         "001" {return "Whoa, chill out!"}
