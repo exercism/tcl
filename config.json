@@ -499,6 +499,63 @@
         "loops",
         "math"
       ]
+    },
+    {
+      "slug": "accumulate",
+      "uuid": "2c2c7a4f-2e79-4f83-aabd-04ecf935c817",
+      "core": false,
+      "unlocked_by": "raindrops",
+      "difficulty": 5,
+      "topics": [
+        "callbacks",
+        "lists",
+        "loops"
+      ]
+    },
+    {
+      "slug": "alphametics",
+      "uuid": "972f9cb1-7b99-49b9-b5e8-f91ecc8064f4",
+      "core": false,
+      "unlocked_by": "raindrops",
+      "difficulty": 6,
+      "topics": [
+        "algorithms",
+        "transforming"
+      ]
+    },
+    {
+      "slug": "binary-search",
+      "uuid": "4153efa2-1c40-4dff-b1be-e03398a57ffb",
+      "core": false,
+      "unlocked_by": "raindrops",
+      "difficulty": 4,
+      "topics": [
+        "algorithms",
+        "searching"
+      ]
+    },
+    {
+      "slug": "bob",
+      "uuid": "d98f937f-6f27-43d9-b262-ef77a1df28a9",
+      "core": false,
+      "unlocked_by": "raindrops",
+      "difficulty": 3,
+      "topics": [
+        "conditionals",
+        "strings"
+      ]
+    },
+    {
+      "slug": "matching-brackets",
+      "uuid": "d0a98b95-19cd-4960-af4c-baa82044ffc2",
+      "core": false,
+      "unlocked_by": "raindrops",
+      "difficulty": 2,
+      "topics": [
+        "parsing",
+        "stacks",
+        "strings"
+      ]
     }
   ]
 }
