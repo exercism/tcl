@@ -5,14 +5,14 @@ namespace eval primeNumbers {
         if {$idx == 0} {
             error "there is no zeroth prime"
         }
-        coroutine nextPrime PrimeNumberGenerator
+        coroutine nextPrime primeNumberGenerator
         while {[incr count] <= $idx} {
             set prime [nextPrime]
         }
         return $prime
     }
 
-    proc PrimeNumberGenerator {} {
+    proc primeNumberGenerator {} {
         yield [info coroutine]
         yield 2
         set prime 3
@@ -20,12 +20,12 @@ namespace eval primeNumbers {
             yield $prime
             while 1 {
                 incr prime 2
-                if {[IsPrime $prime]} then break
+                if {[isPrime $prime]} then break
             }
         }
     }
 
-    proc IsPrime {n} {
+    proc isPrime {n} {
         if {$n < 2} {
             return false
         }

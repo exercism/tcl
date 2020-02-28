@@ -1,6 +1,6 @@
 proc keep {varname list condition {keep true}} {
     upvar 1 $varname element
-    set kept [list]
+    set kept {}
     foreach element $list {
         if {!![uplevel 1 $condition] == !!$keep} {
             lappend kept $element
