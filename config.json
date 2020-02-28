@@ -556,6 +556,19 @@
         "stacks",
         "strings"
       ]
+    },
+    {
+      "slug": "nth-prime",
+      "uuid": "7e630f04-5f28-4afe-b913-f4b81ceaa701",
+      "core": false,
+      "unlocked_by": "raindrops",
+      "difficulty": 4,
+      "topics": [
+        "algorithms",
+        "conditionals",
+        "loops",
+        "math"
+      ]
     }
   ]
 }
