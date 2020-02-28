@@ -569,6 +569,18 @@
         "loops",
         "math"
       ]
+    },
+    {
+      "slug": "perfect-numbers",
+      "uuid": "c5b37a58-2030-4b2e-aeda-edf64d14c765",
+      "core": false,
+      "unlocked_by": "raindrops",
+      "difficulty": 3,
+      "topics": [
+        "algorithms",
+        "integers",
+        "math"
+      ]
     }
   ]
 }
