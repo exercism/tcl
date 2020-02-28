@@ -29,14 +29,14 @@ proc cleanupTests {} {
     if {$failed} {exit 1}
 }
 
-proc booleanEqual {expected actual} {
+proc booleanMatch {expected actual} {
     return [expr {
         [string is boolean -strict $expected] &&
         [string is boolean -strict $actual] &&
         !!$expected == !!$actual
     }]
 }
-customMatch boolean booleanEqual
+customMatch boolean booleanMatch
 
 if {$::argv0 eq [info script]} {
 

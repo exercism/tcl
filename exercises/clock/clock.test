@@ -33,7 +33,7 @@ proc booleanMatch {expected actual} {
     return [expr {
         [string is boolean -strict $expected] &&
         [string is boolean -strict $actual] &&
-        (($expected && $actual) || (!$expected && !$actual))
+        !!$expected == !!$actual
     }]
 }
 customMatch boolean booleanMatch
