@@ -581,6 +581,18 @@
         "integers",
         "math"
       ]
+    },
+    {
+      "slug": "strain",
+      "uuid": "ae8faf16-c53b-4b3d-bb4f-416ce36d0df6",
+      "core": false,
+      "unlocked_by": "raindrops",
+      "difficulty": 3,
+      "topics": [
+        "conditionals",
+        "filtering",
+        "loops"
+      ]
     }
   ]
 }
