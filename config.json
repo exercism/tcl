@@ -593,6 +593,18 @@
         "filtering",
         "loops"
       ]
+    },
+    {
+      "slug": "two-bucket",
+      "uuid": "e8bd4e72-f69e-4d0b-85b1-749a16dea11e",
+      "core": false,
+      "unlocked_by": "raindrops",
+      "difficulty": 5,
+      "topics": [
+        "algorithms",
+        "conditionals",
+        "searching"
+      ]
     }
   ]
 }
