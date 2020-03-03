@@ -628,6 +628,19 @@
         "bitwise_operations",
         "enumeration"
       ]
+    },
+    {
+      "slug": "minesweeper",
+      "uuid": "c323bd65-6f08-4393-98eb-5edb95d514ed",
+      "core": false,
+      "unlocked_by": "isogram",
+      "difficulty": 5,
+      "topics": [
+        "games",
+        "lists",
+        "loops",
+        "transforming"
+      ]
     }
   ]
 }
