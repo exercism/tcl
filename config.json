@@ -617,6 +617,17 @@
         "math",
         "transforming"
       ]
+    },
+    {
+      "slug": "allergies",
+      "uuid": "b063390e-d4fb-4c8a-98c1-f140e2d8feb4",
+      "core": false,
+      "unlocked_by": "isogram",
+      "difficulty": 4,
+      "topics": [
+        "bitwise_operations",
+        "enumeration"
+      ]
     }
   ]
 }
