@@ -605,6 +605,18 @@
         "conditionals",
         "searching"
       ]
+    },
+    {
+      "slug": "all-your-base",
+      "uuid": "3421622b-cd9f-4001-8500-58b6786c34db",
+      "core": false,
+      "unlocked_by": "isogram",
+      "difficulty": 2,
+      "topics": [
+        "integers",
+        "math",
+        "transforming"
+      ]
     }
   ]
 }
