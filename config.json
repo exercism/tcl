@@ -655,6 +655,16 @@
         "text_formatting",
         "transforming"
       ]
+    },
+    {
+      "slug": "robot-simulator",
+      "uuid": "6730bf31-91aa-4c43-921f-a5b097931ffa",
+      "core": false,
+      "unlocked_by": "isogram",
+      "difficulty": 6,
+      "topics": [
+        "classes"
+      ]
     }
   ]
 }
