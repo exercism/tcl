@@ -641,6 +641,20 @@
         "loops",
         "transforming"
       ]
+    },
+    {
+      "slug": "rail-fence-cipher",
+      "uuid": "14fa64f8-11b4-42d5-a154-fcd9a4317422",
+      "core": false,
+      "unlocked_by": "isogram",
+      "difficulty": 6,
+      "topics": [
+        "cryptography",
+        "loops",
+        "strings",
+        "text_formatting",
+        "transforming"
+      ]
     }
   ]
 }
