@@ -677,6 +677,18 @@
         "strings",
         "transforming"
       ]
+    },
+    {
+      "slug": "beer-song",
+      "uuid": "a5cda34c-96f3-47e6-a813-1e72e2b3e32f",
+      "core": false,
+      "unlocked_by": "scrabble-score",
+      "difficulty": 3,
+      "topics": [
+        "loops",
+        "strings",
+        "text_formatting"
+      ]
     }
   ]
 }
