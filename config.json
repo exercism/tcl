@@ -665,6 +665,18 @@
       "topics": [
         "classes"
       ]
+    },
+    {
+      "slug": "run-length-encoding",
+      "uuid": "1597d6c8-f695-4566-8f76-656d026ecc0a",
+      "core": false,
+      "unlocked_by": "isogram",
+      "difficulty": 4,
+      "topics": [
+        "parsing",
+        "strings",
+        "transforming"
+      ]
     }
   ]
 }
