@@ -701,6 +701,17 @@
         "recursion",
         "searching"
       ]
+    },
+    {
+      "slug": "grade-school",
+      "uuid": "cdb8317d-311d-4935-ac39-414d23bffb18",
+      "core": false,
+      "unlocked_by": "scrabble-score",
+      "difficulty": 4,
+      "topics": [
+        "lists",
+        "sorting"
+      ]
     }
   ]
 }
