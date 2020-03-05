@@ -712,6 +712,19 @@
         "lists",
         "sorting"
       ]
+    },
+    {
+      "slug": "list-ops",
+      "uuid": "303fc16b-9fcb-45a7-84a7-0df46bda879f",
+      "core": false,
+      "unlocked_by": "scrabble-score",
+      "difficulty": 5,
+      "topics": [
+        "algorithms",
+        "lists",
+        "procedures",
+        "variables"
+      ]
     }
   ]
 }
