@@ -689,6 +689,18 @@
         "strings",
         "text_formatting"
       ]
+    },
+    {
+      "slug": "dominoes",
+      "uuid": "a9a501cd-e1a1-4713-a411-8ec84d1e6912",
+      "core": false,
+      "unlocked_by": "scrabble-score",
+      "difficulty": 4,
+      "topics": [
+        "lists",
+        "recursion",
+        "searching"
+      ]
     }
   ]
 }
