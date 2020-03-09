@@ -1,5 +1,5 @@
 #!/usr/bin/env tclsh
-set version 2.4.0
+set version 2.4.1
 package require tcltest
 namespace import ::tcltest::*
 source "list-ops.tcl"
@@ -33,7 +33,7 @@ if {$::argv0 eq [info script]} {
 
     set appendCases {
         list-ops-1.1 "append empty lists" {} {} {}
-        list-ops-1.1 "append empty list to list" {} {1 2 3 4} {1 2 3 4}
+        list-ops-1.1 "append list to empty list" {} {1 2 3 4} {1 2 3 4}
         list-ops-1.1 "append non-empty lists" {1 2} {2 3 4 5} {1 2 2 3 4 5}
     }
 
