@@ -750,6 +750,18 @@
         "maps",
         "sequences"
       ]
+    },
+    {
+      "slug": "secret-handshake",
+      "uuid": "e67f2ef3-51b8-4fa9-bc83-fba5a057a232",
+      "core": false,
+      "unlocked_by": "scrabble-score",
+      "difficulty": 4,
+      "topics": [
+        "bitwise_operations",
+        "integers",
+        "lists"
+      ]
     }
   ]
 }
