@@ -725,6 +725,19 @@
         "procedures",
         "variables"
       ]
+    },
+    {
+      "slug": "pig-latin",
+      "uuid": "3129e023-3aa9-4417-95ac-0bfc36cfb201",
+      "core": false,
+      "unlocked_by": "scrabble-score",
+      "difficulty": 3,
+      "topics": [
+        "conditionals",
+        "regular_expressions",
+        "strings",
+        "transforming"
+      ]
     }
   ]
 }
