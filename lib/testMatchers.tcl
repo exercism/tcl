@@ -17,7 +17,13 @@ proc dictionaryMatch {expected actual} {
         if {![dict exists $actual $key]} {
             return false
         }
-        if {[dict get $actual $key] != $value} {
+        set actualValue [dict get $actual $key]
+        if {[llength $actualValue] > 1 && [llength $actualValue] % 2 == 0} {
+            # looks like a dict, recurse
+            if {![dictionaryMatch $value $actualValue]} {
+                return false
+            }
+        } elseif {$actualValue ne $value} {
             return false
         }
     }
