@@ -762,6 +762,19 @@
         "integers",
         "lists"
       ]
+    },
+    {
+      "slug": "wordy",
+      "uuid": "229107d3-842c-4da7-85b6-69d00d95827d",
+      "core": false,
+      "unlocked_by": "scrabble-score",
+      "difficulty": 4,
+      "topics": [
+        "conditionals",
+        "math",
+        "parsing",
+        "strings"
+      ]
     }
   ]
 }
