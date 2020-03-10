@@ -738,6 +738,18 @@
         "strings",
         "transforming"
       ]
+    },
+    {
+      "slug": "protein-translation",
+      "uuid": "a8b40c44-ea92-4924-9795-ae61955f9a84",
+      "core": false,
+      "unlocked_by": "scrabble-score",
+      "difficulty": 3,
+      "topics": [
+        "filtering",
+        "maps",
+        "sequences"
+      ]
     }
   ]
 }
