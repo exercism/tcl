@@ -802,6 +802,19 @@
         "recursion",
         "sorting"
       ]
+    },
+    {
+      "slug": "change",
+      "uuid": "298d3156-c557-421d-81a6-15784eecdbca",
+      "core": false,
+      "unlocked_by": "luhn",
+      "difficulty": 5,
+      "topics": [
+        "algorithms",
+        "integers",
+        "loops",
+        "math"
+      ]
     }
   ]
 }
