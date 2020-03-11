@@ -775,6 +775,20 @@
         "parsing",
         "strings"
       ]
+    },
+    {
+      "slug": "atbash-cipher",
+      "uuid": "7ff7cbfb-3191-4fe6-abfd-a774e9a1a108",
+      "core": false,
+      "unlocked_by": "luhn",
+      "difficulty": 3,
+      "topics": [
+        "cryptography",
+        "loops",
+        "maps",
+        "strings",
+        "transforming"
+      ]
     }
   ]
 }
