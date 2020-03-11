@@ -815,6 +815,17 @@
         "loops",
         "math"
       ]
+    },
+    {
+      "slug": "circular-buffer",
+      "uuid": "94aef48d-d4fa-49c7-9c9a-08a628651bd7",
+      "core": false,
+      "unlocked_by": "luhn",
+      "difficulty": 4,
+      "topics": [
+        "conditionals",
+        "lists"
+      ]
     }
   ]
 }
