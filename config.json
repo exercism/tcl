@@ -789,6 +789,19 @@
         "strings",
         "transforming"
       ]
+    },
+    {
+      "slug": "binary-search-tree",
+      "uuid": "19ffe973-5cda-4521-9e09-267cea1946fe",
+      "core": false,
+      "unlocked_by": "luhn",
+      "difficulty": 6,
+      "topics": [
+        "algorithms",
+        "classes",
+        "recursion",
+        "sorting"
+      ]
     }
   ]
 }
