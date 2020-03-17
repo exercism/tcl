@@ -1210,6 +1210,17 @@
       ]
     },
     {
+      "slug": "markdown",
+      "uuid": "a85b4aac-d73e-4094-87bb-f4a00aa57e8c",
+      "core": false,
+      "unlocked_by": "twelve-days",
+      "difficulty": 3,
+      "topics": [
+        "refactoring",
+        "text_formatting"
+      ]
+    },
+    {
       "slug": "meetup",
       "uuid": "c5ac1da9-328f-4fd0-afed-00e9211402c4",
       "core": false,
