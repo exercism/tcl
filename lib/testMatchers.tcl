@@ -17,7 +17,19 @@ proc dictionaryMatch {expected actual} {
         if {![dict exists $actual $key]} {
             return false
         }
-        if {[dict get $actual $key] != $value} {
+        set actualValue [dict get $actual $key]
+
+        # if this value is a dict then recurse, 
+        # else just check for string equality
+        if {[string is list -strict $value] &&
+            [llength $value] > 1 && 
+            [llength $value] % 2 == 0
+        } {
+            set procname [lindex [info level 0] 0]
+            if {![$procname $value $actualValue]} {
+                return false
+            }
+        } elseif {$actualValue ne $value} {
             return false
         }
     }
