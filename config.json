@@ -864,6 +864,18 @@
         "recursion",
         "transforming"
       ]
+    },
+    {
+      "slug": "simple-cipher",
+      "uuid": "8184422b-722d-4849-8e84-10fd9613f498",
+      "core": false,
+      "unlocked_by": "luhn",
+      "difficulty": 3,
+      "topics": [
+        "algorithms",
+        "cryptography",
+        "strings"
+      ]
     }
   ]
 }
