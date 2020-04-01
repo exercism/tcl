@@ -876,6 +876,17 @@
         "cryptography",
         "strings"
       ]
+    },
+    {
+      "slug": "simple-linked-list",
+      "uuid": "d9b921bd-219a-45cb-aae7-673816bc21d7",
+      "core": false,
+      "unlocked_by": "luhn",
+      "difficulty": 4,
+      "topics": [
+        "classes",
+        "loops"
+      ]
     }
   ]
 }
