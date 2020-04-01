@@ -840,6 +840,17 @@
         "text_formatting",
         "transforming"
       ]
+    },
+    {
+      "slug": "robot-name",
+      "uuid": "907f0a97-3f9d-42d3-843d-19608f613f49",
+      "core": false,
+      "unlocked_by": "luhn",
+      "difficulty": 3,
+      "topics": [
+        "classes",
+        "randomness"
+      ]
     }
   ]
 }
