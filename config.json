@@ -826,6 +826,20 @@
         "conditionals",
         "lists"
       ]
+    },
+    {
+      "slug": "crypto-square",
+      "uuid": "139774f8-3163-4f9f-8c99-fc7db27afeec",
+      "core": false,
+      "unlocked_by": "luhn",
+      "difficulty": 4,
+      "topics": [
+        "cryptography",
+        "loops",
+        "strings",
+        "text_formatting",
+        "transforming"
+      ]
     }
   ]
 }
