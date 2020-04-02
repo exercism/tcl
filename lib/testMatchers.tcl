@@ -83,6 +83,21 @@ proc orderedListsMatch {expected actual} {
 
 
 #############################################################
+# two lists have the same elements, in no particular order
+proc unorderedListMatch {expected actual} {
+    if {[llength $expected] != [llength $actual]} {
+        return false
+    }
+    foreach elem $expected {
+        if {[lsearch -exact $actual $elem] == -1} {
+            return false
+        }
+    }
+    return true
+}
+
+
+#############################################################
 # The expected value is one of a list of values.
 proc inListMatch {expectedList actual} {
     return [expr {$actual in $expectedList}]
