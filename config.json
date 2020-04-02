@@ -889,6 +889,18 @@
       ]
     },
     {
+      "slug": "affine-cipher",
+      "uuid": "d200bfbf-14fa-44f9-89d7-18d2650230ad",
+      "core": false,
+      "unlocked_by": "clock",
+      "difficulty": 3,
+      "topics": [
+        "cryptography",
+        "math",
+        "strings"
+      ]
+    },
+    {
       "slug": "custom-set",
       "uuid": "403beab2-c1fe-4858-a57b-47c642111f06",
       "core": false,
