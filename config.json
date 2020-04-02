@@ -910,6 +910,18 @@
         "filtering",
         "sets"
       ]
+    },
+    {
+      "slug": "house",
+      "uuid": "0c27bbd9-2c4b-479c-826c-3a5452a5b8f7",
+      "core": false,
+      "unlocked_by": "clock",
+      "difficulty": 2,
+      "topics": [
+        "loops",
+        "strings",
+        "text_formatting"
+      ]
     }
   ]
 }
