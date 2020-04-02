@@ -935,6 +935,19 @@
         "searching",
         "strings"
       ]
+    },
+    {
+      "slug": "knapsack",
+      "uuid": "4c191221-48cb-4474-9ef5-dda66008effe",
+      "core": false,
+      "unlocked_by": "clock",
+      "difficulty": 5,
+      "topics": [
+        "algorithms",
+        "arrays",
+        "lists",
+        "loops"
+      ]
     }
   ]
 }
