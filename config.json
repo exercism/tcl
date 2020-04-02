@@ -851,6 +851,19 @@
         "classes",
         "randomness"
       ]
+    },
+    {
+      "slug": "satellite",
+      "uuid": "a69800cb-0f2b-44cd-bb50-a6a222ba980d",
+      "core": false,
+      "unlocked_by": "luhn",
+      "difficulty": 5,
+      "topics": [
+        "algorithms",
+        "maps",
+        "recursion",
+        "transforming"
+      ]
     }
   ]
 }
