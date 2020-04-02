@@ -4,51 +4,30 @@ oo::class create BinarySearchTree {
     variable right
 
     method data {} {
-        if {[info exists data]} {
-            return $data
-        }
-        return
-    }
-
-    method hasLeft {} {
-        return [info exists left]
-    }
-
-    method hasRight {} {
-        return [info exists right]
+        return [expr {[info exists data] ? $data : ""}]
     }
 
     method left {} {
-        if {[my hasLeft]} {
-            return $left
-        }
-        return
+        return [expr {[info exists left] ? $left : ""}]
     }
 
     method right {} {
-        if {[my hasRight]} {
-            return $right
-        }
-        return
+        return [expr {[info exists right] ? $right : ""}]
     }
 
     method insert {number} {
         if {![info exists data]} {
             set data $number
         } elseif {$number <= $data} {
-            if {[my hasLeft]} {
-                tailcall $left insert $number
-            } else {
+            if {![info exists left]} {
                 set left [[self class] new]
-                $left insert $number
             }
+            tailcall $left insert $number
         } else {
-            if {[my hasRight]} {
-                tailcall $right insert $number
-            } else {
+            if {![info exists right]} {
                 set right [[self class] new]
-                $right insert $number
             }
+            tailcall $right insert $number
         }
         return
     }
@@ -65,7 +44,7 @@ oo::class create BinarySearchTree {
     }
 
     method foreach {varName body {level 1}} {
-        if {[my hasLeft]} {
+        if {[info exists left]} {
             $left foreach $varName $body [expr {$level + 1}]
         }
 
@@ -73,8 +52,19 @@ oo::class create BinarySearchTree {
         set var [self]
         uplevel $level $body
 
-        if {[my hasRight]} {
+        if {[info exists right]} {
             $right foreach $varName $body [expr {$level + 1}]
         }
+    }
+
+    method toDict {} {
+        set result [list data $data left {} right {}]
+        if {[info exists left]} {
+            dict set result left [$left toDict]
+        }
+        if {[info exists right]} {
+            dict set result right [$right toDict]
+        }
+        return $result
     }
 }
