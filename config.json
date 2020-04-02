@@ -922,6 +922,19 @@
         "strings",
         "text_formatting"
       ]
+    },
+    {
+      "slug": "kindergarten-garden",
+      "uuid": "c77ae5b3-23e3-442f-8b7f-d5e42c82126a",
+      "core": false,
+      "unlocked_by": "clock",
+      "difficulty": 3,
+      "topics": [
+        "lists",
+        "parsing",
+        "searching",
+        "strings"
+      ]
     }
   ]
 }
