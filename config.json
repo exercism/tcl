@@ -969,6 +969,19 @@
       "topics": [
         "data_structures"
       ]
+    },
+    {
+      "slug": "poker",
+      "uuid": "903f6e3d-d772-4540-ba7d-350f7c7a5a1b",
+      "core": false,
+      "unlocked_by": "clock",
+      "difficulty": 5,
+      "topics": [
+        "equality",
+        "games",
+        "parsing",
+        "sequences"
+      ]
     }
   ]
 }
