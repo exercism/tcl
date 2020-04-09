@@ -959,6 +959,16 @@
         "loops",
         "math"
       ]
+    },
+    {
+      "slug": "linked-list",
+      "uuid": "549b66d1-f864-4b5c-81f4-fc2aa61e7a8f",
+      "core": false,
+      "unlocked_by": "clock",
+      "difficulty": 4,
+      "topics": [
+        "data_structures"
+      ]
     }
   ]
 }
