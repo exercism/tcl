@@ -948,6 +948,17 @@
         "lists",
         "loops"
       ]
+    },
+    {
+      "slug": "largest-series-product",
+      "uuid": "1814914d-2b2e-4724-8999-c63993671c39",
+      "core": false,
+      "unlocked_by": "clock",
+      "difficulty": 3,
+      "topics": [
+        "loops",
+        "math"
+      ]
     }
   ]
 }
