@@ -1030,6 +1030,18 @@
         "lists",
         "recursion"
       ]
+    },
+    {
+      "slug": "connect",
+      "uuid": "17ff673b-5ac3-4e16-87f5-b56301b852b5",
+      "core": false,
+      "unlocked_by": "tournament",
+      "difficulty": 7,
+      "topics": [
+        "games",
+        "loops",
+        "searching"
+      ]
     }
   ]
 }
