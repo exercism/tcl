@@ -1005,6 +1005,18 @@
         "integers",
         "transforming"
       ]
+    },
+    {
+      "slug": "rotational-cipher",
+      "uuid": "c4aa1e4f-e218-40db-86d8-483a75645e02",
+      "core": false,
+      "unlocked_by": "clock",
+      "difficulty": 2,
+      "topics": [
+        "cryptography",
+        "integers",
+        "strings"
+      ]
     }
   ]
 }
