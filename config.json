@@ -994,6 +994,17 @@
         "integers",
         "math"
       ]
+    },
+    {
+      "slug": "roman-numerals",
+      "uuid": "8dca40e4-b47e-4f8e-bd2c-56625cac3977",
+      "core": false,
+      "unlocked_by": "clock",
+      "difficulty": 2,
+      "topics": [
+        "integers",
+        "transforming"
+      ]
     }
   ]
 }
