@@ -982,6 +982,18 @@
         "parsing",
         "sequences"
       ]
+    },
+    {
+      "slug": "prime-factors",
+      "uuid": "17edf8ed-179a-42a0-be01-5b93bf58215b",
+      "core": false,
+      "unlocked_by": "clock",
+      "difficulty": 3,
+      "topics": [
+        "algorithms",
+        "integers",
+        "math"
+      ]
     }
   ]
 }
