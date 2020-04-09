@@ -1017,6 +1017,19 @@
         "integers",
         "strings"
       ]
+    },
+    {
+      "slug": "book-store",
+      "uuid": "dab73d1c-cfd5-41a8-8450-928630f86f17",
+      "core": false,
+      "unlocked_by": "tournament",
+      "difficulty": 8,
+      "topics": [
+        "algorithms",
+        "integers",
+        "lists",
+        "recursion"
+      ]
     }
   ]
 }
