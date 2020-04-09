@@ -1042,6 +1042,18 @@
         "loops",
         "searching"
       ]
+    },
+    {
+      "slug": "react",
+      "uuid": "fdae8f5d-b91c-423e-95e4-e424723439a6",
+      "core": false,
+      "unlocked_by": "tournament",
+      "difficulty": 8,
+      "topics": [
+        "algorithms",
+        "callbacks",
+        "classes"
+      ]
     }
   ]
 }
