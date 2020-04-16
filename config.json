@@ -1071,6 +1071,19 @@
       ]
     },
     {
+      "slug": "queen-attack",
+      "uuid": "28ceed31-830c-4c54-b52d-f580cb7e8815",
+      "core": false,
+      "unlocked_by": "tournament",
+      "difficulty": 3,
+      "topics": [
+        "booleans",
+        "games",
+        "input_validation",
+        "logic"
+      ]
+    },
+    {
       "slug": "react",
       "uuid": "fdae8f5d-b91c-423e-95e4-e424723439a6",
       "core": false,
