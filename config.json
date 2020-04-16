@@ -1058,6 +1058,19 @@
       ]
     },
     {
+      "slug": "pascals-triangle",
+      "uuid": "935a5e4d-389d-44b1-a069-a8a5ac6d3357",
+      "core": false,
+      "unlocked_by": "tournament",
+      "difficulty": 4,
+      "topics": [
+        "algorithms",
+        "arrays",
+        "math",
+        "recursion"
+      ]
+    },
+    {
       "slug": "react",
       "uuid": "fdae8f5d-b91c-423e-95e4-e424723439a6",
       "core": false,
