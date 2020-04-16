@@ -1044,6 +1044,20 @@
       ]
     },
     {
+      "slug": "food-chain",
+      "uuid": "da8acc2a-b873-4058-963d-e13a04a84e85",
+      "core": false,
+      "unlocked_by": "tournament",
+      "difficulty": 4,
+      "topics": [
+        "conditionals",
+        "loops",
+        "maps",
+        "strings",
+        "text_formatting"
+      ]
+    },
+    {
       "slug": "react",
       "uuid": "fdae8f5d-b91c-423e-95e4-e424723439a6",
       "core": false,
