@@ -501,6 +501,18 @@
       ]
     },
     {
+      "slug": "sublist",
+      "uuid": "2f52bfb8-f311-4a8c-918b-b257a36af225",
+      "core": false,
+      "unlocked_by": "hamming",
+      "difficulty": 2,
+      "topics": [
+        "lists",
+        "loops",
+        "searching"
+      ]
+    },
+    {
       "slug": "accumulate",
       "uuid": "2c2c7a4f-2e79-4f83-aabd-04ecf935c817",
       "core": false,
