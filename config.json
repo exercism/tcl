@@ -1094,6 +1094,18 @@
         "callbacks",
         "classes"
       ]
+    },
+    {
+      "slug": "spiral-matrix",
+      "uuid": "323cbcf1-5176-4b8f-82ca-3a8f155640ab",
+      "core": false,
+      "unlocked_by": "tournament",
+      "difficulty": 3,
+      "topics": [
+        "algorithms",
+        "loops",
+        "lists"
+      ]
     }
   ]
 }
