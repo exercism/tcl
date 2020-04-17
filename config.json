@@ -1118,6 +1118,18 @@
         "loops",
         "lists"
       ]
+    },
+    {
+      "slug": "bowling",
+      "uuid": "2f8f4c2d-6533-4552-9caa-ebd8a886a0c5",
+      "core": false,
+      "unlocked_by": "twelve-days",
+      "difficulty": 5,
+      "topics": [
+        "algorithms",
+        "conditionals",
+        "games"
+      ]
     }
   ]
 }
