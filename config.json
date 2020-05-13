@@ -1232,6 +1232,17 @@
         "strings",
         "transforming"
       ]
+    },
+    {
+      "slug": "pov",
+      "uuid": "7eec8ce4-9acd-441e-92fb-23b6ee1c872a",
+      "core": false,
+      "unlocked_by": "twelve-days",
+      "difficulty": 8,
+      "topics": [
+        "recursion",
+        "searching"
+      ]
     }
   ]
 }
