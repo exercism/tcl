@@ -1197,6 +1197,17 @@
         "strings",
         "text_formatting"
       ]
+    },
+    {
+      "slug": "isbn-verifier",
+      "uuid": "e7bf5f8f-ed1b-480d-9de9-2e666a21b08f",
+      "core": false,
+      "unlocked_by": "twelve-days",
+      "difficulty": 2,
+      "topics": [
+        "integers",
+        "math"
+      ]
     }
   ]
 }
