@@ -1219,6 +1219,19 @@
         "datetime",
         "searching"
       ]
+    },
+    {
+      "slug": "ocr-numbers",
+      "uuid": "2ba0b786-757f-454a-b7cc-9434fc6666f0",
+      "core": false,
+      "unlocked_by": "twelve-days",
+      "difficulty": 4,
+      "topics": [
+        "parsing",
+        "pattern_recognition",
+        "strings",
+        "transforming"
+      ]
     }
   ]
 }
