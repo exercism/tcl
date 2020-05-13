@@ -268,6 +268,20 @@
       ]
     },
     {
+      "slug": "yacht",
+      "uuid": "866a0b34-0123-4002-97bd-b15ddfe43454",
+      "core": false,
+      "unlocked_by": "resistor-color",
+      "difficulty": 4,
+      "topics": [
+        "conditionals",
+        "equality",
+        "games",
+        "integers",
+        "sequences"
+      ]
+    },
+    {
       "slug": "pangram",
       "uuid": "b3ca1538-29a7-41e2-8791-e5918ec2d709",
       "core": false,
@@ -1115,8 +1129,8 @@
       "difficulty": 3,
       "topics": [
         "algorithms",
-        "loops",
-        "lists"
+        "lists",
+        "loops"
       ]
     },
     {
@@ -1129,6 +1143,16 @@
         "algorithms",
         "conditionals",
         "games"
+      ]
+    },
+    {
+      "slug": "complex-numbers",
+      "uuid": "3e5aa5f2-944e-415e-8667-fd823a912208",
+      "core": false,
+      "unlocked_by": "twelve-days",
+      "difficulty": 3,
+      "topics": [
+        "math"
       ]
     }
   ]
