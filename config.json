@@ -1208,6 +1208,17 @@
         "integers",
         "math"
       ]
+    },
+    {
+      "slug": "meetup",
+      "uuid": "c5ac1da9-328f-4fd0-afed-00e9211402c4",
+      "core": false,
+      "unlocked_by": "twelve-days",
+      "difficulty": 3,
+      "topics": [
+        "datetime",
+        "searching"
+      ]
     }
   ]
 }
