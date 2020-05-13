@@ -103,6 +103,22 @@ proc inListMatch {expectedList actual} {
     return [expr {$actual in $expectedList}]
 }
 
+#############################################################
+# Compare floating point numbers 
+proc floatMatch {expected actual {epsilon 1e-6}} {
+    return [expr {abs($expected - $actual) <= $epsilon}]
+}
+
+#############################################################
+# Compare a list of floating point numbers 
+proc listOfFloatsMatch {expected actual} {
+    foreach e $expected a $actual {
+        if {![floatMatch $e $a]} {
+            return false
+        }
+    }
+    return true
+}
 
 #############################################################
 # Convenience function to set the precision of a real number.
