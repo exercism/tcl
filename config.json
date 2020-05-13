@@ -1154,6 +1154,19 @@
       "topics": [
         "math"
       ]
+    },
+    {
+      "slug": "diamond",
+      "uuid": "7c2042dd-15e9-42c3-800e-bcb83a3d806b",
+      "core": false,
+      "unlocked_by": "twelve-days",
+      "difficulty": 3,
+      "topics": [
+        "algorithms",
+        "loops",
+        "strings",
+        "text_formatting"
+      ]
     }
   ]
 }
