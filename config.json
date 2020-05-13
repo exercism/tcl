@@ -315,6 +315,18 @@
       ]
     },
     {
+      "slug": "rectangles",
+      "uuid": "b5551ef1-3ebb-4ce7-aad4-919befe3f7bd",
+      "core": false,
+      "unlocked_by": "high-scores",
+      "difficulty": 7,
+      "topics": [
+        "logic",
+        "parsing",
+        "pattern_recognition"
+      ]
+    },
+    {
       "slug": "triangle",
       "uuid": "53ae5d6b-85c0-4b2b-b8ed-6370e565ce52",
       "core": false,
