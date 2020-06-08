@@ -1289,6 +1289,16 @@
         "text-formatting",
         "transforming"
       ]
+    },
+    {
+      "slug": "zipper",
+      "uuid": "021dd34d-9ec6-45ad-85ee-c92119c24dd2",
+      "core": false,
+      "unlocked_by": "twelve-days",
+      "difficulty": 7,
+      "topics": [
+        "data_structures"
+      ]
     }
   ]
 }
