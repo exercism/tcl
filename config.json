@@ -1276,6 +1276,19 @@
       "topics": [
         "parsing"
       ]
+    },
+    {
+      "slug": "say",
+      "uuid": "2c3c8a36-a9f2-453e-ba2f-bd2340b68139",
+      "core": false,
+      "unlocked_by": "twelve-days",
+      "difficulty": 8,
+      "topics": [
+        "integers",
+        "strings",
+        "text-formatting",
+        "transforming"
+      ]
     }
   ]
 }
