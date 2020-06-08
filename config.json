@@ -1266,6 +1266,16 @@
         "recursion",
         "searching"
       ]
+    },
+    {
+      "slug": "rest-api",
+      "uuid": "c85d2acd-c6b3-4005-9e02-bef1d24fddbf",
+      "core": false,
+      "unlocked_by": "twelve-days",
+      "difficulty": 7,
+      "topics": [
+        "parsing"
+      ]
     }
   ]
 }
