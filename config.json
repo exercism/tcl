@@ -1384,13 +1384,24 @@
     },
     {
       "slug": "parallel-letter-frequency",
-      "uuid": "",
+      "uuid": "30fb6afc-31a4-4691-b6fb-f64ab8d806ab",
       "core": false,
       "unlocked_by": "bank-account",
       "difficulty": 5,
       "topics": [
         "threading",
         "variables"
+      ]
+    },
+    {
+      "slug": "rational-numbers",
+      "uuid": "20410cdc-b085-4cba-9126-8b4e41d3872b",
+      "core": false,
+      "unlocked_by": "bank-account",
+      "difficulty": 4,
+      "topics": [
+        "floating_point_numbers",
+        "math"
       ]
     }
   ]
