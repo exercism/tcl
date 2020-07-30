@@ -1381,6 +1381,17 @@
         "algorithms",
         "games"
       ]
+    },
+    {
+      "slug": "parallel-letter-frequency",
+      "uuid": "",
+      "core": false,
+      "unlocked_by": "bank-account",
+      "difficulty": 5,
+      "topics": [
+        "threading",
+        "variables"
+      ]
     }
   ]
 }
