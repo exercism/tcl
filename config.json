@@ -1333,6 +1333,18 @@
         "integers",
         "randomness"
       ]
+    },
+    {
+      "slug": "dot-dsl",
+      "uuid": "957b5108-1c4e-475a-8953-2aeb98465b1d",
+      "core": false,
+      "unlocked_by": "bank-account",
+      "difficulty": 7,
+      "topics": [
+        "domain_specific_languages",
+        "parsing",
+        "transforming"
+      ]
     }
   ]
 }
