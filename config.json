@@ -1312,6 +1312,16 @@
       "topics": [
         "data_structures"
       ]
+    },
+    {
+      "slug": "diffie-hellman",
+      "uuid": "86a7b350-9929-419d-9dda-c3dd98588479",
+      "core": false,
+      "unlocked_by": "bank-account",
+      "difficulty": 3,
+      "topics": [
+        "math"
+      ]
     }
   ]
 }
