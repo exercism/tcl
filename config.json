@@ -407,6 +407,19 @@
       ]
     },
     {
+      "slug": "flatten-array",
+      "uuid": "5c7a34d7-e467-46b3-b8dd-516330244ca4",
+      "core": false,
+      "unlocked_by": "series",
+      "difficulty": 3,
+      "topics": [
+        "data_structures",
+        "lists",
+        "recursion",
+        "strings"
+      ]
+    },
+    {
       "slug": "grains",
       "uuid": "5c5d47e9-aa71-477a-9c27-be94207cc9b1",
       "core": false,
