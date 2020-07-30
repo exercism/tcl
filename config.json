@@ -1299,7 +1299,7 @@
       "topics": [
         "integers",
         "strings",
-        "text-formatting",
+        "text_formatting",
         "transforming"
       ]
     },
@@ -1343,6 +1343,19 @@
       "topics": [
         "domain_specific_languages",
         "parsing",
+        "transforming"
+      ]
+    },
+    {
+      "slug": "forth",
+      "uuid": "186ab177-4da2-4b59-abbd-3e01bf64fe49",
+      "core": false,
+      "unlocked_by": "bank-account",
+      "difficulty": 6,
+      "topics": [
+        "domain_specific_languages",
+        "parsing",
+        "stacks",
         "transforming"
       ]
     }
