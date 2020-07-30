@@ -742,6 +742,17 @@
       ]
     },
     {
+      "slug": "scale-generator",
+      "uuid": "b6fe7147-21c7-48d2-8b75-6a96bf416bed",
+      "core": false,
+      "unlocked_by": "isogram",
+      "difficulty": 4,
+      "topics": [
+        "lists",
+        "strings"
+      ]
+    },
+    {
       "slug": "beer-song",
       "uuid": "a5cda34c-96f3-47e6-a813-1e72e2b3e32f",
       "core": false,
