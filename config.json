@@ -1322,6 +1322,17 @@
       "topics": [
         "math"
       ]
+    },
+    {
+      "slug": "dnd-character",
+      "uuid": "32b87799-0e4d-471f-ae22-e5a9dbbdf7b3",
+      "core": false,
+      "unlocked_by": "bank-account",
+      "difficulty": 3,
+      "topics": [
+        "integers",
+        "randomness"
+      ]
     }
   ]
 }
