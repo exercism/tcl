@@ -1325,6 +1325,7 @@
       ]
     },
     {
+<<<<<<< HEAD
       "slug": "diffie-hellman",
       "uuid": "86a7b350-9929-419d-9dda-c3dd98588479",
       "core": false,
@@ -1368,6 +1369,17 @@
         "parsing",
         "stacks",
         "transforming"
+      ]
+    },
+    {
+      "slug": "go-counting",
+      "uuid": "cfec7bc7-3a4c-4a7d-86bf-818c92537462",
+      "core": false,
+      "unlocked_by": "bank-account",
+      "difficulty": 8,
+      "topics": [
+        "algorithms",
+        "games"
       ]
     }
   ]
