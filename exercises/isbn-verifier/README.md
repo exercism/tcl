@@ -41,6 +41,7 @@ Now, it's even trickier since the check digit of an ISBN-10 may be 'X' (represen
 
 * Generate valid ISBN, maybe even from a given starting ISBN.
 
+
 ## Submitting Incomplete Solutions
 It's possible to submit an incomplete solution so you can see how others have completed the exercise.
 
