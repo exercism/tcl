@@ -1,14 +1,14 @@
 oo::class create Robot {
     constructor {} {
-        throw {NOT_IMPLEMENTED} "Implement this class"
+        throw {NOT_IMPLEMENTED} "Implement this class."
     }
 
     method name {} {
-        throw {NOT_IMPLEMENTED} "Implement me"
+        throw {NOT_IMPLEMENTED} "Implement this method."
     }
 
     method reset {} {
-        throw {NOT_IMPLEMENTED} "Implement me"
+        throw {NOT_IMPLEMENTED} "Implement this method."
     }
 }
 
