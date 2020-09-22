@@ -1,6 +1,6 @@
 oo::class create Scale {
     constructor {tonic} {
-        throw {NOT_IMPLEMENTED} "Implement this constructor."
+        throw {NOT_IMPLEMENTED} "Implement this class."
     }
 
     method chromatic {} {

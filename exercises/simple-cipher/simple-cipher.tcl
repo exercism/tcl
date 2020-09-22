@@ -1,7 +1,7 @@
 oo::class create SimpleCipher {
 
     constructor {args} {
-        throw {NOT_IMPLEMENTED} "Implement the constructor."
+        throw {NOT_IMPLEMENTED} "Implement this class."
     }
 
     method key {} {
