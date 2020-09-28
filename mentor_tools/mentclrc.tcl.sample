@@ -1,0 +1,30 @@
+# Place your mentclrc.tcl file in your exercism config dir:
+# See `exercism configure`
+
+# a tiny but of debug output from the mentcl program
+set DEBUG true
+
+# for running the test cases, run all tests
+set env(RUN_ALL) true
+
+proc displayCode {file} {
+    # http://www.andre-simon.de/doku/highlight/en/highlight.php
+    puts [exec highlight -O truecolor $file | nl -ba -w4 {-s | }]
+}
+
+# Example using nagelfar as syntax checker
+# https://wiki.tcl-lang.org/page/Nagelfar
+set SYNTAX_CHECKER /path/to/nagelfar.tcl
+proc checkSyntax {args} {
+    try {
+        set output [exec $::SYNTAX_CHECKER {*}$args]
+        puts $output
+        if {$output eq "Checking file $args"} {
+            puts "No issues detected."
+        }
+    } on error e {
+        debug errorInfo $::errorInfo
+        debug errorCode $::errorCode
+        puts "Error: $e"
+    }
+}
