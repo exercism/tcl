@@ -41,7 +41,7 @@ if {$::argv0 eq [info script]} {
         expr {$actual eq $expected}
     } -returnCodes ok -result 1
 
-    test simple-cipher-1.2 "Random key: Can encode" -body {
+    test simple-cipher-1.2 "Random key: Can decode" -body {
         set cipher [SimpleCipher new]
         set expected "aaaaaaaaaa"
         set plaintext [string range [$cipher key] 0 [string length $expected]-1]
