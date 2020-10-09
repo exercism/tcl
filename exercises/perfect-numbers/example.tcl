@@ -2,6 +2,9 @@ namespace eval perfectNumbers {
     namespace export classify
 
     proc classify {n} {
+        if {$n <= 0} {
+            error "Classification is only possible for natural numbers."
+        }
         set a [aliquotSum $n]
         if {$a < $n} then { return "deficient" } 
         if {$a > $n} then { return "abundant" }

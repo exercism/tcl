@@ -104,10 +104,10 @@ if {$::argv0 eq [info script]} {
 
     test high-scores-4.5 {Personal top 3 for list of 1} -setup {
         set hs [HighScores new]
-        $hs addScores 30
+        $hs addScores 40
     } -body {
         $hs topThree
-    } -returnCodes ok -result {30}
+    } -returnCodes ok -result {40}
 
     test high-scores-4.6 {Personal top 3 for uninitialized obj} -setup {
         set hs [HighScores new]

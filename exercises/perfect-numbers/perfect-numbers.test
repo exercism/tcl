@@ -1,5 +1,5 @@
 #!/usr/bin/env tclsh
-set version 1.1.0
+set version 1.1.1
 package require tcltest
 namespace import ::tcltest::*
 source "perfect-numbers.tcl"
@@ -49,6 +49,16 @@ if {$::argv0 eq [info script]} {
         test $name $description -body {
             classify $number
         } -returnCodes ok -result $classification
+    }
+
+    set cases {
+        perfect-numbers-4.1  0 "Zero is rejected (not a natural number)"
+        perfect-numbers-4.2 -1 "Negative integer is rejected (not a natural number)"
+    }
+    foreach {name number description} $cases {
+        test $name $description -body {
+            classify $number
+        } -returnCodes error -result "Classification is only possible for natural numbers."
     }
 
     cleanupTests
