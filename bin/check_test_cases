@@ -1,0 +1,171 @@
+#!/usr/bin/env tclsh
+# vim: set ft=tcl
+#
+# Validation for test cases implemented against the
+# problem-specifications canonical data.
+
+foreach {pkg src} {
+        rl_json  https://github.com/RubyLane/rl_json
+        cmdline  tcllib
+} {
+    try {
+        package require $pkg
+    } trap {TCL PACKAGE} {} {
+        puts stderr "Error: can't find package '$pkg': install it from $src"
+        exit 1
+    }
+}
+namespace import rl_json::json
+
+namespace eval toml {
+    namespace export toJSON
+    namespace ensemble create
+
+    variable executable [auto_execok yj]
+    if {[llength $executable] == 0} {
+        puts stderr "Error: cannot find executable 'yj'"
+        puts stderr "install it from https://github.com/sclevine/yj"
+        exit 1
+    }
+
+    proc toJSON {toml} {
+        variable executable
+        return [exec {*}$executable -tj << $toml]
+    }
+}
+
+set Usage "[info script] \[-all] \[-verbose] \[exercise ...]
+
+Ensure the problem-specifications repo is checked out to master.\n"
+
+proc usage {} {
+    puts stderr $::Usage
+    exit 1
+}
+
+# the canonical-data json object file may contain nested
+# "cases" arrays inside the "cases" attribute. 
+# This proc needs to call itself recursively
+proc extractCases {json} {
+    set results {}
+    json foreach case [json extract $json cases] {
+        if {[json exists $case cases]} {
+            set procname [lindex [info level 0] 0]
+            set results [dict merge $results [$procname $case]]
+        } elseif {[json exists $case uuid]} {
+            dict set results [json get $case uuid] [json get $case description]
+        }
+    }
+    return $results
+}
+
+proc specTests {ps_repo exercise verbose} {
+    set canon [file join [pwd] $ps_repo exercises $exercise canonical-data.json]
+    if {![file exists $canon]} {
+        if {$verbose} {
+            puts stderr "No canonical data for $exercise\n"
+        }
+        return
+    }
+
+    set fh [open $canon r]
+    set json [read -nonewline $fh]
+    close $fh
+
+    extractCases $json
+}
+
+proc implementedTests {exercise} {
+    set file [file join exercises $exercise .meta tests.toml]
+    if {![file exists $file]} {
+        puts stderr "No tests.toml file for $exercise\n"
+        incr ::errors
+        return
+    }
+    set fh [open $file r]
+    set toml [read -nonewline $fh]
+    close $fh
+    
+    json get [toml toJSON $toml] canonical-tests
+}
+
+proc parseOptions {argv} {
+    set options {
+        {all     "report on all exercises"}
+        {verbose "report on all tests (default: only unimplemented/excluded)"}
+    }
+    try {
+        array set params [cmdline::getoptions argv $options ": $::Usage"]
+    } trap {CMDLINE USAGE} {msg o} {
+        puts $msg
+        exit 1
+    }
+
+    if {$params(all)} {
+        set exercises [glob -directory exercises -types d -tails *]
+    } else {
+        set exercises $argv
+    }
+    return [list $params(verbose) [lsort $exercises]]
+}
+
+proc main {argv} {
+    cd [file join [file dirname [info script]] ..]
+
+    lassign [parseOptions $argv] verbose exercises
+    if {[llength $exercises] == 0} {
+        puts "Nothing to do: bye"
+        return
+    }
+
+    set ps_repo ../problem-specifications
+    if {![file isdirectory $ps_repo]} {
+        error "Clone the exercism/problem-specifications repo alongside the tcl repo"
+    }
+
+    set report {{wid desc result} {
+        puts [format {  %-*s = %s} $wid $desc $result]
+    }}
+
+    global errors
+    set errors 0
+
+    foreach exercise $exercises {
+        set spec [specTests $ps_repo $exercise $verbose]
+        if {[dict size $spec] == 0} then continue
+
+        set tests [implementedTests $exercise]
+
+        set results [dict create]
+        dict for {uuid desc} $spec {
+            if {![dict exists $tests $uuid]} {
+                dict set results $desc "not implemented"
+                incr errors
+            } elseif {![dict get $tests $uuid]} {
+                dict set results $desc "excluded"
+            } else {
+                dict set results $desc "implemented"
+            }
+        }
+
+        if {$verbose} {
+            set d $results
+        } else {
+            set d [dict filter $results value "not implemented" "excluded"]
+        }
+        if {[dict size $d] != 0} {
+            puts "Exercise $exercise"
+            set width [tcl::mathfunc::max {*}[lmap desc [dict keys $d] {string length $desc}]]
+            dict for {desc result} $d {
+                apply $report $width $desc $result
+            }
+            puts ""
+        }
+    }
+
+    if {$errors != 0} then {exit 1}
+}
+
+if {$argv0 ne [info script]} then usage
+
+main $argv
