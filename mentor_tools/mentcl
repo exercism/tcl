@@ -15,6 +15,7 @@ package require Tcl 8.6
 package require http
 package require tls
 ::http::register https 443 ::tls::socket
+package require fileutil   ;# from tcllib
 
 set DEBUG false
 
@@ -30,11 +31,19 @@ proc download {uuid} {
 }
 
 proc validateDownload {slug} {
+    log "PWD = [pwd]"
+    # escaping the quote is not required by Tcl syntax, but it
+    # helps syntax highlighters
+    regexp {(http[^\"]+)} [fileutil::cat ./.exercism/metadata.json] -> url
+    log "URL = $url"
+
     if {![file isfile "$slug.tcl"]} {
-        error "This solution has no source file"
+        log "This solution has no source file"
+        exit 1
     }
     if {![file isfile "$slug.test"]} {
-        error "This solution has no test file"
+        log "This solution has no test file"
+        exit 1
     }
 }
 
@@ -42,14 +51,14 @@ proc validateDownload {slug} {
 proc runSyntaxCheck {sourceFile} {
     global SYNTAX_CHECKER
     if {![info exists ::SYNTAX_CHECKER]} {
-        puts "No syntax checker defined"
+        log "No syntax checker defined"
         return
     }
     if {!([file exists $SYNTAX_CHECKER] && [file executable $SYNTAX_CHECKER])} {
         try {
             exec which $::SYNTAX_CHECKER
         } trap NONE e {
-            error "Error: $::SYNTAX_CHECKER is not in the PATH"
+            log "Error: $::SYNTAX_CHECKER is not in the PATH"
         }
     }
     checkSyntax $sourceFile
@@ -89,19 +98,22 @@ I will not do that automatically.
     puts "*******************************************"
     if {![yn "OK to run tests" Y]} then return
 
+    # inject extra verbosity
+    exec perl -i -pe {$_ .= "configure -verbose {error body usec}\n" if /namespace import.*tcltest/} $slug.test
+
     puts ""
     set start [clock microseconds]
     try {
-        puts [exec tclsh "$slug.test"]
+        log [exec tclsh "$slug.test"]
     } trap NONE e {
-        puts "Not all tests passing:\n$e"
+        log "Not all tests passing:\n$e"
         return
     }
 
     set duration [expr {([clock microseconds] - $start) / 1e6}]
 
     puts ""
-    puts "Duration: $duration seconds"
+    log "Duration: $duration seconds"
 }
 
 # Default function to display the code.
@@ -113,21 +125,17 @@ proc displayCode {file} {
 ############################################################
 proc goInteractive {} {
     puts "PWD = [regsub "^$::env(HOME)" [pwd] {~}]"
-    puts "Launching an interactive tclsh ...\n"
-    try {
-        exec rlwrap tclsh <@stdin >@stdout 2>@stderr
-    } trap NONE e {
-        exec tclsh <@stdin >@stdout 2>@stderr
-    }
+    puts "Launching an interactive bash shell ...\n"
+    exec bash -i <@ stdin >@ stdout 2>@ stderr
 }
 
 ############################################################
 proc doExercism {args} {
     try {
         set output [exec exercism {*}$args 2>@stdout]
-    } on error e {
+    } on error {e o} {
         debug $::errorInfo $::errorCode
-        error "Error: exercism $args failed:\n$e"
+        error "Error: exercism $args failed:\n$e\n[list $o]"
     }
     debug output $output
     return $output
@@ -172,6 +180,17 @@ proc title {str} {
     puts [format "\n%s\n%s" $str [string repeat = [string length $str]]]
 }
 
+proc timestamp {} {
+    clock format [clock seconds] -format {%Y-%m-%d %H:%M:%S}
+}
+
+proc log {msg} {
+    puts $msg
+    set fh [open "mentcl.log" a]
+    puts $fh "[timestamp] - $msg"
+    close $fh
+}
+
 ############################################################
 proc main {args} {
     # find the UUID in the args
@@ -191,6 +210,7 @@ proc main {args} {
 
     cd $workdir
     set slug [file tail $workdir]
+
     validateDownload $slug
 
     title "Syntax Check"
