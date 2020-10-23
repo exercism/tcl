@@ -1,0 +1,40 @@
+#!/bin/sh
+
+die() {
+    printf "\033[31m%s\n\033[0m" "$1"
+}
+
+if [ "$#" -ne 1 ]; then
+    die "usage: $0 exerciseSlug" >&2
+fi
+exercise=$1
+
+echo
+echo "*** Test exercise $exercise:"
+echo
+
+FAILED=0
+
+cd exercises/"$exercise"
+
+if [ ! -e example.tcl ]; then
+    FAILED=1
+    die " - $exercise: Missing example.tcl!"
+fi
+
+if [ ! -e "$exercise.test" ]; then
+    FAILED=1
+    die " - $exercise: Missing $exercise.test!"
+fi
+
+cleanup() {
+    # restore exercise
+    git checkout "$exercise.tcl"
+}
+trap cleanup EXIT
+
+cp example.tcl "$exercise.tcl"
+tclsh "$exercise.test"
+echo
+
+[ "$FAILED" -eq 0 ] || exit 1
