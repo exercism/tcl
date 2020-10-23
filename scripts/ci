@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+bin/test_all_exercises

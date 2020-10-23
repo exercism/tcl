@@ -1,39 +1,9 @@
 #!/bin/sh
 
-echo
-echo "*** Test all exercises:"
-echo
-
 FAILED=0
 
-err() {
-    printf "\033[31m%s\n\033[0m" "$1"
-}
-
-cd exercises
-for exercise in *; do
-    cd "$exercise"
-
-    if [ ! -e example.tcl ]; then
-        FAILED=1
-        err " - $exercise: Missing example.tcl!"
-        cd ..
-        continue
-    fi
-
-    if [ ! -e "$exercise.test" ]; then
-        FAILED=1
-        err " - $exercise: Missing $exercise.test!"
-        cd ..
-        continue
-    fi
-
-    echo " - $exercise:"
-    cp example.tcl "$exercise.tcl"
-    tclsh "$exercise.test"
-    echo
-    git checkout "$exercise.tcl"
-    cd ..
+for exercise in exercises/*; do
+    bin/test_one_exercise "$(basename "$exercise")" || FAILED=1
 done
 
 if [ "$FAILED" -eq 1 ]; then
