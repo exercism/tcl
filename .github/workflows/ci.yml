@@ -8,16 +8,6 @@ on:
     branches: [master]
 
 jobs:
-  precheck:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-
-      - name: Run ci precheck (checks config, lint code, and runs tests) for all exercises
-        run: bash scripts/ci-check
-
   ci:
     runs-on: ubuntu-latest
 
