@@ -5,13 +5,19 @@ name: tcl / master
 
 on:
   push:
-    branches: [master]
+    branches:
+      - master
+      - main
 
 jobs:
   ci:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Install Deps
+        run: |
+          sudo apt-get update && sudo apt-get -y install tcl-thread
+
       - name: Checkout
         uses: actions/checkout@v2
 

@@ -10,12 +10,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Install Deps
+        run: |
+          sudo apt-get update && sudo apt-get -y install tcl-thread
+
       - name: Checkout PR
         uses: actions/checkout@v2
 
       - name: Run tests for changed/added exercises
         run: |
           PULL_REQUEST_URL=$(jq -r ".pull_request.url" "$GITHUB_EVENT_PATH")
-          curl --url $"${PULL_REQUEST_URL}/files" --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' | \
+          curl --silent --url $"${PULL_REQUEST_URL}/files" --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' | \
             jq -c '.[] | select(.status == "added" or .status == "modified") | select(.filename | match("\\.(md|tcl|test)$")) | .filename' | \
             xargs -r bash scripts/pr

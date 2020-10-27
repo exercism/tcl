@@ -4,11 +4,11 @@
 # From that, extract the list of exercise directories, and
 # test there.
 
-die() { echo "$*" >&2; exit 1; }
+minorVer=$(IFS="."; echo "${BASH_VERSINFO[*]:0:2}")
 
-minorVer="${BASH_VERSINFO[0]}.${BASH_VERSINFO[1]}"
 if [[ $minorVer < "4.3" ]]; then
-    die "[Failure] This script requires bash version 4.3+" >&2
+    echo "[Failure] This script requires bash version 4.3+" >&2
+    exit 1
 fi
 
 declare -A seen=()
