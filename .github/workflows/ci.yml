@@ -1,5 +1,4 @@
-# Ubuntu already ships with Tcl 8.6 (as a dependency of Tk):
-# nothing to set up.
+# Run all tests for commits to master
 
 name: tcl / master
 

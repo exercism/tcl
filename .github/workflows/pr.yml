@@ -1,5 +1,4 @@
-# Ubuntu already ships with Tcl 8.6 (as a dependency of Tk):
-# nothing to set up.
+# Run tests for tcl or markdown files modified in this PR.
 
 name: tcl / pr
 
