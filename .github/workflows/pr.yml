@@ -10,6 +10,10 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Install Deps
+        run: |
+          apt update && apt install tcl tcl-thread
+
       - name: Checkout PR
         uses: actions/checkout@v2
 
