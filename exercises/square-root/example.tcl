@@ -4,8 +4,7 @@
 proc squareRoot {n} {
     set x 0
     # find b, the largest power of 4 <= n
-    set i [expr {int(floor(log($n) / log(2)))}]
-    set b [expr {2 ** ($i % 2 == 1 ? $i-1 : $i)}]
+    set b [expr {4 ** int(floor(log($n) / log(4)))}]
 
     while {$b != 0} {
         if {$n >= $x + $b} {
