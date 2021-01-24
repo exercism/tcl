@@ -187,6 +187,22 @@ if {$::argv0 eq [info script]} {
             "    ER"
             "     R"
         }
+
+        transpose-12 "jagged triangle" {
+            "11"
+            "2"
+            "3333"
+            "444"
+            "555555"
+            "66666"
+        } {
+            "123456"
+            "1 3456"
+            "  3456"
+            "  3 56"
+            "    56"
+            "    5"
+        }
     }
 
     foreach {name description lines result} $cases {
