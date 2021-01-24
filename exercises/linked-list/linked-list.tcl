@@ -3,10 +3,10 @@ oo::class create LinkedList {
         throw {NOT_IMPLEMENTED} "Implement this class."
     }
 
-    method push {data} {
+    method push {value} {
     }
 
-    method unshift {data} {
+    method unshift {value} {
     }
 
     method pop {} {
@@ -15,9 +15,13 @@ oo::class create LinkedList {
     method shift {} {
     }
 
-    method for {varname script} {
+    method length {} {
     }
 
-    method length {} {
+    method delete {value} {
+    }
+
+    # bonus
+    method for {varname script} {
     }
 }

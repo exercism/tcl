@@ -60,6 +60,32 @@ oo::class create LinkedList {
         return [$node value]
     }
 
+    method delete {value} {
+        set node $head
+        while {$node ne ""} {
+            if {[$node value] == $value} {
+                set prev [$node prev]
+                set succ [$node succ]
+                if {$prev == "" && $succ == ""} {
+                    set head ""
+                    set tail ""
+                } elseif {$prev == "" && $succ != ""} {
+                    set head $succ
+                    $succ setPrev ""
+                } elseif {$prev != "" && $succ == ""} {
+                    set tail $prev
+                    $prev setSucc ""
+                } else {
+                    $prev setSucc $succ
+                    $succ setPrev $prev
+                }
+                $node destroy
+                break
+            }
+            set node [$node succ]
+        }
+    }
+
     method for {varname script} {
         upvar 1 $varname var
         set node $head
@@ -106,6 +132,10 @@ oo::class create Node {
         }
     }
 
+    method setSucc {node} {
+        set succ $node
+    }
+
     method prev {args} {
         if {[dict exists $args "-set"]} {
             set prev [dict get $args -set]
@@ -116,5 +146,9 @@ oo::class create Node {
         } else {
             return $prev
         }
+    }
+
+    method setPrev {node} {
+        set prev $node
     }
 }
