@@ -1,10 +1,19 @@
 proc roster {students} {
-    set roster [dict create]
+    set names [dict create]
 
-    # transform a list of {name grade} pairs into a dict of {grade names}
+    # transform a list of {name grade} pairs into a dict of {name grade}
     foreach student $students {
         lassign $student name grade
-        dict lappend roster $grade $name
+        dict lappend names $name $grade 
+    }
+
+    # ignoring students in multiple grades,
+    # transpose into dict of {grade names}
+    set roster [dict create]
+    dict for {name grades} $names {
+        if {[llength $grades] == 1} {
+            dict lappend roster $grades $name
+        }
     }
 
     # sort the names for each grade
