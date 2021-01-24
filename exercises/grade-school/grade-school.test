@@ -76,6 +76,10 @@ if {$::argv0 eq [info script]} {
             {} \
             1 \
             {}
+        grade-school-2.3 "A student can't be in two different grades" \
+            {{Aimee 2} {Aimee 1}} \
+            2 \
+            {}
     }
     foreach {name description students grade expected} $cases {
         test $name $description -body {
