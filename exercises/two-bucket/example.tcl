@@ -30,12 +30,12 @@ oo::class create TwoBucket {
             error "invalid start bucket: $startName"
         }
         if {$theGoal > max($b1Size, $b2Size)} {
-            error "goal is too big"
+            error "impossible: goal is too big"
         }
         set gcd [expr {gcd($b1Size, $b2Size)}]
         if {$gcd > 1 && $theGoal % $gcd != 0} {
             # example b1 = 15, b2 = 10, goal = 7
-            error "goal is unsatisfiable"
+            error "impossible: goal is unsatisfiable"
         }
     }
 
