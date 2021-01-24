@@ -646,6 +646,18 @@
       ]
     },
     {
+      "slug": "square-root",
+      "uuid": "7a8a7928-38f1-4c5d-a0cd-d7fba67d66a3",
+      "core": false,
+      "unlocked_by": "raindrops",
+      "difficulty": 3,
+      "topics": [
+        "algorithms",
+        "integers",
+        "math"
+      ]
+    },
+    {
       "slug": "strain",
       "uuid": "ae8faf16-c53b-4b3d-bb4f-416ce36d0df6",
       "core": false,
