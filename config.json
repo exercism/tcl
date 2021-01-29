@@ -3,6 +3,7 @@
   "language": "Tcl",
   "active": true,
   "blurb": "Tcl is a dynamic, open source programming language. It was designed with the goal of being very simple but powerful.",
+  "version": 3,
   "ignore_pattern": "example",
   "solution_pattern": "example[.]tcl",
   "test_pattern": "test",
