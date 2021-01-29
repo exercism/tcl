@@ -312,7 +312,8 @@
       "topics": [
         "strings"
       ],
-      "deprecated": true
+      "deprecated": true,
+      "status": "deprecated"
     },
     {
       "slug": "space-age",
