@@ -19,6 +19,7 @@
   "solution_pattern": "example[.]tcl",
   "test_pattern": "test",
   "exercises": {
+    "concept": [],
     "practice": [
       {
         "slug": "hello-world",
