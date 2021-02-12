@@ -3,7 +3,7 @@
 Tcl is a [very simple language](https://tcl.tk/man/tcl8.6/TclCmd/Tcl.htm),
 but the way they interpreter parses code has a couple of nasty edge cases.
 
-### Curly braces
+## Curly braces
 
 Braces in Tcl are simply a way to quote a block of text -- that text may be
 interpreted as code or data. Within braces, nested braces may appear but
@@ -34,13 +34,13 @@ This can be problematic with the way Tcl parses comments, which is different
 from most languages.  There is more discussion on the [Tcl
 wiki](https://wiki.tcl-lang.org/page/Why+can+I+not+place+unmatched+braces+in+Tcl+comments).
 
-### Square brackets
+## Square brackets
 
 Similarly, since Tcl uses brackets for [Command
 substitution.](https://tcl.tk/man/tcl8.6/TclCmd/Tcl.htm#M11), even within
 double quoted strings, you have to be careful about escaping open brackets.
 
-### Parentheses
+## Parentheses
 
 With the exception of [associative array
 variables](https://tcl.tk/man/tcl8.6/TclCmd/Tcl.htm#M12), parentheses are
