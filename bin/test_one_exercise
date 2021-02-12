@@ -2,24 +2,27 @@
 
 die() {
     printf "\033[31m%s\n\033[0m" "$1"
+    exit 1
 }
 
 if [ "$#" -ne 1 ]; then
     die "usage: $0 exerciseSlug" >&2
 fi
-exercise=$1
+exercise=${1%/}
+exercise=${exercise##*/}
 
 echo
 echo "*** Test exercise $exercise:"
 echo
 
 FAILED=0
+solution=".meta/example.tcl"
 
-cd exercises/"$exercise"
+cd "$1" >/dev/null || die " - cannot cd $1"
 
-if [ ! -e example.tcl ]; then
+if [ ! -e "$solution" ]; then
     FAILED=1
-    die " - $exercise: Missing example.tcl!"
+    die " - $exercise: Missing ${solution}!"
 fi
 
 if [ ! -e "$exercise.test" ]; then
@@ -33,7 +36,7 @@ cleanup() {
 }
 trap cleanup EXIT
 
-cp example.tcl "$exercise.tcl"
+cp "$solution" "$exercise.tcl"
 tclsh "$exercise.test"
 echo
 

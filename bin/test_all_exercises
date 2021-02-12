@@ -1,9 +1,10 @@
 #!/bin/sh
+dir=$(cd "$(dirname "$0")" >/dev/null && pwd)
 
 FAILED=0
 
-for exercise in exercises/*; do
-    bin/test_one_exercise "$(basename "$exercise")" || FAILED=1
+for exercise in exercises/*/*; do
+    "$dir"/test_one_exercise "$exercise" || FAILED=1
 done
 
 if [ "$FAILED" -eq 1 ]; then
