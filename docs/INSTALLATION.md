@@ -1,3 +1,5 @@
+# Installation
+
 ## Installing tclsh
 
 The only tool you need is the TCL interpreter, `tclsh`.

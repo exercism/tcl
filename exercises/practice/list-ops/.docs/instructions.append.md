@@ -1,4 +1,4 @@
-## The Tcl `apply` command
+# The Tcl `apply` command
 
 The test cases may look confusing. You are expected to implement this: 
 ```tcl

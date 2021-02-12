@@ -1,3 +1,5 @@
+# Instructions append
+
 The DOT language has a [formal specification][DOT-spec]: the tests for this
 exercise do not expect the full specification to be implemented.
 

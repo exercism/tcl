@@ -1,4 +1,4 @@
-## Notes on brackets
+# Notes on brackets
 
 Tcl is a [very simple language](https://tcl.tk/man/tcl8.6/TclCmd/Tcl.htm),
 but the way they interpreter parses code has a couple of nasty edge cases.

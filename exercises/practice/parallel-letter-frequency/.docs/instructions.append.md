@@ -1,4 +1,4 @@
-## Threads
+# Threads
 
 You'll implement parallelism with threads: subdivide the input into chunks
 that code running in a thread can examine asynchronously. 
