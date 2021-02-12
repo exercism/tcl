@@ -1,4 +1,4 @@
-## Threads
+# Threads
 
 This exercises introduces threads to test how robust your bank account is 
 for concurrent operations. Some reading material for Tcl threads:
