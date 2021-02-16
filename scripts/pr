@@ -16,9 +16,14 @@ status=0
 
 for file; do
     dir=$(dirname "$file")
+
+    # The example.tcl script lives in the exercises/practice/[exercise]/.meta
+    # directory.  We want to strip that off:
+    dir=${dir%/.meta}
+
     if [[ ! -v seen["$dir"] ]]; then
         seen["$dir"]=1
-        bin/test_one_exercise "$(basename "$dir")" || status=1
+        bin/test_one_exercise "$dir" || status=1
     fi
 done
 
