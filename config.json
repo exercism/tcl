@@ -19,18 +19,10 @@
   "solution_pattern": "example[.]tcl",
   "test_pattern": "test",
   "files": {
-    "solution": [
-      "path/to/%{kebab_slug}.ext"
-    ],
-    "test": [
-      "path/to/%{kebab_slug}.ext"
-    ],
-    "example": [
-      "path/to/%{kebab_slug}.ext"
-    ],
-    "exemplar": [
-      "path/to/%{kebab_slug}.ext"
-    ]
+    "solution": ["./%{kebab_slug}.tcl"],
+    "test": ["./%{kebab_slug}.test"],
+    "example": [".meta/example.tcl"],
+    "exemplar": [".meta/exemplar.tcl"]
   },
   "exercises": {
     "concept": [],
