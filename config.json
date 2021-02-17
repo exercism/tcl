@@ -18,6 +18,12 @@
   "ignore_pattern": "example",
   "solution_pattern": "example[.]tcl",
   "test_pattern": "test",
+  "files": {
+    "solution": ["./%{kebab_slug}.tcl"],
+    "test": ["./%{kebab_slug}.test"],
+    "example": [".meta/example.tcl"],
+    "exemplar": [".meta/exemplar.tcl"]
+  },
   "exercises": {
     "concept": [],
     "practice": [
