@@ -2,9 +2,15 @@
   "blurb": "Convert a long phrase to its acronym",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
-    "example": []
+    "solution": [
+      "acronym.tcl"
+    ],
+    "test": [
+      "acronym.test"
+    ],
+    "example": [
+      ".meta/example.tcl"
+    ]
   },
   "source": "Julien Vanier",
   "source_url": "https://github.com/monkbroc"

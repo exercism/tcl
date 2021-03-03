@@ -2,9 +2,15 @@
   "blurb": "Pick the best hand(s) from a list of poker hands.",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
-    "example": []
+    "solution": [
+      "poker.tcl"
+    ],
+    "test": [
+      "poker.test"
+    ],
+    "example": [
+      ".meta/example.tcl"
+    ]
   },
   "source": "Inspired by the training course from Udacity.",
   "source_url": "https://www.udacity.com/course/viewer#!/c-cs212/"
