@@ -2,8 +2,14 @@
   "blurb": "Count the frequency of letters in texts using parallel computation.",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
-    "example": []
+    "solution": [
+      "parallel-letter-frequency.tcl"
+    ],
+    "test": [
+      "parallel-letter-frequency.test"
+    ],
+    "example": [
+      ".meta/example.tcl"
+    ]
   }
 }

@@ -2,9 +2,15 @@
   "blurb": "Implement a doubly linked list",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
-    "example": []
+    "solution": [
+      "linked-list.tcl"
+    ],
+    "test": [
+      "linked-list.test"
+    ],
+    "example": [
+      ".meta/example.tcl"
+    ]
   },
   "source": "Classic computer science topic"
 }

@@ -2,8 +2,14 @@
   "blurb": "Create a custom set type.",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
-    "example": []
+    "solution": [
+      "custom-set.tcl"
+    ],
+    "test": [
+      "custom-set.test"
+    ],
+    "example": [
+      ".meta/example.tcl"
+    ]
   }
 }

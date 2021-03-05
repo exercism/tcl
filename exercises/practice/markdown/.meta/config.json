@@ -2,8 +2,14 @@
   "blurb": "Refactor a Markdown parser",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
-    "example": []
+    "solution": [
+      "markdown.tcl"
+    ],
+    "test": [
+      "markdown.test"
+    ],
+    "example": [
+      ".meta/example.tcl"
+    ]
   }
 }

@@ -2,8 +2,14 @@
   "blurb": "Implement various kinds of error handling and resource management",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
-    "example": []
+    "solution": [
+      "error-handling.tcl"
+    ],
+    "test": [
+      "error-handling.test"
+    ],
+    "example": [
+      ".meta/example.tcl"
+    ]
   }
 }

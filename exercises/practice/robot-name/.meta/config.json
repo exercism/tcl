@@ -2,9 +2,15 @@
   "blurb": "Manage robot factory settings.",
   "authors": [],
   "files": {
-    "solution": [],
-    "test": [],
-    "example": []
+    "solution": [
+      "robot-name.tcl"
+    ],
+    "test": [
+      "robot-name.test"
+    ],
+    "example": [
+      ".meta/example.tcl"
+    ]
   },
   "source": "A debugging session with Paul Blackwell at gSchool."
 }
