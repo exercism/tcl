@@ -3,6 +3,8 @@ dir=$(cd "$(dirname "$0")" >/dev/null && pwd)
 
 FAILED=0
 
+cd "$dir/.."
+
 for exercise in exercises/*/*; do
     "$dir"/test_one_exercise "$exercise" || FAILED=1
 done
