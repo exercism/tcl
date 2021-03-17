@@ -1,34 +1,25 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 die() {
     printf "\033[31m%s\n\033[0m" "$1"
     exit 1
 }
 
-if [ "$#" -ne 1 ]; then
-    die "usage: $0 exerciseSlug" >&2
-fi
+usage() {
+    die "usage: $0 path/to/exercise" >&2
+}
+
+(( $# == 1 )) || usage
+[[ -d "$1" ]] || usage
+
 exercise=${1%/}
 exercise=${exercise##*/}
-
-echo
-echo "*** Test exercise $exercise:"
-echo
-
-FAILED=0
 solution=".meta/example.tcl"
 
 cd "$1" >/dev/null || die " - cannot cd $1"
 
-if [ ! -e "$solution" ]; then
-    FAILED=1
-    die " - $exercise: Missing ${solution}!"
-fi
-
-if [ ! -e "$exercise.test" ]; then
-    FAILED=1
-    die " - $exercise: Missing $exercise.test!"
-fi
+[[ -e "$solution" ]] || die " - $exercise: Missing ${solution}!"
+[[ -e "$exercise.test" ]] || die " - $exercise: Missing $exercise.test!"
 
 cleanup() {
     # restore exercise
@@ -36,8 +27,11 @@ cleanup() {
 }
 trap cleanup EXIT
 
-cp "$solution" "$exercise.tcl"
-tclsh "$exercise.test"
+echo
+echo "*** Test exercise $exercise:"
 echo
 
-[ "$FAILED" -eq 0 ] || exit 1
+cp "$solution" "$exercise.tcl"
+tclsh "$exercise.test" || exit 1
+
+echo
