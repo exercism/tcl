@@ -1,6 +1,11 @@
 {
   "blurb": "Output the lyrics to 'The Twelve Days of Christmas'",
-  "authors": [],
+  "authors": [
+    "glennj"
+  ],
+  "contributors": [
+    "iHiD"
+  ],
   "files": {
     "solution": [
       "twelve-days.tcl"

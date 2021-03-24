@@ -1,6 +1,12 @@
 {
   "blurb": "Detect saddle points in a matrix.",
-  "authors": [],
+  "authors": [
+    "glennj"
+  ],
+  "contributors": [
+    "iHiD",
+    "sshine"
+  ],
   "files": {
     "solution": [
       "saddle-points.tcl"

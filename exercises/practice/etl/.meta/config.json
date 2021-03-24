@@ -1,6 +1,12 @@
 {
   "blurb": "We are going to do the `Transform` step of an Extract-Transform-Load.",
-  "authors": [],
+  "authors": [
+    "glennj"
+  ],
+  "contributors": [
+    "iHiD",
+    "sshine"
+  ],
   "files": {
     "solution": [
       "etl.tcl"

@@ -1,6 +1,11 @@
 {
   "blurb": "A data structure that uses a single, fixed-size buffer as if it were connected end-to-end.",
-  "authors": [],
+  "authors": [
+    "glennj"
+  ],
+  "contributors": [
+    "iHiD"
+  ],
   "files": {
     "solution": [
       "circular-buffer.tcl"

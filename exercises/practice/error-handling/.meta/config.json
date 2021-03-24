@@ -1,6 +1,11 @@
 {
   "blurb": "Implement various kinds of error handling and resource management",
-  "authors": [],
+  "authors": [
+    "glennj"
+  ],
+  "contributors": [
+    "iHiD"
+  ],
   "files": {
     "solution": [
       "error-handling.tcl"

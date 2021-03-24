@@ -1,6 +1,11 @@
 {
   "blurb": "Generate musical scales, given a starting note and a set of intervals. ",
-  "authors": [],
+  "authors": [
+    "glennj"
+  ],
+  "contributors": [
+    "iHiD"
+  ],
   "files": {
     "solution": [
       "scale-generator.tcl"
