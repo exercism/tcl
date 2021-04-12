@@ -1,6 +1,11 @@
 {
   "blurb": "Convert a long phrase to its acronym",
-  "authors": [],
+  "authors": [
+    "glennj"
+  ],
+  "contributors": [
+    "sshine"
+  ],
   "files": {
     "solution": [
       "acronym.tcl"

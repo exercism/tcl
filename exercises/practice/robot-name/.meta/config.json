@@ -1,6 +1,11 @@
 {
   "blurb": "Manage robot factory settings.",
-  "authors": [],
+  "authors": [
+    "glennj"
+  ],
+  "contributors": [
+    "sshine"
+  ],
   "files": {
     "solution": [
       "robot-name.tcl"

@@ -1,6 +1,11 @@
 {
   "blurb": "Refactor a Markdown parser",
-  "authors": [],
+  "authors": [
+    "glennj"
+  ],
+  "contributors": [
+    "sshine"
+  ],
   "files": {
     "solution": [
       "markdown.tcl"

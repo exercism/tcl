@@ -1,6 +1,11 @@
 {
   "blurb": "Count the scored points on a Go board.",
-  "authors": [],
+  "authors": [
+    "glennj"
+  ],
+  "contributors": [
+    "sshine"
+  ],
   "files": {
     "solution": [
       "go-counting.tcl"

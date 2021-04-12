@@ -1,6 +1,11 @@
 {
   "blurb": "Randomly generate Dungeons & Dragons characters",
-  "authors": [],
+  "authors": [
+    "glennj"
+  ],
+  "contributors": [
+    "sshine"
+  ],
   "files": {
     "solution": [
       "dnd-character.tcl"

@@ -1,6 +1,11 @@
 {
   "blurb": "Diffie-Hellman key exchange.",
-  "authors": [],
+  "authors": [
+    "glennj"
+  ],
+  "contributors": [
+    "sshine"
+  ],
   "files": {
     "solution": [
       "diffie-hellman.tcl"

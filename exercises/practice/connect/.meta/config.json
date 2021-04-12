@@ -1,6 +1,11 @@
 {
   "blurb": "Compute the result for a game of Hex / Polygon",
-  "authors": [],
+  "authors": [
+    "glennj"
+  ],
+  "contributors": [
+    "sshine"
+  ],
   "files": {
     "solution": [
       "connect.tcl"

@@ -1,6 +1,11 @@
 {
   "blurb": "Write a Domain Specific Language similar to the Graphviz dot language",
-  "authors": [],
+  "authors": [
+    "glennj"
+  ],
+  "contributors": [
+    "sshine"
+  ],
   "files": {
     "solution": [
       "dot-dsl.tcl"

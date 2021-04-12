@@ -1,6 +1,11 @@
 {
   "blurb": "Write a robot simulator.",
-  "authors": [],
+  "authors": [
+    "glennj"
+  ],
+  "contributors": [
+    "sshine"
+  ],
   "files": {
     "solution": [
       "robot-simulator.tcl"

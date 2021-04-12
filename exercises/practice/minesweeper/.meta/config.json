@@ -1,6 +1,11 @@
 {
   "blurb": "Add the numbers to a minesweeper board",
-  "authors": [],
+  "authors": [
+    "glennj"
+  ],
+  "contributors": [
+    "sshine"
+  ],
   "files": {
     "solution": [
       "minesweeper.tcl"

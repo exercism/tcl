@@ -1,6 +1,11 @@
 {
   "blurb": "Given a year, report if it is a leap year.",
-  "authors": [],
+  "authors": [
+    "sshine"
+  ],
+  "contributors": [
+    "glennj"
+  ],
   "files": {
     "solution": [
       "leap.tcl"

@@ -1,6 +1,11 @@
 {
   "blurb": "Create a custom set type.",
-  "authors": [],
+  "authors": [
+    "glennj"
+  ],
+  "contributors": [
+    "sshine"
+  ],
   "files": {
     "solution": [
       "custom-set.tcl"

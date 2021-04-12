@@ -1,6 +1,11 @@
 {
   "blurb": "Implement basic list operations",
-  "authors": [],
+  "authors": [
+    "glennj"
+  ],
+  "contributors": [
+    "sshine"
+  ],
   "files": {
     "solution": [
       "list-ops.tcl"

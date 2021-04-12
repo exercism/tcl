@@ -1,6 +1,11 @@
 {
   "blurb": "Pick the best hand(s) from a list of poker hands.",
-  "authors": [],
+  "authors": [
+    "glennj"
+  ],
+  "contributors": [
+    "sshine"
+  ],
   "files": {
     "solution": [
       "poker.tcl"

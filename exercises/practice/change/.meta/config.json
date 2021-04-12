@@ -1,6 +1,11 @@
 {
   "blurb": "Correctly determine change to be given using the least number of coins",
-  "authors": [],
+  "authors": [
+    "glennj"
+  ],
+  "contributors": [
+    "sshine"
+  ],
   "files": {
     "solution": [
       "change.tcl"

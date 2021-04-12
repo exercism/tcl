@@ -1,6 +1,11 @@
 {
   "blurb": "Creating a zipper for a binary tree.",
-  "authors": [],
+  "authors": [
+    "glennj"
+  ],
+  "contributors": [
+    "sshine"
+  ],
   "files": {
     "solution": [
       "zipper.tcl"

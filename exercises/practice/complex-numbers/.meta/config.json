@@ -1,6 +1,11 @@
 {
   "blurb": "Implement complex numbers.",
-  "authors": [],
+  "authors": [
+    "glennj"
+  ],
+  "contributors": [
+    "sshine"
+  ],
   "files": {
     "solution": [
       "complex-numbers.tcl"

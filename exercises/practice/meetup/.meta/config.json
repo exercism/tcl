@@ -1,6 +1,11 @@
 {
   "blurb": "Calculate the date of meetups.",
-  "authors": [],
+  "authors": [
+    "glennj"
+  ],
+  "contributors": [
+    "sshine"
+  ],
   "files": {
     "solution": [
       "meetup.tcl"

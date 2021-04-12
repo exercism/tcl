@@ -1,6 +1,11 @@
 {
   "blurb": "Implement rational numbers.",
-  "authors": [],
+  "authors": [
+    "glennj"
+  ],
+  "contributors": [
+    "sshine"
+  ],
   "files": {
     "solution": [
       "rational-numbers.tcl"

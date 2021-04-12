@@ -1,6 +1,11 @@
 {
   "blurb": "Reparent a graph on a selected node",
-  "authors": [],
+  "authors": [
+    "glennj"
+  ],
+  "contributors": [
+    "sshine"
+  ],
   "files": {
     "solution": [
       "pov.tcl"

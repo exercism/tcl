@@ -1,6 +1,11 @@
 {
   "blurb": "Bob is a lackadaisical teenager. In conversation, his responses are very limited.",
-  "authors": [],
+  "authors": [
+    "glennj"
+  ],
+  "contributors": [
+    "sshine"
+  ],
   "files": {
     "solution": [
       "bob.tcl"

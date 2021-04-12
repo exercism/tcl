@@ -1,6 +1,11 @@
 {
   "blurb": "Write a function to solve alphametics puzzles.",
-  "authors": [],
+  "authors": [
+    "glennj"
+  ],
+  "contributors": [
+    "sshine"
+  ],
   "files": {
     "solution": [
       "alphametics.tcl"

@@ -1,6 +1,11 @@
 {
   "blurb": "The classical introductory exercise. Just say \"Hello, World!\"",
-  "authors": [],
+  "authors": [
+    "sshine"
+  ],
+  "contributors": [
+    "glennj"
+  ],
   "files": {
     "solution": [
       "hello-world.tcl"

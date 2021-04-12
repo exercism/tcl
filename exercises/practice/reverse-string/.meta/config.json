@@ -1,6 +1,11 @@
 {
   "blurb": "Reverse a string",
-  "authors": [],
+  "authors": [
+    "glennj"
+  ],
+  "contributors": [
+    "sshine"
+  ],
   "files": {
     "solution": [
       "reverse-string.tcl"

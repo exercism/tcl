@@ -1,6 +1,11 @@
 {
   "blurb": "Take input text and output it transposed.",
-  "authors": [],
+  "authors": [
+    "glennj"
+  ],
+  "contributors": [
+    "sshine"
+  ],
   "files": {
     "solution": [
       "transpose.tcl"

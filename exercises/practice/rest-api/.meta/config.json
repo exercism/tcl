@@ -1,6 +1,11 @@
 {
   "blurb": "Implement a RESTful API for tracking IOUs.",
-  "authors": [],
+  "authors": [
+    "glennj"
+  ],
+  "contributors": [
+    "sshine"
+  ],
   "files": {
     "solution": [
       "rest-api.tcl"
