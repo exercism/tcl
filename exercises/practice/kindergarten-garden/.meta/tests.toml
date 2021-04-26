@@ -1,71 +1,52 @@
-# This is an auto-generated file. Regular comments will be removed when this
-# file is regenerated. Regenerating will not touch any manually added keys,
-# so comments can be added in a "comment" key.
+[canonical-tests]
 
-[1fc316ed-17ab-4fba-88ef-3ae78296b692]
-description = "garden with single student"
-include = true
+# garden with single student
+"1fc316ed-17ab-4fba-88ef-3ae78296b692" = true
 
-[acd19dc1-2200-4317-bc2a-08f021276b40]
-description = "different garden with single student"
-include = true
+# different garden with single student
+"acd19dc1-2200-4317-bc2a-08f021276b40" = true
 
-[c376fcc8-349c-446c-94b0-903947315757]
-description = "garden with two students"
-include = true
+# garden with two students
+"c376fcc8-349c-446c-94b0-903947315757" = true
 
-[2d620f45-9617-4924-9d27-751c80d17db9]
-description = "second student's garden"
-include = true
+# second student's garden
+"2d620f45-9617-4924-9d27-751c80d17db9" = true
 
-[57712331-4896-4364-89f8-576421d69c44]
-description = "third student's garden"
-include = true
+# third student's garden
+"57712331-4896-4364-89f8-576421d69c44" = true
 
-[149b4290-58e1-40f2-8ae4-8b87c46e765b]
-description = "for Alice, first student's garden"
-include = true
+# for Alice, first student's garden
+"149b4290-58e1-40f2-8ae4-8b87c46e765b" = true
 
-[ba25dbbc-10bd-4a37-b18e-f89ecd098a5e]
-description = "for Bob, second student's garden"
-include = true
+# for Bob, second student's garden
+"ba25dbbc-10bd-4a37-b18e-f89ecd098a5e" = true
 
-[566b621b-f18e-4c5f-873e-be30544b838c]
-description = "for Charlie"
-include = true
+# for Charlie
+"566b621b-f18e-4c5f-873e-be30544b838c" = true
 
-[3ad3df57-dd98-46fc-9269-1877abf612aa]
-description = "for David"
-include = true
+# for David
+"3ad3df57-dd98-46fc-9269-1877abf612aa" = true
 
-[0f0a55d1-9710-46ed-a0eb-399ba8c72db2]
-description = "for Eve"
-include = true
+# for Eve
+"0f0a55d1-9710-46ed-a0eb-399ba8c72db2" = true
 
-[a7e80c90-b140-4ea1-aee3-f4625365c9a4]
-description = "for Fred"
-include = true
+# for Fred
+"a7e80c90-b140-4ea1-aee3-f4625365c9a4" = true
 
-[9d94b273-2933-471b-86e8-dba68694c615]
-description = "for Ginny"
-include = true
+# for Ginny
+"9d94b273-2933-471b-86e8-dba68694c615" = true
 
-[f55bc6c2-ade8-4844-87c4-87196f1b7258]
-description = "for Harriet"
-include = true
+# for Harriet
+"f55bc6c2-ade8-4844-87c4-87196f1b7258" = true
 
-[759070a3-1bb1-4dd4-be2c-7cce1d7679ae]
-description = "for Ileana"
-include = true
+# for Ileana
+"759070a3-1bb1-4dd4-be2c-7cce1d7679ae" = true
 
-[78578123-2755-4d4a-9c7d-e985b8dda1c6]
-description = "for Joseph"
-include = true
+# for Joseph
+"78578123-2755-4d4a-9c7d-e985b8dda1c6" = true
 
-[6bb66df7-f433-41ab-aec2-3ead6e99f65b]
-description = "for Kincaid, second to last student's garden"
-include = true
+# for Kincaid, second to last student's garden
+"6bb66df7-f433-41ab-aec2-3ead6e99f65b" = true
 
-[d7edec11-6488-418a-94e6-ed509e0fa7eb]
-description = "for Larry, last student's garden"
-include = true
+# for Larry, last student's garden
+"d7edec11-6488-418a-94e6-ed509e0fa7eb" = true
