@@ -13,16 +13,26 @@
   "version": 3,
   "online_editor": {
     "indent_style": "space",
-    "indent_size": 4
+    "indent_size": 4,
+    "ace_editor_language": "tcl",
+    "highlightjs_language": "tcl"
   },
   "ignore_pattern": "example",
   "solution_pattern": "example[.]tcl",
   "test_pattern": "test",
   "files": {
-    "solution": ["./%{kebab_slug}.tcl"],
-    "test": ["./%{kebab_slug}.test"],
-    "example": [".meta/example.tcl"],
-    "exemplar": [".meta/exemplar.tcl"]
+    "solution": [
+      "./%{kebab_slug}.tcl"
+    ],
+    "test": [
+      "./%{kebab_slug}.test"
+    ],
+    "example": [
+      ".meta/example.tcl"
+    ],
+    "exemplar": [
+      ".meta/exemplar.tcl"
+    ]
   },
   "exercises": {
     "concept": [],
