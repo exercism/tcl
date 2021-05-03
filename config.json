@@ -741,8 +741,7 @@
           "callbacks",
           "lists",
           "loops"
-        ],
-        "status": "deprecated"
+        ]
       },
       {
         "slug": "two-bucket",
