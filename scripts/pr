@@ -15,11 +15,11 @@ declare -A seen=()
 status=0
 
 for file; do
-    dir=$(dirname "$file")
-
-    # The example.tcl script lives in the exercises/practice/[exercise]/.meta
-    # directory.  We want to strip that off:
-    dir=${dir%/.meta}
+    # find the first 3 parts of the path.
+    # e.g. if $file is "exercises/practice/hello-world/.meta/example.tcl
+    # then $dir should be "exercises/practice/hello-world" 
+    IFS=/ read -ra path <<<"$file"
+    dir=$(IFS="/"; echo "${path[*]:0:3}")
 
     if [[ ! -v seen["$dir"] ]]; then
         seen["$dir"]=1
