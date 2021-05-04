@@ -2,4 +2,3 @@
 .DS_Store
 bin/configlet
 bin/configlet.exe
-bin/canonical_data_syncer
