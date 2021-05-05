@@ -58,6 +58,7 @@ if {$::argv0 eq [info script]} {
         luhn-16 "055b 444 285"        false "using ascii value for non-doubled non-digit isn't allowed"
         luhn-17 ":9"                  false "using ascii value for doubled non-digit isn't allowed"
         luhn-18 "1 2345 6789 1234 5678 9012" false "invalid long number with an even remainder"
+        luhn-19 "59%59"               false "non-numeric, non-space char in the middle with a sum that's divisible by 10 isn't allowed"
     }
 
     foreach {name input result description} $cases {
