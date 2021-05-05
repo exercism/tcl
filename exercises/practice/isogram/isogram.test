@@ -78,6 +78,9 @@ if {$::argv0 eq [info script]} {
 
         isogram-13 "same first and last characters"
             "angola" false
+
+        isogram-14 "word with duplicated character and with two hyphens"
+            "up-to-date" false
     }
 
     foreach {name description input result} $cases {
