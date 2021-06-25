@@ -1,0 +1,22 @@
+{
+  "blurb": "Solve the zebra puzzle.",
+  "authors": [
+    "glennj"
+  ],
+  "contributors": [
+    "sshine"
+  ],
+  "files": {
+    "solution": [
+      "zebra-puzzle.tcl"
+    ],
+    "test": [
+      "zebra-puzzle.test"
+    ],
+    "example": [
+      ".meta/example.tcl"
+    ]
+  },
+  "source": "Wikipedia",
+  "source_url": "http://en.wikipedia.org/wiki/Zebra_Puzzle"
+}
