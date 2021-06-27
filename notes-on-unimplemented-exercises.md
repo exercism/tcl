@@ -20,5 +20,3 @@
     - merely unimplemented
 * [tree-building](https://github.com/exercism/problem-specifications/tree/master/exercises/tree-building)
     - a tedious-to-create refactoring exercise
-* [zebra-puzzle](https://github.com/exercism/problem-specifications/tree/master/exercises/zebra-puzzle)
-    - merely unimplemented

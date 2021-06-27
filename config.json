@@ -1576,6 +1576,20 @@
           "algorithms",
           "games"
         ]
+      },
+      {
+        "slug": "zebra-puzzle",
+        "name": "Zebra Puzzle",
+        "uuid": "f1bc97a0-1f42-4fe3-aa58-ca34fcf54b00",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 9,
+        "topics": [
+          "algorithms",
+          "conditionals",
+          "games",
+          "logic"
+        ]
       }
     ]
   },
