@@ -19,9 +19,6 @@
   "test_runner": {
     "average_run_time": 1.0
   },
-  "ignore_pattern": "example",
-  "solution_pattern": "example[.]tcl",
-  "test_pattern": "test",
   "files": {
     "solution": [
       "./%{kebab_slug}.tcl"
