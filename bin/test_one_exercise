@@ -32,6 +32,9 @@ echo "*** Test exercise $exercise:"
 echo
 
 cp "$solution" "$exercise.tcl"
-tclsh "$exercise.test" || exit 1
-
+output=$( RUN_ALL=yes tclsh "$exercise.test" )
+echo "$output"
 echo
+
+# exit non-zero for any failures
+grep -Eq $'Failed\t0$' <<<"$output"

@@ -1,14 +1,12 @@
-#!/bin/sh
+#!/usr/bin/env bash
 dir=$(cd "$(dirname "$0")" >/dev/null && pwd)
-
-FAILED=0
-
 cd "$dir/.."
 
-for exercise in exercises/*/*; do
-    "$dir"/test_one_exercise "$exercise" || FAILED=1
+shopt -s nullglob
+status=0
+
+for ex in exercises/concept/* exercises/practice/*; do
+    "$dir"/test_one_exercise "$ex" || status=1
 done
 
-if [ "$FAILED" -eq 1 ]; then
-    exit 1
-fi
+exit "$status"
