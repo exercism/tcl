@@ -24,7 +24,7 @@ proc dictionaryMatch {expected actual} {
 }
 customMatch dictionary dictionaryMatch
 
-configure -verbose {body error usec}
+# configure -verbose {body error usec}
 
 ############################################################
 source "alphametics.tcl"
