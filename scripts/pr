@@ -21,7 +21,7 @@ for file; do
     IFS=/ read -ra path <<<"$file"
     dir=$(IFS="/"; echo "${path[*]:0:3}")
 
-    [[ $dir == exercises/* ]] || continue
+    [[ $dir == exercises/@(practice|concept)/* ]] || continue
 
     if [[ ! -v seen["$dir"] ]]; then
         seen["$dir"]=1
