@@ -1,91 +1,53 @@
 #!/usr/bin/env tclsh
 package require tcltest
 namespace import ::tcltest::*
+source testHelpers.tcl
+
+############################################################
 source "grade-school.tcl"
 
-proc fail_fast {} {
-    return [expr {
-        ![info exists ::env(RUN_ALL)]
-        || [string is boolean -strict $::env(RUN_ALL)]
-        && !$::env(RUN_ALL)
-    }]
+test grade-school-1.1 "Adding a student adds them to the sorted roster" -body {
+    roster {{Aimee 2}}
+} -returnCodes ok -match orderedLists -result {2 Aimee}
+
+skip grade-school-1.2
+test grade-school-1.2 "Adding more student adds them to the sorted roster" -body {
+    roster {{Blair 2} {James 2} {Paul 2}}
+} -returnCodes ok -match orderedLists -result {2 {Blair James Paul}}
+
+skip grade-school-1.3
+test grade-school-1.3 "Adding students to different grades adds them to the same sorted roster" -body {
+    roster {{Chelsea 3} {Logan 7}}
+} -returnCodes ok -match orderedLists -result {3 Chelsea 7 Logan}
+
+skip grade-school-1.4
+test grade-school-1.4 "Roster returns an empty list if there are no students enrolled" -body {
+    roster {}
+} -returnCodes ok -match orderedLists -result {}
+
+skip grade-school-1.5
+test grade-school-1.5 "Student names with grades are displayed in the same sorted roster" -body {
+    roster {{Peter 2} {Anna 1} {Barb 1} {Zoe 2} {Alex 2} {Jim 3} {Charlie 1}}
+} -returnCodes ok -match orderedLists -result {
+    1 {Anna Barb Charlie}
+    2 {Alex Peter Zoe}
+    3 Jim
 }
 
-proc failed {} {
-    return [expr {$::tcltest::numTests(Failed) > 0}]
-}
 
-if {[fail_fast]} {
-    proc test args {
-        if {[failed]} {::tcltest::configure -skip *}
-        uplevel [list ::tcltest::test {*}$args]
-    }
-}
+skip grade-school-2.1
+test grade-school-2.1 "Grade returns the students in that grade in alphabetical order" -body {
+    grade {{Franklin 5} {Bradley 5} {Jeff 1}} 5 
+} -returnCodes ok -match orderedLists -result {Bradley Franklin}
 
-proc cleanupTests {} {
-    set failed [failed]
-    uplevel 1 ::tcltest::cleanupTests
-    if {$failed} {exit 1}
-}
+skip grade-school-2.2
+test grade-school-2.2 "Grade returns an empty list if there are no students in that grade" -body {
+    grade {} 1 
+} -returnCodes ok -match orderedLists -result {}
 
-# compare for the same elements in the same order
-proc orderedListsMatch {expected actual} {
-    if {[llength $expected] != [llength $actual]} {
-        return false
-    }
-    foreach e $expected a $actual {
-        if {$e != $a} {
-            return false
-        }
-    }
-    return true
-}
-customMatch orderedLists orderedListsMatch
+skip grade-school-2.3
+test grade-school-2.3 "A student can't be in two different grades" -body {
+    grade {{Aimee 2} {Aimee 1}} 2
+} -returnCodes ok -match orderedLists -result {}
 
-if {$::argv0 eq [info script]} {
-
-    set cases {
-        grade-school-1.1 "Adding a student adds them to the sorted roster" \
-            {{Aimee 2}} \
-            {2 Aimee}
-        grade-school-1.2 "Adding more student adds them to the sorted roster" \
-            {{Blair 2} {James 2} {Paul 2}} \
-            {2 {Blair James Paul}}
-        grade-school-1.3 "Adding students to different grades adds them to the same sorted roster" \
-            {{Chelsea 3} {Logan 7}} \
-            {3 Chelsea 7 Logan}
-        grade-school-1.4 "Roster returns an empty list if there are no students enrolled" \
-            {} \
-            {}
-        grade-school-1.5 "Student names with grades are displayed in the same sorted roster" \
-            {{Peter 2} {Anna 1} {Barb 1} {Zoe 2} {Alex 2} {Jim 3} {Charlie 1}} \
-            {1 {Anna Barb Charlie} 2 {Alex Peter Zoe} 3 Jim}
-    }
-    foreach {name description students expected} $cases {
-        test $name $description -body {
-            roster $students
-        } -returnCodes ok -match orderedLists -result $expected
-    }
-
-    set cases {
-        grade-school-2.1 "Grade returns the students in that grade in alphabetical order" \
-            {{Franklin 5} {Bradley 5} {Jeff 1}} \
-            5 \
-            {Bradley Franklin}
-        grade-school-2.2 "Grade returns an empty list if there are no students in that grade" \
-            {} \
-            1 \
-            {}
-        grade-school-2.3 "A student can't be in two different grades" \
-            {{Aimee 2} {Aimee 1}} \
-            2 \
-            {}
-    }
-    foreach {name description students grade expected} $cases {
-        test $name $description -body {
-            grade $students $grade
-        } -returnCodes ok -match orderedLists -result $expected
-    }
-
-    cleanupTests
-}
+cleanupTests
