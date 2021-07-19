@@ -1,49 +1,38 @@
 #!/usr/bin/env tclsh
 package require tcltest
 namespace import ::tcltest::*
+source testHelpers.tcl
+
+############################################################
 source "reverse-string.tcl"
 
-proc fail_fast {} {
-    return [expr {
-        ![info exists ::env(RUN_ALL)]
-        || [string is boolean -strict $::env(RUN_ALL)]
-        && !$::env(RUN_ALL)
-    }]
-}
+test reverse-string-1 "an empty string" -body {
+    stringReverse ""
+} -returnCodes ok -result ""
 
-proc failed {} {
-    return [expr {$::tcltest::numTests(Failed) > 0}]
-}
+skip reverse-string-2
+test reverse-string-2 "a word" -body {
+    stringReverse "robot"
+} -returnCodes ok -result "tobor"
 
-if {[fail_fast]} {
-    proc test args {
-        if {[failed]} {::tcltest::configure -skip *}
-        uplevel [list ::tcltest::test {*}$args]
-    }
-}
+skip reverse-string-3
+test reverse-string-3 "a capitalized word" -body {
+    stringReverse "Ramen"
+} -returnCodes ok -result "nemaR"
 
-proc cleanupTests {} {
-    set failed [failed]
-    uplevel 1 ::tcltest::cleanupTests
-    if {$failed} {exit 1}
-}
+skip reverse-string-4
+test reverse-string-4 "a sentence with punctuation" -body {
+    stringReverse "I'm hungry!"
+} -returnCodes ok -result "!yrgnuh m'I"
 
-if {$::argv0 eq [info script]} {
+skip reverse-string-5
+test reverse-string-5 "a palindrome" -body {
+    stringReverse "racecar"
+} -returnCodes ok -result "racecar"
 
-    set cases {
-        reverse-string-1 "an empty string" "" ""
-        reverse-string-2 "a word" "robot" "tobor"
-        reverse-string-3 "a capitalized word" "Ramen" "nemaR"
-        reverse-string-4 "a sentence with punctuation" "I'm hungry!" "!yrgnuh m'I"
-        reverse-string-5 "a palindrome" "racecar" "racecar"
-        reverse-string-6 "an even-sized word" "drawer" "reward"
-    }
+skip reverse-string-6
+test reverse-string-6 "an even-sized word" -body {
+    stringReverse "drawer"
+} -returnCodes ok -result "reward"
 
-    foreach {name description input output} $cases {
-        test $name $description -body {
-            stringReverse $input
-        } -returnCodes ok -result $output
-    }
-
-    cleanupTests
-}
+cleanupTests
