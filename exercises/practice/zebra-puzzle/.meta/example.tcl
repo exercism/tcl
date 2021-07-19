@@ -1,4 +1,4 @@
-lappend auto_path .
+lappend auto_path lib
 package require permutations
 
 interp alias {} permutations {} ::permutations::permutationsOfSize {1 2 3 4 5} 5
