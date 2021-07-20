@@ -18,12 +18,11 @@ jobs:
 
       - name: Run tests for changed/added exercises
         run: |
-          PULL_REQUEST_URL=$(jq -r ".pull_request.url" "$GITHUB_EVENT_PATH")
-          n=$(curl --silent --url $"${PULL_REQUEST_URL}" --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' | jq -r '.changed_files')
-          {
-            for ((i=1; n > 0; i++, n-=100)); do
-              printf -v url '%s/files?per_page=100&page=%d' "$PULL_REQUEST_URL" $i
-              curl --silent --url "$url" --header 'authorization: Bearer ${{ secrets.GITHUB_TOKEN }}' | \
-              jq -rc '.[] | select(.status == "added" or .status == "modified") | select(.filename | match("\\.(md|tcl|test)$")) | .filename'
-            done
-          } | xargs -r bash scripts/pr
+          pr_endpoint=$(jq -r '"repos/\(.repository.full_name)/pulls/\(.pull_request.number)"' "$GITHUB_EVENT_PATH")
+          gh auth login --with-token <<< "${{ secrets.GITHUB_TOKEN }}"
+          gh api "$pr_endpoint/files" --paginate --jq '
+            .[] | 
+              select(.status == "added" or .status == "modified") |
+              select(.filename | match("\\.(md|tcl|test)$")) |
+              .filename
+          ' | xargs -r bash scripts/pr
