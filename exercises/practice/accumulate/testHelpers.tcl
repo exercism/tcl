@@ -2,9 +2,12 @@
 # Override some tcltest procs with additional functionality
 
 # allow an environment variable to override `skip`
-proc skip {args} {
-    if {!([info exists ::env(RUN_ALL)] && $::env(RUN_ALL))} {
-        uplevel 1 [list ::tcltest::skip {*}$args]
+proc skip {patternList} {
+    if { [info exists ::env(RUN_ALL)]
+         && [string is boolean -strict $::env(RUN_ALL)]
+         && $::env(RUN_ALL)
+    } then return else {
+        uplevel 1 [list ::tcltest::skip $patternList]
     }
 }
 
