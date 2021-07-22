@@ -32,6 +32,7 @@ echo "*** Test exercise $exercise:"
 echo
 
 cp "$solution" "$exercise.tcl"
-tclsh "$exercise.test" || exit 1
+
+RUN_ALL=yes tclsh "$exercise.test" || exit 1
 
 echo

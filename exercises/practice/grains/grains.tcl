@@ -1,7 +1,16 @@
-proc square {square} {
-    throw {NOT_IMPLEMENTED} "Implement this procedure."
-}
+namespace eval grains {
+    namespace export square total
 
-proc total {} {
-    throw {NOT_IMPLEMENTED} "Implement this procedure."
+    # This turns the namespace name "grains" into
+    # the _command_ "grains", with subcommands
+    # "square" and "total":
+    namespace ensemble create
+
+    proc square {square} {
+        throw {NOT_IMPLEMENTED} "Implement this procedure."
+    }
+
+    proc total {} {
+        throw {NOT_IMPLEMENTED} "Implement this procedure."
+    }
 }
