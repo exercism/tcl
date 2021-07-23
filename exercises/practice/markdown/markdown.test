@@ -35,10 +35,30 @@ test md-6 "with h2 header level" -body {
     parse "## This will be an h2"
 } -returnCodes ok -result "<h2>This will be an h2</h2>"
 
+skip md-6b
+test md-6b "with h3 header level" -body {
+    parse "### This will be an h3"
+} -returnCodes ok -result "<h3>This will be an h3</h3>"
+
+skip md-6c
+test md-6c "with h4 header level" -body {
+    parse "#### This will be an h4"
+} -returnCodes ok -result "<h4>This will be an h4</h4>"
+
+skip md-6d
+test md-6d "with h5 header level" -body {
+    parse "##### This will be an h5"
+} -returnCodes ok -result "<h5>This will be an h5</h5>"
+
 skip md-7
 test md-7 "with h6 header level" -body {
     parse "###### This will be an h6"
 } -returnCodes ok -result "<h6>This will be an h6</h6>"
+
+skip md-7b
+test md-7b "with h7 header level" -body {
+    parse "####### This will not be an h7"
+} -returnCodes ok -result "<p>####### This will not be an h7</p>"
 
 skip md-8
 test md-8 "unordered lists" -body {
