@@ -1595,32 +1595,32 @@
     {
       "title": "General Purpose",
       "content": "Tcl is used for web applications, desktop GUIs, testing and automation, and more.",
-      "icon": ""
+      "icon": "general-purpose"
     },
     {
       "title": "Dynamic Language",
       "content": "Tcl is a high-level language well suited for rapid development and prototyping.",
-      "icon": ""
+      "icon": "dynamically-typed"
     },
     {
       "title": "Easy to Learn",
       "content": "The entire syntax of Tcl is described in just 12 rules.",
-      "icon": ""
+      "icon": "easy"
     },
     {
       "title": "Multi-paradigm",
       "content": "Procedural, OO, functional; builtin event loop for network programming and asynchronous file I/O.",
-      "icon": ""
+      "icon": "multi-paradigm"
     },
     {
       "title": "Simple Concurrency",
       "content": "Coroutines allow asynchronous interleaved tasks to be written in a sequential style.",
-      "icon": ""
+      "icon": "concurrency"
     },
     {
       "title": "Mature but Evolving",
       "content": "Continuous, active development since the early 1990's.",
-      "icon": ""
+      "icon": "evolving"
     }
   ],
   "tags": [
