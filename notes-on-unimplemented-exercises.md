@@ -12,8 +12,8 @@
     - Tcl does not have immutable data
 * [micro-blog](https://github.com/exercism/problem-specifications/tree/master/exercises/micro-blog)
     - Default builds of tclsh cannot handle emojis
-    - see [Unicode and UTF-8](https://blog.tcl.tk/515) in the Tcl wiki, particularly
-      the discussion on AndroWish
+    - see [Unicode and UTF-8](https://wiki.tcl-lang.org/page/Unicode+and+UTF-8)
+      in the Tcl wiki, particularly the discussion on AndroWish
 * [paasio](https://github.com/exercism/problem-specifications/tree/master/exercises/paasio)
     - merely unimplemented
 * [sgf-parsing](https://github.com/exercism/problem-specifications/tree/master/exercises/sgf-parsing)
