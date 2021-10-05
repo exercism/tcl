@@ -81,22 +81,27 @@ test luhn-15 "input digit 9 is correctly converted to output digit 9" -body {
 } -returnCodes ok -match boolean -result true
 
 skip luhn-16
-test luhn-16 "using ascii value for non-doubled non-digit isn't allowed" -body {
+test luhn-16 "valid luhn with an odd number of digits and non zero first digit" -body {
+    luhn "109"
+} -returnCodes ok -match boolean -result true
+
+skip luhn-17
+test luhn-17 "using ascii value for non-doubled non-digit isn't allowed" -body {
     luhn "055b 444 285"
 } -returnCodes ok -match boolean -result false
 
-skip luhn-17
-test luhn-17 "using ascii value for doubled non-digit isn't allowed" -body {
+skip luhn-18
+test luhn-18 "using ascii value for doubled non-digit isn't allowed" -body {
     luhn ":9"
 } -returnCodes ok -match boolean -result false
 
-skip luhn-18
-test luhn-18 "invalid long number with an even remainder" -body {
+skip luhn-19
+test luhn-19 "invalid long number with an even remainder" -body {
     luhn "1 2345 6789 1234 5678 9012"
 } -returnCodes ok -match boolean -result false
 
-skip luhn-19
-test luhn-19 "non-numeric, non-space char in the middle with a sum that's divisible by 10 isn't allowed" -body {
+skip luhn-20
+test luhn-20 "non-numeric, non-space char in the middle with a sum that's divisible by 10 isn't allowed" -body {
     luhn "59%59"
 } -returnCodes ok -match boolean -result false
 
