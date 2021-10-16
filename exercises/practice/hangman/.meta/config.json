@@ -1,0 +1,19 @@
+{
+  "blurb": "Implement the hangman game using event-driven socket programming.",
+  "authors": [
+    "glennj"
+  ],
+  "contributors": [
+  ],
+  "files": {
+    "solution": [
+      "hangman.tcl"
+    ],
+    "test": [
+      "hangman.test"
+    ],
+    "example": [
+      ".meta/example.tcl"
+    ]
+  }
+}
