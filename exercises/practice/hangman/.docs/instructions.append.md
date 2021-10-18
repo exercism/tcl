@@ -1,7 +1,7 @@
 # New approach to the exercise
 
-Please ignore the part regarding FRP library, a third party library is not
-required for this exercise.  This exercise focuses on event-oriented
+Please ignore the part regarding an FRP library, a third party library is
+not required for this exercise.  This exercise focuses on event-driven
 programming using callbacks and Tcl's event loop.
 
 You are required to construct a TCP server and a domain-specific protocol.
@@ -10,9 +10,11 @@ The test script implements the client that sends commands to the server.
 
 The protocol commands to implement are:
 
-- `STATUS` to return the currnet state of the game. The response will be a
-  three-elememt list: the number of bad guesses remaining, the word masked
-  with underscores for unguessed letters, and a status field ("ongoing", "win"
+- `STATUS` to return the current state of the game. The response will be a
+  three-elememt list:
+    1) the number of bad guesses remaining,
+    2) the word masked with underscores for unguessed letters, and
+    3) a status field (one of "ongoing", "win"
   or "lose")
 - `GUESS x` where `x` is a letter to guess. The server will respond with the
   status list after each guess.
