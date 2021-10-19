@@ -19,57 +19,61 @@ proc currentStatus {} {
     return [list $::guesses [mask] $::state]
 }
 
-proc guess {sock letter} {
+proc isGameOver {} {
+    return [expr {$::state ne "ongoing"}]
+}
+
+proc guess {letter} {
     global maskMap guesses word state
 
     if {![dict exists $maskMap $letter] ||
-        [string first $letter $word] == -1 ||
-        [dict get $maskMap $letter] eq $letter
+        [dict get $maskMap $letter] eq $letter ||
+        [string first $letter $word] == -1
     } {
-        # not a letter, or bad guess, or already guessed it
+        # not a letter, or already guessed it, or bad guess
         incr guesses -1
     } else {
         # register successful guess
         dict set maskMap $letter $letter
     }
 
-    set prevState $state
     if {[mask] eq $word} {
         set state win
     } elseif {$guesses == 0} {
         set state lose
     }
-
-    set status [currentStatus]
-    puts $sock $status
-
-    if {$prevState ne $state} {
-        # setting this variable breaks out of the event loop
-        set ::done yes
-    }
 }
 
-proc handleInput {sock} {
+proc handleIO {sock} {
     if {[eof $sock] || [catch {gets $sock line}] != 0} {
         puts "eof or can't read a line on $sock"
         close $sock
         return
     }
 
-    set words [split $line]
-    set cmd [lindex $words 0]
+    # The `split` command doesn't handle _sequences_ of whitespace.
+    # This regex matches a word optionally followed by whitespace
+    # and a word character
+    set re { (\w+) (?: \s+ (\w) )? }
 
-    switch -exact -- [string toupper $cmd] {
+    if {![regexp -expanded $re [string toupper $line] -> cmd letter]} {
+        puts $sock [list ERROR "no command given"]
+        return
+    }
+
+    switch -exact -- $cmd {
         SHUTDOWN {
-            exit
+            set ::done yes
         }
         STATUS {
             puts $sock [currentStatus]
         }
         GUESS {
-            set guess [string trimleft [lindex $words 1]]
-            set letter [string toupper [string index $guess 0]]
-            guess $sock $letter
+            guess $letter
+            puts $sock [currentStatus]
+            if {[isGameOver]} {
+                set ::done yes
+            }
         }
         default {
             puts $sock [list ERROR "unknown subcommand $cmd"]
@@ -79,16 +83,16 @@ proc handleInput {sock} {
 
 proc incomingConnection {sock addr port} {
     fconfigure $sock -buffering line
-    fileevent $sock readable [list handleInput $sock]
+    fileevent $sock readable [list handleIO $sock]
 }
 
 proc startServer {port} {
     set s [socket -server incomingConnection $port]
+    # enter the event loop
     vwait done
 }
 
-# read command line arguments
-lassign $argv word port
-set word [string toupper $word]
+set word [string toupper [lindex $argv 0]]
+set port [lindex $argv 1]
 
 startServer $port

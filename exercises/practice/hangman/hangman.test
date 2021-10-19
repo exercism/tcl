@@ -5,12 +5,16 @@ source testHelpers.tcl
 
 ############################################################
 proc launchGame {word} {
+    # edit if this port number is in use
+    set port 48121
+
     # start the server
-    exec tclsh hangman.tcl $word 54323 &
+    exec tclsh hangman.tcl $word $port &
     after 100
+
     # and initiate the client connection
     global sock
-    set sock [socket localhost 54323]
+    set sock [socket localhost $port]
     fconfigure $sock -buffering line
 }
 
