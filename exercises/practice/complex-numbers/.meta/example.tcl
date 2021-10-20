@@ -50,3 +50,27 @@ oo::class create ComplexNumber {
         return [$x mul $y]
     }
 }
+
+# `expr` functions that take a real and a complex, in some order
+namespace eval ::tcl::mathfunc {
+    proc cr_add {a b} {_complex_operation add $a $b}
+    proc cr_sub {a b} {_complex_operation sub $a $b}
+    proc cr_mul {a b} {_complex_operation mul $a $b}
+    proc cr_div {a b} {_complex_operation div $a $b}
+
+    proc _complex_operation {op a b} {
+        _coerce_to_complex a
+        _coerce_to_complex b
+        return [$a $op $b]
+    }
+
+    proc _coerce_to_complex {varName} {
+        upvar 1 $varName var
+        if {[string is double -strict $var]} {
+            set var [ComplexNumber new $var 0]
+        } 
+        if {![info object isa typeof $var ComplexNumber]} {
+            error "expected floating-point number or ComplexNumber but got \"$var\""
+        }
+    }
+}
