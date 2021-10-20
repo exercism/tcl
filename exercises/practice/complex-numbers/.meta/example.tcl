@@ -68,7 +68,7 @@ namespace eval ::tcl::mathfunc {
         upvar 1 $varName var
         if {[string is double -strict $var]} {
             set var [ComplexNumber new $var 0]
-        } 
+        }
         if {![info object isa typeof $var ComplexNumber]} {
             error "expected floating-point number or ComplexNumber but got \"$var\""
         }
