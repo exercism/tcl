@@ -14,7 +14,7 @@ copyright 2003 © Brent Welch, Ken Jones
 
 ## Installation
 
-Some Tcl distributions do not include Tcl's Thread package by default: it may need to be install separately. 
+Some Tcl distributions do not include Tcl's Thread package by default: it may need to be install separately.
 Verify with
 ```bash
 $ echo 'package require Thread' | tclsh
