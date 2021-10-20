@@ -9,19 +9,12 @@ set maskMap {
 }
 set guesses 9
 set word ""
-set port -1
 
-proc mask {} {
-    return [string map $::maskMap $::word]
-}
+proc mask {} {string map $::maskMap $::word}
 
-proc currentStatus {} {
-    return [list $::guesses [mask] $::state]
-}
+proc currentStatus {} {list $::guesses [mask] $::state}
 
-proc isGameOver {} {
-    return [expr {$::state ne "ongoing"}]
-}
+proc isGameOver {} {expr {$::state ne "ongoing"}}
 
 proc guess {letter} {
     global maskMap guesses word state
@@ -82,17 +75,22 @@ proc handleIO {sock} {
 }
 
 proc incomingConnection {sock addr port} {
-    fconfigure $sock -buffering line
-    fileevent $sock readable [list handleIO $sock]
+    puts "incoming connection from $addr:$port"
+    chan configure $sock -buffering line
+    chan event $sock readable [list handleIO $sock]
 }
 
-proc startServer {port} {
-    set s [socket -server incomingConnection $port]
+proc startServer {} {
+    # use port 0 to allow Tcl to find an unused port
+    set s [socket -server incomingConnection 0]
+    # communicate the port number in use
+    set sockInfo [chan configure $s -sockname]
+    set ::env(HANGMAN_PORT) [lindex $sockInfo 2]
+    puts "server started on port $::env(HANGMAN_PORT)"
     # enter the event loop
     vwait done
 }
 
 set word [string toupper [lindex $argv 0]]
-set port [lindex $argv 1]
 
-startServer $port
+startServer

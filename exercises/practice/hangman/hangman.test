@@ -1,27 +1,36 @@
 #!/usr/bin/env tclsh
 package require tcltest
 namespace import ::tcltest::*
+package require Thread
 source testHelpers.tcl
 
 ############################################################
 proc launchGame {word} {
-    # edit if this port number is in use
-    set port 48121
+    global serverThread env
 
-    # start the server
-    exec tclsh hangman.tcl $word $port &
+    # Start the server in a separate thread:
+    # To avoid port collisions, we don't hardcode a port number here.
+    # Make sure your code sets `env(HANGMAN_PORT)` with the port 
+    # your server is running on!
+    set serverThread [thread::create]
+    thread::send $serverThread [list set argv $word]
+    thread::send -async $serverThread "source hangman.tcl"
     after 100
+    if {![info exists env(HANGMAN_PORT)]} {
+        error "Can't find the port for the Hangman server!"
+    }
 
     # and initiate the client connection
     global sock
-    set sock [socket localhost $port]
+    set sock [socket localhost $env(HANGMAN_PORT)]
     fconfigure $sock -buffering line
 }
 
 proc quitGame {} {
-    global sock
+    global sock serverThread
     puts $sock "shutdown"
     close $sock
+    thread::release $serverThread
 }
 
 ############################################################

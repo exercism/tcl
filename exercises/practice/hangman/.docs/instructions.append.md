@@ -5,8 +5,10 @@ not required for this exercise.  This exercise focuses on event-driven
 programming using callbacks and Tcl's event loop.
 
 You are required to construct a TCP server and a domain-specific protocol.
-This server is launched with the word to guess and a port number. 
-The test script implements the client that sends commands to the server.
+This server is launched with the word to guess.  The test script implements
+the client that sends commands to the server.
+
+## Domain-specific protocol
 
 The protocol commands to implement are:
 
@@ -22,6 +24,15 @@ The protocol commands to implement are:
   exit after a win or loss.
 
 The server should be able to handle these commands case-insensitively.
+
+## What port does the server use?
+
+Start your server using **port number 0**: Tcl will find an unused port, so
+we don't have to hardcode a port number in the test script.  All
+interpreters running in a process (including threads) share the same
+environment, so the server can communicate its port back to the test script
+using the global `env` array. There's an example in the initial hangman.tcl
+file.
 
 ## Hints
 
