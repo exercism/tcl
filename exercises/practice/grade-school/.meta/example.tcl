@@ -1,39 +1,42 @@
-proc roster {students} {
-    set names [dict create]
+namespace eval school {
+    namespace export reset add grade roster
+    namespace ensemble create
 
-    # transform a list of {name grade} pairs into a dict of {name grade}
-    foreach student $students {
-        lassign $student name grade
-        dict lappend names $name $grade 
+    variable classes
+
+    proc reset {} {
+        variable classes
+        set classes {}
     }
 
-    # ignoring students in multiple grades,
-    # transpose into dict of {grade names}
-    set roster [dict create]
-    dict for {name grades} $names {
-        if {[llength $grades] == 1} {
-            dict lappend roster $grades $name
+    proc add {students} {
+        variable classes
+        return [lmap student $students {
+            lassign $student name grade
+            if {$name in [roster]} {
+                string cat "false"
+            } else {
+                dict lappend classes $grade $name
+                string cat "true"
+            }
+        }]
+    }
+
+    proc grade {desiredGrade} {
+        variable classes
+        return [try {
+            lsort [dict get $classes $desiredGrade]
+        } on error {} {
+            list
+        }]
+    }
+
+    proc roster {} {
+        variable classes
+        set roster {}
+        foreach grade [lsort -integer [dict keys $classes]] {
+            lappend roster {*}[grade $grade]
         }
+        return $roster
     }
-
-    # sort the names for each grade
-    foreach grade [dict keys $roster] {
-        dict update roster $grade names {
-            set names [lsort $names]
-        }
-    }
-
-    return [lsort -integer -stride 2 $roster]
-}
-
-proc grade {students grade} {
-    set school [roster $students]
-    try {
-        return [dict get $school $grade]
-    } on error {} {
-        return {}
-    }
-
-    # Tcl 8.7 will have a `dict getwithdefault` command
-    # https://tcl.tk/man/tcl8.7/TclCmd/dict.htm
 }
