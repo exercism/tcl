@@ -223,5 +223,79 @@ test complex-9.4 "Exponential of a number with real and imaginary part" -body {
     $d toList
 } -returnCodes ok -match pairOfFloats -result {-2 0}
 
+############################################################
+# Operations between real numbers and complex numbers.
+#
+# These tests require you to write new functions for the
+# `expr` command.  The new functions will take two arguments
+# (a real number and a complex number, in some order) and
+# return a complex number.
+#
+# See https://www.tcl-lang.org/man/tcl8.6/TclCmd/mathfunc.htm
+
+skip complex-10.1
+test complex-10.1 "Add real number to complex number" -body {
+    set c [ComplexNumber new 1 2]
+    set r 5
+    set d [expr {cr_add($c, $r)}]
+    $d toList
+} -returnCodes ok -match pairOfFloats -result {6 2}
+
+skip complex-10.2
+test complex-10.2 "Add complex number to real number" -body {
+    set r 5
+    set c [ComplexNumber new 1 2]
+    set d [expr {cr_add($r, $c)}]
+    $d toList
+} -returnCodes ok -match pairOfFloats -result {6 2}
+
+skip complex-10.3
+test complex-10.3 "Subtract real number from complex number" -body {
+    set c [ComplexNumber new 5 7]
+    set r 4
+    set d [expr {cr_sub($c, $r)}]
+    $d toList
+} -returnCodes ok -match pairOfFloats -result {1 7}
+
+skip complex-10.4
+test complex-10.4 "Subtract complex number from real number" -body {
+    set r 4
+    set c [ComplexNumber new 5 7]
+    set d [expr {cr_sub($r, $c)}]
+    $d toList
+} -returnCodes ok -match pairOfFloats -result {-1 -7}
+
+skip complex-10.5
+test complex-10.5 "Multiply complex number by real number" -body {
+    set c [ComplexNumber new 2 5]
+    set r 5
+    set d [expr {cr_mul($c, $r)}]
+    $d toList
+} -returnCodes ok -match pairOfFloats -result {10 25}
+
+skip complex-10.6
+test complex-10.6 "Multiply real number by complex number" -body {
+    set c [ComplexNumber new 2 5]
+    set r 5
+    set d [expr {cr_mul($r, $c)}]
+    $d toList
+} -returnCodes ok -match pairOfFloats -result {10 25}
+
+skip complex-10.7
+test complex-10.7 "Divide complex number by real number" -body {
+    set c [ComplexNumber new 10 100]
+    set r 10
+    set d [expr {cr_div($c, $r)}]
+    $d toList
+} -returnCodes ok -match pairOfFloats -result {1 10}
+
+skip complex-10.8
+test complex-10.8 "Divide real number by complex number" -body {
+    set c [ComplexNumber new 1 1]
+    set r 5
+    set d [expr {cr_div($r, $c)}]
+    $d toList
+} -returnCodes ok -match pairOfFloats -result {2.5 -2.5}
+
 
 cleanupTests
