@@ -1587,6 +1587,18 @@
           "games",
           "logic"
         ]
+      },
+      {
+        "slug": "hangman",
+        "name": "Hangman",
+        "uuid": "541215b2-d85d-4b61-a7ce-bca37e1006d5",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 9,
+        "topics": [
+          "client_server",
+          "games"
+        ]
       }
     ]
   },
