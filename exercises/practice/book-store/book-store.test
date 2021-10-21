@@ -83,4 +83,13 @@ test bookstore-15 "Four groups of four are cheaper than two groups each of five 
 } -returnCodes ok -result 10240
 
 
+# this may take a long time: change 0 to 1 to run this test case.
+if {0} {
+    skip bookstore-16
+    test bookstore-16 "Check that groups of four are created properly even when there are more groups of three than groups of five" -body {
+        basketCost {1 1 1 1 1 1 2 2 2 2 2 2 3 3 3 3 3 3 4 4 5 5}
+    } -returnCodes ok -result 14560
+}
+
+
 cleanupTests
