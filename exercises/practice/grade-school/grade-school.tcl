@@ -1,7 +1,2 @@
-proc roster {school} {
-    throw {NOT_IMPLEMENTED} "Implement this procedure."
-}
-
-proc grade {school grade} {
-    throw {NOT_IMPLEMENTED} "Implement this procedure."
-}
+# This one is unstructured. Have fun with it!
+throw {NOT_IMPLEMENTED} "Implement this program."
