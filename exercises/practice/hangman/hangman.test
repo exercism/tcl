@@ -10,7 +10,7 @@ proc launchGame {word} {
 
     # Start the server in a separate thread:
     # To avoid port collisions, we don't hardcode a port number here.
-    # Make sure your code sets `env(HANGMAN_PORT)` with the port 
+    # Make sure your code sets `env(HANGMAN_PORT)` with the port
     # your server is running on!
     set serverThread [thread::create]
     thread::send $serverThread [list set argv $word]

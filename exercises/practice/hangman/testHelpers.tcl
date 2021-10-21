@@ -19,7 +19,7 @@ proc cleanupTests {} {
     if {$failed} then {exit 1}
 }
 
-# Compare two ordered lists without comparing the lists themselves 
+# Compare two ordered lists without comparing the lists themselves
 # as strings.
 # e.g.
 #     set first {
