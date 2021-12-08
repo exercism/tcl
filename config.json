@@ -35,6 +35,9 @@
   },
   "exercises": {
     "concept": [],
+    "foregone": [
+      "micro-blog"
+    ],
     "practice": [
       {
         "slug": "hello-world",
