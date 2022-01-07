@@ -18,13 +18,17 @@ oo::class create Scale {
     }
 
     method intervals {intervals} {
-        set steps {m 1 M 2 A 3}
+        set n [llength $notes]
         set scale {}
+        set steps {m 1 M 2 A 3}
+
         set i 0
+        lappend scale [lindex $notes $i] ;# start with the first note
+
         foreach interval [split $intervals ""] {
-            if {![dict exists $steps $interval]} {error "incorrect interval"}
-            lappend scale [lindex $notes $i]
+            if {![dict exists $steps $interval]} {error "Invalid interval"}
             incr i [dict get $steps $interval]
+            lappend scale [lindex $notes [expr {$i % $n}]]
         }
         return $scale
     }
