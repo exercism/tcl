@@ -20,7 +20,7 @@ namespace eval proteinTranslation {
             set codon  [string range $strand 0 2]
             set strand [string range $strand 3 end]
             if {![dict exists $translation $codon]} {
-                error "invalid codon $codon"
+                error "Invalid codon"
             }
             set protein [dict get $translation $codon]
             if {$protein eq "STOP"} {
