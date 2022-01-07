@@ -1,6 +1,6 @@
 proc steps {n {step 0}} {
     if {$n <= 0} {
-        error "Only positive numbers are allowed"
+        error "Only positive integers are allowed"
     }
     if {$n == 1} {
         return $step

@@ -28,12 +28,12 @@ test collatz-4 "large number of even and odd steps" -body {
 skip collatz-5
 test collatz-5 "zero is an error" -body {
     steps 0
-} -returnCodes error -result "Only positive numbers are allowed"
+} -returnCodes error -result "Only positive integers are allowed"
 
 skip collatz-6
 test collatz-6 "negative value is an error" -body {
     steps -15
-} -returnCodes error -result "Only positive numbers are allowed"
+} -returnCodes error -result "Only positive integers are allowed"
 
 
 cleanupTests
