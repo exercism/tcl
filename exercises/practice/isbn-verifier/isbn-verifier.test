@@ -86,7 +86,12 @@ test isbn-16 "invalid characters are not ignored" -body {
 } -returnCodes ok -match boolean -result false
 
 skip isbn-17
-test isbn-17 "input is too long but contains a valid isbn" -body {
+test isbn-17 "invalid characters are not ignored before checking length" -body {
+    isValid "3598P215088"
+} -returnCodes ok -match boolean -result false
+
+skip isbn-18
+test isbn-18 "input is too long but contains a valid isbn" -body {
     isValid "98245726788"
 } -returnCodes ok -match boolean -result false
 
