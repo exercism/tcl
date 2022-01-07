@@ -47,5 +47,10 @@ test space-age-8 "age on Neptune" -body {
     roundTo 2 [onNeptune 1821023456]
 } -returnCodes ok -result 0.35
 
+skip space-age-9
+test space-age-9 "invalid planet causes error" -body {
+    roundTo 2 [onSum 680804807]
+} -returnCodes error -result "not a planet"
+
 
 cleanupTests
