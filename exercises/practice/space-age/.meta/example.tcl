@@ -18,3 +18,7 @@ dict for {planet orbit} {
         return \[expr {1.0 * \$ageInSeconds / $secondsPerPlanetYear}]
     "
 }
+
+proc unknown {args} {
+    error "not a planet"
+}

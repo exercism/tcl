@@ -14,6 +14,6 @@ namespace eval ::resistorColor {
 
     proc value {first second args} {
         set codes [lmap c [list $first $second] {colorCode $c}]
-        return [join $codes ""]
+        return [string trimleft [join $codes ""] 0]
     }
 }
