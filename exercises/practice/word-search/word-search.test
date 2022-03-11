@@ -4,7 +4,7 @@ namespace import ::tcltest::*
 source testHelpers.tcl
 
 # uncomment for more verbose test results
-configure -verbose {body error usec}
+#configure -verbose {body error usec}
 
 ############################################################
 source "word-search.tcl"
