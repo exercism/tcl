@@ -8,7 +8,7 @@ proc largestSeriesProduct {digits span} {
         error "span must be smaller than string length"
     }
     if {$span < 0} {
-        error "span must be greater than zero"
+        error "span must not be negative"
     }
     if {[regexp {\D} $digits]} {
         error "digits input must only contain digits"
