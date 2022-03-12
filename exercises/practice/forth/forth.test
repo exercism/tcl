@@ -14,7 +14,7 @@ test forth-1 "numbers just get pushed onto the stack" -body {
 } -returnCodes ok -result {1 2 3 4 5}
 
 skip forth-2
-test forth-2 "numbers just get pushed onto the stack" -body {
+test forth-2 "pushes negative numbers onto the stack" -body {
     evalForth "-1 -2 -3 -4 -5"
 } -returnCodes ok -result {-1 -2 -3 -4 -5}
 

@@ -1,4 +1,4 @@
-##!/usr/bin/env tclsh
+#!/usr/bin/env tclsh
 package require tcltest
 namespace import ::tcltest::*
 source testHelpers.tcl
