@@ -1,5 +1,4 @@
 {
-  "blurb": "Refactor a Markdown parser.",
   "authors": [
     "glennj"
   ],
@@ -16,5 +15,6 @@
     "example": [
       ".meta/example.tcl"
     ]
-  }
+  },
+  "blurb": "Refactor a Markdown parser."
 }

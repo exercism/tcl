@@ -1,5 +1,4 @@
 {
-  "blurb": "Implement various kinds of error handling and resource management.",
   "authors": [
     "glennj"
   ],
@@ -16,5 +15,6 @@
     "example": [
       ".meta/example.tcl"
     ]
-  }
+  },
+  "blurb": "Implement various kinds of error handling and resource management."
 }
