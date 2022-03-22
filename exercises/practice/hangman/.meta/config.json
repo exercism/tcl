@@ -1,9 +1,7 @@
 {
-  "blurb": "Implement the logic of the hangman game using functional reactive programming.",
   "authors": [
     "glennj"
   ],
-  "contributors": [],
   "files": {
     "solution": [
       "hangman.tcl"
@@ -14,5 +12,6 @@
     "example": [
       ".meta/example.tcl"
     ]
-  }
+  },
+  "blurb": "Implement the logic of the hangman game using functional reactive programming."
 }

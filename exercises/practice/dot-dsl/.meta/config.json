@@ -1,5 +1,4 @@
 {
-  "blurb": "Write a Domain Specific Language similar to the Graphviz dot language.",
   "authors": [
     "glennj"
   ],
@@ -17,6 +16,7 @@
       ".meta/example.tcl"
     ]
   },
+  "blurb": "Write a Domain Specific Language similar to the Graphviz dot language.",
   "source": "Wikipedia",
   "source_url": "https://en.wikipedia.org/wiki/DOT_(graph_description_language)"
 }

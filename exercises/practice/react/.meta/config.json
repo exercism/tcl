@@ -1,5 +1,4 @@
 {
-  "blurb": "Implement a basic reactive system.",
   "authors": [
     "glennj"
   ],
@@ -16,5 +15,6 @@
     "example": [
       ".meta/example.tcl"
     ]
-  }
+  },
+  "blurb": "Implement a basic reactive system."
 }

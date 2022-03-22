@@ -1,5 +1,4 @@
 {
-  "blurb": "Manage a player's High Score list.",
   "authors": [
     "glennj"
   ],
@@ -17,5 +16,6 @@
       ".meta/example.tcl"
     ]
   },
+  "blurb": "Manage a player's High Score list.",
   "source": "Tribute to the eighties' arcade game Frogger"
 }

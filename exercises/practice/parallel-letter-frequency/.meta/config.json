@@ -1,5 +1,4 @@
 {
-  "blurb": "Count the frequency of letters in texts using parallel computation.",
   "authors": [
     "glennj"
   ],
@@ -16,5 +15,6 @@
     "example": [
       ".meta/example.tcl"
     ]
-  }
+  },
+  "blurb": "Count the frequency of letters in texts using parallel computation."
 }

@@ -1,5 +1,4 @@
 {
-  "blurb": "Compute the result for a game of Hex / Polygon.",
   "authors": [
     "glennj"
   ],
@@ -16,5 +15,6 @@
     "example": [
       ".meta/example.tcl"
     ]
-  }
+  },
+  "blurb": "Compute the result for a game of Hex / Polygon."
 }

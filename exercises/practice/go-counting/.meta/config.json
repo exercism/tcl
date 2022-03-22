@@ -1,5 +1,4 @@
 {
-  "blurb": "Count the scored points on a Go board.",
   "authors": [
     "glennj"
   ],
@@ -16,5 +15,6 @@
     "example": [
       ".meta/example.tcl"
     ]
-  }
+  },
+  "blurb": "Count the scored points on a Go board."
 }

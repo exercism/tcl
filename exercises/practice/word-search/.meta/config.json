@@ -1,5 +1,4 @@
 {
-  "blurb": "Create a program to solve a word search puzzle.",
   "authors": [
     "glennj"
   ],
@@ -16,5 +15,6 @@
     "example": [
       ".meta/example.tcl"
     ]
-  }
+  },
+  "blurb": "Create a program to solve a word search puzzle."
 }
