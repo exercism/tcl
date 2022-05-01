@@ -1,6 +1,6 @@
 # The simple nested loops solution is very slow. The algorithm is
 # lifted from @ILoveMuffins's Python solution to the same problem:
-# https://exercism.io/tracks/python/exercises/palindrome-products/solutions/d68cab86cad94d4d821f26da44bb0722
+# https://exercism.org/tracks/python/exercises/palindrome-products/solutions/d68cab86cad94d4d821f26da44bb0722
 
 namespace eval palindromeProducts {
     namespace export smallest largest

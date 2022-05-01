@@ -1,5 +1,5 @@
 # translation of this lovely recursive solution
-# https://exercism.io/tracks/javascript/exercises/say/solutions/515ab00bc90f46b0bde3732d9317a46b
+# https://exercism.org/tracks/javascript/exercises/say/solutions/515ab00bc90f46b0bde3732d9317a46b
 
 namespace eval englishNumbers {
     # pull in some mathy things to reduce "expr" verbosity
