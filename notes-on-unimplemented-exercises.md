@@ -25,7 +25,7 @@
 [unimplemented]: https://tracks.exercism.io/tcl/main/unimplemented
 [lens-person]: https://github.com/exercism/problem-specifications/tree/master/exercises/lens-person
 [micro-blog]: https://github.com/exercism/problem-specifications/tree/master/exercises/micro-blog
-[tcl-unicode]: https://wiki.tcl-lang.org/page/Unicode+and+UTF-tree-building
+[tcl-unicode]: https://wiki.tcl-lang.org/page/Unicode+and+UTF-8
 [ledger]: https://github.com/exercism/problem-specifications/tree/master/exercises/ledger
 [paasio]: https://github.com/exercism/problem-specifications/tree/master/exercises/paasio
 [sgf-parsing]: https://github.com/exercism/problem-specifications/tree/master/exercises/sgf-parsing
