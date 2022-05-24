@@ -18,6 +18,7 @@
     - but this exercise could be about ways to access deeply nested dictionaries
 * [paasio][paasio]
     - probably need to use the [`transchan`][transchan] command
+    - [this stackoverflow question][tcl-tee] may provide a starting point
 * [sgf-parsing][sgf-parsing]
 * [state-of-tic-tac-toe][state-of-tic-tac-toe]
 * [tree-building][tree-building]
@@ -30,6 +31,7 @@
 [tcl-unicode]: https://wiki.tcl-lang.org/page/Unicode+and+UTF-8
 [ledger]: https://github.com/exercism/problem-specifications/tree/master/exercises/ledger
 [paasio]: https://github.com/exercism/problem-specifications/tree/master/exercises/paasio
+[tcl-tee]: https://stackoverflow.com/q/72352064/7552
 [sgf-parsing]: https://github.com/exercism/problem-specifications/tree/master/exercises/sgf-parsing
 [tree-building]: https://github.com/exercism/problem-specifications/tree/master/exercises/tree-building
 [killer-sudoku-helper]: https://github.com/exercism/problem-specifications/tree/master/exercises/killer-sudoku-helper
