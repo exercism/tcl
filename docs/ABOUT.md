@@ -10,7 +10,7 @@ fully-featured programming language.
 
 Tcl casts everything into *commands*, even variable assignments, 
 procedure definitions and control flow. As such, it resembles both 
-shell scripting and Lisp.
+shell scripting and Lisp. 
 
 Tcl supports multiple programming paradigms, including object-oriented,
 imperative and functional styles. The most common use-cases of Tcl are as
