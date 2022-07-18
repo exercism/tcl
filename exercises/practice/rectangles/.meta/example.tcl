@@ -1,33 +1,25 @@
-proc rectangles {input} {
-    return [[Rectangles new $input] count]
-}
-
-############################################################
 oo::class create Rectangles {
-    variable grid
+    variable grid width height
     variable vertices
+    variable count
 
-    constructor {input} {
-        set grid [lmap row $input {split $row ""}]
-        set vertices [list]
+    constructor {rows} {
+        set grid [lmap row $rows {split $row ""}]
+        set height [llength $grid]
+        set width [llength [lindex $grid end]]
     }
 
     method count {} {
-        set count 0
         my findVertices
-
-        foreach topLeft $vertices {
-            foreach topRight [my verticesRightOf $topLeft] {
-                foreach bottomLeft [my verticesBelow $topLeft] {
-                    set bottomRight [Vertex new [$bottomLeft row] [$topRight column]]
-
-                    # is there such a vertex?
-                    set vs [lselect v $vertices {$v equals $bottomRight}]
-                    if {[llength $vs] != 1} {
-                        continue
-                    }
-
-                    if {[my isRectangle $topLeft $topRight $bottomLeft $bottomRight]} {
+        if {[info exists count]} then {return $count}
+        set count 0
+        foreach tl $vertices {                              ;# top left vertex
+            foreach tr [my verticesRightOf $tl] {           ;# top right
+                foreach bl [my verticesBelow $tl] {         ;# bottom left
+                    set br [Vertex new [$bl row] [$tr col]] ;# bottom right
+                    if {[my isVertex $br] &&
+                        [my isRectangle $tl $tr $bl $br]
+                    } then {
                         incr count
                     }
                 }
@@ -37,76 +29,93 @@ oo::class create Rectangles {
     }
 
     method findVertices {} {
-        for {set row 0} {$row < [llength $grid]} {incr row} {
-            for {set col 0} {$col < [llength [lindex $grid 0]]} {incr col} {
-                if {[lindex $grid $row $col] eq "+"} {
-                    lappend vertices [Vertex new $row $col]
+        if {[info exists vertices]} then return
+        set vertices {}
+        for {set r 0} {$r < $height} {incr r} {
+            for {set c 0} {$c < $width} {incr c} {
+                set v [Vertex new $r $c]
+                if {[my isVertex $v]} {
+                    lappend vertices $v
                 }
             }
         }
     }
 
+    method isVertex {v} {
+        expr {[lindex $grid [$v row] [$v col]] eq "+"}
+    }
+
     method verticesRightOf {vertex} {
-        lselect v $vertices {
-            expr {[$v row] == [$vertex row] && [$v column] > [$vertex column]}
+        my vertexSubset $vertex v {
+            [$vertex row] == [$v row] &&
+            [$vertex col] <  [$v col]
         }
     }
 
     method verticesBelow {vertex} {
-        lselect v $vertices {
-            expr {[$v column] == [$vertex column] && [$v row] > [$vertex row]}
+        my vertexSubset $vertex v {
+            [$vertex col] == [$v col] &&
+            [$vertex row] <  [$v row]
         }
     }
 
-    method isRectangle {topLeft topRight bottomLeft bottomRight} {
+    method vertexSubset {vertex varName expression} {
+        set vs {}
+        upvar 1 $varName v
+        foreach v $vertices {
+            if {[uplevel [list expr $expression]]} {
+                lappend vs $v
+            }
+        }
+        return $vs
+    }
+    
+    method isRectangle {tl tr bl br} {
         expr {
-            [my isVerticalEdge $topLeft $bottomLeft] &&
-            [my isVerticalEdge $topRight $bottomRight] &&
-            [my isHorizontalEdge $topLeft $bottomLeft] &&
-            [my isHorizontalEdge $topRight $bottomRight]
+            [my hasVerticalLine $tl $bl] &&
+            [my hasVerticalLine $tr $br] &&
+            [my hasHorizontalLine $tl $tr] &&
+            [my hasHorizontalLine $bl $br]
         }
     }
 
-    method isVerticalEdge {top bottom} {
-        for {set row [$top row]} {$row <= [$bottom row]} {incr row} {
-            if {[lindex $grid $row [$top column]] ni {"+" "|"}} {
-                return false
-            }
-        }
-        return true
+    method hasHorizontalLine {left right} {
+        set chars [lrange [lindex $grid [$left row]] [$left col] [$right col]]
+        regexp {^[+][+-]*[+]$} [join $chars ""]
     }
 
-    method isHorizontalEdge {left right} {
-        for {set col [$left column]} {$col <= [$right column]} {incr col} {
-            if {[lindex $grid [$left row] $col] ni {"+" "-"}} {
-                return false
-            }
-        }
-        return true
+    method hasVerticalLine {top bottom} {
+        set col [$top col]
+        set chars [lmap row [lrange $grid [$top row] [$bottom row]] {lindex $row $col}]
+        regexp {^[+][+|]*[+]$} [join $chars ""]
     }
+
+    # mark some methods as private
+    unexport isVertex
+    unexport verticesRightOf
+    unexport verticesBelow
+    unexport vertexSubset
+    unexport isRectangle
+    unexport hasHorizontalLine
+    unexport hasVerticalLine
 }
 
 ############################################################
 oo::class create Vertex {
     variable r c
-
-    constructor {row column} {
+    constructor {row col} {
         set r $row
-        set c $column
+        set c $col
     }
-
-    method row    {} {return $r}
-    method column {} {return $c}
-
-    method equals {other} {
-        expr {[my row] == [$other row] && [my column] == [$other column]}
+    method row {} {set r}
+    method col {} {set c}
+    method toList {} {list $r $c}
+    method eq {other} {
+        expr {$r == [$other row] && $c == [$other col]}
     }
 }
 
 ############################################################
-proc lselect {varName list body} {
-    upvar 1 $varName element
-    lmap element $list {
-        if {[uplevel 1 $body]} then {set element} else continue
-    }
+proc rectangles {input} {
+    [Rectangles new $input] count
 }
