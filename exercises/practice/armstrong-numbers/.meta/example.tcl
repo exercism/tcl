@@ -1,5 +1,6 @@
 proc isArmstrongNumber {number} {
-    if {![string is integer -strict $number]} {
+    # [string is] - https://www.tcl-lang.org/man/tcl8.6/TclCmd/string.htm#M10
+    if {![string is entier -strict $number]} {
         error "not a number"
     }
     set sum 0
