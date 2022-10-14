@@ -1,9 +1,8 @@
 proc encrypt {plaintext} {
-    if {$plaintext eq ""} {
-        return ""
-    }
-
     set text [regsub -all {[^[:alnum:]]} [string tolower $plaintext] ""]
+
+    if {$text eq ""} then {return ""}
+
     set size [expr {int(ceil(sqrt([string length $text])))}]
     set segments [regexp -all -inline ".{1,$size}" $text]
 
