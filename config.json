@@ -1602,6 +1602,14 @@
           "client_server",
           "games"
         ]
+      },
+      {
+        "slug": "killer-sudoku-helper",
+        "name": "Killer Sudoku Helper",
+        "uuid": "9e4e8c2f-7cf6-4660-a3bd-8998cd3e21fb",
+        "difficulty": 5,
+        "practices": [],
+        "prerequisites": []
       }
     ]
   },
