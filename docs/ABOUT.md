@@ -17,7 +17,14 @@ imperative and functional styles. The most common use-cases of Tcl are as
 embedded scripting run-times in C applications, and for prototyping GUIs
 using the Tk GUI toolkit.
 
+This Exercism track has not (yet) implemented a learning syllabus.
+To get started with the Tcl language, I would recommend using 
+[the Tcl tutorial][tutorial] concurrently with solving exercises.
+
 You can read more about Tcl on the following websites:
  - [https://www.tcl-lang.org/](https://www.tcl-lang.org/)
  - [https://wiki.tcl-lang.org/](https://wiki.tcl-lang.org/)
  - [https://en.wikipedia.org/wiki/Tcl](https://en.wikipedia.org/wiki/Tcl)
+
+
+[tutorial]: https://www.tcl-lang.org/man/tcl8.5/tutorial/tcltutorial.html
