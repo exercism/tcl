@@ -9,10 +9,10 @@ proc clean {phone} {
         error "punctuations not permitted"
     }
     if {[string length $digits] < 10} {
-        error "incorrect number of digits"
+        error "must not be fewer than 10 digits"
     }
     if {[string length $digits] > 11} {
-        error "more than 11 digits"
+        error "must not be greater than 11 digits"
     }
     if {[string length $digits] == 11 && ![string match 1* $digits]} {
         error "11 digits must start with 1"
