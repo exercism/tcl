@@ -1,38 +1,63 @@
 #!/usr/bin/env bash
+#
+# For a given exercise, validate the tests.
+# The directory of the exercise to be tested is passed as $1
 
-die() {
-    printf "\033[31m%s\n\033[0m" "$1"
-    exit 1
-}
+set -o errexit
+set -o nounset
 
-usage() {
-    die "usage: $0 path/to/exercise" >&2
-}
+die() { echo "$*" >&2; exit 1; }
 
-(( $# == 1 )) || usage
-[[ -d "$1" ]] || usage
+cd "$1" || die "Cannot cd to $1"
 
-exercise=${1%/}
-exercise=${exercise##*/}
-solution=".meta/example.tcl"
+config=./.meta/config.json
+[[ -f ${config} ]] || die "no $config file: you're in the wrong directory"
 
-cd "$1" >/dev/null || die " - cannot cd $1"
+exercise=${1%/}                 # strip a trailing slash, if there is one
+exercise=${exercise##*/}        # remove any leading path
 
-[[ -e "$solution" ]] || die " - $exercise: Missing ${solution}!"
-[[ -e "$exercise.test" ]] || die " - $exercise: Missing $exercise.test!"
+stub=$(jq -r '.files.solution[0]' "$config")
+[[ -f ${stub} ]] || die "Missing stub file for $exercise"
+
+tests=$(jq -r '.files.test[0]' "$config")
+[[ -f ${tests} ]] || die "Missing tests file for $exercise"
+
+solution=$(jq -r '.files.example[0] // .files.exemplar[0]' "$config")
+[[ -f ${solution} ]] || die "Missing solution file for $exercise"
+
+# this is usually empty but might have multiple files in it
+readarray -t editor_files < <(jq -r '.files.editor[]?' "$config")
+
+# Check that the test file only leaves one test unskipped.
+# There are a few exercise where the test file is structured a little differently.
+# Concept exercises have no skips.
+if ! [[ $PWD =~ exercises/concept/ ]]; then
+    expected=1
+    case "${exercise}" in
+        hello-world | dominoes | list-ops | secret-handshake) : ;; # don't check
+        alphametics | forth) expected=2 ;& # fallthrough
+        *) num_tests=$(grep -cP '^\s*test\s' "${tests}")
+           num_skips=$(grep -cP '^\s*skip\s' "${tests}")
+           (( num_skips == num_tests - expected )) || die "$exercise: there should be exactly ${expected} un-skipped test."
+   esac
+fi
 
 cleanup() {
-    # restore exercise
-    git checkout "$exercise.tcl"
+    rm -rf "${tmpdir}"
 }
 trap cleanup EXIT
 
-echo
-echo "*** Test exercise $exercise:"
-echo
+# Create implementation file from example
+tmpdir=$(mktemp -d)
+cp "${solution}" "${tmpdir}/${stub}"
+cp "${tests}" "${tmpdir}/${tests}"
+for file in "${editor_files[@]}"; do
+    dest="${tmpdir}/$(dirname "${file}")"
+    mkdir -p "${dest}"
+    cp "$file" "${dest}"
+done
+cp testHelpers.tcl "${tmpdir}"
 
-cp "$solution" "$exercise.tcl"
-
-RUN_ALL=yes tclsh "$exercise.test" || exit 1
-
-echo
+# Run the tests
+cd "${tmpdir}"
+RUN_ALL=1 tclsh "${tests}"
