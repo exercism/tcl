@@ -16,7 +16,11 @@ config=./.meta/config.json
 exercise=${1%/}                 # strip a trailing slash, if there is one
 exercise=${exercise##*/}        # remove any leading path
 
-stub=$(jq -r '.files.solution[0]' "$config")
+if ! command -v jq >> /dev/null; then
+    die "You must install jq to run tests"
+fi
+
+stub="$(jq -r '.files.solution[0]' "$config")"
 [[ -f ${stub} ]] || die "Missing stub file for $exercise"
 
 tests=$(jq -r '.files.test[0]' "$config")
