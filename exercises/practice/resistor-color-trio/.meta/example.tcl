@@ -12,13 +12,11 @@ namespace eval ::resistorColor {
         return $idx
     }
 
-    proc value {first second args} {
-        set codes [lmap c [list $first $second] {colorCode $c}]
-        return [join $codes ""]
-    }
-
     proc label {first second third args} {
-        set value [expr {[value $first $second] * 10**[colorCode $third]}]
+        foreach var {v1 v2 v3} color [list $first $second $third] {
+            set $var [colorCode $color]
+        }
+        set value [expr {(10 * $v1 + $v2) * 10**$v3}]
 
         set magnitude 0
         while {$value > 1000 && $value % 1000 == 0} {
