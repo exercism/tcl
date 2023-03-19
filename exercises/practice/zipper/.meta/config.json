@@ -14,6 +14,9 @@
     ],
     "example": [
       ".meta/example.tcl"
+    ],
+    "editor": [
+      "tree.tcl"
     ]
   },
   "blurb": "Creating a zipper for a binary tree."

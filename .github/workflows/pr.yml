@@ -26,4 +26,4 @@ jobs:
               select(.status == "added" or .status == "modified") |
               select(.filename | match("\\.(md|tcl|test)$")) |
               .filename
-          ' | xargs -r bash scripts/pr
+          ' | xargs -r bash bin/pr
