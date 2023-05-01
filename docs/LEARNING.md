@@ -10,4 +10,6 @@ For a hands-on tutorial:
  - [Learn X in Y minutes: Tcl](https://learnxinyminutes.com/docs/tcl/)
 
 For a comprehensive tutorial in more parts:
- - [the Tcl tutorial](https://www.tcl.tk/man/tcl8.5/tutorial/tcltutorial.html)
+ - [The Tcl tutorial](https://www.tcl.tk/man/tcl8.5/tutorial/tcltutorial.html) covers Tcl version 8.5 (current stable is version 8.6)
+ - Support for object oriented programming was added to the Tcl core in verion 8.6.
+   [Here is a tutorial](https://www.magicsplat.com/articles/oo.html) covering it.
