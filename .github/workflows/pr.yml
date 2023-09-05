@@ -14,7 +14,7 @@ jobs:
           sudo apt-get update && sudo apt-get -y install tcl-thread
 
       - name: Checkout PR
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Run tests for changed/added exercises
         env:
