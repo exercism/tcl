@@ -188,6 +188,13 @@ test set-5.6 "set is not equal to larger set with same elements" -body {
     $s1 equals $s2
 } -returnCodes ok -match boolean -result false
 
+skip set-5.7
+test set-5.7 "set is equal to a set constructed from an array with duplicates" -body {
+    set s1 [Set new {1}]
+    set s2 [Set new {1 1}]
+    $s1 equals $s2
+} -returnCodes ok -match boolean -result true
+
 # Unique elements can be added to a set
 skip set-6.1
 test set-6.1 "add to empty set" -body {
