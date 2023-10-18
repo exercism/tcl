@@ -1610,6 +1610,14 @@
         "difficulty": 5,
         "practices": [],
         "prerequisites": []
+      },
+      {
+        "slug": "pop-count",
+        "name": "Pop Count",
+        "uuid": "363f80a2-0fdb-4e8d-a3cf-048d5b8e9a3d",
+        "difficulty": 3,
+        "practices": [],
+        "prerequisites": []
       }
     ]
   },
