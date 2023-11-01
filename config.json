@@ -1,5 +1,4 @@
 {
-  "track_id": "tcl",
   "language": "Tcl",
   "slug": "tcl",
   "active": true,
@@ -34,10 +33,6 @@
     ]
   },
   "exercises": {
-    "concept": [],
-    "foregone": [
-      "micro-blog"
-    ],
     "practice": [
       {
         "slug": "hello-world",
@@ -343,10 +338,10 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 2,
+        "status": "deprecated",
         "topics": [
           "strings"
-        ],
-        "status": "deprecated"
+        ]
       },
       {
         "slug": "space-age",
@@ -1607,21 +1602,23 @@
         "slug": "killer-sudoku-helper",
         "name": "Killer Sudoku Helper",
         "uuid": "9e4e8c2f-7cf6-4660-a3bd-8998cd3e21fb",
-        "difficulty": 5,
         "practices": [],
-        "prerequisites": []
+        "prerequisites": [],
+        "difficulty": 5
       },
       {
         "slug": "pop-count",
         "name": "Eliud's Eggs",
         "uuid": "363f80a2-0fdb-4e8d-a3cf-048d5b8e9a3d",
-        "difficulty": 3,
         "practices": [],
-        "prerequisites": []
+        "prerequisites": [],
+        "difficulty": 3
       }
+    ],
+    "foregone": [
+      "micro-blog"
     ]
   },
-  "concepts": [],
   "key_features": [
     {
       "title": "General Purpose",
@@ -1655,15 +1652,15 @@
     }
   ],
   "tags": [
-    "paradigm/procedural",
-    "paradigm/object_oriented",
+    "execution_mode/interpreted",
     "paradigm/functional",
     "paradigm/imperative",
-    "typing/dynamic",
-    "execution_mode/interpreted",
-    "platform/windows",
+    "paradigm/object_oriented",
+    "paradigm/procedural",
     "platform/linux",
     "platform/mac",
+    "platform/windows",
+    "typing/dynamic",
     "used_for/cross_platform_development",
     "used_for/embedded_systems",
     "used_for/guis",
