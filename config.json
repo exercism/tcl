@@ -813,7 +813,8 @@
         "topics": [
           "lists",
           "strings"
-        ]
+        ],
+        "status": "deprecated"
       },
       {
         "slug": "minesweeper",
