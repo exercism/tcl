@@ -810,6 +810,7 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 4,
+        "status": "deprecated",
         "topics": [
           "lists",
           "strings"
