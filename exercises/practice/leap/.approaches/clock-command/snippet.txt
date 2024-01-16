@@ -1,0 +1,4 @@
+set timestamp [clock scan "$year-02-28" -format {%Y-%m-%d}]
+set next_day [clock add $timestamp 1 day]
+set day [clock format $next_day -format {%d}]
+expr {$day == 29}

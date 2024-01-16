@@ -2,13 +2,11 @@
   "introduction": {
     "authors": [
       "glennj"
-    ],
-    "contributors": [
     ]
   },
   "approaches": [
     {
-      "uuid": "4e53dfc9-2662-4671-bb00-b2d927569070",
+      "uuid": "bb72a01e-74f1-4d8e-9df1-625718ced974",
       "slug": "boolean-chain",
       "title": "Boolean chain",
       "blurb": "Use a chain of boolean expressions.",
@@ -17,7 +15,7 @@
       ]
     },
     {
-      "uuid": "8a562c42-3c04-4833-8322-bc0323539954",
+      "uuid": "d4e35a2e-8394-4eee-8f98-8d5c7a680596",
       "slug": "ternary-operator",
       "title": "Ternary operator",
       "blurb": "Use a ternary operator of Boolean expressions.",
@@ -26,7 +24,7 @@
       ]
     },
     {
-      "uuid": "c28ae2d8-9f8a-4359-b687-229b42573eef",
+      "uuid": "c0b494ab-50f7-47dd-9394-a355317be233",
       "slug": "clock-command",
       "title": "Clock command",
       "blurb": "Use the clock command to do date addition.",
