@@ -64,8 +64,7 @@ leap_clock
 1. Boolean chain
 
    We can see that the non leap year is the quickest to return, only having to execute one comparison.
-   The 100 and 400 years are the most expensive.
-   But still, we're talking under one microsecond execution time.
+   Even 100 and 400, the most expensive years to compute, execute in under one microsecond.
 
 1. Ternary operator
 
