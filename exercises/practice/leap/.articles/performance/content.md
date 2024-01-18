@@ -79,3 +79,4 @@ leap_clock
 [approach-boolean-chain]: /tracks/tcl/exercises/leap/approaches/boolean-chain
 [approach-ternary-operator]: /tracks/tcl/exercises/leap/approaches/ternary-operator
 [approach-clock-command]: /tracks/tcl/exercises/leap/approaches/clock-command
+[time-command]: https://tcl.tk/man/tcl8.6/TclCmd/time.htm
