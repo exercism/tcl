@@ -57,7 +57,8 @@ leap_clock
 2023 - 0 - 65.716 microseconds per iteration
 2024 - 1 - 70.092 microseconds per iteration
 1900 - 0 - 59.396 microseconds per iteration
-2000 - 1 - 72.496 microseconds per iteration```
+2000 - 1 - 72.496 microseconds per iteration
+```
 
 ## Observations
 
