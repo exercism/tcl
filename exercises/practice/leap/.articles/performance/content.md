@@ -1,6 +1,6 @@
 # Performance
 
-I'm demonstrating the use of [the `time` command][time-command] to compare the various approaches:
+This article demonstrates the use of [the `time` command][time-command] to compare the various approaches:
 
 * [Boolean chain][approach-boolean-chain]
 * [Ternary operator][approach-ternary-operator]
