@@ -2,9 +2,6 @@
   "authors": [
     "glennj"
   ],
-  "contributors": [
-    "sshine"
-  ],
   "files": {
     "solution": [
       "reverse-string.tcl"

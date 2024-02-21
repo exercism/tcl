@@ -1,7 +1,8 @@
-proc stringReverse {str} {
-    set rev ""
-    for {set i [expr {[string length $str] - 1}]} {$i >= 0} {incr i -1} {
-        append rev [string range $str $i $i]
+proc reverse {input {reversed ""}} {
+    if {$input eq ""} {
+        return $reversed
     }
-    return $rev
+    tailcall reverse \
+        [string range $input 1 end] \
+        [string cat [string index $input 0] $reversed]
 }
