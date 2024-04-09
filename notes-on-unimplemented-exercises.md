@@ -10,7 +10,8 @@
 
 ## Merely unimplemented
 
-* [killer-sudoku-helper][killer-sudoku-helper]
+* [bottle-song][bottle-song]
+* [game-of-life][game-of-life]
 * [ledger][ledger]
     - a tedious-to-create refactoring exercise
 * [lens-person][lens-person]
@@ -20,7 +21,6 @@
     - probably need to use the [`transchan`][transchan] command
     - [this stackoverflow question][tcl-tee] may provide a starting point
 * [sgf-parsing][sgf-parsing]
-* [state-of-tic-tac-toe][state-of-tic-tac-toe]
 * [tree-building][tree-building]
     - a tedious-to-create refactoring exercise
 
@@ -34,6 +34,6 @@
 [tcl-tee]: https://stackoverflow.com/q/72352064/7552
 [sgf-parsing]: https://github.com/exercism/problem-specifications/tree/master/exercises/sgf-parsing
 [tree-building]: https://github.com/exercism/problem-specifications/tree/master/exercises/tree-building
-[killer-sudoku-helper]: https://github.com/exercism/problem-specifications/tree/master/exercises/killer-sudoku-helper
-[state-of-tic-tac-toe]: https://github.com/exercism/problem-specifications/tree/master/exercises/state-of-tic-tac-toe
+[bottle-song]: https://github.com/exercism/problem-specifications/tree/master/exercises/bottle-song
+[game-of-life]: https://github.com/exercism/problem-specifications/tree/master/exercises/game-of-life
 [transchan]: https://www.tcl-lang.org/man/tcl8.6/TclCmd/transchan.htm
