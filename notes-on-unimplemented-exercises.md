@@ -11,7 +11,6 @@
 ## Merely unimplemented
 
 * [bottle-song][bottle-song]
-* [game-of-life][game-of-life]
 * [ledger][ledger]
     - a tedious-to-create refactoring exercise
 * [lens-person][lens-person]
