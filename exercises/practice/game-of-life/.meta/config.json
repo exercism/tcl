@@ -4,10 +4,10 @@
   ],
   "files": {
     "solution": [
-      "./game-of-life.tcl"
+      "game-of-life.tcl"
     ],
     "test": [
-      "./game-of-life.test"
+      "game-of-life.test"
     ],
     "example": [
       ".meta/example.tcl"
