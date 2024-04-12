@@ -20,10 +20,10 @@
   },
   "files": {
     "solution": [
-      "./%{kebab_slug}.tcl"
+      "%{kebab_slug}.tcl"
     ],
     "test": [
-      "./%{kebab_slug}.test"
+      "%{kebab_slug}.test"
     ],
     "example": [
       ".meta/example.tcl"

@@ -4,10 +4,10 @@
   ],
   "files": {
     "solution": [
-      "./state-of-tic-tac-toe.tcl"
+      "state-of-tic-tac-toe.tcl"
     ],
     "test": [
-      "./state-of-tic-tac-toe.test"
+      "state-of-tic-tac-toe.test"
     ],
     "example": [
       ".meta/example.tcl"
