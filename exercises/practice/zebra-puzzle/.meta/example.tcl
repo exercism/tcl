@@ -18,21 +18,21 @@ proc ::tcl::mathfunc::nextTo {first second} {
 # algorithm taken from Kotlin example solution
 
 # The clues, and the method that implements them:
-#   1. There are five houses.
-#   2. The Englishman lives in the red house. (SolveForNationality)
-#   3. The Spaniard owns the dog. (SolveForPets)
-#   4. Coffee is drunk in the green house. (SolveForBeverages)
-#   5. The Ukrainian drinks tea. (SolveForBeverages)
-#   6. The green house is immediately to the right of the ivory house.  (SolveForColour)
-#   7. The Old Gold smoker owns snails. (SolveForPets)
-#   8. Kools are smoked in the yellow house. (SolveForSmokes)
-#   9. Milk is drunk in the middle house. (SolveForBeverages)
-#   10.The Norwegian lives in the first house. (SolveForNationality)
-#   11.The man who smokes Chesterfields lives in the house next to the man with the fox. (SolveForPets)
-#   12.Kools are smoked in the house next to the house where the horse is kept.
-#   13.The Lucky Strike smoker drinks orange juice. (SolveForSmokes)
-#   14.The Japanese smokes Parliaments. (SolveForSmokes)
-#   15.The Norwegian lives next to the blue house. (SolveForNationality)
+#  1. There are five houses.
+#  2. The Englishman lives in the red house. (SolveForNationality)
+#  3. The Spaniard owns the dog. (SolveForPets)
+#  4. The person in the green house drinks coffee. (SolveForBeverages)
+#  5. The Ukrainian drinks tea. (SolveForBeverages)
+#  6. The green house is immediately to the right of the ivory house. (SolveForColour)
+#  7. The snail owner likes to go dancing. (SolveForPets)
+#  8. The person in the yellow house is a painter. (SolveForHobbies)
+#  9. The person in the middle house drinks milk. (SolveForBeverages)
+#  10. The Norwegian lives in the first house. (SolveForNationality)
+#  11. The person who enjoys reading lives in the house next to the person with the fox. (SolveForPets)
+#  12. The painter's house is next to the house with the horse. (SolveForPets)
+#  13. The person who plays football drinks orange juice. (SolveForHobbies)
+#  14. The Japanese person plays chess. (SolveForHobbies)
+#  15. The Norwegian lives next to the blue house. (SolveForNationality)
 
 ############################################################
 oo::class create ZebraPuzzle {
@@ -43,7 +43,7 @@ oo::class create ZebraPuzzle {
     variable red green ivory yellow blue
     variable english spanish ukranian norwegian japanese
     variable dog snails fox horse zebra
-    variable oldGold kools chesterfields luckyStrike parliaments
+    variable dancing painting reading football chess
     variable coffee tea milk orangeJuice water
 
     variable nationalities
@@ -112,19 +112,19 @@ oo::class create ZebraPuzzle {
             && $milk == $MIDDLE
         } {
             foreach p [permutations] {
-                if {[my SolveForSmokes $p]} then {return true}
+                if {[my SolveForHobbies $p]} then {return true}
             }
         }
         return false
     }
 
-    method SolveForSmokes {permutation} {
-        lassign $permutation oldGold kools chesterfields luckyStrike parliaments
+    method SolveForHobbies {permutation} {
+        lassign $permutation dancing painting reading football chess
         # clues 8, 13, 14
         if {
-            $kools == $yellow
-            && $luckyStrike == $orangeJuice
-            && $japanese == $parliaments
+            $painting == $yellow
+            && $football == $orangeJuice
+            && $japanese == $chess
         } {
             foreach p [permutations] {
                 if {[my SolveForPets $p]} then {return true}
@@ -138,9 +138,9 @@ oo::class create ZebraPuzzle {
         # clues 3, 7, 11, 12
         if {
             $spanish == $dog
-            && $oldGold == $snails
-            && nextTo($chesterfields, $fox)
-            && nextTo($kools, $horse)
+            && $dancing == $snails
+            && nextTo($reading, $fox)
+            && nextTo($painting, $horse)
         } {
             set waterDrinker [dict get $nationalities $water]
             set zebraOwner [dict get $nationalities $zebra]
