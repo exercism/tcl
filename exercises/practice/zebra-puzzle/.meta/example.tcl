@@ -41,7 +41,7 @@ oo::class create ZebraPuzzle {
 
     variable one two three four five
     variable red green ivory yellow blue
-    variable english spanish ukranian norwegian japanese
+    variable english spanish ukrainian norwegian japanese
     variable dog snails fox horse zebra
     variable oldGold kools chesterfields luckyStrike parliaments
     variable coffee tea milk orangeJuice water
@@ -82,7 +82,7 @@ oo::class create ZebraPuzzle {
     }
 
     method SolveForNationality {permutation} {
-        lassign $permutation english spanish ukranian norwegian japanese
+        lassign $permutation english spanish ukrainian norwegian japanese
         # clues 2, 10, 15
         if {
             $english == $red
@@ -93,7 +93,7 @@ oo::class create ZebraPuzzle {
                 set nationality [dict create]
                 dict set nationalities $english   EnglishMan
                 dict set nationalities $spanish   Spaniard
-                dict set nationalities $ukranian  Ukranian
+                dict set nationalities $ukrainian Ukrainian
                 dict set nationalities $norwegian Norwegian
                 dict set nationalities $japanese  Japanese
 
@@ -108,7 +108,7 @@ oo::class create ZebraPuzzle {
         # clues 4, 5, 9
         if {
             $coffee == $green
-            && $ukranian == $tea
+            && $ukrainian == $tea
             && $milk == $MIDDLE
         } {
             foreach p [permutations] {
