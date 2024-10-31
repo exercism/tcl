@@ -6,7 +6,7 @@
 # 1. download the exercise (this should place it in the
 #    "users/" subdirectory of your exercism workspace).
 # 2. run a syntax checker on the code, if you have one set up.
-# 3. check github for the existance of mentor notes.
+# 3. check github for the existence of mentor notes.
 # 4. show the code and ask if you want to run the tests.
 # 5. launch an interactive tclsh shell, so you can
 #    play with the solution.
