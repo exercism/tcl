@@ -1,0 +1,17 @@
+{
+  "authors": [
+    "glennj"
+  ],
+  "files": {
+    "solution": [
+      "swift-scheduling.tcl"
+    ],
+    "test": [
+      "swift-scheduling.test"
+    ],
+    "example": [
+      ".meta/example.tcl"
+    ]
+  },
+  "blurb": "Convert delivery date descriptions to actual delivery dates."
+}
