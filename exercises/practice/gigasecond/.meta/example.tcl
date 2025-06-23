@@ -11,6 +11,6 @@ proc addGigasecond {datetime} {
         }
     }
 
-    set future [clock add $time 1000000000 seconds]
+    set future [clock add $time 1000000000 seconds -gmt yes]
     return [clock format $future -format {%Y-%m-%dT%H:%M:%S} -gmt yes]
 }

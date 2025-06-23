@@ -1,7 +1,11 @@
 proc meetup {year month week weekday} {
 
     for {set d 1} {$d <= 31} {incr d} {
-        set time [clock scan "$year-$month-$d" -format "%Y-%m-%d"]
+        try {
+            # this throws an exception in Tcl 9 for invalid date
+            # on Tcl 8.6, no exception but Jan 32 == Feb 1
+            set time [clock scan "$year-$month-$d" -format "%Y-%m-%d"]
+        } on error {} break
 
         # use the C locale to ensure English weekday names
         # %e returns day without leading zero
@@ -12,7 +16,7 @@ proc meetup {year month week weekday} {
         # the wanted day of the week
         if {$weekday ne $dayofweek} then continue
 
-        # for months with < 31 days
+        # for months with < 31 days, applies for Tcl < 9.0
         if {$month != $mon} then break
 
         set meetupDay $day
