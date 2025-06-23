@@ -5,7 +5,7 @@ proc largestSeriesProduct {digits span} {
     set len [string length $digits]
 
     if {$len < $span} {
-        error "span must be smaller than string length"
+        error "span must not exceed string length"
     }
     if {$span < 0} {
         error "span must not be negative"
