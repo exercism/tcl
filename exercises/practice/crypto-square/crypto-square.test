@@ -41,7 +41,7 @@ test crypto-6 "8 character plaintext results in 3 chunks, the last one with a tr
 } -returnCodes ok -result "clu hlt io "
 
 skip crypto-7
-test crypto-7 "54 character plaintext results in 7 chunks, the last two with trailing spaces" -body {
+test crypto-7 "54 character plaintext results in 8 chunks, the last two with trailing spaces" -body {
     encrypt "If man was meant to stay on the ground, god would have given us roots."
 } -returnCodes ok -result "imtgdvs fearwer mayoogo anouuio ntnnlvt wttddes aohghn  sseoau "
 
