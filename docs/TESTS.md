@@ -18,4 +18,4 @@ RUN_ALL=1 tclsh <exercise>.test
 ```
 
 \[1\]: Tcl true/false values are documented in the man page for the C library function
-[Tcl_GetBoolean](https://www.tcl.tk/man/tcl8.6/TclLib/GetInt.html).
+[Tcl_GetBoolean](https://www.tcl-lang.org/man/tcl8.6/TclLib/GetInt.htm).
