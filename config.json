@@ -863,11 +863,20 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 3,
+        "status": "deprecated",
         "topics": [
           "loops",
           "strings",
           "text_formatting"
         ]
+      },
+      {
+        "slug": "bottle-song",
+        "name": "Bottle Song",
+        "uuid": "c885921e-2586-4e63-998c-feff59619dd5",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 3
       },
       {
         "slug": "pig-latin",
