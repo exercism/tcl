@@ -1500,6 +1500,7 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 3,
+        "status": "deprecated",
         "topics": [
           "math"
         ]
