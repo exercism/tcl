@@ -137,3 +137,5 @@ test bottle-2.3 "verses:all verses" -body {
     "And if one green bottle should accidentally fall,"
     "There'll be no green bottles hanging on the wall."
 }
+
+cleanupTests
