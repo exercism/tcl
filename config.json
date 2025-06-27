@@ -823,12 +823,21 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 5,
+        "status": "deprecated",
         "topics": [
           "games",
           "lists",
           "loops",
           "transforming"
         ]
+      },
+      {
+        "slug": "flower-field",
+        "name": "Flower Field",
+        "uuid": "141a355c-8291-4037-9e29-43e4fd014709",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 5
       },
       {
         "slug": "rail-fence-cipher",
