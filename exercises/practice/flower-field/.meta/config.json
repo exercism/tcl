@@ -1,0 +1,17 @@
+{
+  "authors": [
+    "glennj"
+  ],
+  "files": {
+    "solution": [
+      "flower-field.tcl"
+    ],
+    "test": [
+      "flower-field.test"
+    ],
+    "example": [
+      ".meta/example.tcl"
+    ]
+  },
+  "blurb": "Mark all the flowers in a garden."
+}
