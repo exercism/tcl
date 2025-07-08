@@ -20,8 +20,11 @@ You can read more about Tcl on the following websites:
  - [The Tcl wiki][wiki]
  - [Wikipedia's Tcl article][wikipedia]
 
+View a YouTube video giving a brief overview of the history of Tcl and the benefits of the language: [The Most MISUNDERSTOOD Programming Language][art-of-terminal]
+
 [tutorial]: https://www.tcl-lang.org/man/tcl8.5/tutorial/tcltutorial.html
 [rules]: https://www.tcl-lang.org/man/tcl8.6/TclCmd/Tcl.htm
 [tcl-home]: https://www.tcl-lang.org
 [wiki]: https://wiki.tcl-lang.org/
 [wikipedia]: https://en.wikipedia.org/wiki/Tcl
+[art-of-terminal]: https://youtu.be/PYh6D1NhatY?si=l9i8KR8D-qh6u9i6
