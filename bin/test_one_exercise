@@ -40,8 +40,8 @@ if ! [[ $PWD =~ exercises/concept/ ]]; then
     case "${exercise}" in
         hello-world | dominoes | list-ops | secret-handshake) : ;; # don't check
         alphametics | forth) expected=2 ;& # fallthrough
-        *) num_tests=$(grep -cP '^\s*test\s' "${tests}")
-           num_skips=$(grep -cP '^\s*skip\s' "${tests}")
+        *) num_tests=$(grep -cP '^\s*test\s' "${tests}" || :)
+           num_skips=$(grep -cP '^\s*skip\s' "${tests}" || :)
            (( num_skips == num_tests - expected )) || die "$exercise: there should be exactly ${expected} un-skipped test."
    esac
 fi
