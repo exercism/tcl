@@ -1657,6 +1657,14 @@
         "practices": [],
         "prerequisites": [],
         "difficulty": 4
+      },
+      {
+        "slug": "paasio",
+        "name": "PaaS I/O",
+        "uuid": "1a85e7e7-1b79-42da-82a4-a4f6542890b4",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 8
       }
     ],
     "foregone": [
