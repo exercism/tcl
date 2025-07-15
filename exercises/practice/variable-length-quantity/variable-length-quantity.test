@@ -15,6 +15,11 @@ test vlq-1.2 "arbitrary single byte" -body {
     encode {0x40}
 } -returnCodes ok -result {0x40}
 
+skip vlq-1.2b
+test vlq-1.2b "asymmetric single byte" -body {
+    encode {0x53}
+} -returnCodes ok -result {0x53}
+
 skip vlq-1.3
 test vlq-1.3 "largest single byte" -body {
     encode {0x7F}
@@ -29,6 +34,11 @@ skip vlq-1.5
 test vlq-1.5 "arbitrary double byte" -body {
     encode {0x2000}
 } -returnCodes ok -result {0xC0 0x00}
+
+skip vlq-1.5b
+test vlq-1.5b "asymmetric double byte" -body {
+    encode {0xAD}
+} -returnCodes ok -result {0x81 0x2D}
 
 skip vlq-1.6
 test vlq-1.6 "largest double byte" -body {
@@ -45,6 +55,11 @@ test vlq-1.8 "arbitrary triple byte" -body {
     encode {0x100000}
 } -returnCodes ok -result {0xC0 0x80 0x00}
 
+skip vlq-1.8b
+test vlq-1.8b "asymmetric triple byte" -body {
+    encode {0x1D59C}
+} -returnCodes ok -result {0x87 0xAB 0x1C}
+
 skip vlq-1.9
 test vlq-1.9 "largest triple byte" -body {
     encode {0x1FFFFF}
@@ -60,6 +75,11 @@ test vlq-1.11 "arbitrary quadruple byte" -body {
     encode {0x8000000}
 } -returnCodes ok -result {0xC0 0x80 0x80 0x00}
 
+skip vlq-1.11b
+test vlq-1.11b "asymmetric quadruple byte" -body {
+    encode {0x357704}
+} -returnCodes ok -result {0x81 0xD5 0xEE 0x04}
+
 skip vlq-1.12
 test vlq-1.12 "largest quadruple byte" -body {
     encode {0x0FFFFFFF}
@@ -74,6 +94,11 @@ skip vlq-1.14
 test vlq-1.14 "arbitrary quintuple byte" -body {
     encode {0xFF000000}
 } -returnCodes ok -result {0x8F 0xF8 0x80 0x80 0x00}
+
+skip vlq-1.14b
+test vlq-1.14b "asymmetric quintuple byte" -body {
+    encode {0x86656105}
+} -returnCodes ok -result {0x88 0xB3 0x95 0xC2 0x05}
 
 skip vlq-1.15
 test vlq-1.15 "maximum 32-bit integer input" -body {
