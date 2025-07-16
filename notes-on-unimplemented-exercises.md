@@ -20,7 +20,6 @@
     - but this exercise could be about ways to access deeply nested dictionaries
 * [piecing-it-together]
 * [sgf-parsing]
-* [split-second-stopwatch]
 * [tree-building]
     - a tedious-to-create refactoring exercise
 
@@ -30,5 +29,4 @@
 [lens-person]: https://github.com/exercism/problem-specifications/tree/main/exercises/lens-person
 [piecing-it-together]: https://github.com/exercism/problem-specifications/tree/main/exercises/piecing-it-together
 [sgf-parsing]: https://github.com/exercism/problem-specifications/tree/main/exercises/sgf-parsing
-[split-second-stopwatch]: https://github.com/exercism/problem-specifications/tree/main/exercises/split-second-stopwatch
 [tree-building]: https://github.com/exercism/problem-specifications/tree/main/exercises/tree-building
