@@ -8,8 +8,8 @@
 # Example: verify all exercises in Docker
 # bin/verify-exercises-in-docker
 
-# Example: verify single exercise in Docker
-# bin/verify-exercises-in-docker two-fer
+# Example: verify specific exercises in Docker
+# bin/verify-exercises-in-docker two-fer leap reverse-string
 
 set -eo pipefail
 
@@ -66,12 +66,18 @@ verify_exercise() {
 }
 
 verify_exercises() {
-    local exercise_slug
-    exercise_slug="${1}"
+    local dirs=()
+    if (( $# == 0 )); then
+        dirs=( ./exercises/{concept,practice}/* )
+    else
+        for slug in "${@}"; do
+            dirs+=( ./exercises/{concept,practice}/"${slug}" )
+        done
+    fi
 
     shopt -s nullglob
     count=0
-    for exercise_dir in ./exercises/{concept,practice}/${exercise_slug}/; do
+    for exercise_dir in "${dirs[@]}"; do
         if [[ -d "${exercise_dir}" ]]; then
             verify_exercise "${exercise_dir}"
             ((++count))
@@ -80,5 +86,4 @@ verify_exercises() {
     ((count > 0)) || die 'no matching exercises found!'
 }
 
-exercise_slug="${1:-*}"
-verify_exercises "${exercise_slug}"
+verify_exercises "${@}"
