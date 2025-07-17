@@ -1,0 +1,17 @@
+{
+  "authors": [
+    "glennj"
+  ],
+  "files": {
+    "solution": [
+      "micro-blog.tcl"
+    ],
+    "test": [
+      "micro-blog.test"
+    ],
+    "example": [
+      ".meta/example.tcl"
+    ]
+  },
+  "blurb": "Given an input string, truncate it to 5 characters."
+}
