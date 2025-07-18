@@ -15,21 +15,4 @@ jobs:
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
 
       - name: Run tests for changed/added exercises
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          # example: repos/exercism/tcl/pulls/390
-          # to view with browser: https://api.github.com/repos/exercism/tcl/pulls/390
-          pr_endpoint=$(
-              jq -r '"repos/\(.repository.full_name)/pulls/\(.pull_request.number)"' "$GITHUB_EVENT_PATH"
-          )
-          gh api "$pr_endpoint/files" --paginate --jq '
-              # extract the unique exercise slugs from the files in this PR
-              map(
-                  select(.status == "added" or .status == "modified")
-                  | .filename
-                  | capture("^exercises/(?:concept|practice)/(?<slug>[^/]+)/.+\\.(tcl|test)$")
-                  | .slug
-              )
-              | unique | .[]
-          ' | xargs -r bin/verify-in-test-runner.tcl
+        run: bin/verify-in-test-runner.tcl ${{ github.event.number }}
