@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# This script runs in the tcl-test-runner!
+
 # Synopsis:
 # Verify that each exercise's example/exemplar solution passes the tests
 # using the track's test runner Docker image.
@@ -15,14 +17,8 @@ set -eo pipefail
 
 die() { echo "$*" >&2; exit 1; }
 
-required_tool() {
-    command -v "${1}" >/dev/null 2>&1 ||
-        die "${1} is required but not installed. Please install it and make sure it's in your PATH."
-}
-
-required_tool docker
-
 copy_example_or_examplar_to_solution() {
+    # complexity intended to handle exercises with multiple solution/example files
     jq -c '[.files.solution, .files.exemplar // .files.example] | transpose | map({src: .[1], dst: .[0]}) | .[]' .meta/config.json \
     | while read -r src_and_dst; do
         cp "$(jq -r '.src' <<< "${src_and_dst}")" "$(jq -r '.dst' <<< "${src_and_dst}")"
@@ -30,38 +26,19 @@ copy_example_or_examplar_to_solution() {
 }
 
 run_tests() {
-    local slug
-    slug="${1}"
-
-    # shellcheck disable=SC1083
-    docker run \
-        --rm \
-        --network none \
-        --read-only \
-        --mount type=bind,src="${PWD}",dst=/solution \
-        --mount type=bind,src="${PWD}",dst=/output \
-        --mount type=tmpfs,dst=/tmp \
-        exercism/tcl-test-runner "${slug}" /solution /output
-    jq -e '.status == "pass"' "${PWD}/results.json" >/dev/null 2>&1
-}
-
-verify_exercise() {
-    local dir
-    local slug
-    local tmp_dir
+    local dir slug
     dir=$(realpath "${1}")
     slug=$(basename "${dir}")
-    tmp_dir=$(mktemp -d -t "exercism-verify-${slug}-XXXXX")
 
     echo "Verifying ${slug} exercise..."
 
     (
-        trap 'rm -rf "$tmp_dir"' EXIT    # remove tempdir when subshell ends
-        cp -r "${dir}/." "${tmp_dir}"
-        cd "${tmp_dir}"
-
+        cd "$dir"
         copy_example_or_examplar_to_solution
-        run_tests "${slug}"
+
+        /opt/test-runner/bin/run.tcl "$slug" "$PWD" "$PWD"
+
+        jq -e '.status == "pass"' "${PWD}/results.json" >/dev/null 2>&1
     )
 }
 
@@ -77,9 +54,10 @@ verify_exercises() {
 
     shopt -s nullglob
     count=0
+    failures=0
     for exercise_dir in "${dirs[@]}"; do
         if [[ -d "${exercise_dir}" ]]; then
-            verify_exercise "${exercise_dir}"
+            run_tests "${exercise_dir}"
             ((++count))
         fi
     done
