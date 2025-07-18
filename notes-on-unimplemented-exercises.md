@@ -2,12 +2,7 @@
 
 ## Foregone exercises
 
-* [micro-blog]
-    - Default builds of tclsh cannot handle emojis
-    - see [Unicode and UTF-8][tcl-unicode] in the Tcl wiki, particularly the discussion on AndroWish
-
-[micro-blog]: https://github.com/exercism/problem-specifications/tree/main/exercises/micro-blog
-[tcl-unicode]: https://wiki.tcl-lang.org/page/Unicode+and+UTF-8
+_none_
 
 ## Merely unimplemented
 
