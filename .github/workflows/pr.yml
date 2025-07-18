@@ -18,8 +18,11 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          # example: https://api.github.com/repos/exercism/tcl/pulls/390
-          pr_endpoint=$(jq -r '"repos/\(.repository.full_name)/pulls/\(.pull_request.number)"' "$GITHUB_EVENT_PATH")
+          # example: repos/exercism/tcl/pulls/390
+          # to view with browser: https://api.github.com/repos/exercism/tcl/pulls/390
+          pr_endpoint=$(
+              jq -r '"repos/\(.repository.full_name)/pulls/\(.pull_request.number)"' "$GITHUB_EVENT_PATH"
+          )
           gh api "$pr_endpoint/files" --paginate --jq '
               # extract the unique exercise slugs from the files in this PR
               map(
@@ -29,4 +32,4 @@ jobs:
                   | .slug
               )
               | unique | .[]
-          ' | xargs -r bin/verify-exercises-in-docker
+          ' | xargs -r bin/verify-in-test-runner.tcl
