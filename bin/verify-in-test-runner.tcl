@@ -1,20 +1,32 @@
 #!/usr/bin/env tclsh
 
 # This script runs in the tcl-test-runner!
-# The Tcl track is checked out into /opt/test-runner
 
 package require json
 
+############################################################
 proc run_tests {dir} {
     set slug [file tail $dir]
-
     puts -nonewline "Verifying $slug exercise... "
+    prepare_exercise $dir
 
+    exec /opt/test-runner/bin/run.tcl $slug $dir $dir
+
+    lassign [get_test_status $dir] status output
+    puts $status
+    if {$status ne "pass"} {
+        puts $output
+        exit 1
+    }
+}
+
+proc prepare_exercise {dir} {
+    set cwd [pwd]
     cd $dir
 
-    set f [open ./.meta/config.json r]
-    set config [::json::json2dict [read $f]]
-    close $f
+    set fh [open ./.meta/config.json r]
+    set config [::json::json2dict [read $fh]]
+    close $fh
 
     # if we get concept exercises, or if we get an exercise
     # with multiple solution files, revisit next 2 lines
@@ -22,19 +34,19 @@ proc run_tests {dir} {
     set solution [dict get $config files solution]
 
     file copy -force $example $solution
+    cd $cwd
+}
 
-    exec /opt/test-runner/bin/run.tcl $slug [pwd] [pwd]
+proc get_test_status {dir} {
+    set fh [open $dir/results.json r]
+    set result [::json::json2dict [read $fh]]
+    close $fh
 
-    set f [open ./results.json r]
-    set result [::json::json2dict [read $f]]
-    close $f
+    set fh [open $dir/results.out r]
+    set output [read $fh]
+    close $fh
 
-    puts [dict get $result status]
-
-    if {[dict get $result status] ne "pass"} {
-        exec cat result.out
-        exit 1
-    }
+    list [dict get $result status] $output
 }
 
 ############################################################
@@ -55,20 +67,19 @@ proc get_dirs {pr_number} {
 }
 
 ############################################################
-proc verify_exercises {dirs} {
-    if {[llength $dirs] == 0} {
+proc main {argc argv} {
+
+    if {$argc == 0} {
+        # CI -- test all exercises
         set dirs [glob exercises/practice/*]
+    } else {
+        # PR -- first argument is PR number
+        set dirs [get_dirs [lindex $argv 0]]
     }
-    foreach exercise_dir $dirs {
-        run_tests $exercise_dir
+
+    foreach dir $dirs {
+        run_tests $dir
     }
 }
 
-############################################################
-lassign $argv pr_number
-
-if {$pr_number eq ""} {
-    verify_exercises {}
-} else {
-    verify_exercises [get_dirs $pr_number]
-}
+main $argc $argv
