@@ -8,6 +8,8 @@ package require json
 proc run_tests {dir} {
     set slug [file tail $dir]
     puts -nonewline "Verifying $slug exercise... "
+    chan flush stdout
+
     prepare_exercise $dir
 
     exec /opt/test-runner/bin/run.tcl $slug $dir $dir
@@ -77,7 +79,7 @@ proc main {argc argv} {
         set dirs [get_dirs [lindex $argv 0]]
     }
 
-    foreach dir $dirs {
+    foreach dir [lsort $dirs] {
         run_tests $dir
     }
 }
