@@ -27,7 +27,7 @@ proc run_tests {dir} {
 }
 
 proc verification_stats {slug total passed skipped failed} {
-    puts [format {%-30s %5d %5d %5d %5d} $slug $total $passed $skipped $failed]
+    puts [format {%-30s %5s %5s %5s %5s} $slug $total $passed $skipped $failed]
 }
 
 proc prepare_exercise {dir} {
