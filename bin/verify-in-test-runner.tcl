@@ -7,8 +7,7 @@ package require json
 ############################################################
 proc run_tests {dir} {
     set slug [file tail $dir]
-    puts -nonewline "Verifying $slug exercise... "
-    chan flush stdout
+    puts -nonewline "$slug ... "
 
     prepare_exercise $dir
 
@@ -16,7 +15,11 @@ proc run_tests {dir} {
 
     lassign [get_test_status $dir] status output
     puts $status
-    if {$status ne "pass"} {
+
+    if {$status eq "pass"} {
+        puts "    [lindex [split [string trim $output] \n] end]"
+    } else {
+        puts "******"
         puts $output
         exit 1
     }
@@ -70,6 +73,7 @@ proc get_dirs {pr_number} {
 
 ############################################################
 proc main {argc argv} {
+    set start [clock seconds]
 
     if {$argc == 0} {
         # CI -- test all exercises
@@ -82,6 +86,9 @@ proc main {argc argv} {
     foreach dir [lsort $dirs] {
         run_tests $dir
     }
+
+    set duration [expr {[clock seconds] - $start}]
+    puts "\n[llength $dirs] exercises verified in $duration seconds."
 }
 
 main $argc $argv
