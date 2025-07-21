@@ -7,22 +7,27 @@ package require json
 ############################################################
 proc run_tests {dir} {
     set slug [file tail $dir]
-    puts -nonewline "$slug ... "
 
     prepare_exercise $dir
 
     exec /opt/test-runner/bin/run.tcl $slug $dir $dir
 
     lassign [get_test_status $dir] status output
-    puts $status
+    set last [lindex [split [string trim $output] \n] end]
+    regexp {\S+:\s+Total\s+(\d+)\s+Passed\s+(\d+)\s+Skipped\s+(\d+)\s+Failed\s+(\d+)} $last -> total passed skipped failed
 
     if {$status eq "pass"} {
-        puts "    [lindex [split [string trim $output] \n] end]"
+        verification_stats $slug $total $passed $skipped $failed
     } else {
         puts "******"
+        puts "$slug => $status"
         puts $output
         exit 1
     }
+}
+
+proc verification_stats {slug total passed skipped failed} {
+    puts [format {%-30s %5d %5d %5d %5d} $slug $total $passed $skipped $failed]
 }
 
 proc prepare_exercise {dir} {
@@ -81,6 +86,9 @@ proc main {argc argv} {
     } else {
         # PR -- first argument is PR number
         set dirs [get_dirs [lindex $argv 0]]
+    }
+    if {[llength $dirs] > 0} {
+        verification_stats Slug Total Pass Skip Fail
     }
 
     foreach dir [lsort $dirs] {
