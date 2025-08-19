@@ -1425,6 +1425,14 @@
         ]
       },
       {
+        "slug": "baffling-birthdays",
+        "name": "Baffling Birthdays",
+        "uuid": "ca741f47-733e-4244-a9bf-8aca11c87d9e",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 6
+      },
+      {
         "slug": "binary-search-tree",
         "name": "Binary Search Tree",
         "uuid": "19ffe973-5cda-4521-9e09-267cea1946fe",
