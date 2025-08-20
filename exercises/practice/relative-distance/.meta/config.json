@@ -1,0 +1,19 @@
+{
+  "authors": [
+    "glennj"
+  ],
+  "files": {
+    "solution": [
+      "relative-distance.tcl"
+    ],
+    "test": [
+      "relative-distance.test"
+    ],
+    "example": [
+      ".meta/example.tcl"
+    ]
+  },
+  "blurb": "Given a family tree, calculate the degree of separation.",
+  "source": "vaeng",
+  "source_url": "https://github.com/exercism/problem-specifications/pull/2537"
+}
