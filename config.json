@@ -1689,6 +1689,14 @@
         ]
       },
       {
+        "slug": "sgf-parsing",
+        "name": "SGF Parsing",
+        "uuid": "b890673b-21ef-49c7-8f34-fb5925af597d",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 8
+      },
+      {
         "slug": "hangman",
         "name": "Hangman",
         "uuid": "541215b2-d85d-4b61-a7ce-bca37e1006d5",
@@ -1714,6 +1722,9 @@
           "logic"
         ]
       }
+    ],
+    "foregone": [
+      "lens-person"
     ]
   },
   "key_features": [

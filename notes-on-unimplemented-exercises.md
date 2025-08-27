@@ -2,20 +2,17 @@
 
 ## Foregone exercises
 
-_none_
+* [lens-person]
+    - Tcl does not have immutable data
+    - but this exercise could be about ways to access deeply nested dictionaries
 
 ## Merely unimplemented
 
 * [ledger]
     - a tedious-to-create refactoring exercise
-* [lens-person]
-    - Tcl does not have immutable data
-    - but this exercise could be about ways to access deeply nested dictionaries
-* [sgf-parsing]
 * [tree-building]
     - a tedious-to-create refactoring exercise
 
 [ledger]: https://github.com/exercism/problem-specifications/tree/main/exercises/ledger
 [lens-person]: https://github.com/exercism/problem-specifications/tree/main/exercises/lens-person
-[sgf-parsing]: https://github.com/exercism/problem-specifications/tree/main/exercises/sgf-parsing
 [tree-building]: https://github.com/exercism/problem-specifications/tree/main/exercises/tree-building
