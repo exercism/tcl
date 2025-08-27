@@ -1,0 +1,17 @@
+{
+  "authors": [
+    "glennj"
+  ],
+  "files": {
+    "solution": [
+      "sgf-parsing.tcl"
+    ],
+    "test": [
+      "sgf-parsing.test"
+    ],
+    "example": [
+      ".meta/example.tcl"
+    ]
+  },
+  "blurb": "Parsing a Smart Game Format string."
+}
