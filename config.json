@@ -223,6 +223,14 @@
         ]
       },
       {
+        "slug": "line-up",
+        "name": "Line up",
+        "uuid": "e616e4df-6166-4563-927e-8dafdb742d1f",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 2
+      },
+      {
         "slug": "matching-brackets",
         "name": "Matching Brackets",
         "uuid": "d0a98b95-19cd-4960-af4c-baa82044ffc2",
