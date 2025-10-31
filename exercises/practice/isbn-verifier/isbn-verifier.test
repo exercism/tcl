@@ -25,78 +25,88 @@ test isbn-4 "check digit is a character other than X" -body {
     isValid "3-598-21507-A"
 } -returnCodes ok -match boolean -result false
 
-skip isbn-xyz
-test isbn-xyz "invalid check digit in isbn is not treated as zero" -body {
+skip isbn-5
+test isbn-5 "invalid check digit in isbn is not treated as zero" -body {
     isValid "4-598-21507-B"
 } -returnCodes ok -match boolean -result false
 
-skip isbn-5
-test isbn-5 "invalid character in isbn" -body {
+skip isbn-6
+test isbn-6 "invalid character in isbn" -body {
     isValid "3-598-P1581-X"
 } -returnCodes ok -match boolean -result false
 
-skip isbn-6
-test isbn-6 "X is only valid as a check digit" -body {
+skip isbn-7
+test isbn-7 "X is only valid as a check digit" -body {
     isValid "3-598-2X507-9"
 } -returnCodes ok -match boolean -result false
 
-skip isbn-7
-test isbn-7 "valid isbn without separating dashes" -body {
-    isValid "3598215088"
-} -returnCodes ok -match boolean -result true
-
 skip isbn-8
-test isbn-8 "isbn without separating dashes and X as check digit" -body {
-    isValid "359821507X"
-} -returnCodes ok -match boolean -result true
+test isbn-8 "X is not substituted by the value 10" -body {
+    isValid "3-598-2X507-5"
+} -returnCodes ok -match boolean -result false
 
 skip isbn-9
-test isbn-9 "isbn without check digit and dashes" -body {
-    isValid "359821507"
+test isbn-9 "only one check digit is allowed" -body {
+    isValid "3-598-21508-96"
 } -returnCodes ok -match boolean -result false
 
 skip isbn-10
-test isbn-10 "too long isbn and no dashes" -body {
-    isValid "3598215078X"
-} -returnCodes ok -match boolean -result false
+test isbn-10 "valid isbn without separating dashes" -body {
+    isValid "3598215088"
+} -returnCodes ok -match boolean -result true
 
 skip isbn-11
-test isbn-11 "too short isbn" -body {
-    isValid "00"
-} -returnCodes ok -match boolean -result false
+test isbn-11 "isbn without separating dashes and X as check digit" -body {
+    isValid "359821507X"
+} -returnCodes ok -match boolean -result true
 
 skip isbn-12
-test isbn-12 "isbn without check digit" -body {
-    isValid "3-598-21507"
+test isbn-12 "isbn without check digit and dashes" -body {
+    isValid "359821507"
 } -returnCodes ok -match boolean -result false
 
 skip isbn-13
-test isbn-13 "check digit of X should not be used for 0" -body {
-    isValid "3-598-21515-X"
+test isbn-13 "too long isbn and no dashes" -body {
+    isValid "3598215078X"
 } -returnCodes ok -match boolean -result false
 
 skip isbn-14
-test isbn-14 "empty isbn" -body {
-    isValid ""
+test isbn-14 "too short isbn" -body {
+    isValid "00"
 } -returnCodes ok -match boolean -result false
 
 skip isbn-15
-test isbn-15 "input is 9 characters" -body {
-    isValid "134456729"
+test isbn-15 "isbn without check digit" -body {
+    isValid "3-598-21507"
 } -returnCodes ok -match boolean -result false
 
 skip isbn-16
-test isbn-16 "invalid characters are not ignored" -body {
-    isValid "3132P34035"
+test isbn-16 "check digit of X should not be used for 0" -body {
+    isValid "3-598-21515-X"
 } -returnCodes ok -match boolean -result false
 
 skip isbn-17
-test isbn-17 "invalid characters are not ignored before checking length" -body {
-    isValid "3598P215088"
+test isbn-17 "empty isbn" -body {
+    isValid ""
 } -returnCodes ok -match boolean -result false
 
 skip isbn-18
-test isbn-18 "input is too long but contains a valid isbn" -body {
+test isbn-18 "input is 9 characters" -body {
+    isValid "134456729"
+} -returnCodes ok -match boolean -result false
+
+skip isbn-19
+test isbn-19 "invalid characters are not ignored" -body {
+    isValid "3132P34035"
+} -returnCodes ok -match boolean -result false
+
+skip isbn-20
+test isbn-20 "invalid characters are not ignored before checking length" -body {
+    isValid "3598P215088"
+} -returnCodes ok -match boolean -result false
+
+skip isbn-21
+test isbn-21 "input is too long but contains a valid isbn" -body {
     isValid "98245726788"
 } -returnCodes ok -match boolean -result false
 
