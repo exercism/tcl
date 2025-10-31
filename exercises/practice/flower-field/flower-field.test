@@ -158,6 +158,15 @@ test flower-field-12 "large minefield" -body {
         "111111"
 }
 
+skip flower-field-13
+test flower-field-13 "multiple adjacent flowers" -body {
+    annotate {
+        " ** "
+    }
+} -returnCodes ok -match orderedLists -result {
+        "1**1"
+}
+
 
 cleanupTests
 
