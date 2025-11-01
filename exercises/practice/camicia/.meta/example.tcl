@@ -1,23 +1,22 @@
 oo::class create Camicia {
-    variable pile
     variable playerA
     variable playerB
+    variable pile
     variable result
-    variable currentPlayer
-    variable otherPlayer
     variable statesSeen
 
     constructor {a b} {
-        set pile [list]
         set playerA $a
         set playerB $b
-        set result {tricks 0 cards 0 status ongoing}
-        set currentPlayer playerA
-        set otherPlayer playerB
+        set pile [list]
+        set result {tricks 0 cards 0 status ""}
         set statesSeen [dict create]
     }
 
     method play {} {
+        set currentPlayer playerA
+        set otherPlayer playerB
+
         while true {
             if {[my IsLoop]} {
                 dict set result status loop
@@ -35,13 +34,11 @@ oo::class create Camicia {
             if {[my IsNumberCard $card]} {
                 # next player's turn
                 lassign [list $otherPlayer $currentPlayer] currentPlayer otherPlayer
+
             } else {
                 # pay the penalty
-                lassign [my PayPenalty $card $otherPlayer $currentPlayer] \
-                    currentPlayer otherPlayer
-
+                lassign [my PayPenalty $card $otherPlayer $currentPlayer] currentPlayer otherPlayer
                 my CollectTrick $currentPlayer
-
                 if {[my IsEmpty $otherPlayer]} {
                     dict set result status finished
                     break
@@ -84,11 +81,6 @@ oo::class create Camicia {
         expr {[my Penalty $card] == 0}
     }
 
-    method Value {hand} {
-        set mapped [lmap card $hand {expr {[my IsNumberCard $card] ? "N" : $card}}]
-        join $mapped ""
-    }
-
     method CollectTrick {player} {
         lappend $player {*}$pile
         set pile {}
@@ -96,12 +88,22 @@ oo::class create Camicia {
     }
 
     method IsLoop {} {
-        set state [string cat [my Value $playerA] : [my Value $playerB]]
+        set state [string cat [my State $playerA] ":" [my State $playerB]]
         if {[dict exists $statesSeen $state]} {
             return true
         }
         dict set statesSeen $state 1
         return false
+    }
+
+    method State {hand} {
+        # encode the hand as a base-5 number
+        set sum 0
+        foreach card $hand {
+            set sum [expr {$sum * 5 + [my Penalty $card]}]
+        }
+        # and the state of the hand is the (sum, length) pair
+        string cat $sum "," [llength $hand]
     }
 }
 
