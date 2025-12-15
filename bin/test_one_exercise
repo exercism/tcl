@@ -46,6 +46,10 @@ if ! [[ $PWD =~ exercises/concept/ ]]; then
    esac
 fi
 
+if ! grep -q cleanupTests "${tests}"; then
+    die "$exercise: last line of test suite must be 'cleanupTests'"
+fi
+
 cleanup() {
     rm -rf "${tmpdir}"
 }
