@@ -13,12 +13,10 @@ cd "$1" || die "Cannot cd to $1"
 config=./.meta/config.json
 [[ -f ${config} ]] || die "no $config file: you're in the wrong directory"
 
+command -v jq >/dev/null || die "You must install jq to run tests"
+
 exercise=${1%/}                 # strip a trailing slash, if there is one
 exercise=${exercise##*/}        # remove any leading path
-
-if ! command -v jq >> /dev/null; then
-    die "You must install jq to run tests"
-fi
 
 stub="$(jq -r '.files.solution[0]' "$config")"
 [[ -f ${stub} ]] || die "Missing stub file for $exercise"
@@ -40,8 +38,8 @@ if ! [[ $PWD =~ exercises/concept/ ]]; then
     case "${exercise}" in
         hello-world | dominoes | list-ops | secret-handshake) : ;; # don't check
         alphametics | forth) expected=2 ;& # fallthrough
-        *) num_tests=$(grep -cP '^\s*test\s' "${tests}" || :)
-           num_skips=$(grep -cP '^\s*skip\s' "${tests}" || :)
+        *) num_tests=$(grep -c '^ *test ' "${tests}" || :)
+           num_skips=$(grep -c '^ *skip ' "${tests}" || :)
            (( num_skips == num_tests - expected )) || die "$exercise: there should be exactly ${expected} un-skipped test."
    esac
 fi

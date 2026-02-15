@@ -36,6 +36,11 @@ test perfect-numbers-2.3 "Large abundant number is classified correctly" -body {
     classify 33550335
 } -returnCodes ok -result abundant
 
+skip perfect-numbers-2.4
+test perfect-numbers-2.4 "Perfect square abundant number is classified correctly" -body {
+    classify 196
+} -returnCodes ok -result abundant
+
 
 skip perfect-numbers-3.1
 test perfect-numbers-3.1 "Smallest prime deficient number is classified correctly" -body {
