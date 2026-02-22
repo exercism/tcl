@@ -1524,6 +1524,14 @@
         "difficulty": 6
       },
       {
+        "slug": "prism",
+        "name": "Prism",
+        "uuid": "c960218c-7e6b-4c67-8f03-08a59a7d2ed4",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 6
+      },
+      {
         "slug": "rail-fence-cipher",
         "name": "Rail Fence Cipher",
         "uuid": "14fa64f8-11b4-42d5-a154-fcd9a4317422",
