@@ -1,3 +1,6 @@
-# Scope
+# Instructions append
 
-You'll find a Tree class already implemented for you. Your task is to write the Zipper class.
+## Scope
+
+You'll find a Tree class already implemented for you.
+Your task is to write the Zipper class.
