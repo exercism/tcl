@@ -1,4 +1,6 @@
-# Tcl Packages
+# Instructions append
+
+## Tcl Packages
 
 This is the first exercise to include a pre-written package.
 Note the presence of the file `pkgIndex.tcl` and the inclusion of the current directory in the `auto_path` variable.
