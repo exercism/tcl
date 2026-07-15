@@ -8,7 +8,6 @@ import json
 import os
 import pathlib
 import re
-import shlex
 import subprocess
 import sys
 import textwrap
@@ -77,17 +76,13 @@ def filter_tojson(data, separators=(',', ':'), indent=None) -> str:
 def jinja_env(exercise: pathlib.Path) -> jinja2.Environment:
     """Return a configured Jinja env with filters added."""
     env = jinja2.Environment(loader=jinja2.FileSystemLoader(exercise / ".meta"))
-    # Shell quoting
-    #env.filters["quote"] = shlex.quote
+    env.filters["camel_to_snake"] = lambda x: re.sub(r"([a-z])([A-Z])", (lambda m: f"{m.group(1)}_{m.group(2).lower()}"), x)
     # JSON formatting, default to compact form (`jq -c`).
     env.filters["tojson"] = filter_tojson
-    # String escaping, ANSI-C style.
-    env.filters["tclstring"] = lambda x: re.sub(r'([[$])', r'\\\1', filter_tojson(x))
-    # Return a dict with only specified keys kepts.
-    env.filters["camel_to_snake"] = lambda x: re.sub(r"([a-z])([A-Z])", (lambda m: f"{m.group(1)}_{m.group(2).lower()}"), x)
-    #env.filters["format_list"] = lambda x: shlex.quote(
-        #"[" + ",".join(f'"{i}"' if isinstance(i, str) else str(i) for i in x) + "]"
-    #)
+    # String escaping, Tcl style:
+    # first express as a JSON string (this exposes all whitespace characters, and adds quotes)
+    # then protect Tcl special characters
+    env.filters["tclstring"] = lambda x: re.sub(r'([\[\$])', r'\\\1', filter_tojson(x))
     return env
 
 
