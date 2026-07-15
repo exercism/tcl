@@ -28,20 +28,20 @@ namespace eval StateOfTicTacToe {
     proc gamestate {board} {
         lassign [parse $board] X O
 
-        switch [list [won $X] [won $O]] {
-            {true true} {error "Impossible board: game should have ended after the game was won"}
+        set xBits [bitCount $X]
+        set oBits [bitCount $O]
+        set xWon [won $X]
+        set oWon [won $O]
 
-            {true false} -
-            {false true} {return "win"}
+        if {($xWon && $oBits >= $xBits) || ($oWon && $xBits >= $oBits + 1)} {
+            error "Impossible board: game should have ended after the game was won"
+        } 
+        if {$xWon || $oWon} then {return "win"}
 
-            default {
-                set xBits [bitCount $X]
-                set oBits [bitCount $O]
-                if {$xBits - $oBits > 1} then {error "Wrong turn order: X went twice"}
-                if {$xBits - $oBits < 0} then {error "Wrong turn order: O started"}
-                return [expr {$xBits + $oBits == 9 ? "draw" : "ongoing"}]
-            }
-        }
+        if {$xBits - $oBits > 1} then {error "Wrong turn order: X went twice"}
+        if {$xBits - $oBits < 0} then {error "Wrong turn order: O started"}
+
+        return [expr {$xBits + $oBits == 9 ? "draw" : "ongoing"}]
     }
 
     proc parse {board} {
