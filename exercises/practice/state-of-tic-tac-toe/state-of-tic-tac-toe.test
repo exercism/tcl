@@ -1,5 +1,5 @@
 #!/usr/bin/env tclsh
-# generated on 2026-07-15T20:36:48+00:00
+# generated on 2026-07-15T20:43:11+00:00
 package require tcltest
 namespace import ::tcltest::*
 source testHelpers.tcl
@@ -249,6 +249,24 @@ test state-of-tic-tac-toe-27 "Invalid board: players kept playing after a win" -
         "XXX"
         "OOO"
         "XOX"
+    }
+} -returnCodes error -result "Impossible board: game should have ended after the game was won"
+
+skip state-of-tic-tac-toe-28
+test state-of-tic-tac-toe-28 "Invalid board: O kept playing after X wins" -body {
+    gamestate { 
+        "OO "
+        "XXX"
+        " O "
+    }
+} -returnCodes error -result "Impossible board: game should have ended after the game was won"
+
+skip state-of-tic-tac-toe-29
+test state-of-tic-tac-toe-29 "Invalid board: X kept playing after O wins" -body {
+    gamestate { 
+        "XX "
+        "OOO"
+        " XX"
     }
 } -returnCodes error -result "Impossible board: game should have ended after the game was won"
 
