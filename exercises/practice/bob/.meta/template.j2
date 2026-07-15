@@ -1,0 +1,13 @@
+{{ header }}
+
+{% for idx, case in cases -%}
+{%   if idx > 0 -%}
+skip {{slug}}-{{idx + 1}}
+{%   endif -%}
+test {{slug}}-{{idx + 1}} "{{ case["description"] }}" -body {
+    heyBob {{ case["input"]["heyBob"] | tclstring }}
+} -returnCodes ok -result "{{ case["expected"] }}"
+
+{% endfor -%}
+
+{{footer}}
