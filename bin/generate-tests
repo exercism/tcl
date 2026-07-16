@@ -106,7 +106,7 @@ proc filter_tests {description cases included_tests} {
     global tests
     foreach case $cases {
         if {[dict exists $case cases]} {
-            filter_tests [concat $description [dict get $case description]] [dict get $case cases] $included_tests
+            filter_tests [concat $description [list [dict get $case description]]] [dict get $case cases] $included_tests
         } elseif {[dict exists $case uuid] && [dict get $case uuid] in $included_tests} {
             lappend tests [dict merge $case [list group $description]]
         }
