@@ -1,0 +1,21 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+    binarySearch [asList [dict get $case input array]] [dict get $case input value]
+!   if {[dict exists $case expected error]} {
+} -returnCodes ok -result -1
+!   } else {
+} -returnCodes ok -result [dict get $case expected]
+!   }
+
+! }
+
+$footer
