@@ -129,23 +129,6 @@ namespace eval helpers {
         set result [::json::write string $str]
         return [regsub -all {[$[]} $result {\\&}]
     }
-<<<<<<< HEAD
-
-    proc testTitle {interp case} {
-        set parts [concat [lrange [dict get $case group] 1 end] [list [dict get $case description]]]
-        return [tclString $interp [join $parts ": "]]
-    }
-
-    proc asList {interp list} {
-        if {[llength $list] <= 1} {
-            return "{$list}"
-        } else {
-            return [list $list]
-        }
-    }
-}
-=======
->>>>>>> 1650808 (add templates to all-your-base)
 
     proc testTitle {interp case} {
         set parts [concat [lrange [dict get $case group] 1 end] [list [dict get $case description]]]
