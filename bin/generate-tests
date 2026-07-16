@@ -1,0 +1,192 @@
+#!/usr/bin/env tclsh
+
+package require json
+package require json::write
+package require http
+package require tls
+
+::tcl::tm::path add [file join ./lib Ornament]
+package require ornament
+
+set HEADER {#!/usr/bin/env tclsh
+# generated: %TIMESTAMP%
+package require tcltest
+namespace import ::tcltest::*
+source testHelpers.tcl
+
+# Uncomment next line to view test durations.
+#configure -verbose {body error usec}
+
+############################################################
+source "%SOURCE%"
+}
+
+set FOOTER "cleanupTests"
+
+################################################################
+proc assert {cond msg args} {
+    set options [dict merge {-traceback false} $args]
+    if {!$cond} {
+        if {[dict get $options -traceback]} {
+            error $msg
+        } else {
+            puts stderr $msg
+            exit 1
+        }
+    }
+}
+
+proc xdg_cache {} {
+    global env
+    if {![info exists env(XDG_CACHE_HOME)]} {
+        set env(XDG_CACHE_HOME) [file join $::env(HOME) .cache]
+    }
+    return $env(XDG_CACHE_HOME)
+}
+
+proc fetch_canonical_data {slug} {
+    set cached [file join . canonical-data "$slug.json"]
+    set probspecs_file [file join [xdg_cache] exercism configlet problem-specifications exercises $slug canonical-data.json]
+    set url "https://raw.githubusercontent.com/exercism/problem-specifications/main/exercises/${slug}/canonical-data.json"
+
+    if {[file exists $cached]} {
+        puts "... using cached $cached"
+    } elseif {[file exists $probspecs_file]} {
+        puts "... copying from $probspecs_file"
+        file copy $probspecs_file $cached
+    } else {
+        puts "... fetching from $url"
+        ::http::register https 443 ::tls::socket ::tls::socketCmd 1 1
+        ::http::config -accept application/json
+        set fh [open $cached w]
+        set token [::http::geturl $url -channel $fh]
+        close $fh
+        ::http::cleanup $token
+    }
+
+    set fh [open $cached r]
+    set canonical_data [read -nonewline $fh]
+    close $fh
+    return [::json::json2dict $canonical_data]
+}
+
+proc read_exercise_config {dir} {
+    set config [file join $dir .meta config.json]
+    assert [file isfile $config] "error: exercise config does not exist '$config'"
+    set fh [open $config r]
+    set contents [read -nonewline $fh]
+    close $fh
+    return [::json::json2dict $contents]
+}
+
+proc get_included_tests {dir} {
+    set toml [file join $dir .meta tests.toml]
+    assert [file exists $toml] "error: tests.toml does not exist '$toml'"
+    set fh [open $toml r]
+    array set uuids {}
+    set last_uuid ""
+    while {[gets $fh line] != -1} {
+        switch -regexp -matchvar m $line {
+            {\[([\w-]+?)\]} {
+                set uuid [lindex $m 1]
+                set last_uuid $uuid
+                set uuids($uuid) true
+            }
+            {^include\s*=\s*false} {
+                unset uuids($last_uuid)
+            }
+        }
+    }
+    close $fh
+    return [array names uuids]
+}
+
+
+proc filter_tests {description cases included_tests} {
+    global tests
+    foreach case $cases {
+        if {[dict exists $case cases]} {
+            filter_tests [concat $description [dict get $case description]] [dict get $case cases] $included_tests
+        } elseif {[dict exists $case uuid] && [dict get $case uuid] in $included_tests} {
+            lappend tests [dict merge $case [list group $description]]
+        }
+    }
+}
+
+proc flatten_tests_cases {canonical_data included_tests} {
+    global tests
+    set tests [list]
+    set desc [list [dict get $canonical_data exercise]]
+    filter_tests $desc [dict get $canonical_data cases] $included_tests
+    return $tests
+}
+
+################################################################
+# procs to expose in the template
+# interp is the safe interpreter running the template
+proc tclString {interp str} {
+    set result [::json::write string $str]
+    return [regsub -all {[$[]} $result {\\&}]
+}
+
+################################################################
+proc generate_tests {slug cases dir config} {
+    set template [file join $dir .meta generator.tmpl]
+    assert [file exists $template] "error: cannot generate, no template '$template'"
+    set fh [open $template r]
+    set tmpl [read -nonewline $fh]
+    close $fh
+    set t [ornament compile $tmpl]
+
+    set test_file [lindex [dict get $config files test] 0]
+    set soln_file [lindex [dict get $config files solution] 0]
+
+    set header [string map [list \
+        "%TIMESTAMP%" [clock format [clock seconds] -gmt true -format {%Y-%m-%dT%TZ}] \
+        "%SOURCE%" $soln_file \
+    ] $::HEADER]
+
+    # variables to expose to the template
+    set vars {}
+    dict set vars cases $cases
+    dict set vars slug $slug
+    dict set vars header $header
+    dict set vars footer $::FOOTER
+
+    # commands to expose
+    set cmds {}
+    dict set cmds tclString tclString
+
+    set fh [open [file join $dir $test_file] w]
+    puts $fh [ornament run $t $cmds $vars]
+    close $fh
+}
+
+################################################################
+proc main {args} {
+    assert [expr {[llength $args] > 0}] "usage: $::argv0 path-to-exercise"
+    set exercise_dir [lindex $args 0]
+    assert [file isdirectory $exercise_dir] "error: not a directory '$exercise_dir'"
+    set config [read_exercise_config $exercise_dir]
+    # puts [list $config]
+
+    set slug [file tail $exercise_dir]
+    set canonical_data [fetch_canonical_data $slug]
+    # puts [list $canonical_data]
+
+    set included_tests [get_included_tests $exercise_dir]
+    # puts [list $included_tests]
+
+    set flattened [flatten_tests_cases $canonical_data $included_tests]
+    # puts FLATTENED
+    # foreach case $flattened {puts [list $case]}
+    # puts "END [llength $flattened]"
+
+    generate_tests \
+        $slug \
+        $flattened \
+        $exercise_dir \
+        $config
+}
+
+main {*}$argv
