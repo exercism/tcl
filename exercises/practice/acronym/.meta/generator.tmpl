@@ -10,8 +10,8 @@ skip $test_id
 !   }
 !   set title [join [concat [lrange [dict get $case group] 1 end] [list [dict get $case description]]] :]
 test $test_id [tclString $title] -body {
-    heyBob [tclString [dict get $case input heyBob]]
-} -returnCodes ok -result "[dict get $case expected]"
+    abbreviate [tclString [dict get $case input phrase]]
+} -returnCodes ok -result [dict get $case expected]
 
 ! }
 
