@@ -144,6 +144,11 @@ namespace eval helpers {
     }
 }
 
+proc testTitle {interp case} {
+    set parts [concat [lrange [dict get $case group] 1 end] [list [dict get $case description]]]
+    return [tclString $interp [join $parts ": "]]
+}
+
 ################################################################
 proc generate_tests {slug cases dir config} {
     set template [file join $dir .meta generator.tmpl]
