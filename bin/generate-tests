@@ -129,6 +129,11 @@ proc tclString {interp str} {
     return [regsub -all {[$[]} $result {\\&}]
 }
 
+proc testTitle {interp case} {
+    set parts [concat [lrange [dict get $case group] 1 end] [list [dict get $case description]]]
+    return [tclString $interp [join $parts ": "]]
+}
+
 ################################################################
 proc generate_tests {slug cases dir config} {
     set template [file join $dir .meta generator.tmpl]
@@ -156,6 +161,7 @@ proc generate_tests {slug cases dir config} {
     # commands to expose
     set cmds {}
     dict set cmds tclString tclString
+    dict set cmds testTitle testTitle
 
     set fh [open [file join $dir $test_file] w]
     puts $fh [ornament run $t $cmds $vars]
