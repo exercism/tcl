@@ -1,0 +1,18 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+!   set title [join [concat [dict get $case group] [list [dict get $case description]]] :]
+test $test_id [tclString $title] -body {
+    heyBob [tclString [dict get $case input heyBob]]
+} -returnCodes ok -result "[dict get $case expected]"
+
+! }
+
+$footer

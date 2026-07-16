@@ -1,0 +1,25 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [tclString [dict get $case description]] -body {
+    gamestate {
+!   foreach row [dict get $case input board] {
+        [tclString $row]
+!   }
+    }
+!   if {[dict exists $case expected error]} {
+} -returnCodes error -result "[dict get $case expected error]"
+!   } else {
+} -returnCodes ok -result "[dict get $case expected]"
+!   }
+
+! }
+
+$footer

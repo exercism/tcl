@@ -1,5 +1,5 @@
 #!/usr/bin/env tclsh
-# generated on 2026-07-15T20:43:11+00:00
+# generated: 2026-07-16T18:52:04Z
 package require tcltest
 namespace import ::tcltest::*
 source testHelpers.tcl
@@ -10,8 +10,9 @@ source testHelpers.tcl
 ############################################################
 source "state-of-tic-tac-toe.tcl"
 
+
 test state-of-tic-tac-toe-1 "Finished game where X won via left column victory" -body {
-    gamestate { 
+    gamestate {
         "XOO"
         "X  "
         "X  "
@@ -20,7 +21,7 @@ test state-of-tic-tac-toe-1 "Finished game where X won via left column victory" 
 
 skip state-of-tic-tac-toe-2
 test state-of-tic-tac-toe-2 "Finished game where X won via middle column victory" -body {
-    gamestate { 
+    gamestate {
         "OXO"
         " X "
         " X "
@@ -29,7 +30,7 @@ test state-of-tic-tac-toe-2 "Finished game where X won via middle column victory
 
 skip state-of-tic-tac-toe-3
 test state-of-tic-tac-toe-3 "Finished game where X won via right column victory" -body {
-    gamestate { 
+    gamestate {
         "OOX"
         "  X"
         "  X"
@@ -38,7 +39,7 @@ test state-of-tic-tac-toe-3 "Finished game where X won via right column victory"
 
 skip state-of-tic-tac-toe-4
 test state-of-tic-tac-toe-4 "Finished game where O won via left column victory" -body {
-    gamestate { 
+    gamestate {
         "OXX"
         "OX "
         "O  "
@@ -47,7 +48,7 @@ test state-of-tic-tac-toe-4 "Finished game where O won via left column victory" 
 
 skip state-of-tic-tac-toe-5
 test state-of-tic-tac-toe-5 "Finished game where O won via middle column victory" -body {
-    gamestate { 
+    gamestate {
         "XOX"
         " OX"
         " O "
@@ -56,7 +57,7 @@ test state-of-tic-tac-toe-5 "Finished game where O won via middle column victory
 
 skip state-of-tic-tac-toe-6
 test state-of-tic-tac-toe-6 "Finished game where O won via right column victory" -body {
-    gamestate { 
+    gamestate {
         "XXO"
         " XO"
         "  O"
@@ -65,7 +66,7 @@ test state-of-tic-tac-toe-6 "Finished game where O won via right column victory"
 
 skip state-of-tic-tac-toe-7
 test state-of-tic-tac-toe-7 "Finished game where X won via top row victory" -body {
-    gamestate { 
+    gamestate {
         "XXX"
         "XOO"
         "O  "
@@ -74,7 +75,7 @@ test state-of-tic-tac-toe-7 "Finished game where X won via top row victory" -bod
 
 skip state-of-tic-tac-toe-8
 test state-of-tic-tac-toe-8 "Finished game where X won via middle row victory" -body {
-    gamestate { 
+    gamestate {
         "O  "
         "XXX"
         " O "
@@ -83,7 +84,7 @@ test state-of-tic-tac-toe-8 "Finished game where X won via middle row victory" -
 
 skip state-of-tic-tac-toe-9
 test state-of-tic-tac-toe-9 "Finished game where X won via bottom row victory" -body {
-    gamestate { 
+    gamestate {
         " OO"
         "O X"
         "XXX"
@@ -92,7 +93,7 @@ test state-of-tic-tac-toe-9 "Finished game where X won via bottom row victory" -
 
 skip state-of-tic-tac-toe-10
 test state-of-tic-tac-toe-10 "Finished game where O won via top row victory" -body {
-    gamestate { 
+    gamestate {
         "OOO"
         "XXO"
         "XX "
@@ -101,7 +102,7 @@ test state-of-tic-tac-toe-10 "Finished game where O won via top row victory" -bo
 
 skip state-of-tic-tac-toe-11
 test state-of-tic-tac-toe-11 "Finished game where O won via middle row victory" -body {
-    gamestate { 
+    gamestate {
         "XX "
         "OOO"
         "X  "
@@ -110,7 +111,7 @@ test state-of-tic-tac-toe-11 "Finished game where O won via middle row victory" 
 
 skip state-of-tic-tac-toe-12
 test state-of-tic-tac-toe-12 "Finished game where O won via bottom row victory" -body {
-    gamestate { 
+    gamestate {
         "XOX"
         " XX"
         "OOO"
@@ -119,7 +120,7 @@ test state-of-tic-tac-toe-12 "Finished game where O won via bottom row victory" 
 
 skip state-of-tic-tac-toe-13
 test state-of-tic-tac-toe-13 "Finished game where X won via falling diagonal victory" -body {
-    gamestate { 
+    gamestate {
         "XOO"
         " X "
         "  X"
@@ -128,7 +129,7 @@ test state-of-tic-tac-toe-13 "Finished game where X won via falling diagonal vic
 
 skip state-of-tic-tac-toe-14
 test state-of-tic-tac-toe-14 "Finished game where X won via rising diagonal victory" -body {
-    gamestate { 
+    gamestate {
         "O X"
         "OX "
         "X  "
@@ -137,7 +138,7 @@ test state-of-tic-tac-toe-14 "Finished game where X won via rising diagonal vict
 
 skip state-of-tic-tac-toe-15
 test state-of-tic-tac-toe-15 "Finished game where O won via falling diagonal victory" -body {
-    gamestate { 
+    gamestate {
         "OXX"
         "OOX"
         "X O"
@@ -146,7 +147,7 @@ test state-of-tic-tac-toe-15 "Finished game where O won via falling diagonal vic
 
 skip state-of-tic-tac-toe-16
 test state-of-tic-tac-toe-16 "Finished game where O won via rising diagonal victory" -body {
-    gamestate { 
+    gamestate {
         "  O"
         " OX"
         "OXX"
@@ -155,7 +156,7 @@ test state-of-tic-tac-toe-16 "Finished game where O won via rising diagonal vict
 
 skip state-of-tic-tac-toe-17
 test state-of-tic-tac-toe-17 "Finished game where X won via a row and a column victory" -body {
-    gamestate { 
+    gamestate {
         "XXX"
         "XOO"
         "XOO"
@@ -164,7 +165,7 @@ test state-of-tic-tac-toe-17 "Finished game where X won via a row and a column v
 
 skip state-of-tic-tac-toe-18
 test state-of-tic-tac-toe-18 "Finished game where X won via two diagonal victories" -body {
-    gamestate { 
+    gamestate {
         "XOX"
         "OXO"
         "XOX"
@@ -173,7 +174,7 @@ test state-of-tic-tac-toe-18 "Finished game where X won via two diagonal victori
 
 skip state-of-tic-tac-toe-19
 test state-of-tic-tac-toe-19 "Draw" -body {
-    gamestate { 
+    gamestate {
         "XOX"
         "XXO"
         "OXO"
@@ -182,7 +183,7 @@ test state-of-tic-tac-toe-19 "Draw" -body {
 
 skip state-of-tic-tac-toe-20
 test state-of-tic-tac-toe-20 "Another draw" -body {
-    gamestate { 
+    gamestate {
         "XXO"
         "OXX"
         "XOO"
@@ -191,7 +192,7 @@ test state-of-tic-tac-toe-20 "Another draw" -body {
 
 skip state-of-tic-tac-toe-21
 test state-of-tic-tac-toe-21 "Ongoing game: one move in" -body {
-    gamestate { 
+    gamestate {
         "   "
         "X  "
         "   "
@@ -200,7 +201,7 @@ test state-of-tic-tac-toe-21 "Ongoing game: one move in" -body {
 
 skip state-of-tic-tac-toe-22
 test state-of-tic-tac-toe-22 "Ongoing game: two moves in" -body {
-    gamestate { 
+    gamestate {
         "O  "
         " X "
         "   "
@@ -209,7 +210,7 @@ test state-of-tic-tac-toe-22 "Ongoing game: two moves in" -body {
 
 skip state-of-tic-tac-toe-23
 test state-of-tic-tac-toe-23 "Ongoing game: five moves in" -body {
-    gamestate { 
+    gamestate {
         "X  "
         " XO"
         "OX "
@@ -218,7 +219,7 @@ test state-of-tic-tac-toe-23 "Ongoing game: five moves in" -body {
 
 skip state-of-tic-tac-toe-24
 test state-of-tic-tac-toe-24 "Invalid board: X went twice" -body {
-    gamestate { 
+    gamestate {
         "XX "
         "   "
         "   "
@@ -227,7 +228,7 @@ test state-of-tic-tac-toe-24 "Invalid board: X went twice" -body {
 
 skip state-of-tic-tac-toe-25
 test state-of-tic-tac-toe-25 "Invalid board: O started" -body {
-    gamestate { 
+    gamestate {
         "OOX"
         "   "
         "   "
@@ -236,7 +237,7 @@ test state-of-tic-tac-toe-25 "Invalid board: O started" -body {
 
 skip state-of-tic-tac-toe-26
 test state-of-tic-tac-toe-26 "Invalid board: X won and O kept playing" -body {
-    gamestate { 
+    gamestate {
         "XXX"
         "OOO"
         "   "
@@ -245,7 +246,7 @@ test state-of-tic-tac-toe-26 "Invalid board: X won and O kept playing" -body {
 
 skip state-of-tic-tac-toe-27
 test state-of-tic-tac-toe-27 "Invalid board: players kept playing after a win" -body {
-    gamestate { 
+    gamestate {
         "XXX"
         "OOO"
         "XOX"
@@ -254,7 +255,7 @@ test state-of-tic-tac-toe-27 "Invalid board: players kept playing after a win" -
 
 skip state-of-tic-tac-toe-28
 test state-of-tic-tac-toe-28 "Invalid board: O kept playing after X wins" -body {
-    gamestate { 
+    gamestate {
         "OO "
         "XXX"
         " O "
@@ -263,7 +264,7 @@ test state-of-tic-tac-toe-28 "Invalid board: O kept playing after X wins" -body 
 
 skip state-of-tic-tac-toe-29
 test state-of-tic-tac-toe-29 "Invalid board: X kept playing after O wins" -body {
-    gamestate { 
+    gamestate {
         "XX "
         "OOO"
         " XX"
