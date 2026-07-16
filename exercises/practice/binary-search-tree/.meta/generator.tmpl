@@ -1,0 +1,50 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+!* commandSubst false
+    set b [BinarySearchTree new]
+!* commandSubst true
+!* variableSubst false
+!   if {[llength [dict get $case input treeData]] > 4} {
+    foreach n [asList [dict get $case input treeData]] {
+        $b insert $n
+    }
+!   } else {
+!   foreach elem [dict get $case input treeData] {
+    $b insert [set elem]
+!   }
+!   }
+!   if {[dict get $case property] eq "data"} {
+    $b toDict
+} -returnCodes ok -match dictionary -result {
+[string map {null "{}"} [pdict [dict get $case expected]]]
+}
+!   } else {
+    $b sorted
+} -returnCodes ok -result [asList [dict get $case expected]]
+!   }
+!* variableSubst true
+
+! }
+skip ${slug}-extra-challenge
+test ${slug}-extra-challenge "can iterate over sorted data" -body {
+!* commandSubst false
+!* variableSubst false
+    set b [BinarySearchTree new]
+    foreach n {4 2 6 1 3 5 7} {
+        $b insert $n
+    }
+    $b map node {expr {[$node data] + 10}}
+} -returnCodes ok -result {11 12 13 14 15 16 17}
+!* variableSubst true
+
+
+$footer
