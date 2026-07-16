@@ -1,0 +1,22 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+!   if {[dict get $case property] eq "allergicTo"} {
+    [dict get $case property] [dict get $case input item] [dict get $case input score]
+} -returnCodes ok -match boolean -result [dict get $case expected]
+!   } else {
+    listAllergies [dict get $case input score]
+} -returnCodes ok -result [asList [dict get $case expected]]
+!   }
+
+! }
+
+$footer

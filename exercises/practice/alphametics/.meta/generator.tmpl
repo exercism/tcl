@@ -1,0 +1,28 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+!   if {$i == 10} {
+
+# Change this to "true" to enable the bonus test, and
+# really exercise your code.
+if {false} {
+
+!   } elseif {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+    [dict get $case property] [tclString [dict get $case input puzzle]]
+!   if {[dict get $case expected] eq "null"} {dict set case expected ""}
+} -returnCodes ok -match dictionary -result [asList [dict get $case expected]]
+!   if {$i == 10} {
+    
+}
+!   }
+
+! }
+
+$footer

@@ -1,0 +1,21 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [tclString [dict get $case description]] -body {
+    affine_[dict get $case property] [tclString [dict get $case input phrase]] [dict get $case input key a] [dict get $case input key b]
+!   if {[dict exists $case expected error]} {
+} -returnCodes error -result [tclString [dict get $case expected error]]
+!   } else {
+} -returnCodes ok -result [tclString [dict get $case expected]]
+!   }
+
+! }
+
+$footer

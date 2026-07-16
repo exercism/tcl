@@ -106,7 +106,7 @@ proc filter_tests {description cases included_tests} {
     global tests
     foreach case $cases {
         if {[dict exists $case cases]} {
-            filter_tests [concat $description [dict get $case description]] [dict get $case cases] $included_tests
+            filter_tests [concat $description [list [dict get $case description]]] [dict get $case cases] $included_tests
         } elseif {[dict exists $case uuid] && [dict get $case uuid] in $included_tests} {
             lappend tests [dict merge $case [list group $description]]
         }
@@ -122,11 +122,26 @@ proc flatten_tests_cases {canonical_data included_tests} {
 }
 
 ################################################################
-# procs to expose in the template
+# helper procs to expose in the template
 # interp is the safe interpreter running the template
-proc tclString {interp str} {
-    set result [::json::write string $str]
-    return [regsub -all {[$[]} $result {\\&}]
+namespace eval helpers {
+    proc tclString {interp str} {
+        set result [::json::write string $str]
+        return [regsub -all {[$[]} $result {\\&}]
+    }
+
+    proc testTitle {interp case} {
+        set parts [concat [lrange [dict get $case group] 1 end] [list [dict get $case description]]]
+        return [tclString $interp [join $parts ": "]]
+    }
+
+    proc asList {interp list} {
+        if {[llength $list] <= 1} {
+            return "{$list}"
+        } else {
+            return [list $list]
+        }
+    }
 }
 
 ################################################################
@@ -153,9 +168,11 @@ proc generate_tests {slug cases dir config} {
     dict set vars header $header
     dict set vars footer $::FOOTER
 
-    # commands to expose
+    # commands to expose (the "helpers" namespace)
     set cmds {}
-    dict set cmds tclString tclString
+    foreach p [info procs ::helpers::*] {
+        dict set cmds [lindex [split $p ::] end] $p
+    }
 
     set fh [open [file join $dir $test_file] w]
     puts $fh [ornament run $t $cmds $vars]
