@@ -1,0 +1,21 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+    findMinimumCoins [dict get $case input target] [asList [dict get $case input coins]]
+!   if {[dict exists $case expected error]} {
+} -returnCodes error -result [tclString [dict get $case expected error]]
+!   } else {
+} -returnCodes ok -result [asList [dict get $case expected]]
+!   }
+
+! }
+
+$footer
