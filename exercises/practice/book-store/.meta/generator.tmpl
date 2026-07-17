@@ -1,0 +1,30 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+# results expressed in units of cents.
+
+! set i 0
+! foreach case $cases {
+!   set comment_out false
+!   if {[dict get $case description] eq "Check that groups of four are created properly even when there are more groups of three than groups of five"} {
+!       set comment_out true
+! }
+!   if {$comment_out} {
+# this may take a long time: change 0 to 1 to run this test case.
+if {0} {
+! }
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+    basketCost [asList [dict get $case input basket]]
+} -returnCodes ok -result [dict get $case expected]
+!   if {$comment_out} {
+}
+!   }
+
+! }
+
+$footer
