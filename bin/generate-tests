@@ -136,11 +136,35 @@ namespace eval helpers {
         return [tclString $interp [join $parts ": "]]
     }
 
-    proc asList {interp list} {
-        if {[llength $list] <= 1} {
-            return "{$list}"
-        } else {
+    proc asList {interp list args} {
+        set opts [dict merge {
+            -multiline false
+            -indent 0
+            -strings false
+        } $args]
+
+        if {[llength $list] == 0} {
+            return "{}"
+        }
+        if {[llength $list] == 1} {
+            set value [lindex $list 0]
+            if {[dict get $opts -strings]} {
+                set value [tclString $interp $value]
+            }
+            return [list $value]
+        }
+        if {![dict get $opts -multiline]} {
             return [list $list]
+        } else {
+            set tab "    "
+            set indent [string repeat $tab [dict get $opts -indent]]
+            if {[dict get $opts -strings]} {
+                set list [lmap elem $list {tclString $interp $elem}]
+            }
+            set lines [list "{"]
+            lappend lines {*}[lmap elem $list {format {%s%s} $indent $elem}]
+            lappend lines [format {%s%s} [string repeat $tab [expr {[dict get $opts -indent] - 1}]] "}"]
+            return [join $lines \n]
         }
     }
 

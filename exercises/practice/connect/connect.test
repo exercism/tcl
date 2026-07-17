@@ -1,10 +1,15 @@
 #!/usr/bin/env tclsh
+# generated: 2026-07-17T15:43:30Z
 package require tcltest
 namespace import ::tcltest::*
 source testHelpers.tcl
 
+# Uncomment next line to view test durations.
+#configure -verbose {body error usec}
+
 ############################################################
 source "connect.tcl"
+
 
 test connect-1 "an empty board has no winner" -body {
     winner {
@@ -18,16 +23,12 @@ test connect-1 "an empty board has no winner" -body {
 
 skip connect-2
 test connect-2 "X can win on a 1x1 board" -body {
-    winner {
-        "X"
-    }
+    winner {"X"}
 } -returnCodes ok -result "X"
 
 skip connect-3
 test connect-3 "O can win on a 1x1 board" -body {
-    winner {
-        "O"
-    }
+    winner {"O"}
 } -returnCodes ok -result "O"
 
 skip connect-4
@@ -73,8 +74,8 @@ test connect-7 "X wins crossing from left to right" -body {
     }
 } -returnCodes ok -result "X"
 
-skip connect-11
-test connect-11 "X wins with left-hand dead end fork" -body {
+skip connect-8
+test connect-8 "X wins with left-hand dead end fork" -body {
     winner {
         ". . X ."
         " X X . ."
@@ -83,8 +84,8 @@ test connect-11 "X wins with left-hand dead end fork" -body {
     }
 } -returnCodes ok -result "X"
 
-skip connect-12
-test connect-12 "X wins with right-hand dead end fork" -body {
+skip connect-9
+test connect-9 "X wins with right-hand dead end fork" -body {
     winner {
         ". . X X"
         " X X . ."
@@ -93,8 +94,8 @@ test connect-12 "X wins with right-hand dead end fork" -body {
     }
 } -returnCodes ok -result "X"
 
-skip connect-8
-test connect-8 "O wins crossing from top to bottom" -body {
+skip connect-10
+test connect-10 "O wins crossing from top to bottom" -body {
     winner {
         ". O . ."
         " O X X X"
@@ -104,8 +105,8 @@ test connect-8 "O wins crossing from top to bottom" -body {
     }
 } -returnCodes ok -result "O"
 
-skip connect-9
-test connect-9 "X wins using a convoluted path" -body {
+skip connect-11
+test connect-11 "X wins using a convoluted path" -body {
     winner {
         ". X X . ."
         " X . X . X"
@@ -115,8 +116,8 @@ test connect-9 "X wins using a convoluted path" -body {
     }
 } -returnCodes ok -result "X"
 
-skip connect-10
-test connect-10 "X wins using a spiral path" -body {
+skip connect-12
+test connect-12 "X wins using a spiral path" -body {
     winner {
         "O X X X X X X X X"
         " O X O O O O O O O"
