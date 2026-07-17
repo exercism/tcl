@@ -1,0 +1,26 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+# Note that Tcl does not have a "null" value.
+# Typically the empty string is used instead.
+
+! set i 0
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+!   set input [asList [dict get $case input array]]
+    [dict get $case property] [string map {null {""}} $input]
+} -returnCodes ok -result [asList [dict get $case expected]]
+
+! }
+! set test_id "${slug}-[incr i]"
+skip $test_id
+test $test_id "Tcl can't differentiate between a list and a string" -body {
+    flatten {foo bar {baz "a string with spaces"}}
+} -returnCodes ok -result {foo bar baz a string with spaces}
+
+$footer
