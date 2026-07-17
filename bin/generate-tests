@@ -142,6 +142,7 @@ namespace eval helpers {
             -multiline false
             -indent 0
             -strings false
+            -lists false
         } $args]
 
         if {[llength $list] == 0} {
@@ -161,6 +162,8 @@ namespace eval helpers {
             set indent [string repeat $tab [dict get $opts -indent]]
             if {[dict get $opts -strings]} {
                 set list [lmap elem $list {tclString $interp $elem}]
+            } elseif {[dict get $opts -lists]} {
+                set list [lmap elem $list {asList $interp $elem}]
             }
             set lines [list "{"]
             lappend lines {*}[lmap elem $list {format {%s%s} $indent $elem}]
