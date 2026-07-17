@@ -1,0 +1,21 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+    set playerA [asList [dict get $case input playerA]]
+    set playerB [asList [dict get $case input playerB]]
+!* variableSubst false
+    simulateGame $playerA $playerB
+!* variableSubst true
+} -returnCodes ok -match dictionary -result [asList [dict get $case expected]]
+
+! }
+
+$footer
