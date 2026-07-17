@@ -123,6 +123,7 @@ proc flatten_tests_cases {canonical_data included_tests} {
 }
 
 ################################################################
+################################################################
 # helper procs to expose in the template
 # interp is the safe interpreter running the template
 namespace eval helpers {
@@ -151,7 +152,7 @@ namespace eval helpers {
             if {[dict get $opts -strings]} {
                 set value [tclString $interp $value]
             }
-            return "{[list $value]}"
+            return "{$value}"
         }
         if {![dict get $opts -multiline]} {
             return [list $list]
@@ -176,8 +177,9 @@ namespace eval helpers {
         return [regsub -all -line {^} [string trim $pretty] $indent]
     }
 }
-
 ################################################################
+################################################################
+
 proc generate_tests {slug cases dir config} {
     set template [file join $dir .meta generator.tmpl]
     assert [file exists $template] "error: cannot generate, no template '$template'"
