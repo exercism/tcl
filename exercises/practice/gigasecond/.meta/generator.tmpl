@@ -1,0 +1,23 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+    addGigasecond [tclString [dict get $case input moment]]
+} -returnCodes ok -result [tclString [dict get $case expected]]
+
+! }
+! set test_id "${slug}-[incr i]"
+# bonus test
+skip $test_id
+test $test_id "free-form datetime string" -body {
+    addGigasecond "thu march 2, 1978 1:23 PM"
+} -returnCodes ok -result "2009-11-08T15:09:40"
+
+$footer
