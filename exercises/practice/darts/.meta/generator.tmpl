@@ -9,8 +9,8 @@ $header
 skip $test_id
 !   }
 test $test_id [testTitle $case] -body {
-    bottleSong [dict get $case input startBottles] [dict get $case input takeDown]
-} -returnCodes ok -match orderedLists -result [asList [dict get $case expected] -multiline true -indent 1 -strings true]
+    [dict get $case property] [dict get $case input x] [dict get $case input y]
+} -returnCodes ok -result [dict get $case expected]
 
 ! }
 
