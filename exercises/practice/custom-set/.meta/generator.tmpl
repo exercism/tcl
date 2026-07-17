@@ -1,0 +1,116 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+!###################################
+!# Some track-only tests
+!#
+!* variableSubst false
+!* commandSubst false
+# Returns the elements of the set as a list
+test custom-set-0.1 "sets with no elements" -body {
+    set s [Set new {}]
+    $s toList
+} -returnCodes ok -match unorderedLists -result {}
+
+skip custom-set-0.2
+test custom-set-0.2 "sets with elements" -body {
+    set s [Set new {1 2 3 4}]
+    $s toList
+} -returnCodes ok -match unorderedLists -result {4 3 1 2}
+
+# Size of a set
+skip custom-set-0.3
+test custom-set-0.3 "size of sets with no elements" -body {
+    set s [Set new {}]
+    $s size
+} -returnCodes ok -result 0
+
+skip custom-set-0.4
+test custom-set-0.4 "size of sets with elements" -body {
+    set s [Set new {3 2 1}]
+    $s size
+} -returnCodes ok -result 3
+
+!###################################
+!# The generated tests
+!#
+!* variableSubst true
+!* commandSubst true
+! set i 0
+! array set op {
+!   subset subsetOf
+!   disjoint disjoint
+!   equal equals
+! }
+! foreach case $cases {
+!   set property [dict get $case property]
+!   set test_id "${slug}-[incr i]"
+skip $test_id
+test $test_id [testTitle $case] -body {
+!   switch -regexp $property {
+!       {empty} {
+!           set xs [asList [dict get $case input set]]
+!* commandSubst false
+    set s [Set new $xs]
+!* commandSubst true
+!* variableSubst false
+    $s isEmpty
+!* variableSubst true
+} -returnCodes ok -match boolean -result [dict get $case expected]
+
+!       }
+!       {contains} {
+!           set xs [asList [dict get $case input set]]
+!* commandSubst false
+    set s [Set new $xs]
+!* commandSubst true
+!* variableSubst false
+    $s contains [dict get $case input element]
+!* variableSubst true
+} -returnCodes ok -match boolean -result [dict get $case expected]
+
+!       }
+!       {subset|disjoint|equal} {
+!           set xs1 [asList [dict get $case input set1]]
+!           set xs2 [asList [dict get $case input set2]]
+!* commandSubst false
+    set s1 [Set new $xs1]
+    set s2 [Set new $xs2]
+!* commandSubst true
+!* variableSubst false
+    $s1 [set op($property)] $s2
+!* variableSubst true
+} -returnCodes ok -match boolean -result [dict get $case expected]
+
+!       }
+!       {add} {
+!           set xs [asList [dict get $case input set]]
+!* commandSubst false
+    set s [Set new $xs]
+!* commandSubst true
+!* variableSubst false
+    $s add [dict get $case input element]
+    $s toList
+!* variableSubst true
+} -returnCodes ok -match unorderedLists -result [asList [dict get $case expected]]
+
+!       }
+!       {intersection|difference|union} {
+!           set xs1 [asList [dict get $case input set1]]
+!           set xs2 [asList [dict get $case input set2]]
+!* commandSubst false
+    set s1 [Set new $xs1]
+    set s2 [Set new $xs2]
+!* commandSubst true
+    [format {set s3 [$s1 %s $s2]} $property]
+!* variableSubst false
+    $s3 toList
+!* variableSubst true
+} -returnCodes ok -match unorderedLists -result [asList [dict get $case expected]]
+
+!       }
+!   }
+! }
+
+$footer
