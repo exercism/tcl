@@ -1,0 +1,54 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+!   set property [dict get $case property]
+!   if {$property eq "equal"} {
+!       set h1 [dict get $case input clock1 hour]
+!       set m1 [dict get $case input clock1 minute]
+!       set h2 [dict get $case input clock2 hour]
+!       set m2 [dict get $case input clock2 minute]
+!* commandSubst false
+    set c1 [Clock new $h1 $m1]
+    set c2 [Clock new $h2 $m2]
+!* commandSubst true
+!* variableSubst false
+    $c1 equals $c2
+!* variableSubst true
+} -returnCodes ok -match boolean -result [dict get $case expected]
+
+!   } else {
+!       set h [dict get $case input hour]
+!       set m [dict get $case input minute]
+!       if {$property eq "create"} {
+!* commandSubst false
+    [Clock new $h $m] toString
+!* commandSubst true
+!       } else {
+!           set v [dict get $case input value]
+!* commandSubst false
+    [[Clock new $h $m] $property $v] toString
+!* commandSubst true
+!       }
+} -returnCodes ok -result [tclString [dict get $case expected]]
+
+!   }
+! }
+!* commandSubst false
+!* variableSubst false
+skip clock-bonus
+test clock-bonus "bonus: non-alpha method name" -body {
+    set c1 [Clock new 8 1]
+    set c2 [Clock new 8 2]
+    $c1 == $c2
+} -returnCodes ok -match boolean -result false
+
+!* variableSubst true
+$footer
