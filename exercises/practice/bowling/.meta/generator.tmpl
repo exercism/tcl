@@ -1,0 +1,36 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+!* variableSubst false
+!* commandSubst false
+    set game [Bowling new]
+!* commandSubst true
+!   if {[llength [dict get $case input previousRolls]] == 1} {
+    $game roll [dict get $case input previousRolls]
+!   } elseif {[llength [dict get $case input previousRolls]] > 1} {
+    foreach roll [asList [dict get $case input previousRolls]] {
+        $game roll $roll
+    }
+!   }
+!   if {[dict exists $case input roll]} {
+    $game roll [dict get $case input roll]
+!   }
+    $game score
+!* variableSubst true
+!   if {[dict exists $case expected error]} {
+} -returnCodes error -result [tclString [dict get $case expected error]]
+!   } else {
+} -returnCodes ok -result [dict get $case expected]
+!   }
+
+! }
+
+$footer
