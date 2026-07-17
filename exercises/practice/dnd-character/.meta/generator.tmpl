@@ -1,0 +1,74 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   set property [dict get $case property]
+!   if {$property eq "modifier"} {
+!       set test_id "${slug}-[incr i]"
+!       if {$i > 1} {
+skip $test_id
+!       }
+test $test_id [tclString [dict get $case description]] -body {
+    dnd modifier [dict get $case input score]
+} -returnCodes ok -result [dict get $case expected]
+!   }
+
+! }
+
+!* commandSubst false
+! set test_id "${slug}-[incr i]"
+skip $test_id
+test $test_id "random ability is within range" -body {
+!* variableSubst false
+    set result true
+    for {set i 0} {$i < 10000} {incr i} {
+        set a [dnd ability]
+        if {$a < 3 || $a > 18} {
+            set result false
+            break
+        }
+    }
+    set result
+} -returnCodes ok -match boolean -result true
+!* variableSubst true
+
+! set test_id "${slug}-[incr i]"
+skip $test_id
+test $test_id "a character is a well-formed dict" -body {
+!* variableSubst false
+    set character [dnd character]
+    expr {[string is list -strict $character] && [llength $character] % 2 == 0}
+} -returnCodes ok -match boolean -result true
+!* variableSubst true
+
+! set test_id "${slug}-[incr i]"
+skip $test_id
+test $test_id "a character has the correct attributes" -body {
+!* variableSubst false
+    set character [dnd character]
+    lsort [dict keys $character]
+} -returnCodes ok -match unorderedLists -result {charisma constitution dexterity hitpoints intelligence strength wisdom}
+!* variableSubst true
+
+! set test_id "${slug}-[incr i]"
+skip $test_id
+test $test_id "characteristics have the correct values" -body {
+!* variableSubst false
+    set character [dnd character]
+    dict with character {
+        expr {
+            3 <= $charisma && $charisma <= 18 &&
+            3 <= $constitution && $constitution <= 18 &&
+            3 <= $dexterity && $dexterity <= 18 &&
+            3 <= $intelligence && $intelligence <= 18 &&
+            3 <= $strength && $strength <= 18 &&
+            3 <= $wisdom && $wisdom <= 18 &&
+            $hitpoints == 10 + [dnd modifier $constitution]
+        }
+    }
+} -returnCodes ok -match boolean -result true
+!* variableSubst true
+
+$footer
