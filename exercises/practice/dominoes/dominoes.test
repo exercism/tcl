@@ -1,72 +1,79 @@
 #!/usr/bin/env tclsh
+# generated: 2026-07-17T19:29:02Z
 package require tcltest
 namespace import ::tcltest::*
 source testHelpers.tcl
 
+# Uncomment next line to view test durations.
+#configure -verbose {body error usec}
+
 ############################################################
 source "dominoes.tcl"
 
-set cases {
-    dominoes-1 "empty input = empty output" true  {}
-    dominoes-2 "singleton input = singleton output" true  {{1 1}}
-    dominoes-3 "singleton that can't be chained" false  {{1 2}}
-    dominoes-4 "three elements" true  {{1 2} {3 1} {2 3}}
-    dominoes-5 "can reverse dominoes" true  {{1 2} {1 3} {2 3}}
-    dominoes-6 "can't be chained" false  {{1 2} {4 1} {2 3}}
-}
 
-# This meets the requirement of being possibly-Eulerian.  All vertices
-# have even degree.  Nevertheless, there is no chain here, as there's no
-# way to get from 1 to 2.  This test (and the two following) prevent
-# solutions from using the even-degree test as the sole criterion, as
-# that is not a sufficient condition."
-#
-lappend cases {*}{
-    dominoes-7 "disconnected - simple" false  {{1 1} {2 2}}
-    dominoes-8 "disconnected - double loop" false  {{1 2} {2 1} {3 4} {4 3}}
-    dominoes-9 "disconnected - single isolated" false  {{1 2} {2 3} {3 1} {4 4}}
-}
+test dominoes-1 "empty input = empty output" -body {
+    dominoChain {}
+} -returnCodes ok -match boolean -result true
 
-# Some solutions may make a chain out of (1, 2), (2, 3), (3, 1)
-# then decide that since there are no more dominoes containing a 1,
-# there is no chain possible.  There is indeed a chain here, so this
-# test checks for this line of reasoning.  You need to place the (2, 4)
-# after the (1, 2) rather than the (2, 3).
-#
-lappend cases {*}{
-    dominoes-10 "need backtrack" true  {{1 2} {2 3} {3 1} {2 4} {2 4}}
-    dominoes-11 "separate loops" true  {{1 2} {2 3} {3 1} {1 1} {2 2} {3 3}}
-    dominoes-12 "nine elements" true  {{1 2} {5 3} {3 1} {1 2} {2 4} {1 6} {2 3} {3 4} {5 6}}
-}
+skip dominoes-2
+test dominoes-2 "singleton input = singleton output" -body {
+    dominoChain {{1 1}}
+} -returnCodes ok -match boolean -result true
 
-# Some solutions only check if each stone has at least two other 
-# neighbors, but this test case should still fail due to
-# the separate loops not being linked.
-lappend cases {*}{
-    dominoes-13 "separate three-domino loops" false  {{1 2} {2 3} {3 1} {4 5} {5 6} {6 4}}
-}
+skip dominoes-3
+test dominoes-3 "singleton that can't be chained" -body {
+    dominoChain {{1 2}}
+} -returnCodes ok -match boolean -result false
 
-skip {
-    dominoes-2
-    dominoes-3
-    dominoes-4
-    dominoes-5
-    dominoes-6
-    dominoes-7
-    dominoes-8
-    dominoes-9
-    dominoes-10
-    dominoes-11
-    dominoes-12
-    dominoes-13
-}
+skip dominoes-4
+test dominoes-4 "three elements" -body {
+    dominoChain {{1 2} {3 1} {2 3}}
+} -returnCodes ok -match boolean -result true
 
-foreach {name description result input} $cases {
-    test $name $description \
-        -body [list dominoChain $input] \
-        -returnCodes ok \
-        -match boolean \
-        -result $result
-}
+skip dominoes-5
+test dominoes-5 "can reverse dominoes" -body {
+    dominoChain {{1 2} {1 3} {2 3}}
+} -returnCodes ok -match boolean -result true
+
+skip dominoes-6
+test dominoes-6 "can't be chained" -body {
+    dominoChain {{1 2} {4 1} {2 3}}
+} -returnCodes ok -match boolean -result false
+
+skip dominoes-7
+test dominoes-7 "disconnected - simple" -body {
+    dominoChain {{1 1} {2 2}}
+} -returnCodes ok -match boolean -result false
+
+skip dominoes-8
+test dominoes-8 "disconnected - double loop" -body {
+    dominoChain {{1 2} {2 1} {3 4} {4 3}}
+} -returnCodes ok -match boolean -result false
+
+skip dominoes-9
+test dominoes-9 "disconnected - single isolated" -body {
+    dominoChain {{1 2} {2 3} {3 1} {4 4}}
+} -returnCodes ok -match boolean -result false
+
+skip dominoes-10
+test dominoes-10 "need backtrack" -body {
+    dominoChain {{1 2} {2 3} {3 1} {2 4} {2 4}}
+} -returnCodes ok -match boolean -result true
+
+skip dominoes-11
+test dominoes-11 "separate loops" -body {
+    dominoChain {{1 2} {2 3} {3 1} {1 1} {2 2} {3 3}}
+} -returnCodes ok -match boolean -result true
+
+skip dominoes-12
+test dominoes-12 "nine elements" -body {
+    dominoChain {{1 2} {5 3} {3 1} {1 2} {2 4} {1 6} {2 3} {3 4} {5 6}}
+} -returnCodes ok -match boolean -result true
+
+skip dominoes-13
+test dominoes-13 "separate three-domino loops" -body {
+    dominoChain {{1 2} {2 3} {3 1} {4 5} {5 6} {6 4}}
+} -returnCodes ok -match boolean -result false
+
 
 cleanupTests

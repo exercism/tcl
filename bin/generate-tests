@@ -151,7 +151,7 @@ namespace eval helpers {
             if {[dict get $opts -strings]} {
                 set value [tclString $interp $value]
             }
-            return "{$value}"
+            return "{[list $value]}"
         }
         if {![dict get $opts -multiline]} {
             return [list $list]

@@ -1,0 +1,28 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+    [dict get $case property] {
+!   foreach {key val} [dict get $case input legacy] {
+        $key [asList $val]
+!   }
+    }
+} -returnCodes ok -match dictionary -result {
+[pdict [dict get $case expected] -indent 2]
+}
+
+! }
+! set test_id "${slug}-[incr i]"
+skip $test_id
+test $test_id "odd number of list elements" -body {
+    transform {1 {a b c} 2}
+} -returnCodes error -result "invalid input"
+
+$footer
