@@ -1,0 +1,2 @@
+#!/bin/sh
+find exercises/practice/ -mindepth 2 -type d -path '*/.meta' \! -exec test -e '{}/generator.tmpl' \; -print | sort

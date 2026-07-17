@@ -9,11 +9,7 @@ $header
 skip $test_id
 !   }
 test $test_id [tclString [dict get $case description]] -body {
-    gamestate {
-!   foreach row [dict get $case input board] {
-        [tclString $row]
-!   }
-    }
+    gamestate [asList [dict get $case input board] -multiline true -indent 2 -strings true]
 !   if {[dict exists $case expected error]} {
 } -returnCodes error -result "[dict get $case expected error]"
 !   } else {

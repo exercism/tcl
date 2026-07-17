@@ -1,10 +1,15 @@
 #!/usr/bin/env tclsh
+# generated: 2026-07-17T17:53:57Z
 package require tcltest
 namespace import ::tcltest::*
 source testHelpers.tcl
 
+# Uncomment next line to view test durations.
+#configure -verbose {body error usec}
+
 ############################################################
 source "darts.tcl"
+
 
 test darts-1 "Missed target" -body {
     score -9 9
@@ -26,12 +31,12 @@ test darts-4 "On the inner circle" -body {
 } -returnCodes ok -result 10
 
 skip darts-5
-test darts-5 "Exactly on centre" -body {
+test darts-5 "Exactly on center" -body {
     score 0 0
 } -returnCodes ok -result 10
 
 skip darts-6
-test darts-6 "Near the centre" -body {
+test darts-6 "Near the center" -body {
     score -0.1 -0.1
 } -returnCodes ok -result 10
 

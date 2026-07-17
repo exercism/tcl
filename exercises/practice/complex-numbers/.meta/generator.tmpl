@@ -1,0 +1,146 @@
+!# Another quite code-y template
+!* variableSubst true
+!* commandSubst true
+$header
+
+! proc mathSymbols {str} {
+!    return [string map {
+!       "pi/4" {[expr {$pi / 4}]}
+!       "pi" {$pi}
+!       "e" {$e}
+!       "ln(2)/2" {[expr {$ln2 / 2}]}
+!       "ln(2)" {$ln2}
+!   } $str]
+! }
+!#
+! set i 0
+! array set seen {exp false real_complex false}
+!#
+! foreach case $cases {
+!   set property [dict get $case property]
+!   if {$property eq "exp" && !$seen(exp)} {
+!       set seen(exp) true
+!* commandSubst false
+# Complex exponential function
+
+set pi [expr {atan(1) * 4}]
+set e  [expr {exp(1)}]
+set ln2 [expr {log(2)}]
+
+!* commandSubst true
+! }
+!   if {[lindex [dict get $case group] end] eq "Operations between real numbers and complex numbers" && !$seen(real_complex)} {
+!       set seen(real_complex) true
+
+############################################################
+# Operations between real numbers and complex numbers.
+#
+# These tests require you to write new functions for the
+# `expr` command.  The new functions will take two arguments
+# (a real number and a complex number, in some order) and
+# return a complex number.
+#
+# See https://www.tcl-lang.org/man/tcl8.6/TclCmd/mathfunc.htm
+
+! }
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+!   switch -regexp $property {
+!       {real|imaginary} {
+!           lassign [dict get $case input z] x y
+!* commandSubst false
+    set c [ComplexNumber new $x $y]
+!* commandSubst true
+!* variableSubst false
+    $c [string range $property 0 3]
+!* variableSubst true
+} -returnCodes ok -result [dict get $case expected]
+
+!       }
+!       {abs} {
+!           lassign [dict get $case input z] x y
+!* commandSubst false
+    set c [ComplexNumber new $x $y]
+!* commandSubst true
+!* variableSubst false
+    $c [string range $property 0 3]
+!* variableSubst true
+} -returnCodes ok -match float -result [dict get $case expected]
+
+!       }
+!       {mul|add|sub|div} {
+!           lassign [dict get $case input z1] x1 y1
+!           lassign [dict get $case input z2] x2 y2
+!           if {$seen(real_complex)} {
+!               if {$y1 eq ""} {
+    set r $x1
+!                   set expression [format {cr_%s($r, $c)} $property]
+!               } else {
+!* commandSubst false
+    set c [ComplexNumber new $x1 $y1]
+!* commandSubst true
+!                   set expression [format {cr_%s($c, $r)} $property]
+!               }
+!               if {$y2 eq ""} {
+    set r $x2
+!               } else {
+!* commandSubst false
+    set c [ComplexNumber new $x2 $y2]
+!* commandSubst true
+!               }
+!* commandSubst false
+    set d [expr {$expression}]
+!* variableSubst false
+    $d toList
+!* variableSubst true
+!* commandSubst true
+!           } else {
+!* commandSubst false
+    set c1 [ComplexNumber new $x1 $y1]
+    set c2 [ComplexNumber new $x2 $y2]
+!* commandSubst true
+!               set line [format {[$c1 %s $c2] toList} $property]
+    $line
+!           }
+} -returnCodes ok -match pairOfFloats -result [asList [dict get $case expected]]
+
+!       }
+!       {conjugate} {
+!           lassign [dict get $case input z] x y
+!* commandSubst false
+    set c [ComplexNumber new $x $y]
+!* variableSubst false
+    [$c conj] toList
+!* variableSubst true
+!* commandSubst true
+} -returnCodes ok -match pairOfFloats -result [asList [dict get $case expected]]
+
+!       }
+!       {exp} {
+!           lassign [dict get $case input z] x y
+!           set x [mathSymbols $x]
+!           set y [mathSymbols $y]
+!* commandSubst false
+    set c [ComplexNumber new $x $y]
+!* variableSubst false
+    [$c exp] toList
+!* variableSubst true
+!* commandSubst true
+!           lassign [dict get $case expected] x y
+!           set x [mathSymbols $x]
+!           set y [mathSymbols $y]
+!           if {[string match {$*} $x] || [string match {$*} $y]} {
+!               set result [format {[list %s %s]} $x $y]
+!           } else {
+!               set result [asList [list $x $y]]
+!           }
+} -returnCodes ok -match pairOfFloats -result $result
+
+!       }
+!   }
+! }
+
+$footer
