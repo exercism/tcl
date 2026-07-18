@@ -1,0 +1,29 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+    [dict get $case property] [tclString [dict get $case input markdown]]
+} -returnCodes ok -result [tclString [dict get $case expected]]
+
+! }
+!#
+! set test_id "${slug}-[incr i]"
+skip $test_id
+test $test_id "multiple em on a line" -body {
+    parse "foo _bar_ _baz_ quz"
+} -returnCodes ok -result "<p>foo <em>bar</em> <em>baz</em> quz</p>"
+
+! set test_id "${slug}-[incr i]"
+skip $test_id
+test $test_id "multiple strong on a line" -body {
+    parse "foo __bar__ __baz__ quz"
+} -returnCodes ok -result "<p>foo <strong>bar</strong> <strong>baz</strong> quz</p>"
+
+$footer

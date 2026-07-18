@@ -1,0 +1,17 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+    [dict get $case property] [dict get $case input maximumWeight] [asList [dict get $case input items] -lists y -multiline y -indent 2]
+} -returnCodes ok -result [dict get $case expected]
+
+! }
+
+$footer
