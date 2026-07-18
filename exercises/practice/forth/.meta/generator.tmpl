@@ -1,0 +1,41 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   if {[dict getdef $case scenarios ""] eq "local-scope"} then continue
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+!   if {[dict exists $case input instructions]} {
+    evalForth [tclString [join [dict get $case input instructions] \n]]
+!       if {[dict exists $case expected error]} {
+} -returnCodes error -result [tclString [dict get $case expected error]]
+!       } else {
+} -returnCodes ok -result [asList [dict get $case expected]]
+!       }
+!   }
+
+! }
+!* variableSubst false
+!* commandSubst false
+# If you chose an OO or namespace approach to this, change
+# "false" to "true".
+# Update the test case to suit your solution's class/namespace/method names.
+if false {
+    test forth-extra-1 "only defines locally" -body {
+        set f1 [Forth new]
+        set f2 [Forth new]
+
+        set result1 [$f1 evaluate ": + - ;\n1 1 +"]
+        set result2 [$f2 evaluate "1 1 +"]
+
+        list $result1 $result2
+    } -returnCodes ok -result {0 2}
+}
+!* variableSubst true
+
+$footer

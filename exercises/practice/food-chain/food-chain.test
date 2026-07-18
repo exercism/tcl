@@ -1,17 +1,22 @@
 #!/usr/bin/env tclsh
+# generated: 2026-07-17T23:09:17Z
 package require tcltest
 namespace import ::tcltest::*
 source testHelpers.tcl
 
+# Uncomment next line to view test durations.
+#configure -verbose {body error usec}
+
 ############################################################
 source "food-chain.tcl"
+
 
 test food-chain-1 "fly" -body {
     recite 1 1
 } -returnCodes ok -result [join {
     "I know an old lady who swallowed a fly."
     "I don't know why she swallowed the fly. Perhaps she'll die."
-    } \n]
+} \n]
 
 skip food-chain-2
 test food-chain-2 "spider" -body {

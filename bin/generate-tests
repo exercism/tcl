@@ -123,6 +123,7 @@ proc flatten_tests_cases {canonical_data included_tests} {
 }
 
 ################################################################
+################################################################
 # helper procs to expose in the template
 # interp is the safe interpreter running the template
 namespace eval helpers {
@@ -141,26 +142,26 @@ namespace eval helpers {
             -multiline false
             -indent 0
             -strings false
+            -lists false
         } $args]
+
+        if {[dict get $opts -strings]} {
+            set list [lmap elem $list {tclString $interp $elem}]
+        } elseif {[dict get $opts -lists]} {
+            set list [lmap elem $list {asList $interp $elem}]
+        }
 
         if {[llength $list] == 0} {
             return "{}"
         }
         if {[llength $list] == 1} {
-            set value [lindex $list 0]
-            if {[dict get $opts -strings]} {
-                set value [tclString $interp $value]
-            }
-            return "{[list $value]}"
+            return "{[lindex $list 0]}"
         }
         if {![dict get $opts -multiline]} {
             return [list $list]
         } else {
             set tab "    "
             set indent [string repeat $tab [dict get $opts -indent]]
-            if {[dict get $opts -strings]} {
-                set list [lmap elem $list {tclString $interp $elem}]
-            }
             set lines [list "{"]
             lappend lines {*}[lmap elem $list {format {%s%s} $indent $elem}]
             lappend lines [format {%s%s} [string repeat $tab [expr {[dict get $opts -indent] - 1}]] "}"]
@@ -176,8 +177,9 @@ namespace eval helpers {
         return [regsub -all -line {^} [string trim $pretty] $indent]
     }
 }
-
 ################################################################
+################################################################
+
 proc generate_tests {slug cases dir config} {
     set template [file join $dir .meta generator.tmpl]
     assert [file exists $template] "error: cannot generate, no template '$template'"
