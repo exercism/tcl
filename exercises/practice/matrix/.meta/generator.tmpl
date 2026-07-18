@@ -1,0 +1,23 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+!   set input [tclString [dict get $case input string]]
+!* commandSubst false
+    set matrix [matrixFrom $input]
+!* commandSubst true
+!* variableSubst false
+    [dict get $case property] $matrix [dict get $case input index]
+!* variableSubst true
+} -returnCodes ok -result [asList [dict get $case expected]]
+
+! }
+
+$footer
