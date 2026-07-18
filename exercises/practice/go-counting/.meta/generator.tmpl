@@ -1,0 +1,41 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+!   set input [asList [dict get $case input board] -strings y -multiline y -indent 2]
+!* commandSubst false
+    set board [GoBoard new $input]
+!* commandSubst true
+!#
+!   if {[dict get $case property] eq "territory"} {
+!       set input [dict get $case input]
+!* variableSubst false
+    $board territory [asList [list [dict get $case input x] [dict get $case input y]]]
+!* variableSubst true
+!       if {[dict exists $case expected error]} {
+} -returnCodes error -result [tclString [dict get $case expected error]]
+!       } else {
+} -returnCodes ok -match orderedLists -result [asList [string tolower [dict values [dict get $case expected]]]]
+!       }
+
+!   } elseif {[dict get $case property] eq "territories"} {
+!* variableSubst false
+    $board territories
+!* variableSubst true
+} -returnCodes ok -match dictionary -result {
+    black [asList [dict get $case expected territoryBlack]]
+    white [asList [dict get $case expected territoryWhite]]
+    none [asList [dict get $case expected territoryNone] -lists y]
+}
+!   }
+
+! }
+
+$footer

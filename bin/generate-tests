@@ -145,26 +145,23 @@ namespace eval helpers {
             -lists false
         } $args]
 
+        if {[dict get $opts -strings]} {
+            set list [lmap elem $list {tclString $interp $elem}]
+        } elseif {[dict get $opts -lists]} {
+            set list [lmap elem $list {asList $interp $elem}]
+        }
+
         if {[llength $list] == 0} {
             return "{}"
         }
         if {[llength $list] == 1} {
-            set value [lindex $list 0]
-            if {[dict get $opts -strings]} {
-                set value [tclString $interp $value]
-            }
-            return "{$value}"
+            return "{[lindex $list 0]}"
         }
         if {![dict get $opts -multiline]} {
             return [list $list]
         } else {
             set tab "    "
             set indent [string repeat $tab [dict get $opts -indent]]
-            if {[dict get $opts -strings]} {
-                set list [lmap elem $list {tclString $interp $elem}]
-            } elseif {[dict get $opts -lists]} {
-                set list [lmap elem $list {asList $interp $elem}]
-            }
             set lines [list "{"]
             lappend lines {*}[lmap elem $list {format {%s%s} $indent $elem}]
             lappend lines [format {%s%s} [string repeat $tab [expr {[dict get $opts -indent] - 1}]] "}"]
