@@ -1,0 +1,21 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+    hammingDistance [tclString [dict get $case input strand1]] [tclString [dict get $case input strand2]]
+!   if {[dict exists $case expected error]} {
+} -returnCodes error -result [tclString [dict get $case expected error]]
+!   } else {
+} -returnCodes ok -result [dict get $case expected]
+!   }
+
+! }
+
+$footer

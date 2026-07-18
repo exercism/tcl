@@ -1,52 +1,57 @@
 #!/usr/bin/env tclsh
+# generated: 2026-07-18T01:36:21Z
 package require tcltest
 namespace import ::tcltest::*
 source testHelpers.tcl
 
+# Uncomment next line to view test durations.
+#configure -verbose {body error usec}
+
 ############################################################
 source "isogram.tcl"
 
-test isogram-1  "empty string" -body {
+
+test isogram-1 "empty string" -body {
     isIsogram ""
 } -returnCodes ok -match boolean -result true
 
 skip isogram-2
-test isogram-2  "isogram with only lower case characters" -body {
+test isogram-2 "isogram with only lower case characters" -body {
     isIsogram "isogram"
 } -returnCodes ok -match boolean -result true
 
 skip isogram-3
-test isogram-3  "word with one duplicated character" -body {
+test isogram-3 "word with one duplicated character" -body {
     isIsogram "eleven"
 } -returnCodes ok -match boolean -result false
 
 skip isogram-4
-test isogram-4  "word with one duplicated character from the end of the alphabet" -body {
+test isogram-4 "word with one duplicated character from the end of the alphabet" -body {
     isIsogram "zzyzx"
 } -returnCodes ok -match boolean -result false
 
 skip isogram-5
-test isogram-5  "longest reported english isogram" -body {
+test isogram-5 "longest reported english isogram" -body {
     isIsogram "subdermatoglyphic"
 } -returnCodes ok -match boolean -result true
 
 skip isogram-6
-test isogram-6  "word with duplicated character in mixed case" -body {
+test isogram-6 "word with duplicated character in mixed case" -body {
     isIsogram "Alphabet"
 } -returnCodes ok -match boolean -result false
 
 skip isogram-7
-test isogram-7  "word with duplicated character in mixed case, lowercase first" -body {
+test isogram-7 "word with duplicated character in mixed case, lowercase first" -body {
     isIsogram "alphAbet"
 } -returnCodes ok -match boolean -result false
 
 skip isogram-8
-test isogram-8  "hypothetical isogrammic word with hyphen" -body {
+test isogram-8 "hypothetical isogrammic word with hyphen" -body {
     isIsogram "thumbscrew-japingly"
 } -returnCodes ok -match boolean -result true
 
 skip isogram-9
-test isogram-9  "hypothetical word with duplicated character following hyphen" -body {
+test isogram-9 "hypothetical word with duplicated character following hyphen" -body {
     isIsogram "thumbscrew-jappingly"
 } -returnCodes ok -match boolean -result false
 
@@ -74,5 +79,6 @@ skip isogram-14
 test isogram-14 "word with duplicated character and with two hyphens" -body {
     isIsogram "up-to-date"
 } -returnCodes ok -match boolean -result false
+
 
 cleanupTests

@@ -1,0 +1,21 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+    [dict get $case property] [dict values [dict get $case input cage]]
+!   if {[llength [dict get $case expected]] <= 1} {
+} -returnCodes ok -match listOfLists -result {[dict get $case expected]}
+!   } else {
+} -returnCodes ok -match listOfLists -result [asList [dict get $case expected]]
+!   }
+
+! }
+
+$footer
