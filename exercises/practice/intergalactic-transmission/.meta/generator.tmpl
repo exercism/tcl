@@ -1,0 +1,30 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+# Inputs and expected data are given in hexadecimal
+
+! set i 0
+! foreach case $cases {
+!   set property [dict get $case property]
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+!   if {$property eq "transmitSequence"} {
+    [dict get $case property] [asList [dict get $case input message] -multiline y -indent 2]
+} -returnCodes ok -match orderedLists -result [asList [dict get $case expected] -multiline y -indent 2]
+
+!   } else {
+    [dict get $case property] [asList [dict get $case input message] -multiline y -indent 2]
+!       if {[dict exists $case expected error]} {
+} -returnCodes error -result [tclString [dict get $case expected error]]
+!       } else {
+} -returnCodes ok -match orderedLists -result [asList [dict get $case expected] -multiline y -indent 2]
+
+!       }
+!   }
+! }
+
+$footer
