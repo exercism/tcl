@@ -154,9 +154,6 @@ namespace eval helpers {
         if {[llength $list] == 0} {
             return "{}"
         }
-        if {[llength $list] == 1} {
-            return "{[lindex $list 0]}"
-        }
         if {![dict get $opts -multiline]} {
             return [list $list]
         } else {

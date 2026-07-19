@@ -1,0 +1,33 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+!   set prop [dict get $case property]
+!   lassign [dict values [dict get $case input]] min max
+!* commandSubst false
+    lassign [palindromeProducts $prop $min $max] value factors
+!* commandSubst true
+!   if {[dict exists $case expected error]} {
+} -returnCodes error -result [tclString [dict get $case expected error]]
+
+!   } else {
+    set expected [string map {null -1} [dict get $case expected value]]
+!* variableSubst false
+    if {$value != $expected} {
+        error "incorrect value: actual $value; expecting $expected"
+    }
+!* variableSubst true
+    set factors
+} -returnCodes ok -match listOfLists -result [asList [dict get $case expected factors]]
+
+!   }
+! }
+
+$footer
