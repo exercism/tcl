@@ -18,14 +18,14 @@ test $test_id [testTitle $case] -body {
 } -returnCodes error -result [tclString [dict get $case expected error]]
 
 !   } else {
-    set expected [dict get $case expected value]
+    set expected [string map {null -1} [dict get $case expected value]]
 !* variableSubst false
     if {$value != $expected} {
         error "incorrect value: actual $value; expecting $expected"
     }
 !* variableSubst true
     set factors
-} -returnCodes ok -result [asList [dict get $case expected factors]]
+} -returnCodes ok -match listOfLists -result [asList [dict get $case expected factors]]
 
 !   }
 ! }
