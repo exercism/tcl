@@ -155,7 +155,11 @@ namespace eval helpers {
             return "{}"
         }
         if {![dict get $opts -multiline]} {
-            return [list $list]
+            if {[llength $list] == 1} {
+                return "{$list}"
+            } else {
+                return [list $list]
+            }
         } else {
             set tab "    "
             set indent [string repeat $tab [dict get $opts -indent]]

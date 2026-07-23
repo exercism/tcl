@@ -1,0 +1,53 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! proc fraction {pair} {
+!   tclString [join $pair /]
+! }
+! set i 0
+! foreach case $cases {
+!   set prop [dict get $case property]
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+!   if {[dict exists $case input r1]} {
+!       set r1 [dict get $case input r1]
+!       set r2 [dict get $case input r2]
+!       set e [format {[$r1 %s $r2]} $prop]
+!* commandSubst false
+    set r1 [Rational new $r1]
+    set r2 [Rational new $r2]
+    $e toString
+!* commandSubst true
+} -returnCodes ok -result [fraction [dict get $case expected]]
+
+!   } else {
+!       set r [dict get $case input r]
+!* commandSubst false
+    set r [Rational new $r]
+!* commandSubst true
+!       if {$prop eq "expreal"} {
+!* variableSubst false
+    $r exprational [dict get $case input x]
+!* variableSubst true
+} -returnCodes ok -match double -result [dict get $case expected]
+!       } else {
+!#          these cases have both commands and variables, make it tricky
+!           if {$prop eq "reduce"} {
+!               set e {$r}
+!           } elseif {$prop eq "abs"} {
+!              set e {[$r abs]}
+!           } elseif {$prop eq "exprational"} {
+!              set e [format {[$r pow %d]} [dict get $case input n]]
+!           }
+    $e toString
+} -returnCodes ok -result [fraction [dict get $case expected]]
+!       }
+!   }
+
+! }
+
+$footer

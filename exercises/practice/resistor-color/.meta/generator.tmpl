@@ -1,0 +1,31 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+!   if {[dict get $case property] eq "colors"} {
+    resistorColor::colors
+} -returnCodes ok -match orderedLists -result [asList [dict get $case expected]]
+!   } else {
+    resistorColor::colorCode [dict get $case input color]
+} -returnCodes ok -result [dict get $case expected]
+!   }
+
+! }
+skip resistor-color-err-1
+test resistor-color-err-1 "Unknown color" -body {
+    resistorColor::colorCode beige
+} -returnCodes error -result "Invalid color: beige"
+
+skip resistor-color-err-2
+test resistor-color-err-2 "test for lsearch with glob" -body {
+    resistorColor::colorCode "bl*"
+} -returnCodes error -result "Invalid color: bl*"
+
+$footer

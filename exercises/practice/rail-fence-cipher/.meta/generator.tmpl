@@ -1,0 +1,17 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [tclString [dict get $case description]] -body {
+    railFenceCipher [dict get $case property] [tclString [dict get $case input msg]] [dict get $case input rails]
+} -returnCodes ok -result [tclString [dict get $case expected]]
+
+! }
+
+$footer
