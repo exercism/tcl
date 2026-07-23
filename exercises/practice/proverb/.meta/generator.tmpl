@@ -10,7 +10,7 @@ skip $test_id
 !   }
 test $test_id [testTitle $case] -body {
     [dict get $case property] [asList [dict get $case input strings]]
-} -returnCodes ok -match orderedList -result [asList [dict get $case expected] -strings y -multiline y -indent 1]
+} -returnCodes ok -match orderedLists -result [asList [dict get $case expected] -strings y -multiline y -indent 1]
 
 ! }
 
