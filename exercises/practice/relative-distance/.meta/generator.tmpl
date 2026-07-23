@@ -1,0 +1,23 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+    [dict get $case property] [dict get $case input personA] [dict get $case input personB] {
+!       dict for {name children} [dict get $case input familyTree] {
+        $name [asList $children]
+!       }
+    }
+!   set e [dict get $case expected]
+!   if {$e eq "null"} then {set e -1}
+} -returnCodes ok -result $e
+
+! }
+
+$footer
