@@ -1,0 +1,37 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+!# I'm using a regsub command to strip the fractional part of numbers.
+!# This is so I don't have to recursively parse the dictionary to find them.
+!# Not best practice to use string commands on lists, but "everything is a string".
+!#
+! set i 0
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+!   set users [regsub -all {\.0\M} [dict get $case input database users] ""]
+    set db {users [asList $users -lists y -multiline y -indent 2]}
+!* variableSubst false
+!* commandSubst false
+    set api [RestAPI new $db]
+!* commandSubst true
+!   if {[dict exists $case input payload]} {
+    set payload [asList [regsub -all {\.0\M} [dict get $case input payload] ""]]
+    $api [dict get $case property] [dict get $case input url] $payload
+!   } else {
+    $api [dict get $case property] [dict get $case input url]
+!   }
+!* variableSubst true
+!   if {[dict exists $case expected users]} {
+!   set users [regsub -all {\.0\M} [dict get $case expected users] ""]
+} -returnCodes ok -match dictionary -result {users [asList $users -lists y -multiline y -indent 2]}
+!   } else {
+} -returnCodes ok -result [asList [regsub -all {\.0\M} [dict get $case expected] ""]]
+!   }
+! }
+
+$footer

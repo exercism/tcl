@@ -1,10 +1,15 @@
 #!/usr/bin/env tclsh
+# generated: 2026-07-23T15:37:39Z
 package require tcltest
 namespace import ::tcltest::*
 source testHelpers.tcl
 
+# Uncomment next line to view test durations.
+#configure -verbose {body error usec}
+
 ############################################################
 source "reverse-string.tcl"
+
 
 test reverse-string-1 "an empty string" -body {
     reverse ""
@@ -39,5 +44,6 @@ skip reverse-string-7
 test reverse-string-7 "wide characters" -body {
     reverse "子猫"
 } -returnCodes ok -result "猫子"
+
 
 cleanupTests
