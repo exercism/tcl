@@ -169,7 +169,7 @@ namespace eval helpers {
     # pretty print a dict
     proc pdict {interp aDict args} {
         set options [dict merge {-indent 1} $args]
-        set indent [string repeat "  " [dict get $options -indent]]
+        set indent [string repeat "    " [dict get $options -indent]]
         set pretty [dict print $aDict]
         return [regsub -all -line {^} [string trim $pretty] $indent]
     }

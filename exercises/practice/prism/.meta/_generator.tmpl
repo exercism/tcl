@@ -1,0 +1,20 @@
+!# formatted poorly
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+    [dict get $case property] {
+[pdict [dict get $case input] -indent 2]
+}
+} -returnCodes ok -result [asList [dict get $case expected sequence]]
+
+! }
+
+$footer

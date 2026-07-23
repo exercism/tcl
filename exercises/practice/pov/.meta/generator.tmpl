@@ -1,0 +1,44 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+# "trees" are shown as dict literals here
+# each node in a tree has:
+#    "label" - a string
+#    "children" - (optional) a list of child nodes)
+
+! set i 0
+! foreach case $cases {
+!   set prop [dict get $case property]
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+    set input [asList [dict get $case input tree]]
+!   if {$prop eq "fromPov"} {
+!* variableSubst false
+    fromPov $input [dict get $case input from]
+!* variableSubst true
+!       if {[dict get $case expected] eq "null"} {
+} -returnCodes error -result "no such target"
+!       } elseif {$i == 6} {
+!#          the json parser somehow shuffles the x children list
+} -returnCodes ok -match dictionary -result {label x children {{label kid-0} {label kid-1} {label parent children {{label sibling-0} {label sibling-1} {label grandparent children {{label uncle children {{label cousin-0} {label cousin-1}}}}}}}}}
+!       } else {
+} -returnCodes ok -match dictionary -result [asList [dict get $case expected]]
+!       }
+!   } else {
+!* variableSubst false
+    path $input [dict get $case input from] [dict get $case input to]
+!* variableSubst true
+!       if {[dict get $case expected] eq "null"} {
+} -returnCodes error -result "no such label"
+!       } else {
+} -returnCodes ok -match orderedLists -result [asList [dict get $case expected]]
+!       }
+!   }
+
+! }
+
+$footer
