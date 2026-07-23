@@ -1,0 +1,63 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! set test_id "${slug}-[incr i]"
+test $test_id "default position is (0,0) facing north" -body {
+!* commandSubst false
+    set robot [Robot new]
+!* commandSubst true
+!* variableSubst false
+    $robot position
+!* variableSubst true
+} -returnCodes ok -match dictionary -result {x 0 y 0 direction north}
+
+! set test_id "${slug}-[incr i]"
+skip $test_id
+test $test_id "position (1,2) default direction" -body {
+!* commandSubst false
+    set robot [Robot new {x 1 y 2}]
+!* commandSubst true
+!* variableSubst false
+    $robot position
+!* variableSubst true
+} -returnCodes ok -match dictionary -result {x 1 y 2 direction north}
+
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+skip $test_id
+test $test_id [testTitle $case] -body {
+!   set input [asList [dict merge [dict get $case input position] [list direction [dict get $case input direction]]]]
+!* commandSubst false
+    set robot [Robot new $input]
+!* commandSubst true
+!   if {[dict exists $case input instructions]} {
+!* variableSubst false
+    $robot move [tclString [dict get $case input instructions]]
+!* variableSubst true
+!   }
+!* variableSubst false
+    $robot position
+!* variableSubst true
+!   if {[dict exists $case expected error]} {
+} -returnCodes error -result [tclString [dict get $case expected error]]
+!   } else {
+!       set exp [asList [dict merge [dict get $case expected position] [list direction [dict get $case expected direction]]]]
+} -returnCodes ok -match dictionary -result $exp
+!   }
+
+! }
+! set test_id "${slug}-[incr i]"
+skip $test_id
+test $test_id "invalid instruction" -body {
+!* commandSubst false
+    set robot [Robot new]
+!* commandSubst true
+!* variableSubst false
+    $robot move "RALB"
+    $robot position
+!* variableSubst true
+} -returnCodes error -result "invalid instruction: B"
+
+$footer
