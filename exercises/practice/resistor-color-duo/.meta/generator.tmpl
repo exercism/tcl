@@ -1,0 +1,26 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+    resistorColor::[dict get $case property] [dict get $case input colors]
+} -returnCodes ok -result [dict get $case expected]
+
+! }
+skip resistor-color-duo-err1
+test resistor-color-duo-err1 "Invalid first color" -body {
+    resistorColor::value foo black
+} -returnCodes error -match glob -result {Invalid color*}
+
+skip resistor-color-duo-err2
+test resistor-color-duo-err2 "Invalid second color" -body {
+    resistorColor::value black bar
+} -returnCodes error -match glob -result {Invalid color*}
+
+$footer
