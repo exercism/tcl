@@ -1,0 +1,46 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   set prop [dict get $case property]
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+!   if {$prop eq "create"} {
+!       set row [dict get $case input queen position row]
+!       set col [dict get $case input queen position column]
+!* commandSubst false
+    set queen [Queen new $row $col]
+!* commandSubst true
+!       if {[dict get $case expected] == 0} {
+!* variableSubst false
+    info object isa typeof $queen Queen
+!* variableSubst true
+!       }
+!       if {[dict exists $case expected error]} {
+} -returnCodes error -result [tclString [dict get $case expected error]]
+!       } else {
+} -returnCodes ok -match boolean -result true
+!       }
+
+!   } else {
+!       set b_row [dict get $case input black_queen position row]
+!       set b_col [dict get $case input black_queen position column]
+!       set w_row [dict get $case input white_queen position row]
+!       set w_col [dict get $case input white_queen position column]
+!* commandSubst false
+    set q1 [Queen new $b_row $b_col]
+    set q2 [Queen new $w_row $w_col]
+!* variableSubst false
+    $q1 canAttack $q2
+!* variableSubst true
+!* commandSubst true
+} -returnCodes ok -match boolean -result [dict get $case expected]
+!   }
+! }
+
+$footer
