@@ -1,0 +1,25 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! proc hex {n} {format {0x%02x} $n}
+!#
+! set i 0
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+!   set input [lmap n [dict get $case input integers] {hex $n}]
+    [dict get $case property] [asList $input]
+!   if {[dict exists $case expected error]} {
+} -returnCodes error -result [tclString [dict get $case expected error]]
+!   } else {
+!   set output [lmap n [dict get $case expected] {hex $n}]
+} -returnCodes ok -match orderedLists -result [asList $output]
+!   }
+
+! }
+
+$footer

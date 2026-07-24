@@ -1,0 +1,35 @@
+!* variableSubst true
+!* commandSubst true
+$header
+# note that grid coordinates are 1-indexed
+
+!# {start {row 1 column 2} end {row 3 column 4}} ==> {{1 2} {3 4}}
+! proc resultToPoint {res} {
+!   lmap what {start end} {dict with res $what {list $column $row}}
+! }
+!#
+! set i 0
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -setup {
+    set grid [asList [dict get $case input grid] -strings y -multiline y -indent 2]
+} -body {
+!* variableSubst false
+    wordSearch $grid [asList [dict get $case input wordsToSearchFor]]
+!* variableSubst true
+} -returnCodes ok -match dictionary -result {
+!   dict for {word result} [dict get $case expected] {
+!       if {$result eq "null"} {
+    [tclString $word] {}
+!       } else {
+    [tclString $word] [asList [resultToPoint $result]]
+!       }
+!   }
+}
+
+! }
+
+$footer

@@ -1,10 +1,15 @@
 #!/usr/bin/env tclsh
+# generated: 2026-07-24T19:11:33Z
 package require tcltest
 namespace import ::tcltest::*
 source testHelpers.tcl
 
+# Uncomment next line to view test durations.
+#configure -verbose {body error usec}
+
 ############################################################
 source "yacht.tcl"
+
 
 test yacht-1 "Yacht" -body {
     score {5 5 5 5 5} "yacht"
@@ -150,9 +155,5 @@ test yacht-29 "Yacht as choice" -body {
     score {2 2 2 2 2} "choice"
 } -returnCodes ok -result 10
 
-skip yacht-30
-test yacht-30 "Invalid category" -body {
-    score {2 2 3 3 4} "two pairs"
-} -returnCodes error -result "Invalid category"
 
 cleanupTests
