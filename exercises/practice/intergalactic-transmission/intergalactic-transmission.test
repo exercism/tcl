@@ -1,5 +1,5 @@
 #!/usr/bin/env tclsh
-# generated: 2026-07-18T01:31:58Z
+# generated: 2026-07-24T19:22:56Z
 package require tcltest
 namespace import ::tcltest::*
 source testHelpers.tcl
@@ -19,7 +19,9 @@ test intergalactic-transmission-1 "calculate transmit sequences: empty message" 
 
 skip intergalactic-transmission-2
 test intergalactic-transmission-2 "calculate transmit sequences: 0x00 is transmitted as 0x0000" -body {
-    transmitSequence {0x00}
+    transmitSequence {
+        0x00
+    }
 } -returnCodes ok -match orderedLists -result {
         0x00
         0x00
@@ -27,7 +29,9 @@ test intergalactic-transmission-2 "calculate transmit sequences: 0x00 is transmi
 
 skip intergalactic-transmission-3
 test intergalactic-transmission-3 "calculate transmit sequences: 0x02 is transmitted as 0x0300" -body {
-    transmitSequence {0x02}
+    transmitSequence {
+        0x02
+    }
 } -returnCodes ok -match orderedLists -result {
         0x03
         0x00
@@ -35,7 +39,9 @@ test intergalactic-transmission-3 "calculate transmit sequences: 0x02 is transmi
 
 skip intergalactic-transmission-4
 test intergalactic-transmission-4 "calculate transmit sequences: 0x06 is transmitted as 0x0600" -body {
-    transmitSequence {0x06}
+    transmitSequence {
+        0x06
+    }
 } -returnCodes ok -match orderedLists -result {
         0x06
         0x00
@@ -43,7 +49,9 @@ test intergalactic-transmission-4 "calculate transmit sequences: 0x06 is transmi
 
 skip intergalactic-transmission-5
 test intergalactic-transmission-5 "calculate transmit sequences: 0x05 is transmitted as 0x0581" -body {
-    transmitSequence {0x05}
+    transmitSequence {
+        0x05
+    }
 } -returnCodes ok -match orderedLists -result {
         0x05
         0x81
@@ -51,7 +59,9 @@ test intergalactic-transmission-5 "calculate transmit sequences: 0x05 is transmi
 
 skip intergalactic-transmission-6
 test intergalactic-transmission-6 "calculate transmit sequences: 0x29 is transmitted as 0x2881" -body {
-    transmitSequence {0x29}
+    transmitSequence {
+        0x29
+    }
 } -returnCodes ok -match orderedLists -result {
         0x28
         0x81
@@ -201,7 +211,9 @@ test intergalactic-transmission-13 "decode received messages: zero message" -bod
         0x00
         0x00
     }
-} -returnCodes ok -match orderedLists -result {0x00}
+} -returnCodes ok -match orderedLists -result {
+        0x00
+    }
 
 skip intergalactic-transmission-14
 test intergalactic-transmission-14 "decode received messages: 0x0300 is decoded to 0x02" -body {
@@ -209,7 +221,9 @@ test intergalactic-transmission-14 "decode received messages: 0x0300 is decoded 
         0x03
         0x00
     }
-} -returnCodes ok -match orderedLists -result {0x02}
+} -returnCodes ok -match orderedLists -result {
+        0x02
+    }
 
 skip intergalactic-transmission-15
 test intergalactic-transmission-15 "decode received messages: 0x0581 is decoded to 0x05" -body {
@@ -217,7 +231,9 @@ test intergalactic-transmission-15 "decode received messages: 0x0581 is decoded 
         0x05
         0x81
     }
-} -returnCodes ok -match orderedLists -result {0x05}
+} -returnCodes ok -match orderedLists -result {
+        0x05
+    }
 
 skip intergalactic-transmission-16
 test intergalactic-transmission-16 "decode received messages: 0x2881 is decoded to 0x29" -body {
@@ -225,7 +241,9 @@ test intergalactic-transmission-16 "decode received messages: 0x2881 is decoded 
         0x28
         0x81
     }
-} -returnCodes ok -match orderedLists -result {0x29}
+} -returnCodes ok -match orderedLists -result {
+        0x29
+    }
 
 skip intergalactic-transmission-17
 test intergalactic-transmission-17 "decode received messages: first byte has wrong parity" -body {

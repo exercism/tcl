@@ -1,5 +1,5 @@
 #!/usr/bin/env tclsh
-# generated: 2026-07-19T11:58:29Z
+# generated: 2026-07-24T19:22:58Z
 package require tcltest
 namespace import ::tcltest::*
 source testHelpers.tcl
@@ -17,12 +17,16 @@ test parallel-letter-frequency-1 "no texts" -body {
 
 skip parallel-letter-frequency-2
 test parallel-letter-frequency-2 "one text with one letter" -body {
-    calculate {"a"}
+    calculate {
+        "a"
+    }
 } -returnCodes ok -match dictionary -result {a 1}
 
 skip parallel-letter-frequency-3
 test parallel-letter-frequency-3 "one text with multiple letters" -body {
-    calculate {"bbcccd"}
+    calculate {
+        "bbcccd"
+    }
 } -returnCodes ok -match dictionary -result {b 2 c 3 d 1}
 
 skip parallel-letter-frequency-4
@@ -96,7 +100,9 @@ test parallel-letter-frequency-10 "Unicode letters" -body {
 
 skip parallel-letter-frequency-11
 test parallel-letter-frequency-11 "combination of lower- and uppercase letters, punctuation and white space" -body {
-    calculate {"There, peeping among the cloud-wrack above a dark tower high up in the mountains, Sam saw a white star twinkle for a while. The beauty of it smote his heart, as he looked up out of the forsaken land, and hope returned to him. For like a shaft, clear and cold, the thought pierced him that in the end, the shadow was only a small and passing thing: there was light and high beauty forever beyond its reach."}
+    calculate {
+        "There, peeping among the cloud-wrack above a dark tower high up in the mountains, Sam saw a white star twinkle for a while. The beauty of it smote his heart, as he looked up out of the forsaken land, and hope returned to him. For like a shaft, clear and cold, the thought pierced him that in the end, the shadow was only a small and passing thing: there was light and high beauty forever beyond its reach."
+    }
 } -returnCodes ok -match dictionary -result {a 32 b 4 c 6 d 14 e 37 f 7 g 8 h 29 i 19 k 6 l 12 m 7 n 19 o 22 p 7 r 17 s 16 t 30 u 9 v 2 w 9 y 4}
 
 skip parallel-letter-frequency-12

@@ -1,5 +1,5 @@
 #!/usr/bin/env tclsh
-# generated: 2026-07-19T12:01:55Z
+# generated: 2026-07-24T19:22:58Z
 package require tcltest
 namespace import ::tcltest::*
 source testHelpers.tcl
@@ -18,7 +18,9 @@ test pascals-triangle-1 "zero rows" -body {
 skip pascals-triangle-2
 test pascals-triangle-2 "single row" -body {
     triangle 1
-} -returnCodes ok -match orderedLists -result {{1}}
+} -returnCodes ok -match orderedLists -result {
+    {1}
+}
 
 skip pascals-triangle-3
 test pascals-triangle-3 "two rows" -body {

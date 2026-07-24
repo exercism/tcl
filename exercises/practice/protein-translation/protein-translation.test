@@ -1,5 +1,5 @@
 #!/usr/bin/env tclsh
-# generated: 2026-07-23T01:14:48Z
+# generated: 2026-07-24T19:22:59Z
 package require tcltest
 namespace import ::tcltest::*
 source testHelpers.tcl
@@ -18,72 +18,72 @@ test protein-translation-1 "Empty RNA sequence results in no proteins" -body {
 skip protein-translation-2
 test protein-translation-2 "Methionine RNA sequence" -body {
     proteins "AUG"
-} -returnCodes ok -result Methionine
+} -returnCodes ok -result {Methionine}
 
 skip protein-translation-3
 test protein-translation-3 "Phenylalanine RNA sequence 1" -body {
     proteins "UUU"
-} -returnCodes ok -result Phenylalanine
+} -returnCodes ok -result {Phenylalanine}
 
 skip protein-translation-4
 test protein-translation-4 "Phenylalanine RNA sequence 2" -body {
     proteins "UUC"
-} -returnCodes ok -result Phenylalanine
+} -returnCodes ok -result {Phenylalanine}
 
 skip protein-translation-5
 test protein-translation-5 "Leucine RNA sequence 1" -body {
     proteins "UUA"
-} -returnCodes ok -result Leucine
+} -returnCodes ok -result {Leucine}
 
 skip protein-translation-6
 test protein-translation-6 "Leucine RNA sequence 2" -body {
     proteins "UUG"
-} -returnCodes ok -result Leucine
+} -returnCodes ok -result {Leucine}
 
 skip protein-translation-7
 test protein-translation-7 "Serine RNA sequence 1" -body {
     proteins "UCU"
-} -returnCodes ok -result Serine
+} -returnCodes ok -result {Serine}
 
 skip protein-translation-8
 test protein-translation-8 "Serine RNA sequence 2" -body {
     proteins "UCC"
-} -returnCodes ok -result Serine
+} -returnCodes ok -result {Serine}
 
 skip protein-translation-9
 test protein-translation-9 "Serine RNA sequence 3" -body {
     proteins "UCA"
-} -returnCodes ok -result Serine
+} -returnCodes ok -result {Serine}
 
 skip protein-translation-10
 test protein-translation-10 "Serine RNA sequence 4" -body {
     proteins "UCG"
-} -returnCodes ok -result Serine
+} -returnCodes ok -result {Serine}
 
 skip protein-translation-11
 test protein-translation-11 "Tyrosine RNA sequence 1" -body {
     proteins "UAU"
-} -returnCodes ok -result Tyrosine
+} -returnCodes ok -result {Tyrosine}
 
 skip protein-translation-12
 test protein-translation-12 "Tyrosine RNA sequence 2" -body {
     proteins "UAC"
-} -returnCodes ok -result Tyrosine
+} -returnCodes ok -result {Tyrosine}
 
 skip protein-translation-13
 test protein-translation-13 "Cysteine RNA sequence 1" -body {
     proteins "UGU"
-} -returnCodes ok -result Cysteine
+} -returnCodes ok -result {Cysteine}
 
 skip protein-translation-14
 test protein-translation-14 "Cysteine RNA sequence 2" -body {
     proteins "UGC"
-} -returnCodes ok -result Cysteine
+} -returnCodes ok -result {Cysteine}
 
 skip protein-translation-15
 test protein-translation-15 "Tryptophan RNA sequence" -body {
     proteins "UGG"
-} -returnCodes ok -result Tryptophan
+} -returnCodes ok -result {Tryptophan}
 
 skip protein-translation-16
 test protein-translation-16 "STOP codon RNA sequence 1" -body {
@@ -123,7 +123,7 @@ test protein-translation-22 "Translation stops if STOP codon at beginning of seq
 skip protein-translation-23
 test protein-translation-23 "Translation stops if STOP codon at end of two-codon sequence" -body {
     proteins "UGGUAG"
-} -returnCodes ok -result Tryptophan
+} -returnCodes ok -result {Tryptophan}
 
 skip protein-translation-24
 test protein-translation-24 "Translation stops if STOP codon at end of three-codon sequence" -body {
@@ -133,7 +133,7 @@ test protein-translation-24 "Translation stops if STOP codon at end of three-cod
 skip protein-translation-25
 test protein-translation-25 "Translation stops if STOP codon in middle of three-codon sequence" -body {
     proteins "UGGUAGUGG"
-} -returnCodes ok -result Tryptophan
+} -returnCodes ok -result {Tryptophan}
 
 skip protein-translation-26
 test protein-translation-26 "Translation stops if STOP codon in middle of six-codon sequence" -body {
