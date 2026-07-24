@@ -1,0 +1,31 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+!   set prop [dict get $case property]
+!   set note [dict get $case input tonic]
+!* commandSubst false
+    set scale [Scale new $note]
+!* commandSubst true
+!   if {$prop eq "chromatic"} {
+!* variableSubst false
+    $scale chromatic
+!* variableSubst true
+!   } else {
+!* variableSubst false
+    $scale intervals [dict get $case input intervals]
+!* variableSubst true
+!   }
+} -returnCodes ok -match orderedLists -result {
+    [dict get $case expected]
+}
+! }
+
+$footer

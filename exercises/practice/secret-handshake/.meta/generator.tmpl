@@ -1,0 +1,17 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+    secretHandshake [dict get $case input number]
+} -returnCodes ok -match orderedLists -result [asList [dict get $case expected] -strings y]
+
+! }
+
+$footer

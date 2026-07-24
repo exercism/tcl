@@ -1,0 +1,24 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+!   set input [tclString [dict get $case input string]]
+!   if {[dict get $case property] eq "consistency"} {
+!* commandSubst false
+    decode [encode $input]
+!* commandSubst true
+!   } else {
+    [dict get $case property] $input
+!   }
+} -returnCodes ok -result [tclString [dict get $case expected]]
+
+! }
+
+$footer
