@@ -155,8 +155,8 @@ namespace eval helpers {
             return "{}"
         }
         if {![dict get $opts -multiline]} {
-            if {[llength $list] == 1} {
-                return "{$list}"
+            if {[dict get $opts -strings]} {
+                return "{[join $list " "]}"
             } else {
                 return [list $list]
             }
