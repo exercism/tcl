@@ -1,5 +1,5 @@
 #!/usr/bin/env tclsh
-# generated: 2026-07-23T01:26:33Z
+# generated: 2026-07-24T19:22:59Z
 package require tcltest
 namespace import ::tcltest::*
 source testHelpers.tcl
@@ -17,7 +17,7 @@ test proverb-1 "zero pieces" -body {
 
 skip proverb-2
 test proverb-2 "one piece" -body {
-    recite nail
+    recite {nail}
 } -returnCodes ok -match orderedLists -result {
     "And all for the want of a nail."
 }

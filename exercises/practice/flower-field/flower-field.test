@@ -1,5 +1,5 @@
 #!/usr/bin/env tclsh
-# generated: 2026-07-17T23:05:57Z
+# generated: 2026-07-24T19:22:55Z
 package require tcltest
 namespace import ::tcltest::*
 source testHelpers.tcl
@@ -17,8 +17,12 @@ test flower-field-1 "no rows" -body {
 
 skip flower-field-2
 test flower-field-2 "no columns" -body {
-    annotate {""}
-} -returnCodes ok -match orderedLists -result {""}
+    annotate {
+        ""
+    }
+} -returnCodes ok -match orderedLists -result {
+        ""
+    }
 
 skip flower-field-3
 test flower-field-3 "no flowers" -body {
@@ -74,13 +78,21 @@ test flower-field-6 "space surrounded by flowers" -body {
 
 skip flower-field-7
 test flower-field-7 "horizontal line" -body {
-    annotate {" * * "}
-} -returnCodes ok -match orderedLists -result {"1*2*1"}
+    annotate {
+        " * * "
+    }
+} -returnCodes ok -match orderedLists -result {
+        "1*2*1"
+    }
 
 skip flower-field-8
 test flower-field-8 "horizontal line, flowers at edges" -body {
-    annotate {"*   *"}
-} -returnCodes ok -match orderedLists -result {"*1 1*"}
+    annotate {
+        "*   *"
+    }
+} -returnCodes ok -match orderedLists -result {
+        "*1 1*"
+    }
 
 skip flower-field-9
 test flower-field-9 "vertical line" -body {
@@ -154,8 +166,12 @@ test flower-field-12 "large garden" -body {
 
 skip flower-field-13
 test flower-field-13 "multiple adjacent flowers" -body {
-    annotate {" ** "}
-} -returnCodes ok -match orderedLists -result {"1**1"}
+    annotate {
+        " ** "
+    }
+} -returnCodes ok -match orderedLists -result {
+        "1**1"
+    }
 
 
 cleanupTests

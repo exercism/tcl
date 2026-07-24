@@ -1,5 +1,5 @@
 #!/usr/bin/env tclsh
-# generated: 2026-07-17T15:43:30Z
+# generated: 2026-07-24T19:22:54Z
 package require tcltest
 namespace import ::tcltest::*
 source testHelpers.tcl
@@ -23,12 +23,16 @@ test connect-1 "an empty board has no winner" -body {
 
 skip connect-2
 test connect-2 "X can win on a 1x1 board" -body {
-    winner {"X"}
+    winner {
+        "X"
+    }
 } -returnCodes ok -result "X"
 
 skip connect-3
 test connect-3 "O can win on a 1x1 board" -body {
-    winner {"O"}
+    winner {
+        "O"
+    }
 } -returnCodes ok -result "O"
 
 skip connect-4

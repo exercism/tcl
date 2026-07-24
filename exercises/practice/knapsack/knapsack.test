@@ -1,5 +1,5 @@
 #!/usr/bin/env tclsh
-# generated: 2026-07-18T02:02:10Z
+# generated: 2026-07-24T19:22:57Z
 package require tcltest
 namespace import ::tcltest::*
 source testHelpers.tcl
@@ -17,7 +17,9 @@ test knapsack-1 "no items" -body {
 
 skip knapsack-2
 test knapsack-2 "one item, too heavy" -body {
-    maximumValue 10 {{weight 100 value 1}}
+    maximumValue 10 {
+        {weight 100 value 1}
+    }
 } -returnCodes ok -result 0
 
 skip knapsack-3

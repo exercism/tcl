@@ -1,5 +1,5 @@
 #!/usr/bin/env tclsh
-# generated: 2026-07-17T18:55:17Z
+# generated: 2026-07-24T19:22:54Z
 package require tcltest
 namespace import ::tcltest::*
 source testHelpers.tcl
@@ -13,7 +13,9 @@ source "diamond.tcl"
 
 test diamond-1 "Degenerate case with a single 'A' row" -body {
     diamond "A"
-} -returnCodes ok -result [join {"A"} \n]
+} -returnCodes ok -result [join {
+    "A"
+} \n]
 
 skip diamond-2
 test diamond-2 "Degenerate case with no row containing 3 distinct groups of spaces" -body {

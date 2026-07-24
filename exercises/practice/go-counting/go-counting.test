@@ -1,5 +1,5 @@
 #!/usr/bin/env tclsh
-# generated: 2026-07-18T00:18:04Z
+# generated: 2026-07-24T19:28:34Z
 package require tcltest
 namespace import ::tcltest::*
 source testHelpers.tcl
@@ -116,7 +116,9 @@ test go-counting-8 "Invalid because Y is too high for 5x5 board" -body {
 
 skip go-counting-9
 test go-counting-9 "One territory is the whole board" -body {
-    set board [GoBoard new {" "}]
+    set board [GoBoard new {
+        " "
+    }]
     $board territories
 } -returnCodes ok -match dictionary -result {
     black {}
@@ -139,7 +141,9 @@ test go-counting-10 "Two territory rectangular board" -body {
 
 skip go-counting-11
 test go-counting-11 "Two region rectangular board" -body {
-    set board [GoBoard new {" B "}]
+    set board [GoBoard new {
+        " B "
+    }]
     $board territories
 } -returnCodes ok -match dictionary -result {
     black {{0 0} {2 0}}
