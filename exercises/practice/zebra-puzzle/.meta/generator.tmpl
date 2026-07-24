@@ -1,0 +1,22 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+!* commandSubst false
+    set zp [ZebraPuzzle new]
+!* commandSubst true
+!* variableSubst false
+    $zp [dict get $case property]
+!* variableSubst true
+} -returnCodes ok -result [tclString [dict get $case expected]]
+
+! }
+
+$footer
