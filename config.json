@@ -65,17 +65,6 @@
         "difficulty": 1
       },
       {
-        "slug": "rna-transcription",
-        "name": "RNA Transcription",
-        "uuid": "1479aec4-6f8f-403e-ad0b-33d0b7b7891a",
-        "practices": [],
-        "prerequisites": [],
-        "difficulty": 1,
-        "topics": [
-          "strings"
-        ]
-      },
-      {
         "slug": "resistor-color",
         "name": "Resistor Color",
         "uuid": "d76c4a2a-d63a-450b-8e0a-0c4eeb656fd8",
@@ -86,6 +75,17 @@
           "lists",
           "namespaces",
           "searching"
+        ]
+      },
+      {
+        "slug": "rna-transcription",
+        "name": "RNA Transcription",
+        "uuid": "1479aec4-6f8f-403e-ad0b-33d0b7b7891a",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 1,
+        "topics": [
+          "strings"
         ]
       },
       {
@@ -569,19 +569,6 @@
         ]
       },
       {
-        "slug": "etl",
-        "name": "ETL",
-        "uuid": "ddaa2182-2d73-4599-a300-2f0e887dc4d5",
-        "practices": [],
-        "prerequisites": [],
-        "difficulty": 3,
-        "topics": [
-          "loops",
-          "maps",
-          "transforming"
-        ]
-      },
-      {
         "slug": "eliuds-eggs",
         "name": "Eliud's Eggs",
         "uuid": "363f80a2-0fdb-4e8d-a3cf-048d5b8e9a3d",
@@ -598,6 +585,19 @@
         "difficulty": 3,
         "topics": [
           "exception_handling"
+        ]
+      },
+      {
+        "slug": "etl",
+        "name": "ETL",
+        "uuid": "ddaa2182-2d73-4599-a300-2f0e887dc4d5",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 3,
+        "topics": [
+          "loops",
+          "maps",
+          "transforming"
         ]
       },
       {
@@ -1592,17 +1592,6 @@
         ]
       },
       {
-        "slug": "rest-api",
-        "name": "REST API",
-        "uuid": "c85d2acd-c6b3-4005-9e02-bef1d24fddbf",
-        "practices": [],
-        "prerequisites": [],
-        "difficulty": 7,
-        "topics": [
-          "parsing"
-        ]
-      },
-      {
         "slug": "rectangles",
         "name": "Rectangles",
         "uuid": "b5551ef1-3ebb-4ce7-aad4-919befe3f7bd",
@@ -1613,6 +1602,17 @@
           "logic",
           "parsing",
           "pattern_recognition"
+        ]
+      },
+      {
+        "slug": "rest-api",
+        "name": "REST API",
+        "uuid": "c85d2acd-c6b3-4005-9e02-bef1d24fddbf",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 7,
+        "topics": [
+          "parsing"
         ]
       },
       {
@@ -1666,6 +1666,14 @@
         ]
       },
       {
+        "slug": "paasio",
+        "name": "PaaS I/O",
+        "uuid": "1a85e7e7-1b79-42da-82a4-a4f6542890b4",
+        "practices": [],
+        "prerequisites": [],
+        "difficulty": 8
+      },
+      {
         "slug": "pov",
         "name": "POV",
         "uuid": "7eec8ce4-9acd-441e-92fb-23b6ee1c872a",
@@ -1676,14 +1684,6 @@
           "recursion",
           "searching"
         ]
-      },
-      {
-        "slug": "paasio",
-        "name": "PaaS I/O",
-        "uuid": "1a85e7e7-1b79-42da-82a4-a4f6542890b4",
-        "practices": [],
-        "prerequisites": [],
-        "difficulty": 8
       },
       {
         "slug": "react",
