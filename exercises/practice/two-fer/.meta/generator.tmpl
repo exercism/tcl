@@ -1,0 +1,19 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+!   set name [dict get $case input name]
+!   set name [expr {$name eq "null" ? "" : [tclString $name]}]
+    two-fer $name
+} -returnCodes ok -result [tclString [dict get $case expected]]
+
+! }
+
+$footer
