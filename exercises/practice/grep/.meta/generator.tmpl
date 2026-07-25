@@ -1,0 +1,26 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] \
+    -setup populateFiles -cleanup removeFiles \
+    -body {
+        grep [dict get $case input flags] [tclString [dict get $case input pattern]] [dict get $case input files] 
+!   if {[llength [dict get $case expected]] == 0} {
+!       set result {""}
+!   } else {
+!       set result [format {[join %s \n]} [asList [dict get $case expected] -strings y -multiline y -indent 2]]
+!   }
+!* commandSubst false
+    } -returnCodes ok -result $result
+!* commandSubst true
+
+! }
+
+$footer
