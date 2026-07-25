@@ -1,0 +1,44 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   set prop [dict get $case property]
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -setup {
+    school reset
+} -body {
+!   if {$prop eq "roster"} {
+!       if {[llength [dict get $case input students]] == 0} {
+    # no students added
+!       } else {
+    school add [asList [dict get $case input students]]
+!       }
+    school roster
+} -returnCodes ok -match orderedLists -result [asList [dict get $case expected]]
+
+!   } elseif {$prop eq "add"} {
+!       if {[llength [dict get $case input students]] == 0} {
+    # no students added
+!       } else {
+    school add [asList [dict get $case input students]]
+!       }
+} -returnCodes ok -match orderedLists -result [asList [dict get $case expected]]
+
+!   } elseif {$prop eq "grade"} {
+!       if {[llength [dict get $case input students]] == 0} {
+    # no students added
+!       } else {
+    school add [asList [dict get $case input students]]
+!       }
+    school grade [dict get $case input desiredGrade]
+} -returnCodes ok -match orderedLists -result [asList [dict get $case expected]]
+
+!   }
+! }
+
+$footer
