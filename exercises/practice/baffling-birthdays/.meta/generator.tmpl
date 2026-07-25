@@ -1,0 +1,81 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   set prop [dict get $case property]
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+!   if {$prop eq "sharedBirthday"} {
+    [dict get $case property] [asList [dict get $case input birthdates] -strings y -multiline y -indent 2]
+} -returnCodes ok -match boolean -result [dict get $case expected]
+
+!   } elseif {$prop eq "estimatedProbabilityOfSharedBirthday"} {
+    [dict get $case property] [dict get $case input groupSize]
+} -returnCodes ok -match approxEqual -result [dict get $case expected]
+
+!   } elseif {[dict get $case expected] eq "length == groupsize"} {
+!* variableSubst false commandSubst false
+    set result true
+    for {set count 1} {$count <= 100} {incr count} {
+        set birthdates [randomBirthdates $count]
+
+        set result [expr {$result && ([llength $birthdates] == $count)}]
+    }
+    set result
+} -returnCodes ok -match boolean -result true
+!* variableSubst true commandSubst true
+
+!   } elseif {[dict exists $case expected years leapYear]} {
+!* variableSubst false commandSubst false
+    # it's a leap year if the 60th day of the year is the 29th day of the month
+    proc isLeapYear {year} {
+        set d [clock format [clock scan "$year-060" -format {%Y-%j}] -format %d]
+        expr {$d eq "29"}
+    }
+    set result true
+    foreach date [randomBirthdates 100] {
+        set year [lindex [split $date "-"] 0]
+
+        set result [expr {$result && ![isLeapYear $year]}]
+    }
+    set result
+} -returnCodes ok -match boolean -result true
+!* variableSubst true commandSubst true
+
+!   } elseif {[dict exists $case expected months random]} {
+!* variableSubst false commandSubst false
+    set seen [dict create]
+    foreach date [randomBirthdates 100] {
+        set month [lindex [split $date "-"] 1]
+        dict incr seen $month
+    }
+    set months [lsort [dict keys $seen]]
+    expr {$months eq {01 02 03 04 05 06 07 08 09 10 11 12}}
+} -returnCodes ok -match boolean -result true
+!* variableSubst true commandSubst true
+
+!   } elseif {[dict exists $case expected days random]} {
+!* variableSubst false commandSubst false
+    set seen [dict create]
+    foreach date [randomBirthdates 300] {
+        set day [lindex [split $date "-"] 2]
+        dict incr seen $day
+    }
+    set days [lsort [dict keys $seen]]
+    expr {
+        [llength $days] == 31 &&
+        [lindex $days 0] eq "01" &&
+        [lindex $days end] eq "31"
+    }
+} -returnCodes ok -match boolean -result true
+!* variableSubst true commandSubst true
+
+!   }
+! }
+
+$footer

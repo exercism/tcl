@@ -39,3 +39,9 @@ proc booleanMatch {expected actual} {
     }]
 }
 customMatch boolean booleanMatch
+
+# Compare floating point numbers 
+proc closeEnough {expected actual {epsilon 1.1}} {
+    return [expr {abs($expected - $actual) <= $epsilon}]
+}
+customMatch approxEqual closeEnough
