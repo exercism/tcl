@@ -1,0 +1,43 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! proc methodName {prop} {
+!   set prop [regsub {After.*} $prop {}]
+!   string map {personalTopThree topThree} $prop
+! }
+! set i 0
+! foreach case $cases {
+!   set prop [dict get $case property]
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [tclString [dict get $case description]] -body {
+!* commandSubst false
+    set hs [HighScores new]
+!* commandSubst true
+!* variableSubst false
+    $hs addScores [dict get $case input scores]
+!* variableSubst true
+!   if {[string match {*AfterTopThree} $prop]} {
+!* variableSubst false commandSubst false
+    set top3 [$hs topThree]
+!* variableSubst true commandSubst true
+!   } elseif {[string match {*AfterBest} $prop]} {
+!* variableSubst false commandSubst false
+    set best [$hs personalBest]
+!* variableSubst true commandSubst true
+!   }
+!* variableSubst false
+    $hs [methodName $prop]
+!* variableSubst true
+!   if {$prop in {latest personalBest latestAfterTopThree latestAfterBest}} {
+} -returnCodes ok -result [dict get $case expected]
+!   } else {
+} -returnCodes ok -result [asList [dict get $case expected]]
+!   }
+
+! }
+
+$footer
