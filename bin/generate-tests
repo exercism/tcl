@@ -94,12 +94,15 @@ proc get_included_tests {dir} {
                 set uuids($uuid) true
             }
             {^include\s*=\s*false} {
-                unset uuids($last_uuid)
+                set uuids($last_uuid) false
+            }
+            {^reimplements\s*=\s*"(.+)"} {
+                set uuids([lindex $m 1]) false
             }
         }
     }
     close $fh
-    return [array names uuids]
+    return [lmap uuid [array names uuids] {expr {$uuids($uuid) ? $uuid : [continue]}}]
 }
 
 

@@ -1,2 +1,30 @@
-#!/bin/sh
-find exercises/practice/ -mindepth 2 -type d -path '*/.meta' \! -exec test -e '{}/generator.tmpl' \; -print | sort
+#!/usr/bin/env bash
+# 
+# find exercises without a generator template
+# exclude deprecated exercises
+# exclude exercises with no canonical data
+
+filter_deprecated() {
+    grep -vFxf <(
+        jq -r '.exercises.practice[] | select(.status == "deprecated") | .slug' config.json
+    )
+}
+
+filter_canonical() {
+    local probspec="${XDG_CACHE_HOME:-$HOME/.cache}/exercism/configlet/problem-specifications"
+    if [[ -d $probspec ]]; then
+        grep -vFxf <(
+            find "$probspec/exercises" -mindepth 1 -type d \
+                \! -exec test -f '{}/canonical-data.json' \; \
+                -exec basename '{}' \;
+        )
+    else
+        cat
+    fi
+}
+
+find exercises/practice/ -mindepth 2 -type d -path '*/.meta' \! -exec test -f '{}/generator.tmpl' \; -print \
+| cut -d / -f 3 \
+| filter_deprecated \
+| filter_canonical \
+| sort

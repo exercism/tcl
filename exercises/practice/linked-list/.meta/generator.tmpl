@@ -1,0 +1,66 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! set i 0
+! foreach case $cases {
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+!   set expected {}
+    set result {}
+!* commandSubst false
+    set ll [LinkedList new]
+!* commandSubst true
+!   foreach op [dict get $case input operations] {
+!       switch -regexp [dict get $op operation] {
+!           {push|unshift|delete} {
+!* variableSubst false
+    $ll [dict get $op operation] [dict get $op value]
+!* variableSubst true
+!           }
+!           {pop|shift} {
+!               if {[dict exists $op expected]} {
+!                   lappend expected [dict get $op expected]
+!                   set cmd [format {[$ll %s]} [dict get $op operation]]
+    lappend result $cmd
+!               } else {
+!* variableSubst false
+    $ll [dict get $op operation]
+!* variableSubst true
+!               }
+!           }
+!           {count} {
+!               lappend expected [dict get $op expected]
+!* variableSubst false
+!* commandSubst false
+    lappend result [$ll length]
+!* variableSubst true
+!* commandSubst true
+!           }
+!       }
+!   }
+} -returnCodes ok -result [asList $expected]
+
+! }
+!* variableSubst false
+!* commandSubst false
+# Change this to "true" to enable the bonus test
+if {false} {
+    skip linked-list-bonus
+    test linked-list-bonus "iteration" -body {
+        set result {}
+        set ll [LinkedList new]
+        $ll push 10
+        $ll push 20
+        $ll push 30
+        $ll for value {lappend result [expr {$value / 2}]}
+        set result
+    } -returnCodes ok -result {5 10 15}
+}
+!* variableSubst true
+!* commandSubst true
+
+$footer

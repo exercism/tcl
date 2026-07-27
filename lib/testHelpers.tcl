@@ -152,6 +152,13 @@ proc floatMatch {expected actual {epsilon 1e-6}} {
 customMatch float floatMatch
 
 
+# Compare floating point numbers 
+proc closeEnough {expected actual {epsilon 1.1}} {
+    return [expr {abs($expected - $actual) <= $epsilon}]
+}
+customMatch approxEqual closeEnough
+
+
 # Compare a list of floating point numbers 
 proc listOfFloatsMatch {expected actual} {
     foreach e $expected a $actual {
