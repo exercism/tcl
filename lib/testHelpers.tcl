@@ -145,6 +145,13 @@ proc inListMatch {expectedList actual} {
 customMatch inList inListMatch
 
 
+# Compare  numbers: for example 5.0 == 5
+proc numberMatch {expected actual} {
+    return [expr {$expected == $actual}]
+}
+customMatch numbers numberMatch
+
+
 # Compare floating point numbers 
 proc floatMatch {expected actual {epsilon 1e-6}} {
     return [expr {abs($expected - $actual) <= $epsilon}]

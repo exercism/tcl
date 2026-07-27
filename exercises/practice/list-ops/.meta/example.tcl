@@ -61,7 +61,7 @@ proc ::listOps::reverse {list} {
 
 proc ::listOps::foldr {list accumulator func} {
     foreach element [::listOps::reverse $list] {
-        set accumulator [uplevel 1 [list apply $func $element $accumulator]]
+        set accumulator [uplevel 1 [list apply $func $accumulator $element]]
     }
     return $accumulator
 }

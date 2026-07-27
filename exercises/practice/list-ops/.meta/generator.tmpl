@@ -1,0 +1,48 @@
+!* variableSubst true
+!* commandSubst true
+$header
+
+! array set funcs {
+!   {(x) -> x modulo 2 == 1} {{x {expr {$x % 2 == 1}}}}
+!   {(x) -> x + 1}           {{x {expr {$x + 1}}}}
+!   {(acc, el) -> el * acc}  {{{acc elem} {expr {$acc * $elem}}}}
+!   {(acc, el) -> el + acc}  {{{acc elem} {expr {$acc + $elem}}}}
+!   {(acc, el) -> el / acc}  {{{acc elem} {expr {1.0 * $elem / $acc}}}}
+! }
+! set i 0
+! foreach case $cases {
+!   set prop [dict get $case property]
+!   set test_id "${slug}-[incr i]"
+!   if {$i > 1} {
+skip $test_id
+!   }
+test $test_id [testTitle $case] -body {
+!   switch -exact $prop {
+!       append {
+    set list1 [asList [dict get $case input list1]]
+    listOps::[dict get $case property] list1 [asList [dict get $case input list2]]
+    set list1
+!       }
+!       concat {
+    listOps::[dict get $case property] [asList [dict get $case input lists]]
+!       }
+!       filter - map {
+    listOps::[dict get $case property] [asList [dict get $case input list]] $funcs([dict get $case input function])
+!       }
+!       length - reverse {
+    listOps::[dict get $case property] [asList [dict get $case input list]]
+!       }
+!       foldl - foldr {
+    listOps::[dict get $case property] [asList [dict get $case input list]] [dict get $case input initial] $funcs([dict get $case input function])
+!       }
+!   }
+!   set expected [dict get $case expected]
+!   if {[string is integer -strict $expected] || [string is double -strict $expected]} {
+} -returnCodes ok -match numbers -result $expected
+!   } else {
+} -returnCodes ok -result [asList $expected]
+!   }
+
+! }
+
+$footer
