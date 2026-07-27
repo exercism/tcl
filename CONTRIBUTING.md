@@ -140,6 +140,8 @@ Templates live at `.meta/generator.tmpl` within each exercise.
 
 `lib/generator.tmpl` provides a working skeleton you can copy and adapt.
 
+If you want to skip the generator and craft the test file by hand, add `.meta/generator.txt` with a brief explanation.
+
 ### Ornament syntax
 
 Lines beginning with `!` are Tcl code; all other lines are literal output.

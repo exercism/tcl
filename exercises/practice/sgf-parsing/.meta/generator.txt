@@ -1,0 +1,2 @@
+I didn't use a generator here.
+The input/expected values have been formatted manually for readability.

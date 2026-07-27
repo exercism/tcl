@@ -1,0 +1,4 @@
+I didn't use a generator here.
+
+This exercise is deprecated in problem-specifications,
+but the value of this exercise is sufficient to maintain it.
