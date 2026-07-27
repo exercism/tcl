@@ -225,6 +225,15 @@ proc main {args} {
     assert [expr {[llength $args] > 0}] "usage: $::argv0 path-to-exercise"
     set exercise_dir [lindex $args 0]
     assert [file isdirectory $exercise_dir] "error: not a directory '$exercise_dir'"
+
+    set txt [file join $exercise_dir .meta generator.txt]
+    if {[file exists $txt]} {
+        set fh [open $txt r]
+        puts [read -nonewline $fh]
+        close $fh
+        exit
+    }
+
     set config [read_exercise_config $exercise_dir]
     # puts [list $config]
 

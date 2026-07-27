@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # 
-# find exercises without a generator template
+# find exercises without a generator template (or txt file)
 # exclude deprecated exercises
 # exclude exercises with no canonical data
 
@@ -23,7 +23,7 @@ filter_canonical() {
     fi
 }
 
-find exercises/practice/ -mindepth 2 -type d -path '*/.meta' \! -exec test -f '{}/generator.tmpl' \; -print \
+find exercises/practice/ -mindepth 2 -type d -path '*/.meta' \! -exec bash -c '[[ -f "$0"/generator.tmpl || -f "$0"/generator.txt ]]' '{}' \; -print \
 | cut -d / -f 3 \
 | filter_deprecated \
 | filter_canonical \

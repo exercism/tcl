@@ -1,0 +1,2 @@
+I didn't use a generator here.
+I don't expect the spec to change, so there's no point.
