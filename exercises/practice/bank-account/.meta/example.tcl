@@ -7,7 +7,7 @@ oo::class create BankAccount {
 
     method open {} {
         if {$open} {
-            error "account is already open"
+            error "account already open"
         }
         set balance 0
         set open true
@@ -15,7 +15,7 @@ oo::class create BankAccount {
 
     method AssertOpen {} {
         if {!$open} {
-            error "account is not open"
+            error "account not open"
         }
     }
 
@@ -32,7 +32,7 @@ oo::class create BankAccount {
     method deposit {amount} {
         my AssertOpen
         if {$amount < 0} {
-            error "invalid amount"
+            error "amount must be greater than 0"
         }
         incr balance $amount
     }
@@ -40,10 +40,10 @@ oo::class create BankAccount {
     method withdraw {amount} {
         my AssertOpen
         if {$amount < 0} {
-            error "invalid amount"
+            error "amount must be greater than 0"
         }
         if {$amount > $balance} {
-            error "insufficient funds"
+            error "amount must be less than balance"
         }
         incr balance [expr {-1 * $amount}]
     }
