@@ -1,5 +1,5 @@
 #!/usr/bin/env tclsh
-# generated: 2026-07-18T02:07:48Z
+# generated: 2026-08-15T01:43:50Z
 package require tcltest
 namespace import ::tcltest::*
 source testHelpers.tcl
@@ -81,29 +81,59 @@ test line-up-14 "format exceptional ordinal numeral 21" -body {
 } -returnCodes ok -result "Washi, you are the 21st customer we serve today. Thank you!"
 
 skip line-up-15
-test line-up-15 "format exceptional ordinal numeral 62" -body {
+test line-up-15 "format exceptional ordinal numeral 22 ending in nd even though it is a multiple of 11" -body {
+    formatTicket "Ingrid" 22
+} -returnCodes ok -result "Ingrid, you are the 22nd customer we serve today. Thank you!"
+
+skip line-up-16
+test line-up-16 "format exceptional ordinal numeral 33 ending in rd even though it is a multiple of 11" -body {
+    formatTicket "Mario" 33
+} -returnCodes ok -result "Mario, you are the 33rd customer we serve today. Thank you!"
+
+skip line-up-17
+test line-up-17 "format exceptional ordinal numeral 52 ending in nd even though it is a multiple of 13" -body {
+    formatTicket "Quentin" 52
+} -returnCodes ok -result "Quentin, you are the 52nd customer we serve today. Thank you!"
+
+skip line-up-18
+test line-up-18 "format exceptional ordinal numeral 62" -body {
     formatTicket "Nayra" 62
 } -returnCodes ok -result "Nayra, you are the 62nd customer we serve today. Thank you!"
 
-skip line-up-16
-test line-up-16 "format exceptional ordinal numeral 100" -body {
+skip line-up-19
+test line-up-19 "format non-exceptional ordinal numeral 72 ending in nd even though it is a multiple of 12" -body {
+    formatTicket "Ugo" 72
+} -returnCodes ok -result "Ugo, you are the 72nd customer we serve today. Thank you!"
+
+skip line-up-20
+test line-up-20 "format exceptional ordinal numeral 91 ending in st even though it is a multiple of 13" -body {
+    formatTicket "Boris" 91
+} -returnCodes ok -result "Boris, you are the 91st customer we serve today. Thank you!"
+
+skip line-up-21
+test line-up-21 "format exceptional ordinal numeral 100" -body {
     formatTicket "John" 100
 } -returnCodes ok -result "John, you are the 100th customer we serve today. Thank you!"
 
-skip line-up-17
-test line-up-17 "format exceptional ordinal numeral 101" -body {
+skip line-up-22
+test line-up-22 "format exceptional ordinal numeral 101" -body {
     formatTicket "Zeinab" 101
 } -returnCodes ok -result "Zeinab, you are the 101st customer we serve today. Thank you!"
 
-skip line-up-18
-test line-up-18 "format non-exceptional ordinal numeral 112" -body {
+skip line-up-23
+test line-up-23 "format non-exceptional ordinal numeral 112" -body {
     formatTicket "Knud" 112
 } -returnCodes ok -result "Knud, you are the 112th customer we serve today. Thank you!"
 
-skip line-up-19
-test line-up-19 "format exceptional ordinal numeral 123" -body {
+skip line-up-24
+test line-up-24 "format exceptional ordinal numeral 123" -body {
     formatTicket "Yma" 123
 } -returnCodes ok -result "Yma, you are the 123rd customer we serve today. Thank you!"
+
+skip line-up-25
+test line-up-25 "format large number 972 ending in nd even though it is a multiple of 12" -body {
+    formatTicket "Elias" 972
+} -returnCodes ok -result "Elias, you are the 972nd customer we serve today. Thank you!"
 
 
 cleanupTests

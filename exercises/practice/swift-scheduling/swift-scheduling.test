@@ -1,5 +1,5 @@
 #!/usr/bin/env tclsh
-# generated: 2026-07-24T17:59:39Z
+# generated: 2026-08-15T01:44:39Z
 package require tcltest
 namespace import ::tcltest::*
 source testHelpers.tcl
@@ -89,6 +89,11 @@ skip swift-scheduling-16
 test swift-scheduling-16 "Q3 in the fourth quarter translates to the last workday of the third quarter of next year" -body {
     deliveryDate "2022-10-06T11:00:00" "Q3"
 } -returnCodes ok -result "2023-09-29T08:00:00"
+
+skip swift-scheduling-17
+test swift-scheduling-17 "Q2 starting in the last month of the second quarter translates to the last workday of the second quarter of this year" -body {
+    deliveryDate "2019-06-15T09:50:00" "Q2"
+} -returnCodes ok -result "2019-06-28T08:00:00"
 
 
 cleanupTests
