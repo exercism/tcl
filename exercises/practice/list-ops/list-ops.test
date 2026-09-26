@@ -1,5 +1,5 @@
 #!/usr/bin/env tclsh
-# generated: 2026-07-27T16:43:41Z
+# generated: 2026-09-26T17:08:12Z
 package require tcltest
 namespace import ::tcltest::*
 source testHelpers.tcl
@@ -119,12 +119,17 @@ test list-ops-20 "reverse the elements of the list: empty list" -body {
 } -returnCodes ok -result {}
 
 skip list-ops-21
-test list-ops-21 "reverse the elements of the list: non-empty list" -body {
+test list-ops-21 "reverse the elements of the list: non-empty even-length list" -body {
     listOps::reverse {1 3 5 7}
 } -returnCodes ok -result {7 5 3 1}
 
 skip list-ops-22
-test list-ops-22 "reverse the elements of the list: list of lists is not flattened" -body {
+test list-ops-22 "reverse the elements of the list: non-empty odd-length list" -body {
+    listOps::reverse {1 3 5 7 9 11 13}
+} -returnCodes ok -result {13 11 9 7 5 3 1}
+
+skip list-ops-23
+test list-ops-23 "reverse the elements of the list: list of lists is not flattened" -body {
     listOps::reverse {{1 2} 3 {} {4 5 6}}
 } -returnCodes ok -result {{4 5 6} {} 3 {1 2}}
 
