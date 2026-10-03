@@ -1,6 +1,6 @@
 # Exercism Tcl Track
 
-![build status](https://travis-ci.org/exercism/tcl.svg?branch=master)
+![build status](https://travis-ci.org/exercism/tcl.svg?branch=main)
 
 Exercism exercises in [Tcl](https://www.tcl-lang.org/).
 
@@ -10,17 +10,11 @@ Tcl installation is described in the [INSTALLATION](docs/INSTALLATION.md) docume
 
 ## Contributing
 
-Thank you so much for contributing! :tada:
-
-Please read about how to [get involved in a track](https://github.com/exercism/docs/tree/master/contributing-to-language-tracks). Be sure to read the Exercism [Code of Conduct](https://exercism.org/code-of-conduct).
-
-We welcome pull requests of all kinds. No contribution is too small.
-
-We encourage contributions that provide fixes and improvements to existing exercises. Please note that this track's exercises must conform to the Exercism-wide standards described in the [documentation](https://github.com/exercism/docs/tree/master/language-tracks/exercises). If you're unsure about how to make a change, then go ahead and open a GitHub issue (see below) and we'll discuss it.
+Please read the [CONTRIBUTING](CONTRIBUTING.md) doc.
 
 ## Exercise Tests
 
-At the most basic level, Exercism is all about the tests. You can read more about how we think about test suites in [the Exercism documentation](https://github.com/exercism/docs/blob/master/language-tracks/exercises/anatomy/test-suites.md).
+At the most basic level, Exercism is all about the tests. You can read more about how we think about test suites in [the Exercism documentation](https://exercism.org/docs/using/solving-exercises/tdd).
 
 Tcl test files use the [`tcltest`](https://www.tcl-lang.org/man/tcl8.6/TclCmd/tcltest.htm) core package. Here are two excellent introductory overviews:
 
@@ -30,11 +24,11 @@ Tcl test files use the [`tcltest`](https://www.tcl-lang.org/man/tcl8.6/TclCmd/tc
 
 ## Opening an Issue
 
-If you plan to make significant or breaking changes, please [open an issue](https://github.com/exercism/tcl/issues) so we can discuss it first. If this is a discussion that is relevant to more than just the Tcl track, please open an issue in [exercism/discussions](https://github.com/exercism/discussions/issues).
+If you plan to make significant or breaking changes, please [create a topic on the forum](https://forum.exercism.org/c/programming/tcl/117) so we can discuss it first.
 
 ## Submitting a Pull Request
 
-Pull requests should be focused on a single exercise, issue, or conceptually cohesive change. Please refer to Exercism's [pull request guidelines](https://github.com/exercism/docs/blob/master/contributing/pull-request-guidelines.md).
+Pull requests should be focused on a single exercise, issue, or conceptually cohesive change. Please refer to Exercism's [pull request guidelines](https://exercism.org/docs/building/github/contributors-pull-request-guide).
 
 Please follow the coding standards for Tcl. (_TODO: reference one..._)
 
@@ -55,20 +49,20 @@ $ bin/test_all_exercises
 
 Note that the `test_all_exercises` script will **overwrite** the `"slug".tcl` and then check it out again from git when the test is complete. If you have not committed your code, you risk losing that template file.
 
-To run the linter, use the [`configlet`](https://github.com/exercism/configlet) tool:
+To run the linter, use the [`configlet`](https://exercism.org/docs/building/configlet) tool:
 ```sh
 $ path/to/configlet lint .
 ```
 
 ## Contributing a New Exercise
 
-Please see the documentation about [adding new exercises](https://github.com/exercism/docs/blob/master/you-can-help/make-up-new-exercises.md).
+Please see the documentation about [adding new exercises](https://exercism.org/docs/building/tracks/practice-exercises/add).
 
 Note that:
 
 - Each exercise must stand on its own. Do not reference files outside the exercise directory. They will not be included when the user fetches the exercise.
 - Exercises should use only the Tcl core libraries.
-- Exercises must conform to the Exercism-wide standards described in [the documentation](https://github.com/exercism/docs/tree/master/language-tracks/exercises).
+- Exercises must conform to the Exercism-wide standards described in [the documentation](https://exercism.org/docs/building/tracks/practice-exercises).
 - Each exercise should have a test suite, an example solution and a template file for the real implementation. Use the `canonical-data.json` file for the exercise from the [problem-specifications](https://github.com/exercism/problem-specifications) repo to guide your test implementation.
 - The CI build expects files to be named using the following convention: 
 
