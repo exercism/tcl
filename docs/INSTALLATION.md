@@ -8,7 +8,7 @@ For Windows, the best place to get Tcl is [the Tcl installer from Magicsplat][ma
 
 For MacOS and Unix-like operating systems, `tclsh` will be already installed.
 Typically the installed version will be 8.6.*something*.
-To install the current stable 9.0 version:
+To install the current stable 9.1 version:
  - with MacOS, use [Homebrew][brew].
  - for Linux, check your package manager.
  - or [download the source][download] and [build it][build].
@@ -38,7 +38,7 @@ command -v rlwrap && alias tclsh='rlwrap tclsh'
 
 ## What version to use?
 
-The current stable version is 9.0.
+The current stable version is 9.1.
 As indicated above, version 8.6 is still widely deployed.
 
 You can test which version of `tclsh` you have installed by running the following command:
