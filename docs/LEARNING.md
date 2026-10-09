@@ -6,7 +6,7 @@ For that reason, learning [the basic syntax of Tcl][syntax] is quite easy.
 For a hands-on tutorial, see [Learn X in Y minutes: Tcl][X-in-Y].
 
 For a comprehensive tutorial in more parts:
- - [The Tcl tutorial][tutorial] covers Tcl version 8.5 (current stable is version 9.0)
+ - [The Tcl tutorial][tutorial] covers Tcl version 8.5 (current stable is version 9.1)
  - Support for object oriented programming was added to the Tcl core in verion 8.6.
    Magicsplat has a thorough [OO tutorial][oo-tutorial] covering it.
 
