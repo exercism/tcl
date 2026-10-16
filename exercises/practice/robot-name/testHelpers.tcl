@@ -42,10 +42,3 @@ proc booleanMatch {expected actual} {
     }]
 }
 customMatch boolean booleanMatch
-
-# Valid Robot name is 2 letters and 3 numbers
-proc robotNameMatch {expected actual} {
-    set re {^[A-Z]{2}[0-9]{3}$}
-    booleanMatch $expected [regexp $re $actual]
-}
-customMatch robotName robotNameMatch
