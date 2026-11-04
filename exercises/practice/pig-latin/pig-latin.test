@@ -1,5 +1,5 @@
 #!/usr/bin/env tclsh
-# generated: 2026-07-22T21:52:59Z
+# generated: 2026-11-04T20:15:14Z
 package require tcltest
 namespace import ::tcltest::*
 source testHelpers.tcl
@@ -122,8 +122,8 @@ test pig-latin-22 "position of y in a word determines if it is a consonant or a 
 
 skip pig-latin-23
 test pig-latin-23 "phrases are translated: a whole phrase" -body {
-    translate "quick fast run"
-} -returnCodes ok -result "ickquay astfay unray"
+    translate "why do squids enjoy xrays"
+} -returnCodes ok -result "ywhay oday idssquay enjoyay xraysay"
 
 
 cleanupTests
