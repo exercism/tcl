@@ -46,6 +46,7 @@ proc xdg_cache {} {
 }
 
 proc fetch_canonical_data {slug} {
+    file mkdir [file join . canonical-data]
     set cached [file join . canonical-data "$slug.json"]
     set probspecs_file [file join [xdg_cache] exercism configlet problem-specifications exercises $slug canonical-data.json]
     set url "https://raw.githubusercontent.com/exercism/problem-specifications/main/exercises/${slug}/canonical-data.json"
