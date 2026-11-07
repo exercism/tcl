@@ -1,0 +1,14 @@
+proc most_common_word {text} {
+    set counts [dict create]
+    set best ""
+    set bestCount 0
+    foreach word [split [string tolower $text] " "] {
+        dict incr counts $word
+        set count [dict get $counts $word]
+        if {$count > $bestCount} {
+            set best $word
+            set bestCount $count
+        }
+    }
+    return "\"$best\" appears $bestCount times"
+}
