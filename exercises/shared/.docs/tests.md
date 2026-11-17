@@ -1,5 +1,9 @@
 # Tests
 
+Each exercise contains a test file.
+Because Exercism promotes [Test-Driven Development][tdd], the tests *are* the requirements.
+Make sure to read the tests to understand how your code will be invoked, and what output is expected.
+
 To run the test suite:
 ```bash
 tclsh exercise.test
@@ -17,3 +21,5 @@ Alternately, to run all the tests regardless of their "skipped" status:
 ```bash
 RUN_ALL=1 tclsh exercise.test
 ```
+
+[tdd]: https://exercism.org/docs/using/solving-exercises/tdd
