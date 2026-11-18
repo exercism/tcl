@@ -1,5 +1,13 @@
 # Running the tests
 
+## The tests are the requirements
+
+Each exercise contains a test file.
+Because Exercism promotes [Test-Driven Development][tdd], the tests *are* the requirements.
+Make sure to read the tests to understand how your code will be invoked, and what output is expected.
+
+## Running the tests
+
 To run the tests for an exercise, run the `<exercise>.test` script in the exercise directory:
 
 ```bash
@@ -17,3 +25,4 @@ RUN_ALL=yes tclsh <exercise>.test
 \[1\]: Tcl true/false values are documented in the man page for the C library function [Tcl_GetBoolean][bool].
 
 [bool]: https://www.tcl-lang.org/man/tcl8.6/TclLib/GetInt.htm
+[tdd]: https://exercism.org/docs/using/solving-exercises/tdd
